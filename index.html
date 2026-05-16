@@ -335,7 +335,6 @@ footer{background:var(--green3);padding:2.5rem 2rem;margin-top:4rem}
   <div class="nav-links">
     <button class="nb on" id="nb-home" onclick="showView('home')">Directory</button>
     <button class="nb" id="nb-about" onclick="showView('about')">About</button>
-    <button class="nb admin-btn" id="nb-admin" onclick="showView('admin')">⚙ Admin</button>
     <button class="nb primary" onclick="showView('register')">✦ Register</button>
   </div>
   <!-- Hamburger button — mobile only -->
@@ -456,7 +455,7 @@ footer{background:var(--green3);padding:2.5rem 2rem;margin-top:4rem}
       <div class="fsec">👤 Personal Information</div>
       <div class="fgrid">
         <div class="fg"><label class="fl">Full Name <span class="r">*</span></label><input class="fc" id="fn" placeholder="Dr. Ayesha Rahman"/></div>
-        <div class="fg"><label class="fl">Batch / Graduation Year <span class="r">*</span></label><input class="fc" id="fb" placeholder="2018"/></div>
+        <div class="fg"><label class="fl">Session <span class="r">*</span></label><input class="fc" id="fb" placeholder="e.g. 2017–2018"/></div>
         <div class="fg"><label class="fl">Email Address</label><input class="fc" id="fe" type="email" placeholder="you@example.com"/></div>
         <div class="fg"><label class="fl">Phone / WhatsApp</label><input class="fc" id="fp" placeholder="+880 …"/></div>
       </div>
@@ -465,7 +464,7 @@ footer{background:var(--green3);padding:2.5rem 2rem;margin-top:4rem}
         <div class="fg"><label class="fl">Current Designation <span class="r">*</span></label><input class="fc" id="fr" placeholder="Senior Occupational Health Officer"/></div>
         <div class="fg"><label class="fl">Organization / Employer <span class="r">*</span></label><input class="fc" id="fo" placeholder="World Health Organization"/></div>
         <div class="fg"><label class="fl">Sector / Industry</label>
-          <select class="fc" id="fse">
+          <select class="fc" id="fse" onchange="toggleOtherSector(this)">
             <option value="">Select sector…</option>
             <option>Government / Public Health</option>
             <option>International Organization (WHO, UN, etc.)</option>
@@ -476,10 +475,21 @@ footer{background:var(--green3);padding:2.5rem 2rem;margin-top:4rem}
             <option>Consultancy</option>
             <option>Other</option>
           </select>
+          <input class="fc" id="fse-other" placeholder="Please specify your sector…" style="display:none;margin-top:.5rem"/>
         </div>
         <div class="fg"><label class="fl">Location (City, Country)</label><input class="fc" id="floc" placeholder="Dhaka, Bangladesh"/></div>
+        <div class="fg full"><label class="fl">Programme Completed at DOEH <span class="r">*</span></label>
+          <select class="fc" id="fprog">
+            <option value="">Select your programme…</option>
+            <option>BPH in Occupational &amp; Environmental Health &amp; Safety</option>
+            <option>MPH in Occupational Health &amp; Safety</option>
+            <option>MPH in Environmental Health &amp; Safety</option>
+          </select>
+        </div>
         <div class="fg full"><label class="fl">Key Expertise</label><input class="fc" id="fex" placeholder="Occupational Health, Industrial Hygiene, EIA…"/><span class="fhint">Separate with commas</span></div>
-        <div class="fg full"><label class="fl">Bio / Career Summary <span class="fhint" style="text-transform:none;letter-spacing:0;font-weight:400">(include degree, PhD if any, career highlights)</span></label><textarea class="fc" id="fbio" placeholder="Tell us about your journey — you can include:&#10;• Your programme at DOEH (MPH / BSc)&#10;• Any further studies or PhD (if applicable)&#10;• Your career path and current work&#10;• Any achievements or specializations&#10;&#10;Example: Completed MPH at DOEH in 2018. Later pursued a PhD in Environmental Epidemiology at University of Tokyo. Currently working at WHO focusing on industrial health policy across South-East Asia." style="min-height:140px"></textarea></div>
+        <div class="fg full"><label class="fl">Bio / Career Summary <span class="fhint" style="text-transform:none;letter-spacing:0;font-weight:400">(career journey, PhD if any, achievements — max 250 words)</span></label><textarea class="fc" id="fbio" placeholder="Share your journey in up to 250 words. You may include:&#10;• Where you have worked and what you do&#10;• Any postgraduate studies or PhD after DOEH&#10;• Key achievements in occupational or environmental health&#10;• Research, publications or projects you are proud of&#10;• What drives your work in public health" style="min-height:160px" oninput="countWords(this)"></textarea>
+          <span class="fhint" id="bio-word-count">0 / 250 words</span>
+        </div>
       </div>
       <div class="fsec">🔗 Online Profiles</div>
       <div class="fgrid">
@@ -487,19 +497,21 @@ footer{background:var(--green3);padding:2.5rem 2rem;margin-top:4rem}
         <div class="fg"><label class="fl">ResearchGate / Google Scholar</label><input class="fc" id="frg" placeholder="https://researchgate.net/…"/></div>
         <div class="fg full"><label class="fl">Profile Photo URL <span class="fhint" style="text-transform:none;letter-spacing:0">(Google Drive shareable link or direct image URL)</span></label><input class="fc" id="fphoto" placeholder="https://drive.google.com/file/d/…"/><span class="fhint">Upload your photo to Google Drive → Share → Copy link → Paste here</span></div>
       </div>
-      <!-- Privacy consent -->
+      <div class="fsec">📄 CV / Resume</div>
+      <div class="fgrid">
+        <div class="fg full"><label class="fl">CV / Resume Link <span class="fhint" style="text-transform:none;letter-spacing:0;font-weight:400">(Google Drive shareable link to your CV — PDF only)</span></label>
+          <input class="fc" id="fcv" placeholder="https://drive.google.com/file/d/…"/>
+          <span class="fhint">Upload your CV to Google Drive → Share → Anyone with the link → Copy link → Paste here</span>
+        </div>
+      </div>
       <div style="background:var(--green-pale);border:1px solid var(--green-dim);border-radius:10px;padding:1rem 1.2rem;margin-top:1rem">
         <label style="display:flex;align-items:flex-start;gap:.75rem;cursor:pointer;font-size:.82rem;color:var(--green2);line-height:1.6">
           <input type="checkbox" id="f-consent" style="margin-top:3px;accent-color:var(--green);width:15px;height:15px;flex-shrink:0"/>
-          <span>I agree that my profile information will be <strong>publicly visible</strong> on the DOEH Alumni Directory. I understand I can request removal or updates anytime by contacting the admin.</span>
+          <span>I agree that my profile information will be <strong>publicly visible</strong> on the DOEH Alumni Directory. I understand I can request removal or updates anytime by reaching out to the DOEH team.</span>
         </label>
       </div>
 
-      <!-- Update note -->
-      <div style="text-align:center;margin-top:.85rem;font-size:.78rem;color:var(--gray)">
-        Already registered? Want to update your profile? Contact us at
-        <a href="mailto:doeh.alumni@buhs.ac.bd" style="color:var(--green);font-weight:600">doeh.alumni@buhs.ac.bd</a>
-      </div>
+
 
       <div class="ffoot">
         <button class="btn btn-ghost" onclick="showView('home')">Cancel</button>
@@ -584,7 +596,7 @@ const SHEET_NAME='Form Responses 1';
 const ADMIN_PASSWORD='doeh2024';
 
 // Column indices — add Photo URL as column 14
-const C={name:1,batch:2,role:3,org:4,sector:5,loc:6,email:7,phone:8,exp:9,bio:10,li:11,rg:12,status:13,photo:14};
+const C={name:1,batch:2,role:3,org:4,sector:5,loc:6,email:7,phone:8,exp:9,bio:10,li:11,rg:12,status:13,photo:14,programme:15,cv:16};
 
 const AV_COLORS=[
   'linear-gradient(135deg,#1e7a3e,#0e4526)',
@@ -666,12 +678,10 @@ function photoEl(r,i,size){
 }
 
 function cardHTML(r,i){
-  const tags=(r[C.exp]||'').split(',').map(t=>t.trim()).filter(Boolean).slice(0,3).map(t=>`<span class="tag">${t}</span>`).join('');
-  const links=[
-    r[C.email]?`<a class="lnk" href="mailto:${r[C.email]}" title="Email" onclick="event.stopPropagation()">✉</a>`:'',
-    r[C.li]?`<a class="lnk" href="${r[C.li]}" target="_blank" title="LinkedIn" onclick="event.stopPropagation()">in</a>`:'',
-    r[C.rg]?`<a class="lnk" href="${r[C.rg]}" target="_blank" title="Research" onclick="event.stopPropagation()">📄</a>`:'',
-  ].join('');
+  const tags=(r[C.exp]||'').split(',').map(t=>t.trim()).filter(Boolean).slice(0,2).map(t=>`<span class="tag">${t}</span>`).join('');
+  const prog=r[C.programme]||'';
+  const batch=r[C.batch]||'';
+  const progLine=prog&&batch?`${prog} · ${batch}`:prog||batch?`${prog}${batch}`:'';
   return `
   <div class="card" style="animation-delay:${(i%9)*.05}s" onclick="openModal(${i})">
     <div class="card-accent"></div>
@@ -680,7 +690,7 @@ function cardHTML(r,i){
         ${photoEl(r,i)}
         <div>
           <div class="c-name">${r[C.name]}</div>
-          <div class="c-batch">Batch ${r[C.batch]||'—'}</div>
+          ${progLine?`<div class="c-batch">${progLine}</div>`:''}
           <div class="c-role">${r[C.role]||''}</div>
         </div>
       </div>
@@ -688,9 +698,9 @@ function cardHTML(r,i){
       <div class="c-org">🏢 ${r[C.org]||'—'}</div>
       ${r[C.loc]?`<div class="c-loc">📍 ${r[C.loc]}</div>`:''}
       ${tags?`<div class="tags">${tags}</div>`:''}
-      <div class="card-footer">
-        <div class="links">${links}</div>
-        <span class="view-profile-btn">View Profile →</span>
+      <div class="card-footer" style="margin-top:auto">
+        <div style="font-size:.72rem;color:var(--gray)">Click to read full story</div>
+        <span class="view-profile-btn">Read story →</span>
       </div>
     </div>
   </div>`;
@@ -724,8 +734,11 @@ function openModal(idx){
   }
 
   document.getElementById('modal-name').textContent=r[C.name];
-  document.getElementById('modal-batch-role').innerHTML=`<strong>Batch ${r[C.batch]||'—'}</strong> &nbsp;·&nbsp; ${r[C.role]||''}`;
-  document.getElementById('modal-batch-tag').textContent=`Batch ${r[C.batch]||''}`;
+  const prog=r[C.programme]||'';
+  const batch=r[C.batch]||'';
+  const progLine=prog&&batch?`${prog} · ${batch}`:prog||batch?`${prog}${batch}`:'';
+  document.getElementById('modal-batch-role').innerHTML=progLine?`<strong>${progLine}</strong> &nbsp;·&nbsp; ${r[C.role]||''}`:`${r[C.role]||''}`;
+  document.getElementById('modal-batch-tag').textContent=progLine||'';
 
   // Position rows
   // SECTION ORDER: 1.Identity(in banner) 2.Designation+Org 3.Sector+Location 4.Bio 5.Expertise 6.Links
@@ -766,6 +779,7 @@ function openModal(idx){
     r[C.li]?`<a class="modal-link-btn" href="${r[C.li]}" target="_blank">in LinkedIn</a>`:'',
     r[C.rg]?`<a class="modal-link-btn" href="${r[C.rg]}" target="_blank">📄 Research</a>`:'',
     r[C.phone]?`<a class="modal-link-btn" href="tel:${r[C.phone]}">📞 ${r[C.phone]}</a>`:'',
+    r[C.cv]?`<a class="modal-link-btn" href="${r[C.cv]}" target="_blank">📋 View CV</a>`:'',
   ].filter(Boolean);
   if(linkBtns.length){contactSec.style.display='block';document.getElementById('modal-links').innerHTML=linkBtns.join('');}
   else contactSec.style.display='none';
@@ -836,7 +850,7 @@ async function submitForm(){
     batch,
     role,
     org,
-    sector:    document.getElementById('fse').value,
+    sector:    document.getElementById('fse').value === 'Other' ? document.getElementById('fse-other').value.trim() : document.getElementById('fse').value,
     location:  document.getElementById('floc').value.trim(),
     email:     document.getElementById('fe').value.trim(),
     phone:     document.getElementById('fp').value.trim(),
@@ -845,6 +859,8 @@ async function submitForm(){
     linkedin:  document.getElementById('fli').value.trim(),
     research:  document.getElementById('frg').value.trim(),
     photo:     document.getElementById('fphoto').value.trim(),
+    programme: document.getElementById('fprog').value,
+    cv:        document.getElementById('fcv').value.trim(),
   };
 
   try {
@@ -857,10 +873,12 @@ async function submitForm(){
 
     // Success
     document.getElementById('succ').classList.add('on');
-    ['fn','fb','fe','fp','fr','fo','floc','fex','fbio','fli','frg','fphoto'].forEach(id=>{
+    ['fn','fb','fe','fp','fr','fo','floc','fex','fbio','fli','frg','fphoto','fcv'].forEach(id=>{
       const el=document.getElementById(id);if(el)el.value='';
     });
     document.getElementById('fse').value='';
+    document.getElementById('fprog').value='';
+    document.getElementById('fse-other').style.display='none';
     document.getElementById('f-consent').checked=false;
 
   } catch(err) {
@@ -908,7 +926,24 @@ document.addEventListener('click', function(e){
 
 
 
-loadSheetData();
+function countWords(el){
+  const words = el.value.trim().split(/\s+/).filter(w=>w.length>0);
+  const count = words.length;
+  const display = document.getElementById('bio-word-count');
+  display.textContent = count + ' / 250 words';
+  display.style.color = count > 250 ? '#dc2626' : 'var(--gray)';
+  if(count > 250){
+    const trimmed = el.value.trim().split(/\s+/).slice(0,250).join(' ');
+    el.value = trimmed;
+    display.textContent = '250 / 250 words';
+  }
+}
+
+function toggleOtherSector(el){
+  const other = document.getElementById('fse-other');
+  other.style.display = el.value === 'Other' ? 'block' : 'none';
+}
+
 </script>
 </body>
 </html>
