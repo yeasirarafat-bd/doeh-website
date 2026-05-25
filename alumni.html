@@ -1,0 +1,961 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Alumni Directory — DOEH, BUHS</title>
+<meta name="description" content="Meet DOEH graduates at Bangladesh University of Health Sciences. Discover where they work, what they do, and how to connect with them."/>
+<link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@400;700;900&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="css/style.css"/>
+<style>
+/* ── ALUMNI PAGE SPECIFIC ── */
+.hero-alumni{
+  background:linear-gradient(160deg,var(--green3) 0%,var(--green2) 55%,var(--green) 100%);
+  padding:5rem 2rem 4rem;
+  text-align:center;
+  position:relative;
+  overflow:hidden;
+}
+.hero-alumni::before{
+  content:'';position:absolute;inset:0;pointer-events:none;
+  background:url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%23ffffff' fill-opacity='0.03'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/svg%3E")
+}
+.hero-alumni-eyebrow{
+  font-size:.72rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;
+  color:rgba(255,255,255,.55);margin-bottom:1.25rem;
+}
+.hero-alumni h1{
+  font-family:'Merriweather',serif;
+  font-size:clamp(2rem,5vw,3.2rem);
+  font-weight:900;color:var(--white);
+  line-height:1.15;margin-bottom:.85rem;
+}
+.hero-alumni h1 em{color:#a8e6bc;font-style:normal}
+.hero-alumni p{
+  font-size:.98rem;color:rgba(255,255,255,.7);
+  max-width:520px;margin:0 auto 2rem;line-height:1.8;
+}
+.iosh-badge{
+  display:inline-flex;align-items:center;gap:.65rem;
+  background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.2);
+  border-radius:100px;padding:.45rem 1.1rem;
+  font-size:.75rem;font-weight:600;color:rgba(255,255,255,.8);
+}
+.iosh-dot{width:8px;height:8px;border-radius:50%;background:#a8e6bc;flex-shrink:0}
+
+/* ── STATS ── */
+.stats-strip{
+  background:var(--green3);
+  display:flex;justify-content:center;flex-wrap:wrap;
+  padding:1.5rem 2rem;gap:0;
+}
+.st{text-align:center;padding:0 2.5rem;border-right:1px solid rgba(255,255,255,.1)}
+.st:last-child{border-right:none}
+.st-n{font-family:'Merriweather',serif;font-size:2rem;font-weight:900;color:#a8e6bc;line-height:1}
+.st-l{font-size:.68rem;color:rgba(255,255,255,.45);text-transform:uppercase;letter-spacing:.1em;margin-top:.3rem}
+
+/* ── SPOTLIGHT ── */
+.spotlight-sec{background:var(--cream);padding:3.5rem 2rem;border-bottom:1px solid var(--border)}
+.spotlight-inner{max-width:1100px;margin:0 auto}
+.spotlight-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:1.25rem;margin-top:1.75rem}
+.spotlight-card{
+  background:var(--white);border-radius:14px;padding:1.75rem;
+  box-shadow:var(--shadow);border:1px solid var(--border);
+  border-left:4px solid var(--green);
+}
+.spotlight-quote{font-size:2.5rem;color:var(--green-dim);font-family:Georgia,serif;line-height:1;margin-bottom:.4rem}
+.spotlight-text{font-size:.88rem;color:var(--navy);line-height:1.75;margin-bottom:1.25rem;font-style:italic}
+.spotlight-author{display:flex;align-items:center;gap:.85rem}
+.spotlight-av{
+  width:44px;height:44px;border-radius:50%;
+  background:var(--green2);overflow:hidden;flex-shrink:0;
+  display:flex;align-items:center;justify-content:center;
+  font-family:'Merriweather',serif;font-size:.9rem;font-weight:900;color:#fff;
+}
+.spotlight-av img{width:100%;height:100%;object-fit:cover}
+.spotlight-name{font-size:.88rem;font-weight:700;color:var(--navy)}
+.spotlight-role{font-size:.75rem;color:var(--gray);margin-top:1px}
+.spotlight-prog{font-size:.7rem;color:var(--green);font-weight:600;margin-top:2px}
+
+/* ── DIRECTORY ── */
+.dir-sec{padding:3.5rem 2rem}
+.dir-inner{max-width:1100px;margin:0 auto}
+.sec-eyebrow{font-size:.7rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--green);margin-bottom:.5rem}
+.sec-heading{font-family:'Merriweather',serif;font-size:1.5rem;font-weight:900;color:var(--green3);margin-bottom:.4rem}
+.sec-bar{width:36px;height:3px;background:var(--green);border-radius:2px;margin-bottom:1.5rem}
+.sec-sub{font-size:.88rem;color:var(--gray);margin-bottom:2rem;line-height:1.65}
+
+/* ── SEARCH ── */
+.search-box{
+  background:var(--white);border-radius:14px;
+  padding:1.5rem;box-shadow:var(--shadow-lg);
+  border:1px solid var(--border);margin-bottom:1.5rem;
+  display:flex;gap:1rem;flex-wrap:wrap;align-items:flex-end;
+}
+.sf{flex:1;min-width:140px}
+.sf label{display:block;font-size:.67rem;font-weight:700;color:var(--gray);text-transform:uppercase;letter-spacing:.08em;margin-bottom:.35rem}
+.si{width:100%;padding:.6rem .9rem;border:1.5px solid var(--border);border-radius:8px;font-family:'Outfit',sans-serif;font-size:.875rem;color:var(--navy);background:var(--cream);outline:none;transition:border-color .2s,box-shadow .2s}
+.si:focus{border-color:var(--green);background:var(--white);box-shadow:0 0 0 3px rgba(30,122,62,.08)}
+.search-btn{padding:.63rem 1.5rem;background:var(--green);color:#fff;border:none;border-radius:8px;font-family:'Outfit',sans-serif;font-weight:600;font-size:.875rem;cursor:pointer;transition:background .2s;white-space:nowrap}
+.search-btn:hover{background:var(--green2)}
+.notice-bar{
+  background:linear-gradient(90deg,var(--green-pale),var(--cream));
+  border:1px solid var(--green-dim);border-radius:10px;
+  padding:.8rem 1.2rem;font-size:.82rem;color:var(--green2);
+  margin-bottom:1.25rem;display:flex;align-items:center;gap:.65rem;
+}
+.count-bar{
+  display:flex;align-items:center;justify-content:space-between;
+  margin-bottom:1rem;flex-wrap:wrap;gap:.5rem;
+}
+.count-bar span{font-size:.82rem;color:var(--green2);font-weight:600}
+.clear-btn{font-size:.75rem;color:var(--gray);background:none;border:none;cursor:pointer;text-decoration:underline;padding:0}
+
+/* ── CARDS GRID ── */
+.cards-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(270px,1fr));gap:1.25rem}
+
+/* ── ALUMNI CARD ── */
+.acard{
+  background:var(--white);border-radius:var(--radius);
+  box-shadow:var(--shadow);border:1px solid var(--border);
+  overflow:hidden;cursor:pointer;
+  transition:transform .22s,box-shadow .22s,border-color .22s;
+  animation:fadeUp .38s ease both;
+}
+@keyframes fadeUp{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:translateY(0)}}
+.acard:hover{transform:translateY(-5px);box-shadow:var(--shadow-xl);border-color:var(--green-dim)}
+.acard-top-bar{height:5px;background:linear-gradient(90deg,var(--green3),var(--green-light))}
+.acard-body{padding:1.25rem}
+.acard-head{display:flex;align-items:flex-start;gap:.9rem;margin-bottom:.9rem}
+.acard-av{
+  width:52px;height:52px;border-radius:50%;flex-shrink:0;
+  overflow:hidden;background:var(--green2);
+  display:flex;align-items:center;justify-content:center;
+  font-family:'Merriweather',serif;font-size:1.1rem;font-weight:900;color:#fff;
+  border:3px solid var(--white);box-shadow:0 2px 10px rgba(14,69,38,.18);
+}
+.acard-av img{width:100%;height:100%;object-fit:cover}
+.acard-info{flex:1;min-width:0}
+.acard-name{font-family:'Merriweather',serif;font-size:.97rem;font-weight:700;color:var(--navy);line-height:1.3;margin-bottom:.3rem}
+.acard-prog-badge{
+  display:inline-flex;align-items:center;gap:.3rem;
+  font-size:.67rem;font-weight:700;color:var(--green);
+  background:var(--green-pale);border:1px solid var(--green-dim);
+  border-radius:100px;padding:.18rem .55rem;margin-bottom:.25rem;
+}
+.acard-role{font-size:.78rem;color:var(--gray);line-height:1.35}
+.acard-divider{height:1px;background:var(--border);margin:.9rem 0}
+.acard-org{font-size:.83rem;font-weight:600;color:var(--navy);display:flex;align-items:center;gap:.4rem;margin-bottom:.28rem}
+.acard-loc{font-size:.74rem;color:var(--gray);display:flex;align-items:center;gap:.3rem;margin-bottom:.75rem}
+.acard-tags{display:flex;flex-wrap:wrap;gap:.3rem;margin-bottom:.9rem}
+.atag{background:var(--green-pale);color:var(--green2);font-size:.67rem;font-weight:600;padding:.18rem .52rem;border-radius:100px;border:1px solid var(--green-dim)}
+.acard-footer{
+  display:flex;align-items:center;justify-content:space-between;
+  padding-top:.75rem;border-top:1px solid var(--border);
+}
+.acard-hint{font-size:.7rem;color:var(--gray2)}
+.read-btn{
+  background:var(--green);color:#fff;border:none;
+  padding:.38rem 1rem;border-radius:100px;
+  font-family:'Outfit',sans-serif;font-size:.75rem;font-weight:700;
+  cursor:pointer;transition:background .18s,transform .18s;white-space:nowrap;
+}
+.read-btn:hover{background:var(--green2);transform:translateX(2px)}
+
+/* ── LOADING / EMPTY ── */
+.loading-state{text-align:center;padding:3.5rem;color:var(--gray)}
+.spinner{width:36px;height:36px;border:3px solid var(--border);border-top-color:var(--green);border-radius:50%;animation:spin .7s linear infinite;margin:0 auto 1rem}
+@keyframes spin{to{transform:rotate(360deg)}}
+.empty-state{text-align:center;padding:4rem 2rem;color:var(--gray)}
+
+/* ── JOIN BAR ── */
+.join-bar{
+  background:linear-gradient(135deg,var(--green3),var(--green));
+  border-radius:16px;padding:2rem 2.25rem;
+  display:flex;align-items:center;justify-content:space-between;
+  flex-wrap:wrap;gap:1.25rem;margin-top:2.5rem;
+}
+.join-bar-text h3{font-family:'Merriweather',serif;font-size:1.15rem;font-weight:900;color:#fff;margin-bottom:.35rem}
+.join-bar-text p{font-size:.85rem;color:rgba(255,255,255,.65);line-height:1.65;max-width:480px}
+.join-btn{
+  background:var(--white);color:var(--green2);
+  border:none;padding:.72rem 1.75rem;border-radius:9px;
+  font-family:'Outfit',sans-serif;font-size:.9rem;font-weight:700;
+  cursor:pointer;transition:all .2s;white-space:nowrap;flex-shrink:0;
+}
+.join-btn:hover{background:var(--cream);transform:translateY(-2px);box-shadow:0 6px 20px rgba(0,0,0,.15)}
+
+/* ── REGISTRATION FORM ── */
+.form-wrap{display:none;margin-top:2rem}
+.form-wrap.open{display:block}
+.form-card{
+  background:var(--white);border-radius:18px;
+  box-shadow:var(--shadow-xl);border:1px solid var(--border);
+  overflow:hidden;
+}
+.form-card-header{
+  background:linear-gradient(135deg,var(--green3),var(--green));
+  padding:1.75rem 2rem;display:flex;align-items:center;justify-content:space-between;
+}
+.form-card-header h2{font-family:'Merriweather',serif;font-size:1.2rem;font-weight:900;color:#fff}
+.form-card-header p{font-size:.82rem;color:rgba(255,255,255,.65);margin-top:.2rem}
+.form-close{
+  background:rgba(255,255,255,.15);border:none;color:#fff;
+  width:34px;height:34px;border-radius:50%;cursor:pointer;
+  font-size:1rem;display:flex;align-items:center;justify-content:center;
+  transition:background .18s;flex-shrink:0;
+}
+.form-close:hover{background:rgba(255,255,255,.3)}
+.form-body{padding:2rem}
+.fsec{
+  font-family:'Merriweather',serif;font-size:.95rem;font-weight:700;
+  color:var(--green2);margin-bottom:1.1rem;padding-bottom:.45rem;
+  border-bottom:2px solid var(--green-dim);display:flex;align-items:center;gap:.5rem;
+}
+.fgrid{display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-bottom:1.5rem}
+.fg{display:flex;flex-direction:column;gap:.28rem}
+.fg.full{grid-column:1/-1}
+.fl{font-size:.68rem;font-weight:700;color:var(--gray);text-transform:uppercase;letter-spacing:.07em}
+.fl .r{color:var(--green)}
+.fc{
+  padding:.6rem .88rem;border:1.5px solid var(--border);border-radius:8px;
+  font-family:'Outfit',sans-serif;font-size:.875rem;color:var(--navy);
+  background:var(--cream);outline:none;transition:all .2s;width:100%;
+}
+.fc:focus{border-color:var(--green);background:#fff;box-shadow:0 0 0 3px rgba(30,122,62,.08)}
+textarea.fc{resize:vertical;min-height:130px;line-height:1.6}
+.fhint{font-size:.7rem;color:var(--gray);line-height:1.5}
+.consent-box{
+  display:flex;gap:.75rem;align-items:flex-start;
+  background:var(--cream);border-radius:10px;padding:1rem;
+  border:1px solid var(--border);margin-bottom:1.25rem;
+}
+.consent-box input{margin-top:3px;accent-color:var(--green);width:15px;height:15px;flex-shrink:0}
+.consent-box span{font-size:.82rem;color:var(--gray);line-height:1.6}
+.form-footer{display:flex;justify-content:flex-end;gap:.85rem;padding-top:1.25rem;border-top:1px solid var(--border)}
+.succ-msg{
+  display:none;background:#ecfdf5;border:1.5px solid #6ee7b7;
+  border-radius:10px;padding:1rem 1.4rem;color:#065f46;
+  font-weight:500;margin-top:1.25rem;align-items:center;gap:.7rem;
+}
+.succ-msg.on{display:flex}
+.btn-cancel{
+  background:var(--cream);color:var(--gray);
+  border:1.5px solid var(--border);padding:.65rem 1.4rem;
+  border-radius:8px;font-family:'Outfit',sans-serif;font-size:.875rem;
+  font-weight:600;cursor:pointer;transition:all .18s;
+}
+.btn-cancel:hover{border-color:var(--green);color:var(--green);background:var(--green-pale)}
+.btn-submit{
+  background:var(--green);color:#fff;border:none;
+  padding:.65rem 1.75rem;border-radius:8px;
+  font-family:'Outfit',sans-serif;font-size:.875rem;font-weight:700;
+  cursor:pointer;transition:background .2s;
+}
+.btn-submit:hover{background:var(--green2)}
+.btn-submit:disabled{opacity:.6;cursor:not-allowed}
+
+/* ── MODAL ── */
+.modal-overlay{
+  position:fixed;inset:0;z-index:500;
+  background:rgba(10,30,18,.7);backdrop-filter:blur(6px);
+  display:flex;align-items:center;justify-content:center;
+  padding:1.5rem;opacity:0;pointer-events:none;transition:opacity .25s;
+}
+.modal-overlay.open{opacity:1;pointer-events:all}
+.modal{
+  background:var(--white);border-radius:20px;
+  width:100%;max-width:660px;max-height:90vh;
+  overflow-y:auto;box-shadow:var(--shadow-xl);
+  transform:scale(.95) translateY(20px);
+  transition:transform .3s ease;
+}
+.modal-overlay.open .modal{transform:scale(1) translateY(0)}
+.modal-banner{
+  background:linear-gradient(135deg,var(--green3),var(--green));
+  padding:1.75rem 2rem 3.5rem;position:relative;overflow:hidden;
+}
+.modal-banner::before{
+  content:'';position:absolute;inset:0;
+  background:url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%23ffffff' fill-opacity='0.04'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/svg%3E")
+}
+.modal-close{
+  position:absolute;top:1rem;left:1.25rem;
+  width:32px;height:32px;border-radius:50%;
+  background:rgba(255,255,255,.15);border:none;cursor:pointer;
+  color:white;font-size:1rem;display:flex;align-items:center;justify-content:center;
+  transition:background .18s;z-index:2;
+}
+.modal-close:hover{background:rgba(255,255,255,.3)}
+.modal-dept-label{
+  text-align:center;font-size:.68rem;font-weight:700;
+  color:rgba(255,255,255,.55);letter-spacing:.1em;text-transform:uppercase;
+  padding-top:.25rem;
+}
+.modal-identity{
+  display:flex;align-items:flex-end;gap:1.25rem;
+  padding:0 2rem;margin-top:-2.5rem;
+  position:relative;z-index:2;margin-bottom:1.5rem;
+}
+.modal-photo{
+  width:88px;height:88px;border-radius:50%;
+  border:4px solid var(--white);box-shadow:0 4px 20px rgba(14,69,38,.2);
+  background:var(--green2);flex-shrink:0;overflow:hidden;
+  display:flex;align-items:center;justify-content:center;
+  font-family:'Merriweather',serif;font-size:1.8rem;font-weight:900;color:white;
+}
+.modal-photo img{width:100%;height:100%;object-fit:cover}
+.modal-name-block{padding-bottom:.25rem}
+.modal-name{font-family:'Merriweather',serif;font-size:1.35rem;font-weight:900;color:var(--navy);line-height:1.2}
+.modal-prog-full{font-size:.78rem;font-weight:700;color:var(--green);margin-top:.2rem}
+.modal-role-line{font-size:.82rem;color:var(--gray);margin-top:.15rem}
+.modal-body{padding:0 2rem 2rem}
+.msec{margin-bottom:1.5rem}
+.msec-title{
+  font-size:.67rem;font-weight:700;color:var(--gray);
+  text-transform:uppercase;letter-spacing:.1em;
+  margin-bottom:.75rem;padding-bottom:.4rem;border-bottom:1px solid var(--border);
+}
+.mrow{display:flex;gap:.75rem;margin-bottom:.45rem;align-items:flex-start}
+.mrow-label{font-size:.75rem;font-weight:700;color:var(--gray2);min-width:90px;padding-top:.1rem;flex-shrink:0}
+.mrow-val{font-size:.88rem;color:var(--navy);font-weight:500;line-height:1.5}
+.modal-bio-box{
+  font-size:.88rem;color:var(--gray);line-height:1.8;
+  background:var(--cream);border-radius:10px;
+  padding:1rem 1.25rem;border:1px solid var(--border);
+}
+.modal-tags{display:flex;flex-wrap:wrap;gap:.4rem}
+.modal-tag{
+  background:var(--green-pale);color:var(--green2);
+  font-size:.72rem;font-weight:600;padding:.25rem .65rem;
+  border-radius:100px;border:1px solid var(--green-dim);
+}
+.modal-links{display:flex;gap:.6rem;flex-wrap:wrap}
+.modal-link{
+  display:inline-flex;align-items:center;gap:.4rem;
+  padding:.45rem 1rem;border-radius:8px;font-size:.8rem;
+  font-weight:600;text-decoration:none;
+  border:1.5px solid var(--border);color:var(--navy);
+  transition:all .18s;background:var(--cream);
+}
+.modal-link:hover{border-color:var(--green);color:var(--green);background:var(--green-pale)}
+
+/* ── FOOTER ── */
+.site-footer{background:var(--green3);padding:2.75rem 2rem 0}
+.footer-grid{max-width:1100px;margin:0 auto;display:grid;grid-template-columns:1.4fr 1fr 1fr;gap:2.5rem;padding-bottom:2rem}
+.footer-brand-logo{width:46px;height:46px;object-fit:contain;background:white;border-radius:9px;padding:2px;margin-bottom:.85rem}
+.footer-brand-name{font-family:'Merriweather',serif;font-size:.95rem;font-weight:700;color:#fff;line-height:1.3}
+.footer-brand-sub{font-size:.72rem;color:rgba(255,255,255,.4);margin-top:.2rem;line-height:1.5}
+.footer-col-title{font-size:.67rem;font-weight:700;color:rgba(255,255,255,.4);text-transform:uppercase;letter-spacing:.1em;margin-bottom:.9rem}
+.footer-link{display:block;font-size:.82rem;color:rgba(255,255,255,.6);text-decoration:none;margin-bottom:.4rem;transition:color .18s}
+.footer-link:hover{color:#fff}
+.footer-bottom{
+  max-width:1100px;margin:0 auto;
+  padding:1rem 0;border-top:1px solid rgba(255,255,255,.08);
+  display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:.5rem;
+}
+.footer-copy{font-size:.72rem;color:rgba(255,255,255,.28)}
+
+@media(max-width:768px){
+  .footer-grid{grid-template-columns:1fr;gap:1.5rem}
+  .footer-bottom{flex-direction:column;text-align:center}
+  .stats-strip .st{padding:0 1.25rem}
+  .hero-alumni{padding:3.5rem 1.25rem 3rem}
+  .dir-sec,.spotlight-sec{padding:2.5rem 1.25rem}
+  .modal-identity{flex-direction:column;align-items:flex-start;gap:.75rem}
+  .modal-name{font-size:1.15rem}
+  .modal-body{padding:0 1.25rem 1.5rem}
+  .modal-banner{padding:1.75rem 1.25rem 3rem}
+  .fgrid{grid-template-columns:1fr}
+  .form-body{padding:1.5rem}
+  .join-bar{flex-direction:column}
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a class="nav-brand" href="index.html">
+    <img class="nav-logo-img" src="assets/logo.png" alt="DOEH BUHS" onerror="this.style.background='var(--green-pale)'"/>
+    <div class="nav-name">DOEH, BUHS<small>Dept. of Occupational &amp; Environmental Health</small></div>
+  </a>
+  <div class="nav-links">
+    <a class="nb" href="index.html">Home</a>
+    <a class="nb" href="about.html">About</a>
+    <a class="nb" href="academics.html">Academics</a>
+    <a class="nb" href="research.html">Research</a>
+    <a class="nb" href="news.html">News &amp; Events</a>
+    <a class="nb" href="gallery.html">Gallery</a>
+    <a class="nb active" href="alumni.html">Alumni</a>
+    <a class="nb" href="contact.html">Contact</a>
+  </div>
+  <button class="hamburger" id="hamburger" onclick="toggleMenu()" aria-label="Open menu">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<div class="mobile-menu" id="mobile-menu">
+  <a class="mnb" href="index.html">Home</a>
+  <a class="mnb" href="about.html">About</a>
+  <a class="mnb" href="academics.html">Academics</a>
+  <a class="mnb" href="research.html">Research</a>
+  <a class="mnb" href="news.html">News &amp; Events</a>
+  <a class="mnb" href="gallery.html">Gallery</a>
+  <a class="mnb active" href="alumni.html">Alumni</a>
+  <a class="mnb" href="contact.html">Contact</a>
+</div>
+
+<!-- HERO -->
+<div class="hero-alumni">
+  <div class="hero-alumni-eyebrow">Department of Occupational &amp; Environmental Health · BUHS</div>
+  <h1>Protecting People.<br><em>Transforming Workplaces.</em></h1>
+  <p>Discover how DOEH graduates at BUHS are shaping occupational and environmental health across Bangladesh and beyond.</p>
+  <div class="iosh-badge">
+    <span class="iosh-dot"></span>
+    IOSH Accredited Programs — BPH &amp; MPH
+  </div>
+</div>
+
+<!-- STATS -->
+<div class="stats-strip">
+  <div class="st"><div class="st-n" id="stat-total">0</div><div class="st-l">Alumni listed</div></div>
+  <div class="st"><div class="st-n" id="stat-orgs">0</div><div class="st-l">Organizations</div></div>
+  <div class="st"><div class="st-n" id="stat-countries">0</div><div class="st-l">Countries</div></div>
+  <div class="st"><div class="st-n">3</div><div class="st-l">Programs</div></div>
+</div>
+
+<!-- ALUMNI SPOTLIGHT -->
+<div class="spotlight-sec" id="spotlight-sec">
+  <div class="spotlight-inner">
+    <div class="sec-eyebrow">Alumni Spotlight</div>
+    <div class="sec-heading">Real journeys. Real impact.</div>
+    <div class="sec-bar"></div>
+    <p style="font-size:.88rem;color:var(--gray);line-height:1.65;max-width:600px">DOEH graduates carry the skills and dedication to create meaningful change in occupational and environmental health, both in Bangladesh and across the globe.</p>
+    <div class="spotlight-grid" id="spotlight-grid"></div>
+  </div>
+</div>
+
+<!-- DIRECTORY -->
+<div class="dir-sec">
+  <div class="dir-inner">
+    <div class="sec-eyebrow">Alumni Directory</div>
+    <div class="sec-heading">Meet the Community</div>
+    <div class="sec-bar"></div>
+    <p class="sec-sub">Verified DOEH graduates — search by name, programme, sector or location. Click any card to read the full profile.</p>
+
+    <div class="notice-bar">
+      <span>🔗</span>
+      <span>Live directory — only verified and approved entries are shown.</span>
+    </div>
+
+    <!-- Search -->
+    <div class="search-box">
+      <div class="sf">
+        <label for="q-name">Name</label>
+        <input class="si" id="q-name" placeholder="Search by name..." oninput="renderCards()"/>
+      </div>
+      <div class="sf">
+        <label for="q-batch">Session</label>
+        <input class="si" id="q-batch" placeholder="e.g. 2020-2021" oninput="renderCards()"/>
+      </div>
+      <div class="sf">
+        <label for="q-org">Organization</label>
+        <input class="si" id="q-org" placeholder="e.g. WHO, IEDCR" oninput="renderCards()"/>
+      </div>
+      <div class="sf">
+        <label for="q-sector">Sector</label>
+        <select class="si" id="q-sector" onchange="renderCards()">
+          <option value="">All sectors</option>
+          <option>Government / Public Health</option>
+          <option>International Organization (WHO, UN, etc.)</option>
+          <option>NGO / Development</option>
+          <option>Hospital / Clinical</option>
+          <option>Academia / Research</option>
+          <option>Industry / Private Sector</option>
+          <option>Consultancy</option>
+        </select>
+      </div>
+      <div class="sf">
+        <label for="q-prog">Programme</label>
+        <select class="si" id="q-prog" onchange="renderCards()">
+          <option value="">All programmes</option>
+          <option value="BPH">BPH</option>
+          <option value="MPH-OHS">MPH in Occupational Health</option>
+          <option value="MPH-EHS">MPH in Environmental Health</option>
+        </select>
+      </div>
+      <button class="search-btn" onclick="renderCards()">Search</button>
+    </div>
+
+    <div class="count-bar">
+      <span id="count-meta">Loading...</span>
+      <button class="clear-btn" onclick="clearFilters()">Clear filters</button>
+    </div>
+
+    <div id="loading-state" class="loading-state">
+      <div class="spinner"></div>
+      <p>Loading alumni directory...</p>
+    </div>
+    <div class="cards-grid" id="cards-grid"></div>
+    <div class="empty-state" id="empty-state" style="display:none">
+      <p style="font-size:2rem;margin-bottom:.5rem">🔍</p>
+      <p style="font-weight:600;color:var(--navy);margin-bottom:.35rem">No matching alumni found</p>
+      <p style="font-size:.85rem">Try adjusting your search or filters</p>
+    </div>
+
+    <!-- Join bar -->
+    <div class="join-bar">
+      <div class="join-bar-text">
+        <h3>Your journey belongs here.</h3>
+        <p>Join the directory and inspire the next generation of occupational and environmental health professionals at DOEH.</p>
+      </div>
+      <button class="join-btn" onclick="toggleForm()">Add your profile</button>
+    </div>
+
+    <!-- Registration form -->
+    <div class="form-wrap" id="form-wrap">
+      <div class="form-card">
+        <div class="form-card-header">
+          <div>
+            <h2>Join the Alumni Directory</h2>
+            <p>Share your journey with the DOEH community</p>
+          </div>
+          <button class="form-close" onclick="toggleForm()">✕</button>
+        </div>
+        <div class="form-body">
+
+          <div class="fsec">👤 Personal Information</div>
+          <div class="fgrid">
+            <div class="fg"><label class="fl">Full Name <span class="r">*</span></label><input class="fc" id="fn" placeholder="Dr. Ayesha Rahman"/></div>
+            <div class="fg"><label class="fl">Session <span class="r">*</span></label><input class="fc" id="fb" placeholder="e.g. 2017-2018"/></div>
+            <div class="fg"><label class="fl">Email Address</label><input class="fc" id="fe" type="email" placeholder="you@example.com"/></div>
+            <div class="fg"><label class="fl">Phone / WhatsApp</label><input class="fc" id="fp" placeholder="+880..."/></div>
+          </div>
+
+          <div class="fsec">💼 Professional Details</div>
+          <div class="fgrid">
+            <div class="fg full">
+              <label class="fl">Programme Completed at DOEH <span class="r">*</span></label>
+              <select class="fc" id="fprog">
+                <option value="">Select your programme...</option>
+                <option>BPH in Occupational &amp; Environmental Health &amp; Safety</option>
+                <option>MPH in Occupational Health &amp; Safety</option>
+                <option>MPH in Environmental Health &amp; Safety</option>
+              </select>
+            </div>
+            <div class="fg"><label class="fl">Current Designation <span class="r">*</span></label><input class="fc" id="fr" placeholder="Senior Health Officer"/></div>
+            <div class="fg"><label class="fl">Organization <span class="r">*</span></label><input class="fc" id="fo" placeholder="WHO Bangladesh"/></div>
+            <div class="fg">
+              <label class="fl">Sector / Industry</label>
+              <select class="fc" id="fse" onchange="toggleOther(this)">
+                <option value="">Select sector...</option>
+                <option>Government / Public Health</option>
+                <option>International Organization (WHO, UN, etc.)</option>
+                <option>NGO / Development</option>
+                <option>Hospital / Clinical</option>
+                <option>Academia / Research</option>
+                <option>Industry / Private Sector</option>
+                <option>Consultancy</option>
+                <option>Other</option>
+              </select>
+              <input class="fc" id="fse-other" placeholder="Please specify..." style="display:none;margin-top:.5rem"/>
+            </div>
+            <div class="fg"><label class="fl">Location (City, Country)</label><input class="fc" id="floc" placeholder="Dhaka, Bangladesh"/></div>
+            <div class="fg full">
+              <label class="fl">Key Expertise</label>
+              <input class="fc" id="fex" placeholder="Occupational Health, Industrial Hygiene, GIS..."/>
+              <span class="fhint">Separate with commas</span>
+            </div>
+            <div class="fg full">
+              <label class="fl">Bio / Career Summary <span style="text-transform:none;letter-spacing:0;font-weight:400;font-size:.7rem;color:var(--gray)"> — max 250 words</span></label>
+              <textarea class="fc" id="fbio" oninput="countWords(this)" placeholder="Share your journey in up to 250 words. You may include:&#10;&#10;• Where you have worked and what you do&#10;• Any postgraduate studies or PhD after DOEH&#10;• Key achievements in occupational or environmental health&#10;• Research, publications or projects you are proud of&#10;• What drives your work in public health"></textarea>
+              <span class="fhint" id="word-count">0 / 250 words</span>
+            </div>
+          </div>
+
+          <div class="fsec">🔗 Online Profiles</div>
+          <div class="fgrid">
+            <div class="fg"><label class="fl">LinkedIn URL</label><input class="fc" id="fli" placeholder="https://linkedin.com/in/..."/></div>
+            <div class="fg"><label class="fl">ResearchGate / Google Scholar</label><input class="fc" id="frg" placeholder="https://researchgate.net/..."/></div>
+            <div class="fg full">
+              <label class="fl">Profile Photo</label>
+              <input class="fc" id="fphoto" placeholder="https://drive.google.com/file/d/..."/>
+              <span class="fhint">Upload your photo to Google Drive, share as Anyone with the link, then paste the link here</span>
+            </div>
+          </div>
+
+          <div class="fsec">📄 CV / Resume</div>
+          <div class="fgrid">
+            <div class="fg full">
+              <label class="fl">CV Link <span style="text-transform:none;letter-spacing:0;font-weight:400;font-size:.7rem;color:var(--gray)"> — Google Drive PDF link</span></label>
+              <input class="fc" id="fcv" placeholder="https://drive.google.com/file/d/..."/>
+              <span class="fhint">Upload your CV to Google Drive, share as Anyone with the link, then paste here</span>
+            </div>
+          </div>
+
+          <div class="consent-box">
+            <input type="checkbox" id="f-consent"/>
+            <span>I agree that my profile information will be <strong>publicly visible</strong> on the DOEH Alumni Directory. I understand I can request removal or updates anytime by reaching out to the DOEH team.</span>
+          </div>
+
+          <div class="succ-msg" id="succ-msg">
+            <span style="font-size:1.25rem">✅</span>
+            Profile submitted successfully. The DOEH team will review and approve it shortly.
+          </div>
+
+          <div class="form-footer">
+            <button class="btn-cancel" onclick="toggleForm()">Cancel</button>
+            <button class="btn-submit" id="submit-btn" onclick="submitForm()">Submit Profile</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- MODAL -->
+<div class="modal-overlay" id="modal-overlay" onclick="closeOutside(event)">
+  <div class="modal">
+    <div class="modal-banner">
+      <button class="modal-close" onclick="closeModal()">✕</button>
+      <div class="modal-dept-label">Department of Occupational &amp; Environmental Health · BUHS</div>
+    </div>
+    <div class="modal-identity">
+      <div class="modal-photo" id="m-photo"></div>
+      <div class="modal-name-block">
+        <div class="modal-name" id="m-name"></div>
+        <div class="modal-prog-full" id="m-prog"></div>
+        <div class="modal-role-line" id="m-role"></div>
+      </div>
+    </div>
+    <div class="modal-body">
+      <div class="msec" id="m-info">
+        <div class="msec-title">Professional Details</div>
+        <div id="m-info-rows"></div>
+      </div>
+      <div class="msec" id="m-bio-sec" style="display:none">
+        <div class="msec-title">Career Summary</div>
+        <div class="modal-bio-box" id="m-bio"></div>
+      </div>
+      <div class="msec" id="m-exp-sec" style="display:none">
+        <div class="msec-title">Areas of Expertise</div>
+        <div class="modal-tags" id="m-exp"></div>
+      </div>
+      <div class="msec" id="m-connect-sec" style="display:none">
+        <div class="msec-title">Connect</div>
+        <div class="modal-links" id="m-links"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer class="site-footer">
+  <div class="footer-grid">
+    <div>
+      <img class="footer-brand-logo" src="assets/logo.png" alt="DOEH" onerror="this.style.display='none'"/>
+      <div class="footer-brand-name">DOEH, BUHS</div>
+      <div class="footer-brand-sub">Department of Occupational &amp; Environmental Health<br>Bangladesh University of Health Sciences<br>Established by Diabetic Association of Bangladesh</div>
+    </div>
+    <div>
+      <div class="footer-col-title">Quick Links</div>
+      <a class="footer-link" href="index.html">Home</a>
+      <a class="footer-link" href="about.html">About DOEH</a>
+      <a class="footer-link" href="academics.html">Academics</a>
+      <a class="footer-link" href="research.html">Research</a>
+      <a class="footer-link" href="news.html">News &amp; Events</a>
+      <a class="footer-link" href="gallery.html">Gallery</a>
+      <a class="footer-link" href="alumni.html">Alumni</a>
+    </div>
+    <div>
+      <div class="footer-col-title">Contact</div>
+      <a class="footer-link" href="mailto:doeh@buhs.ac.bd">doeh@buhs.ac.bd</a>
+      <span class="footer-link" style="cursor:default">125/1, Darus Salam (Technical Crossing)</span>
+      <span class="footer-link" style="cursor:default">Mirpur, Dhaka-1216, Bangladesh</span>
+      <span class="footer-link" style="cursor:default">+88-01791 042087</span>
+      <span class="footer-link" style="cursor:default">+88-01552146362</span>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span class="footer-copy">© 2025 Department of Occupational &amp; Environmental Health, BUHS. All rights reserved.</span>
+    <span class="footer-copy">Established by Diabetic Association of Bangladesh</span>
+  </div>
+</footer>
+
+<script>
+const SHEET_ID = '17LoK_khSe5xf105uxUCoAEBvd6d5rJfdl2azLJSO6zA';
+const SHEET_NAME = 'Alumni Directory';
+const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbynlMTkFjWenAzP68HP4KTkO_4kMRqQJQnSsi8NTSk9mXTetpJpEaoaJKElCrFxk4xtTg/exec';
+
+const C = {
+  name:1, batch:2, role:3, org:4, sector:5, loc:6,
+  email:7, phone:8, exp:9, bio:10, li:11, rg:12,
+  status:13, photo:14, programme:15, cv:16
+};
+
+// Short programme labels for cards
+function shortProg(p){
+  if(!p) return '';
+  if(p.toLowerCase().includes('bph')) return 'BPH';
+  if(p.toLowerCase().includes('occupational')) return 'MPH-OHS';
+  if(p.toLowerCase().includes('environmental')) return 'MPH-EHS';
+  return p.split(' ').slice(0,2).join(' ');
+}
+
+let DATA = [];
+
+// Mobile menu
+function toggleMenu(){
+  document.getElementById('hamburger').classList.toggle('open');
+  document.getElementById('mobile-menu').classList.toggle('open');
+}
+document.addEventListener('click', e => {
+  const m = document.getElementById('mobile-menu');
+  const h = document.getElementById('hamburger');
+  if(m && h && !m.contains(e.target) && !h.contains(e.target)){
+    m.classList.remove('open'); h.classList.remove('open');
+  }
+});
+
+// Initials
+function ini(n){ return (n||'').split(' ').filter(Boolean).map(w=>w[0]).join('').substring(0,2).toUpperCase(); }
+
+// Photo element
+function photoEl(r, cls, size){
+  size = size || 80;
+  if(r[C.photo] && r[C.photo].includes('drive.google.com')){
+    const id = r[C.photo].match(/[-\w]{25,}/)?.[0];
+    if(id){
+      return `<div class="${cls}"><img src="https://drive.google.com/thumbnail?id=${id}&sz=w${size}" alt="${r[C.name]}" onerror="this.parentElement.innerHTML='${ini(r[C.name])}'"/></div>`;
+    }
+  }
+  return `<div class="${cls}">${ini(r[C.name])}</div>`;
+}
+
+// Load sheet data
+async function loadData(){
+  const url = `https://docs.google.com/spreadsheets/d/${SHEET_ID}/gviz/tq?tqx=out:json&sheet=${encodeURIComponent(SHEET_NAME)}&t=${Date.now()}`;
+  try{
+    const res = await fetch(url);
+    const text = await res.text();
+    const m = text.match(/google\.visualization\.Query\.setResponse\(([\s\S]*)\)/);
+    if(!m) throw new Error('Parse error');
+    const json = JSON.parse(m[1]);
+    DATA = (json.table.rows||[])
+      .map(r => r.c.map(c => (c && c.v != null) ? String(c.v).trim() : ''))
+      .filter(r => r[C.name]);
+    updateStats();
+    renderSpotlight();
+    renderCards();
+  } catch(e){
+    document.getElementById('loading-state').innerHTML = '<p style="color:#dc2626">Could not load alumni data. Please check your connection and try again.</p>';
+  }
+}
+
+function updateStats(){
+  const ap = DATA.filter(r => r[C.status].toLowerCase() === 'approved');
+  document.getElementById('stat-total').textContent = ap.length + '+';
+  document.getElementById('stat-orgs').textContent = new Set(ap.map(r=>r[C.org]).filter(Boolean)).size + '+';
+  const countries = new Set(ap.map(r => { const p = (r[C.loc]||'').split(','); return p[p.length-1].trim(); }).filter(Boolean));
+  document.getElementById('stat-countries').textContent = countries.size + '+';
+}
+
+function renderSpotlight(){
+  const featured = DATA.filter(r => r[C.status].toLowerCase()==='approved' && r[C.bio] && r[C.bio].length > 50).slice(0,3);
+  const sec = document.getElementById('spotlight-sec');
+  const grid = document.getElementById('spotlight-grid');
+  if(!featured.length){ sec.style.display='none'; return; }
+  grid.innerHTML = featured.map(r => {
+    const text = r[C.bio].length > 180 ? r[C.bio].substring(0,180)+'...' : r[C.bio];
+    const prog = shortProg(r[C.programme]);
+    const batch = r[C.batch] || '';
+    const progLine = prog && batch ? `${prog} · ${batch}` : prog || batch;
+    return `
+    <div class="spotlight-card">
+      <div class="spotlight-quote">"</div>
+      <p class="spotlight-text">${text}</p>
+      <div class="spotlight-author">
+        ${photoEl(r,'spotlight-av',80)}
+        <div>
+          <div class="spotlight-name">${r[C.name]}</div>
+          <div class="spotlight-role">${r[C.role]||''} ${r[C.org]?'· '+r[C.org]:''}</div>
+          ${progLine?`<div class="spotlight-prog">${progLine}</div>`:''}
+        </div>
+      </div>
+    </div>`;
+  }).join('');
+}
+
+function renderCards(){
+  const qn = (document.getElementById('q-name').value||'').toLowerCase();
+  const qb = (document.getElementById('q-batch').value||'').toLowerCase();
+  const qo = (document.getElementById('q-org').value||'').toLowerCase();
+  const qs = (document.getElementById('q-sector').value||'').toLowerCase();
+  const qp = (document.getElementById('q-prog').value||'').toLowerCase();
+
+  const visible = DATA.filter(r => {
+    if(r[C.status].toLowerCase() !== 'approved') return false;
+    if(qn && !r[C.name].toLowerCase().includes(qn)) return false;
+    if(qb && !(r[C.batch]||'').toLowerCase().includes(qb)) return false;
+    if(qo && !(r[C.org]||'').toLowerCase().includes(qo)) return false;
+    if(qs && !(r[C.sector]||'').toLowerCase().includes(qs)) return false;
+    if(qp && !shortProg(r[C.programme]).toLowerCase().includes(qp) && !(r[C.programme]||'').toLowerCase().includes(qp)) return false;
+    return true;
+  });
+
+  document.getElementById('loading-state').style.display = 'none';
+  const grid = document.getElementById('cards-grid');
+  const empty = document.getElementById('empty-state');
+  const total = DATA.filter(r=>r[C.status].toLowerCase()==='approved').length;
+
+  if(!visible.length){
+    grid.innerHTML=''; empty.style.display='block';
+    document.getElementById('count-meta').textContent = 'No results found';
+  } else {
+    empty.style.display='none';
+    document.getElementById('count-meta').textContent = `Showing ${visible.length} of ${total} alumni`;
+    grid.innerHTML = visible.map((r,i) => {
+      const prog = shortProg(r[C.programme]);
+      const batch = r[C.batch]||'';
+      const progLine = prog&&batch?`${prog} · ${batch}`:prog||batch;
+      const tags = (r[C.exp]||'').split(',').map(t=>t.trim()).filter(Boolean).slice(0,2).map(t=>`<span class="atag">${t}</span>`).join('');
+      return `
+      <div class="acard" style="animation-delay:${(i%9)*.05}s" onclick="openModal(${DATA.indexOf(r)})">
+        <div class="acard-top-bar"></div>
+        <div class="acard-body">
+          <div class="acard-head">
+            ${photoEl(r,'acard-av',100)}
+            <div class="acard-info">
+              <div class="acard-name">${r[C.name]}</div>
+              ${progLine?`<div class="acard-prog-badge">${progLine}</div>`:''}
+              <div class="acard-role">${r[C.role]||''}</div>
+            </div>
+          </div>
+          <div class="acard-divider"></div>
+          <div class="acard-org">🏢 ${r[C.org]||'—'}</div>
+          ${r[C.loc]?`<div class="acard-loc">📍 ${r[C.loc]}</div>`:''}
+          ${tags?`<div class="acard-tags">${tags}</div>`:''}
+          <div class="acard-footer">
+            <span class="acard-hint">Click to read full story</span>
+            <button class="read-btn">Read story →</button>
+          </div>
+        </div>
+      </div>`;
+    }).join('');
+  }
+}
+
+function clearFilters(){
+  ['q-name','q-batch','q-org'].forEach(id=>document.getElementById(id).value='');
+  document.getElementById('q-sector').value='';
+  document.getElementById('q-prog').value='';
+  renderCards();
+}
+
+function openModal(i){
+  const r = DATA[i]; if(!r) return;
+  const mp = document.getElementById('m-photo');
+  if(r[C.photo]&&r[C.photo].includes('drive.google.com')){
+    const id = r[C.photo].match(/[-\w]{25,}/)?.[0];
+    if(id){ mp.innerHTML=`<img src="https://drive.google.com/thumbnail?id=${id}&sz=w200" alt="${r[C.name]}" onerror="this.parentElement.innerHTML='${ini(r[C.name])}'"/>` }
+    else { mp.textContent=ini(r[C.name]); }
+  } else { mp.textContent=ini(r[C.name]); }
+
+  document.getElementById('m-name').textContent = r[C.name];
+  document.getElementById('m-prog').textContent = r[C.programme]&&r[C.batch]?`${r[C.programme]} · ${r[C.batch]}`:r[C.programme]||r[C.batch]||'';
+  document.getElementById('m-role').textContent = r[C.role]||'';
+
+  const infoRows = [['Organization',r[C.org]],['Sector',r[C.sector]],['Location',r[C.loc]]].filter(([,v])=>v);
+  document.getElementById('m-info-rows').innerHTML = infoRows.map(([l,v])=>`<div class="mrow"><span class="mrow-label">${l}</span><span class="mrow-val">${v}</span></div>`).join('');
+
+  const bioSec = document.getElementById('m-bio-sec');
+  if(r[C.bio]){ bioSec.style.display='block'; document.getElementById('m-bio').textContent=r[C.bio]; }
+  else bioSec.style.display='none';
+
+  const expSec = document.getElementById('m-exp-sec');
+  const tags = (r[C.exp]||'').split(',').map(t=>t.trim()).filter(Boolean);
+  if(tags.length){ expSec.style.display='block'; document.getElementById('m-exp').innerHTML=tags.map(t=>`<span class="modal-tag">${t}</span>`).join(''); }
+  else expSec.style.display='none';
+
+  const connectSec = document.getElementById('m-connect-sec');
+  const links = [
+    r[C.li]?`<a class="modal-link" href="${r[C.li]}" target="_blank" rel="noopener">in LinkedIn</a>`:'',
+    r[C.rg]?`<a class="modal-link" href="${r[C.rg]}" target="_blank" rel="noopener">📄 Research</a>`:'',
+    r[C.cv]?`<a class="modal-link" href="${r[C.cv]}" target="_blank" rel="noopener">📋 View CV</a>`:'',
+    r[C.email]?`<a class="modal-link" href="mailto:${r[C.email]}">✉ Email</a>`:'',
+    r[C.phone]?`<a class="modal-link" href="tel:${r[C.phone]}">📞 Call</a>`:'',
+  ].filter(Boolean);
+  if(links.length){ connectSec.style.display='block'; document.getElementById('m-links').innerHTML=links.join(''); }
+  else connectSec.style.display='none';
+
+  document.getElementById('modal-overlay').classList.add('open');
+  document.body.style.overflow='hidden';
+}
+
+function closeModal(){
+  document.getElementById('modal-overlay').classList.remove('open');
+  document.body.style.overflow='';
+}
+function closeOutside(e){ if(e.target===document.getElementById('modal-overlay')) closeModal(); }
+document.addEventListener('keydown', e=>{ if(e.key==='Escape') closeModal(); });
+
+// Form
+function toggleForm(){
+  const fw = document.getElementById('form-wrap');
+  fw.classList.toggle('open');
+  if(fw.classList.contains('open')) fw.scrollIntoView({behavior:'smooth',block:'start'});
+}
+function toggleOther(el){
+  document.getElementById('fse-other').style.display = el.value==='Other'?'block':'none';
+}
+function countWords(el){
+  const words = el.value.trim().split(/\s+/).filter(w=>w.length>0);
+  const c = words.length;
+  const d = document.getElementById('word-count');
+  d.textContent = c+' / 250 words';
+  d.style.color = c>250?'#dc2626':'var(--gray)';
+  if(c>250){ el.value=el.value.trim().split(/\s+/).slice(0,250).join(' '); d.textContent='250 / 250 words'; }
+}
+
+async function submitForm(){
+  const name=document.getElementById('fn').value.trim();
+  const batch=document.getElementById('fb').value.trim();
+  const role=document.getElementById('fr').value.trim();
+  const org=document.getElementById('fo').value.trim();
+  const consent=document.getElementById('f-consent').checked;
+  if(!name||!batch||!role||!org){ alert('Please fill in all required fields.'); return; }
+  if(!consent){ alert('Please agree to the privacy consent before submitting.'); return; }
+  const btn=document.getElementById('submit-btn');
+  btn.textContent='Submitting...'; btn.disabled=true;
+  const data={
+    name,batch,role,org,
+    sector:document.getElementById('fse').value==='Other'?document.getElementById('fse-other').value.trim():document.getElementById('fse').value,
+    location:document.getElementById('floc').value.trim(),
+    email:document.getElementById('fe').value.trim(),
+    phone:document.getElementById('fp').value.trim(),
+    expertise:document.getElementById('fex').value.trim(),
+    bio:document.getElementById('fbio').value.trim(),
+    linkedin:document.getElementById('fli').value.trim(),
+    research:document.getElementById('frg').value.trim(),
+    photo:document.getElementById('fphoto').value.trim(),
+    programme:document.getElementById('fprog').value,
+    cv:document.getElementById('fcv').value.trim(),
+  };
+  try{
+    await fetch(SCRIPT_URL,{method:'POST',mode:'no-cors',headers:{'Content-Type':'application/json'},body:JSON.stringify(data)});
+    document.getElementById('succ-msg').classList.add('on');
+    ['fn','fb','fe','fp','fr','fo','floc','fex','fbio','fli','frg','fphoto','fcv'].forEach(id=>{const el=document.getElementById(id);if(el)el.value='';});
+    document.getElementById('fse').value='';
+    document.getElementById('fprog').value='';
+    document.getElementById('fse-other').style.display='none';
+    document.getElementById('f-consent').checked=false;
+    document.getElementById('word-count').textContent='0 / 250 words';
+  } catch(e){ alert('Submission failed. Please try again.'); }
+  finally{ btn.textContent='Submit Profile'; btn.disabled=false; }
+}
+
+loadData();
+</script>
+</body>
+</html>
