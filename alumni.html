@@ -225,6 +225,19 @@
 .fc:focus{border-color:var(--green);background:#fff;box-shadow:0 0 0 3px rgba(30,122,62,.08)}
 textarea.fc{resize:vertical;min-height:130px;line-height:1.6}
 .fhint{font-size:.7rem;color:var(--gray);line-height:1.5}
+.dropzone{
+  border:1.5px dashed var(--border);border-radius:10px;padding:1.5rem 1rem;
+  text-align:center;cursor:pointer;transition:all .2s;background:var(--cream);
+}
+.dropzone:hover{border-color:var(--green);background:#fff}
+.dropzone.drag-over{border-color:var(--green);background:rgba(30,122,62,.06);border-style:solid}
+.dropzone.has-file{border-style:solid;border-color:var(--green);background:rgba(30,122,62,.06)}
+.dz-content{display:flex;flex-direction:column;align-items:center;gap:.3rem}
+.dz-icon{font-size:1.6rem;line-height:1}
+.dz-text{font-size:.8rem;color:var(--navy);font-weight:600}
+.dz-hint{font-size:.7rem;color:var(--gray)}
+.dz-filename{font-size:.8rem;color:var(--green);font-weight:600;word-break:break-all;max-width:100%}
+.dz-remove{font-size:.7rem;color:#c0392b;text-decoration:underline;cursor:pointer;margin-top:.15rem}
 .consent-box{
   display:flex;gap:.75rem;align-items:flex-start;
   background:var(--cream);border-radius:10px;padding:1rem;
@@ -580,17 +593,31 @@ textarea.fc{resize:vertical;min-height:130px;line-height:1.6}
             <div class="fg"><label class="fl">ResearchGate / Google Scholar</label><input class="fc" id="frg" placeholder="https://researchgate.net/..."/></div>
             <div class="fg full">
               <label class="fl">Profile Photo</label>
-              <input class="fc" id="fphoto" placeholder="https://drive.google.com/file/d/..."/>
-              <span class="fhint">Upload your photo to Google Drive, share as Anyone with the link, then paste the link here</span>
+              <div class="dropzone" id="dz-photo" onclick="document.getElementById('fphoto-file').click()">
+                <input type="file" id="fphoto-file" accept="image/jpeg,image/png,image/webp" style="display:none" onchange="handleFileSelect(this,'photo')"/>
+                <div class="dz-content" id="dz-photo-content">
+                  <span class="dz-icon">📷</span>
+                  <span class="dz-text">Drag &amp; drop your photo here, or click to browse</span>
+                  <span class="dz-hint">JPG, PNG or WEBP — up to 5MB</span>
+                </div>
+              </div>
+              <span class="fhint" id="dz-photo-error" style="color:#c0392b;display:none"></span>
             </div>
           </div>
 
           <div class="fsec">📄 CV / Resume</div>
           <div class="fgrid">
             <div class="fg full">
-              <label class="fl">CV Link <span style="text-transform:none;letter-spacing:0;font-weight:400;font-size:.7rem;color:var(--gray)"> — Google Drive PDF link</span></label>
-              <input class="fc" id="fcv" placeholder="https://drive.google.com/file/d/..."/>
-              <span class="fhint">Upload your CV to Google Drive, share as Anyone with the link, then paste here</span>
+              <label class="fl">CV / Resume</label>
+              <div class="dropzone" id="dz-cv" onclick="document.getElementById('fcv-file').click()">
+                <input type="file" id="fcv-file" accept="application/pdf" style="display:none" onchange="handleFileSelect(this,'cv')"/>
+                <div class="dz-content" id="dz-cv-content">
+                  <span class="dz-icon">📄</span>
+                  <span class="dz-text">Drag &amp; drop your CV here, or click to browse</span>
+                  <span class="dz-hint">PDF only — up to 10MB</span>
+                </div>
+              </div>
+              <span class="fhint" id="dz-cv-error" style="color:#c0392b;display:none"></span>
             </div>
           </div>
 
@@ -918,6 +945,74 @@ function countWords(el){
   if(c>250){ el.value=el.value.trim().split(/\s+/).slice(0,250).join(' '); d.textContent='250 / 250 words'; }
 }
 
+// ── FILE UPLOAD (photo + CV drag-and-drop) ──
+let photoFileData = null;
+let cvFileData = null;
+const FILE_LIMITS = { photo: 5*1024*1024, cv: 10*1024*1024 };
+const FILE_ACCEPT = { photo: ['image/jpeg','image/png','image/webp'], cv: ['application/pdf'] };
+const DZ_DEFAULT = {
+  photo: `<span class="dz-icon">📷</span><span class="dz-text">Drag &amp; drop your photo here, or click to browse</span><span class="dz-hint">JPG, PNG or WEBP — up to 5MB</span>`,
+  cv: `<span class="dz-icon">📄</span><span class="dz-text">Drag &amp; drop your CV here, or click to browse</span><span class="dz-hint">PDF only — up to 10MB</span>`
+};
+
+function setupDropzone(kind){
+  const dz = document.getElementById('dz-'+kind);
+  if(!dz) return;
+  ['dragover','dragleave','drop'].forEach(evt=>{
+    dz.addEventListener(evt, e=>{ e.preventDefault(); e.stopPropagation(); });
+  });
+  dz.addEventListener('dragover', ()=>dz.classList.add('drag-over'));
+  dz.addEventListener('dragleave', ()=>dz.classList.remove('drag-over'));
+  dz.addEventListener('drop', e=>{
+    dz.classList.remove('drag-over');
+    if(e.dataTransfer.files.length) handleFile(e.dataTransfer.files[0], kind);
+  });
+}
+
+function handleFileSelect(input, kind){
+  if(input.files.length) handleFile(input.files[0], kind);
+}
+
+function handleFile(file, kind){
+  const errEl = document.getElementById('dz-'+kind+'-error');
+  errEl.style.display = 'none';
+  if(!FILE_ACCEPT[kind].includes(file.type)){
+    errEl.textContent = kind==='photo' ? 'Please upload a JPG, PNG or WEBP image.' : 'Please upload a PDF file.';
+    errEl.style.display = 'block';
+    return;
+  }
+  if(file.size > FILE_LIMITS[kind]){
+    errEl.textContent = `File is too large. Max size is ${kind==='photo'?'5MB':'10MB'}.`;
+    errEl.style.display = 'block';
+    return;
+  }
+  const reader = new FileReader();
+  reader.onload = () => {
+    const base64 = reader.result.split(',')[1];
+    const fileData = { base64, mimeType: file.type, filename: file.name };
+    if(kind==='photo') photoFileData = fileData; else cvFileData = fileData;
+    const dz = document.getElementById('dz-'+kind);
+    dz.classList.add('has-file');
+    document.getElementById('dz-'+kind+'-content').innerHTML =
+      `<span class="dz-icon">${kind==='photo'?'✅':'📄'}</span><span class="dz-filename">${file.name}</span><span class="dz-remove" onclick="removeFile(event,'${kind}')">Remove</span>`;
+  };
+  reader.onerror = () => { errEl.textContent = 'Could not read that file. Please try again.'; errEl.style.display='block'; };
+  reader.readAsDataURL(file);
+}
+
+function removeFile(e, kind){
+  e.stopPropagation();
+  if(kind==='photo'){ photoFileData=null; document.getElementById('fphoto-file').value=''; }
+  else { cvFileData=null; document.getElementById('fcv-file').value=''; }
+  const dz = document.getElementById('dz-'+kind);
+  dz.classList.remove('has-file');
+  document.getElementById('dz-'+kind+'-content').innerHTML = DZ_DEFAULT[kind];
+  document.getElementById('dz-'+kind+'-error').style.display = 'none';
+}
+
+setupDropzone('photo');
+setupDropzone('cv');
+
 async function submitForm(){
   const name=document.getElementById('fn').value.trim();
   const batch=document.getElementById('fb').value.trim();
@@ -938,19 +1033,22 @@ async function submitForm(){
     bio:document.getElementById('fbio').value.trim(),
     linkedin:document.getElementById('fli').value.trim(),
     research:document.getElementById('frg').value.trim(),
-    photo:document.getElementById('fphoto').value.trim(),
     programme:document.getElementById('fprog').value,
-    cv:document.getElementById('fcv').value.trim(),
   };
+  if(photoFileData) data.photoFile = photoFileData;
+  if(cvFileData) data.cvFile = cvFileData;
+  btn.textContent='Uploading...';
   try{
     await fetch(SCRIPT_URL,{method:'POST',mode:'no-cors',headers:{'Content-Type':'application/json'},body:JSON.stringify(data)});
     document.getElementById('succ-msg').classList.add('on');
-    ['fn','fb','fe','fp','fr','fo','floc','fex','fbio','fli','frg','fphoto','fcv'].forEach(id=>{const el=document.getElementById(id);if(el)el.value='';});
+    ['fn','fb','fe','fp','fr','fo','floc','fex','fbio','fli','frg'].forEach(id=>{const el=document.getElementById(id);if(el)el.value='';});
     document.getElementById('fse').value='';
     document.getElementById('fprog').value='';
     document.getElementById('fse-other').style.display='none';
     document.getElementById('f-consent').checked=false;
     document.getElementById('word-count').textContent='0 / 250 words';
+    removeFile({stopPropagation(){}}, 'photo');
+    removeFile({stopPropagation(){}}, 'cv');
   } catch(e){ alert('Submission failed. Please try again.'); }
   finally{ btn.textContent='Submit Profile'; btn.disabled=false; }
 }
