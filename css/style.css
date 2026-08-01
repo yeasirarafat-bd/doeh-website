@@ -1,5 +1,5 @@
 /* ============================================================
-   DOEH BUHS — Shared Stylesheet
+   DOEH BUHS - Shared Stylesheet
    Department of Occupational & Environmental Health
    ============================================================ */
 
@@ -20,13 +20,13 @@ html{scroll-behavior:smooth;overflow-x:hidden}
 body{font-family:'Outfit',sans-serif;background:var(--offwhite);color:var(--navy);min-height:100vh;overflow-x:hidden}
 
 /* ── NAV ── */
-nav{position:sticky;top:0;z-index:200;background:var(--white);height:68px;display:flex;align-items:center;justify-content:space-between;padding:0 2.5rem;box-shadow:0 1px 0 var(--border),0 2px 20px rgba(14,69,38,.06);width:100%}
+nav{position:sticky;top:0;z-index:200;background:var(--white);height:84px;display:flex;align-items:center;justify-content:space-between;padding:0 3rem;box-shadow:0 1px 0 var(--border),0 2px 20px rgba(14,69,38,.06);width:100%}
 .nav-brand{display:flex;align-items:center;gap:12px;text-decoration:none}
-.nav-logo-img{width:42px;height:42px;object-fit:contain;border-radius:8px;background:white;padding:1px;flex-shrink:0}
-.nav-name{font-family:'Merriweather',serif;font-size:1rem;font-weight:900;color:var(--green3);line-height:1.2}
-.nav-name small{display:block;font-size:.65rem;font-weight:400;color:var(--gray);font-family:'Outfit',sans-serif;letter-spacing:.04em}
+.nav-logo-img{width:52px;height:52px;object-fit:contain;border-radius:9px;background:white;padding:1px;flex-shrink:0}
+.nav-name{font-family:'Merriweather',serif;font-size:1.15rem;font-weight:900;color:var(--green3);line-height:1.25}
+.nav-name small{display:block;font-size:.72rem;font-weight:400;color:var(--gray);font-family:'Outfit',sans-serif;letter-spacing:.04em}
 .nav-links{display:flex;gap:4px;align-items:center}
-.nb{background:none;border:none;cursor:pointer;font-family:'Outfit',sans-serif;font-size:.83rem;font-weight:500;color:var(--gray);padding:.45rem .95rem;border-radius:8px;transition:all .18s;text-decoration:none;white-space:nowrap;display:inline-block}
+.nb{background:none;border:none;cursor:pointer;font-family:'Outfit',sans-serif;font-size:.88rem;font-weight:500;color:var(--gray);padding:.55rem 1.1rem;border-radius:8px;transition:all .18s;text-decoration:none;white-space:nowrap;display:inline-block}
 .nb:hover,.nb.active{background:var(--green-pale);color:var(--green)}
 .nb.primary{background:var(--green);color:var(--white);font-weight:600}
 .nb.primary:hover{background:var(--green2)}
@@ -37,7 +37,7 @@ nav{position:sticky;top:0;z-index:200;background:var(--white);height:68px;displa
 .hamburger.open span:nth-child(1){transform:translateY(7px) rotate(45deg)}
 .hamburger.open span:nth-child(2){opacity:0}
 .hamburger.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
-.mobile-menu{display:none;position:fixed;top:68px;left:0;right:0;background:var(--white);box-shadow:0 8px 24px rgba(14,69,38,.12);border-top:2px solid var(--green-dim);z-index:199;padding:.75rem 1.5rem 1.25rem;flex-direction:column;gap:.35rem}
+.mobile-menu{display:none;position:fixed;top:84px;left:0;right:0;bottom:0;overflow-y:auto;background:var(--white);box-shadow:0 8px 24px rgba(14,69,38,.12);border-top:2px solid var(--green-dim);z-index:199;padding:.75rem 1.5rem 1.25rem;flex-direction:column;gap:.35rem}
 .mobile-menu.open{display:flex}
 .mnb{background:none;border:none;cursor:pointer;font-family:'Outfit',sans-serif;font-size:.95rem;font-weight:500;color:var(--navy);padding:.75rem 1rem;border-radius:10px;transition:all .18s;text-align:left;width:100%;text-decoration:none;display:block}
 .mnb:hover,.mnb.active{background:var(--green-pale);color:var(--green)}
