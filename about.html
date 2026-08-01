@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>About | DOEH, BUHS</title>
+<meta name="description" content="The story, mission, leadership, and facilities of the Department of Occupational and Environmental Health at Bangladesh University of Health Sciences."/>
+<link rel="canonical" href="https://doeh-buhs.ac/about.html"/>
+<meta property="og:type" content="website"/>
+<meta property="og:title" content="About | DOEH, BUHS"/>
+<meta property="og:description" content="The story, mission, leadership, and facilities of the Department of Occupational and Environmental Health, BUHS."/>
+<meta property="og:url" content="https://doeh-buhs.ac/about.html"/>
+
+<link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@400;700;900&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="css/style.css"/>
+
+<style>
+/* -- STORY -- */
+.story-block{max-width:760px;margin:0 auto}
+.story-block p{font-size:.95rem;color:var(--gray);line-height:1.85;margin-bottom:1.25rem}
+.story-block p:last-child{margin-bottom:0}
+
+.pillars{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:1.5rem;margin-top:2.5rem}
+.pillar-card{background:#fff;border-radius:14px;padding:1.75rem;border:1px solid var(--border)}
+.pillar-label{font-size:.7rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--green);margin-bottom:.6rem}
+.pillar-text{font-size:.9rem;color:var(--navy);line-height:1.7}
+
+/* -- LEADERSHIP -- */
+.leader-card{background:#fff;border-radius:16px;padding:1.75rem;border:1px solid var(--border);display:flex;gap:1.25rem;align-items:flex-start}
+.leader-photo{width:64px;height:64px;border-radius:50%;flex-shrink:0;background:var(--green-pale);display:flex;align-items:center;justify-content:center;font-family:'Merriweather',serif;font-weight:900;color:var(--green2);font-size:1.1rem;overflow:hidden}
+.leader-photo img{width:100%;height:100%;object-fit:cover}
+.leader-name{font-family:'Merriweather',serif;font-weight:700;color:var(--green3);font-size:.98rem}
+.leader-title{font-size:.78rem;color:var(--green);font-weight:600;margin-bottom:.6rem}
+.leader-msg{font-size:.87rem;color:var(--gray);line-height:1.75;font-style:italic}
+
+/* -- ACCREDITATION -- */
+.accred-band{background:linear-gradient(135deg,var(--green3),var(--green2));border-radius:20px;padding:2.5rem;display:flex;align-items:center;gap:2rem;flex-wrap:wrap}
+.accred-badge{width:76px;height:76px;border-radius:16px;background:#fff;display:flex;align-items:center;justify-content:center;font-family:'Merriweather',serif;font-weight:900;color:var(--green2);font-size:1rem;flex-shrink:0}
+.accred-text h3{font-family:'Merriweather',serif;color:#fff;font-size:1.1rem;margin-bottom:.5rem}
+.accred-text p{font-size:.88rem;color:rgba(255,255,255,.75);line-height:1.7;max-width:560px}
+
+/* -- FACILITIES -- */
+.facility-card{background:#fff;border-radius:12px;padding:1.5rem;border:1px solid var(--border);border-left:3px solid var(--green)}
+.facility-name{font-family:'Merriweather',serif;font-weight:700;color:var(--green3);font-size:.95rem;margin-bottom:.4rem}
+.facility-desc{font-size:.82rem;color:var(--gray);line-height:1.65}
+
+/* -- LOCATION -- */
+.location-wrap{display:grid;grid-template-columns:1fr 1fr;gap:2.5rem;align-items:start}
+.location-details p{font-size:.88rem;color:var(--gray);line-height:1.8;margin-bottom:.5rem}
+.location-details strong{color:var(--navy)}
+.map-embed{border-radius:14px;overflow:hidden;border:1px solid var(--border);height:280px}
+.map-embed iframe{width:100%;height:100%;border:0}
+
+@media(max-width:768px){
+  .location-wrap{grid-template-columns:1fr}
+  .leader-card{flex-direction:column;text-align:center}
+  .leader-card .leader-photo{margin:0 auto}
+}
+.site-footer{background:var(--green3);padding:2.75rem 2rem 0}
+.footer-grid{max-width:1100px;margin:0 auto;display:grid;grid-template-columns:1.4fr 1fr 1fr;gap:2.5rem;padding-bottom:2rem}
+.footer-brand-logo{width:46px;height:46px;object-fit:contain;background:white;border-radius:9px;padding:2px;margin-bottom:.85rem}
+.footer-brand-name{font-family:'Merriweather',serif;font-size:.95rem;font-weight:700;color:#fff;line-height:1.3}
+.footer-brand-sub{font-size:.72rem;color:rgba(255,255,255,.4);margin-top:.2rem;line-height:1.5}
+@media(max-width:768px){ .footer-grid{grid-template-columns:1fr;gap:1.5rem} }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a class="nav-brand" href="index.html">
+    <img class="nav-logo-img" src="assets/logo.png" alt="DOEH BUHS" onerror="this.style.background='var(--green-pale)'"/>
+    <div class="nav-name">DOEH, BUHS<small>Dept. of Occupational &amp; Environmental Health</small></div>
+  </a>
+  <div class="nav-links">
+    <a class="nb" href="index.html">Home</a>
+    <a class="nb active" href="about.html">About</a>
+    <a class="nb" href="academics.html">Academics</a>
+    <a class="nb" href="research.html">Research</a>
+    <a class="nb" href="news.html">News &amp; Events</a>
+    <a class="nb" href="gallery.html">Gallery</a>
+    <a class="nb" href="alumni.html">Alumni</a>
+    <a class="nb" href="contact.html">Contact</a>
+  </div>
+  <button class="hamburger" id="hamburger" onclick="toggleMenu()" aria-label="Open menu">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+<div class="mobile-menu" id="mobile-menu">
+  <a class="mnb" href="index.html">Home</a>
+  <a class="mnb active" href="about.html">About</a>
+  <a class="mnb" href="academics.html">Academics</a>
+  <a class="mnb" href="research.html">Research</a>
+  <a class="mnb" href="news.html">News &amp; Events</a>
+  <a class="mnb" href="gallery.html">Gallery</a>
+  <a class="mnb" href="alumni.html">Alumni</a>
+  <a class="mnb" href="contact.html">Contact</a>
+</div>
+
+<!-- HERO -->
+<section class="page-hero">
+  <h1>Built for people who protect<br/><em>others for a living</em></h1>
+  <p>Every occupational and environmental health professional starts somewhere. This is ours.</p>
+</section>
+
+<!-- OUR STORY -->
+<section class="sec">
+  <div class="sec-inner story-block">
+    <div class="sec-title" style="text-align:center">Why this department exists</div>
+    <div class="sec-divider" style="margin-left:auto;margin-right:auto"></div>
+    <p>[PLACEHOLDER: Real founding story goes here: when DOEH began, what gap it was built to fill, and how it grew under Bangladesh University of Health Sciences and the Diabetic Association of Bangladesh. Write this the way you'd explain it to a confused 18-year-old, not the way it would appear in an annual report.]</p>
+    <p>[PLACEHOLDER: A sentence connecting the department's founding to what students experience today. The through-line from "why we started" to "why it still matters."]</p>
+
+    <div class="pillars">
+      <div class="pillar-card">
+        <div class="pillar-label">Our mission</div>
+        <div class="pillar-text">To develop skilled public health professionals capable of effectively and efficiently addressing occupational and environmental health issues at both national and global levels.</div>
+      </div>
+      <div class="pillar-card">
+        <div class="pillar-label">Our vision</div>
+        <div class="pillar-text">To be recognized as a global leader in occupational and environmental health, pioneering innovative approaches and producing skilled professionals dedicated to sustainable healthy environments and safer workplaces.</div>
+      </div>
+      <div class="pillar-card">
+        <div class="pillar-label">What we value</div>
+        <div class="pillar-text">Field-first learning. We believe you can't teach safety from a textbook alone, so every program here is built around real labs, real sites, and real problems.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- LEADERSHIP MESSAGES -->
+<section class="sec" style="background:var(--offwhite)">
+  <div class="sec-inner">
+    <div class="sec-title">A word from the people who lead this department</div>
+    <div class="sec-divider"></div>
+    <p class="sec-sub">Not formal statements. A few honest words from the people shaping this department, to the students deciding whether to join it.</p>
+    <div class="grid">
+      <div class="leader-card">
+        <div class="leader-photo">VC</div>
+        <div>
+          <div class="leader-name">[Vice Chancellor name]</div>
+          <div class="leader-title">Vice Chancellor, BUHS</div>
+          <div class="leader-msg">"[PLACEHOLDER: A genuine 2-4 sentence message to a prospective student, not a formal welcome, an honest one.]"</div>
+        </div>
+      </div>
+      <div class="leader-card">
+        <div class="leader-photo">HD</div>
+        <div>
+          <div class="leader-name">[Department Head name]</div>
+          <div class="leader-title">Head of Department, DOEH</div>
+          <div class="leader-msg">"When students ask me why this field matters, I tell them: someone has to notice the danger before it becomes a tragedy. That's the job. [PLACEHOLDER: continue in her real voice.]"</div>
+        </div>
+      </div>
+      <div class="leader-card">
+        <div class="leader-photo">FA</div>
+        <div>
+          <div class="leader-name">[Faculty member name]</div>
+          <div class="leader-title">Faculty, DOEH</div>
+          <div class="leader-msg">"[PLACEHOLDER: A faculty voice on what teaching this subject actually feels like.]"</div>
+        </div>
+      </div>
+      <div class="leader-card">
+        <div class="leader-photo">TR</div>
+        <div>
+          <div class="leader-name">[Treasurer name]</div>
+          <div class="leader-title">Treasurer, BUHS</div>
+          <div class="leader-msg">"[PLACEHOLDER: A short message on the department's growth and investment in students.]"</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ACCREDITATION -->
+<section class="sec">
+  <div class="sec-inner">
+    <div class="accred-band">
+      <div class="accred-badge">IOSH</div>
+      <div class="accred-text">
+        <h3>Recognized where it counts</h3>
+        <p>Our BPH and MPH in Occupational Health & Safety programs carry IOSH accreditation, an internationally recognized standard in occupational safety. [PLACEHOLDER: one concrete sentence on what this means for a graduate's career, e.g. recognized by employers in which industries/countries.]</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FACILITIES -->
+<section class="sec" style="background:var(--offwhite)">
+  <div class="sec-inner">
+    <div class="sec-title">Where the learning actually happens</div>
+    <div class="sec-divider"></div>
+    <p class="sec-sub">Facilities built for hands-on work, not just lectures.</p>
+    <div class="grid">
+      <div class="facility-card"><div class="facility-name">Environmental Lab</div><div class="facility-desc">[PLACEHOLDER: what students actually do here.]</div></div>
+      <div class="facility-card"><div class="facility-name">Occupational Lab</div><div class="facility-desc">[PLACEHOLDER]</div></div>
+      <div class="facility-card"><div class="facility-name">GIS Lab</div><div class="facility-desc">[PLACEHOLDER]</div></div>
+      <div class="facility-card"><div class="facility-name">Computer Lab</div><div class="facility-desc">[PLACEHOLDER]</div></div>
+      <div class="facility-card"><div class="facility-name">Library</div><div class="facility-desc">[PLACEHOLDER]</div></div>
+      <div class="facility-card"><div class="facility-name">Sports &amp; Extracurricular</div><div class="facility-desc">[PLACEHOLDER]</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- LOCATION -->
+<section class="sec">
+  <div class="sec-inner">
+    <div class="sec-title">Find us in Dhaka</div>
+    <div class="sec-divider"></div>
+    <div class="location-wrap">
+      <div class="location-details">
+        <p><strong>Address:</strong> 125/1, Darus Salam (Technical Crossing), Mirpur, Dhaka-1216, Bangladesh</p>
+        <p><strong>Phone:</strong> +88-01791 042087 / +88-01552146362</p>
+        <p><strong>Email:</strong> doeh@buhs.ac.bd</p>
+      </div>
+      <div class="map-embed">
+        <iframe src="https://www.google.com/maps?q=Bangladesh+University+of+Health+Sciences,+Mirpur,+Dhaka&output=embed" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="site-footer">
+  <div class="footer-grid">
+    <div>
+      <img class="footer-brand-logo" src="assets/logo.png" alt="DOEH" onerror="this.style.display='none'"/>
+      <div class="footer-brand-name">DOEH, BUHS</div>
+      <div class="footer-brand-sub">Department of Occupational &amp; Environmental Health<br>Bangladesh University of Health Sciences<br>Established by Diabetic Association of Bangladesh</div>
+    </div>
+    <div>
+      <div class="footer-col-title">Quick Links</div>
+      <a class="footer-link" href="index.html">Home</a>
+      <a class="footer-link" href="about.html">About DOEH</a>
+      <a class="footer-link" href="academics.html">Academics</a>
+      <a class="footer-link" href="research.html">Research</a>
+      <a class="footer-link" href="news.html">News &amp; Events</a>
+      <a class="footer-link" href="alumni.html">Alumni</a>
+    </div>
+    <div>
+      <div class="footer-col-title">Contact</div>
+      <a class="footer-link" href="mailto:doeh@buhs.ac.bd">doeh@buhs.ac.bd</a>
+      <span class="footer-link" style="cursor:default">125/1, Darus Salam, Mirpur, Dhaka-1216</span>
+      <span class="footer-link" style="cursor:default">+88-01791 042087</span>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span class="footer-copy">© 2026 Department of Occupational &amp; Environmental Health, BUHS. All rights reserved.</span>
+  </div>
+</footer>
+
+<script src="js/main.js"></script>
+</body>
+</html>
