@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Contact | DOEH, BUHS</title>
+<meta name="description" content="Contact the Department of Occupational and Environmental Health, Bangladesh University of Health Sciences. Address, phone, email, and campus location."/>
+<link rel="canonical" href="https://doeh-buhs.ac/contact.html"/>
+<link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@400;700;900&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="css/style.css"/>
+
+<style>
+.contact-wrap{display:grid;grid-template-columns:1fr 1fr;gap:2.5rem;align-items:start}
+.contact-card{background:#fff;border-radius:12px;padding:1.5rem;border:1px solid var(--border);border-left:3px solid var(--green);margin-bottom:1rem}
+.contact-label{font-family:'Merriweather',serif;font-weight:700;color:var(--green3);font-size:.92rem;margin-bottom:.4rem}
+.contact-detail{font-size:.85rem;color:var(--gray);line-height:1.7}
+.contact-detail a{color:var(--green2);text-decoration:none;font-weight:600}
+
+.cform{display:flex;flex-direction:column;gap:1rem}
+.cform label{font-size:.72rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--navy)}
+.cform input,.cform select,.cform textarea{padding:.75rem .9rem;border:1.5px solid var(--border2);border-radius:8px;font-family:'Outfit',sans-serif;font-size:.9rem;width:100%}
+.cform textarea{min-height:120px;resize:vertical}
+
+.map-embed{border-radius:14px;overflow:hidden;border:1px solid var(--border);height:320px;margin-top:1.5rem}
+.map-embed iframe{width:100%;height:100%;border:0}
+
+.site-footer{background:var(--green3);padding:2.75rem 2rem 0}
+.footer-grid{max-width:1100px;margin:0 auto;display:grid;grid-template-columns:1.4fr 1fr 1fr;gap:2.5rem;padding-bottom:2rem}
+.footer-brand-logo{width:46px;height:46px;object-fit:contain;background:white;border-radius:9px;padding:2px;margin-bottom:.85rem}
+.footer-brand-name{font-family:'Merriweather',serif;font-size:.95rem;font-weight:700;color:#fff;line-height:1.3}
+.footer-brand-sub{font-size:.72rem;color:rgba(255,255,255,.4);margin-top:.2rem;line-height:1.5}
+@media(max-width:768px){ .footer-grid{grid-template-columns:1fr;gap:1.5rem} .contact-wrap{grid-template-columns:1fr} }
+</style>
+</head>
+<body>
+
+<nav>
+  <a class="nav-brand" href="index.html">
+    <img class="nav-logo-img" src="assets/logo.png" alt="DOEH BUHS" onerror="this.style.background='var(--green-pale)'"/>
+    <div class="nav-name">DOEH, BUHS<small>Dept. of Occupational &amp; Environmental Health</small></div>
+  </a>
+  <div class="nav-links">
+    <a class="nb" href="index.html">Home</a>
+    <a class="nb" href="about.html">About</a>
+    <a class="nb" href="academics.html">Academics</a>
+    <a class="nb" href="research.html">Research</a>
+    <a class="nb" href="news.html">News &amp; Events</a>
+    <a class="nb" href="gallery.html">Gallery</a>
+    <a class="nb" href="alumni.html">Alumni</a>
+    <a class="nb active" href="contact.html">Contact</a>
+  </div>
+  <button class="hamburger" id="hamburger" onclick="toggleMenu()" aria-label="Open menu"><span></span><span></span><span></span></button>
+</nav>
+<div class="mobile-menu" id="mobile-menu">
+  <a class="mnb" href="index.html">Home</a>
+  <a class="mnb" href="about.html">About</a>
+  <a class="mnb" href="academics.html">Academics</a>
+  <a class="mnb" href="research.html">Research</a>
+  <a class="mnb" href="news.html">News &amp; Events</a>
+  <a class="mnb" href="gallery.html">Gallery</a>
+  <a class="mnb" href="alumni.html">Alumni</a>
+  <a class="mnb active" href="contact.html">Contact</a>
+</div>
+
+<section class="page-hero">
+  <h1>Talk to us<br/><em>directly</em></h1>
+  <p>Questions about programs, admissions, or the department. We're reachable.</p>
+</section>
+
+<section class="sec">
+  <div class="sec-inner">
+    <div class="contact-wrap">
+      <div>
+        <div class="contact-card">
+          <div class="contact-label">General inquiries</div>
+          <div class="contact-detail"><a href="mailto:doeh@buhs.ac.bd">doeh@buhs.ac.bd</a><br/>+88-01791 042087 &middot; +88-01552146362</div>
+        </div>
+        <div class="contact-card">
+          <div class="contact-label">Admissions</div>
+          <div class="contact-detail">[PLACEHOLDER: dedicated admissions contact, if different from general]</div>
+        </div>
+        <div class="contact-card">
+          <div class="contact-label">Address</div>
+          <div class="contact-detail">125/1, Darus Salam (Technical Crossing)<br/>Mirpur, Dhaka-1216, Bangladesh</div>
+        </div>
+        <div class="contact-card">
+          <div class="contact-label">Office hours</div>
+          <div class="contact-detail">[PLACEHOLDER]</div>
+        </div>
+        <div class="contact-card">
+          <div class="contact-label">Follow us</div>
+          <div class="contact-detail">[PLACEHOLDER: real social links, if active]</div>
+        </div>
+      </div>
+
+      <form class="cform" onsubmit="event.preventDefault(); alert('Contact form is not yet connected to a backend. This needs an email service or Apps Script hookup before going live.');">
+        <div><label>Name</label><input type="text" required/></div>
+        <div><label>Email</label><input type="email" required/></div>
+        <div><label>Reason for contact</label>
+          <select><option>General inquiry</option><option>Admissions</option><option>Alumni</option><option>Media/Press</option></select>
+        </div>
+        <div><label>Message</label><textarea required></textarea></div>
+        <button class="btn btn-green" type="submit" style="align-self:flex-start">Send message</button>
+      </form>
+    </div>
+
+    <div class="map-embed">
+      <iframe src="https://www.google.com/maps?q=Bangladesh+University+of+Health+Sciences,+Mirpur,+Dhaka&output=embed" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+    </div>
+  </div>
+</section>
+
+<footer class="site-footer">
+  <div class="footer-grid">
+    <div>
+      <img class="footer-brand-logo" src="assets/logo.png" alt="DOEH" onerror="this.style.display='none'"/>
+      <div class="footer-brand-name">DOEH, BUHS</div>
+      <div class="footer-brand-sub">Department of Occupational &amp; Environmental Health<br>Bangladesh University of Health Sciences</div>
+    </div>
+    <div>
+      <div class="footer-col-title">Quick Links</div>
+      <a class="footer-link" href="index.html">Home</a>
+      <a class="footer-link" href="about.html">About DOEH</a>
+      <a class="footer-link" href="academics.html">Academics</a>
+      <a class="footer-link" href="alumni.html">Alumni</a>
+    </div>
+    <div>
+      <div class="footer-col-title">Contact</div>
+      <a class="footer-link" href="mailto:doeh@buhs.ac.bd">doeh@buhs.ac.bd</a>
+      <span class="footer-link" style="cursor:default">125/1, Darus Salam, Mirpur, Dhaka-1216</span>
+    </div>
+  </div>
+  <div class="footer-bottom"><span class="footer-copy">© 2026 Department of Occupational &amp; Environmental Health, BUHS. All rights reserved.</span></div>
+</footer>
+<script src="js/main.js"></script>
+</body>
+</html>
