@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Research | DOEH, BUHS</title>
+<meta name="description" content="Research areas, ongoing projects, student research opportunities, publications, and the thesis archive at the Department of Occupational and Environmental Health, BUHS."/>
+<link rel="canonical" href="https://doeh-buhs.ac/research.html"/>
+<link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@400;700;900&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="css/style.css"/>
+
+<style>
+.area-card{background:#fff;border-radius:12px;padding:1.5rem;border:1px solid var(--border);border-left:3px solid var(--green)}
+.area-name{font-family:'Merriweather',serif;font-weight:700;color:var(--green3);font-size:.95rem;margin-bottom:.4rem}
+.area-desc{font-size:.82rem;color:var(--gray);line-height:1.65}
+
+.pathway-steps{display:flex;flex-direction:column;gap:1rem;max-width:640px}
+.pathway-step{display:flex;gap:1rem;align-items:flex-start}
+.pathway-num{width:32px;height:32px;border-radius:50%;background:var(--green);color:#fff;display:flex;align-items:center;justify-content:center;font-family:'Merriweather',serif;font-weight:900;font-size:.9rem;flex-shrink:0}
+.pathway-text h4{font-size:.9rem;color:var(--green3);font-weight:700;margin-bottom:.25rem}
+.pathway-text p{font-size:.85rem;color:var(--gray);line-height:1.7}
+
+.archive-filters{display:flex;gap:.75rem;margin-bottom:1.25rem;flex-wrap:wrap}
+.archive-filters select,.archive-filters input{padding:.6rem .9rem;border:1.5px solid var(--border2);border-radius:8px;font-family:'Outfit',sans-serif;font-size:.85rem;background:#fff}
+.archive-table{width:100%;border-collapse:collapse;background:#fff;border-radius:12px;overflow:hidden;border:1px solid var(--border)}
+.archive-table th{text-align:left;font-size:.72rem;text-transform:uppercase;letter-spacing:.06em;color:var(--gray);padding:.9rem 1rem;background:var(--offwhite);border-bottom:1px solid var(--border)}
+.archive-table td{padding:.9rem 1rem;font-size:.85rem;color:var(--navy);border-bottom:1px solid var(--border)}
+.archive-table tr:last-child td{border-bottom:none}
+.archive-table a{color:var(--green2);text-decoration:none;font-weight:600}
+.archive-table a:hover{text-decoration:underline}
+
+.leader-card{background:#fff;border-radius:16px;padding:1.75rem;border:1px solid var(--border);display:flex;gap:1.25rem;align-items:flex-start}
+.leader-photo{width:64px;height:64px;border-radius:50%;flex-shrink:0;background:var(--green-pale);display:flex;align-items:center;justify-content:center;font-family:'Merriweather',serif;font-weight:900;color:var(--green2);font-size:1.1rem}
+.leader-name{font-family:'Merriweather',serif;font-weight:700;color:var(--green3);font-size:.98rem}
+.leader-title{font-size:.78rem;color:var(--green);font-weight:600;margin-bottom:.6rem}
+.leader-msg{font-size:.87rem;color:var(--gray);line-height:1.75}
+
+.site-footer{background:var(--green3);padding:2.75rem 2rem 0}
+.footer-grid{max-width:1100px;margin:0 auto;display:grid;grid-template-columns:1.4fr 1fr 1fr;gap:2.5rem;padding-bottom:2rem}
+.footer-brand-logo{width:46px;height:46px;object-fit:contain;background:white;border-radius:9px;padding:2px;margin-bottom:.85rem}
+.footer-brand-name{font-family:'Merriweather',serif;font-size:.95rem;font-weight:700;color:#fff;line-height:1.3}
+.footer-brand-sub{font-size:.72rem;color:rgba(255,255,255,.4);margin-top:.2rem;line-height:1.5}
+@media(max-width:768px){ .footer-grid{grid-template-columns:1fr;gap:1.5rem} .archive-table{display:block;overflow-x:auto} }
+</style>
+</head>
+<body>
+
+<nav>
+  <a class="nav-brand" href="index.html">
+    <img class="nav-logo-img" src="assets/logo.png" alt="DOEH BUHS" onerror="this.style.background='var(--green-pale)'"/>
+    <div class="nav-name">DOEH, BUHS<small>Dept. of Occupational &amp; Environmental Health</small></div>
+  </a>
+  <div class="nav-links">
+    <a class="nb" href="index.html">Home</a>
+    <a class="nb" href="about.html">About</a>
+    <a class="nb" href="academics.html">Academics</a>
+    <a class="nb active" href="research.html">Research</a>
+    <a class="nb" href="news.html">News &amp; Events</a>
+    <a class="nb" href="gallery.html">Gallery</a>
+    <a class="nb" href="alumni.html">Alumni</a>
+    <a class="nb" href="contact.html">Contact</a>
+  </div>
+  <button class="hamburger" id="hamburger" onclick="toggleMenu()" aria-label="Open menu"><span></span><span></span><span></span></button>
+</nav>
+<div class="mobile-menu" id="mobile-menu">
+  <a class="mnb" href="index.html">Home</a>
+  <a class="mnb" href="about.html">About</a>
+  <a class="mnb" href="academics.html">Academics</a>
+  <a class="mnb active" href="research.html">Research</a>
+  <a class="mnb" href="news.html">News &amp; Events</a>
+  <a class="mnb" href="gallery.html">Gallery</a>
+  <a class="mnb" href="alumni.html">Alumni</a>
+  <a class="mnb" href="contact.html">Contact</a>
+</div>
+
+<section class="page-hero">
+  <h1>Research that finds<br/><em>the danger first</em></h1>
+  <p>Before a workplace hazard becomes a tragedy, someone has to notice it. That's what research in this field is for.</p>
+</section>
+
+<!-- KEY AREAS -->
+<section class="sec">
+  <div class="sec-inner">
+    <div class="sec-title">Key research areas</div>
+    <div class="sec-divider"></div>
+    <div class="grid">
+      <div class="area-card"><div class="area-name">[Research area 1]</div><div class="area-desc">[PLACEHOLDER: one line]</div></div>
+      <div class="area-card"><div class="area-name">[Research area 2]</div><div class="area-desc">[PLACEHOLDER]</div></div>
+      <div class="area-card"><div class="area-name">[Research area 3]</div><div class="area-desc">[PLACEHOLDER]</div></div>
+      <div class="area-card"><div class="area-name">[Research area 4]</div><div class="area-desc">[PLACEHOLDER]</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ONGOING PROJECTS -->
+<section class="sec" style="background:var(--offwhite)">
+  <div class="sec-inner">
+    <div class="sec-title">Ongoing &amp; current projects</div>
+    <div class="sec-divider"></div>
+    <div class="grid">
+      <div class="area-card"><div class="area-name">[Project title]</div><div class="area-desc">[PLACEHOLDER: what it's investigating, who's leading it]</div></div>
+      <div class="area-card"><div class="area-name">[Project title]</div><div class="area-desc">[PLACEHOLDER]</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- STUDENT RESEARCH -->
+<section class="sec">
+  <div class="sec-inner">
+    <div class="sec-title">Student research</div>
+    <div class="sec-divider"></div>
+    <p class="sec-sub">How a student actually gets involved in research here, step by step.</p>
+    <div class="pathway-steps">
+      <div class="pathway-step">
+        <div class="pathway-num">1</div>
+        <div class="pathway-text"><h4>The thesis requirement</h4><p>[PLACEHOLDER: when in the program students complete a thesis, and what that process looks like]</p></div>
+      </div>
+      <div class="pathway-step">
+        <div class="pathway-num">2</div>
+        <div class="pathway-text"><h4>Getting matched with a research area and advisor</h4><p>[PLACEHOLDER: how students choose or get assigned a topic and mentor]</p></div>
+      </div>
+      <div class="pathway-step">
+        <div class="pathway-num">3</div>
+        <div class="pathway-text"><h4>Real work from past students</h4><p>A few examples of what past students have actually researched, so you know what's possible:</p></div>
+      </div>
+    </div>
+    <div class="grid" style="margin-top:1.5rem">
+      <div class="area-card"><div class="area-name">[Past student project title]</div><div class="area-desc">[PLACEHOLDER, linking to thesis archive below]</div></div>
+      <div class="area-card"><div class="area-name">[Past student project title]</div><div class="area-desc">[PLACEHOLDER]</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- PUBLICATIONS & THESIS ARCHIVE -->
+<section class="sec" style="background:var(--offwhite)">
+  <div class="sec-inner">
+    <div class="sec-title">Publications &amp; thesis archive</div>
+    <div class="sec-divider"></div>
+    <p class="sec-sub">Searchable by year and program, not a wall of abstracts.</p>
+    <div class="archive-filters">
+      <input type="text" placeholder="Search by title or author..." style="flex:1;min-width:200px"/>
+      <select><option>All programs</option><option>BPH</option><option>MPH-OHS</option><option>MPH-EHS</option></select>
+      <select><option>All years</option></select>
+    </div>
+    <table class="archive-table">
+      <thead><tr><th>Title</th><th>Author</th><th>Year</th><th>Program</th><th>Advisor</th><th></th></tr></thead>
+      <tbody>
+        <tr><td>[Thesis title]</td><td>[Author name]</td><td>[Year]</td><td>BPH</td><td>[Advisor]</td><td><a href="#">View PDF</a></td></tr>
+        <tr><td>[Thesis title]</td><td>[Author name]</td><td>[Year]</td><td>MPH-OHS</td><td>[Advisor]</td><td><a href="#">View PDF</a></td></tr>
+        <tr><td>[Thesis title]</td><td>[Author name]</td><td>[Year]</td><td>MPH-EHS</td><td>[Advisor]</td><td><a href="#">View PDF</a></td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<!-- FACULTY RESEARCH PROFILES -->
+<section class="sec">
+  <div class="sec-inner">
+    <div class="sec-title">Faculty research profiles</div>
+    <div class="sec-divider"></div>
+    <div class="grid">
+      <div class="leader-card">
+        <div class="leader-photo">FA</div>
+        <div><div class="leader-name">[Faculty name]</div><div class="leader-title">[Research focus]</div><div class="leader-msg">[PLACEHOLDER: link to full publication list]</div></div>
+      </div>
+      <div class="leader-card">
+        <div class="leader-photo">FA</div>
+        <div><div class="leader-name">[Faculty name]</div><div class="leader-title">[Research focus]</div><div class="leader-msg">[PLACEHOLDER]</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FACILITIES -->
+<section class="sec" style="background:var(--offwhite)">
+  <div class="sec-inner">
+    <div class="sec-title">Research facilities</div>
+    <div class="sec-divider"></div>
+    <div class="grid">
+      <div class="area-card"><div class="area-name">Environmental Lab</div><div class="area-desc">[PLACEHOLDER]</div></div>
+      <div class="area-card"><div class="area-name">Occupational Lab</div><div class="area-desc">[PLACEHOLDER]</div></div>
+      <div class="area-card"><div class="area-name">GIS Lab</div><div class="area-desc">[PLACEHOLDER]</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- COLLABORATION -->
+<section class="sec">
+  <div class="sec-inner">
+    <div class="sec-title">Collaboration &amp; funding</div>
+    <div class="sec-divider"></div>
+    <p class="sec-sub">Industry partnerships, research foundations, and funding opportunities. <em>(Pending confirmation of real, formalized partners.)</em></p>
+    <div class="grid">
+      <div class="area-card"><div class="area-name">[Partner/foundation]</div><div class="area-desc">[PLACEHOLDER]</div></div>
+    </div>
+  </div>
+</section>
+
+<footer class="site-footer">
+  <div class="footer-grid">
+    <div>
+      <img class="footer-brand-logo" src="assets/logo.png" alt="DOEH" onerror="this.style.display='none'"/>
+      <div class="footer-brand-name">DOEH, BUHS</div>
+      <div class="footer-brand-sub">Department of Occupational &amp; Environmental Health<br>Bangladesh University of Health Sciences</div>
+    </div>
+    <div>
+      <div class="footer-col-title">Quick Links</div>
+      <a class="footer-link" href="index.html">Home</a>
+      <a class="footer-link" href="about.html">About DOEH</a>
+      <a class="footer-link" href="academics.html">Academics</a>
+      <a class="footer-link" href="alumni.html">Alumni</a>
+    </div>
+    <div>
+      <div class="footer-col-title">Contact</div>
+      <a class="footer-link" href="mailto:doeh@buhs.ac.bd">doeh@buhs.ac.bd</a>
+      <span class="footer-link" style="cursor:default">125/1, Darus Salam, Mirpur, Dhaka-1216</span>
+    </div>
+  </div>
+  <div class="footer-bottom"><span class="footer-copy">© 2026 Department of Occupational &amp; Environmental Health, BUHS. All rights reserved.</span></div>
+</footer>
+<script src="js/main.js"></script>
+</body>
+</html>
