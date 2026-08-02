@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Gallery | DOEH, BUHS</title>
+<meta name="description" content="Campus, academic, event, sports, and cultural photos and videos from the Department of Occupational and Environmental Health, BUHS."/>
+<link rel="canonical" href="https://doeh-buhs.ac/gallery.html"/>
+<link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@400;700;900&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="css/style.css"/>
+
+<style>
+.gal-tabs{display:flex;gap:.5rem;flex-wrap:wrap;margin-bottom:1.75rem}
+.gal-tab{padding:.55rem 1.2rem;border-radius:100px;border:1.5px solid var(--border2);background:#fff;font-size:.83rem;font-weight:600;color:var(--gray);cursor:pointer;transition:all .18s}
+.gal-tab.active,.gal-tab:hover{background:var(--green-pale);color:var(--green2);border-color:var(--green)}
+.gal-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:1rem}
+.gal-item{aspect-ratio:4/3;background:var(--green-pale);border-radius:12px;display:flex;align-items:center;justify-content:center;color:var(--green2);font-size:.78rem;font-weight:600;text-align:center;padding:1rem;border:1px solid var(--border)}
+
+.video-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:1.25rem}
+.video-item{background:var(--green3);border-radius:12px;aspect-ratio:16/9;display:flex;align-items:center;justify-content:center;color:rgba(255,255,255,.6);font-size:.82rem}
+
+.site-footer{background:var(--green3);padding:2.75rem 2rem 0}
+.footer-grid{max-width:1100px;margin:0 auto;display:grid;grid-template-columns:1.4fr 1fr 1fr;gap:2.5rem;padding-bottom:2rem}
+.footer-brand-logo{width:46px;height:46px;object-fit:contain;background:white;border-radius:9px;padding:2px;margin-bottom:.85rem}
+.footer-brand-name{font-family:'Merriweather',serif;font-size:.95rem;font-weight:700;color:#fff;line-height:1.3}
+.footer-brand-sub{font-size:.72rem;color:rgba(255,255,255,.4);margin-top:.2rem;line-height:1.5}
+@media(max-width:768px){ .footer-grid{grid-template-columns:1fr;gap:1.5rem} }
+</style>
+</head>
+<body>
+
+<nav>
+  <a class="nav-brand" href="index.html">
+    <img class="nav-logo-img" src="assets/logo.png" alt="DOEH BUHS" onerror="this.style.background='var(--green-pale)'"/>
+    <div class="nav-name">DOEH, BUHS<small>Dept. of Occupational &amp; Environmental Health</small></div>
+  </a>
+  <div class="nav-links">
+    <a class="nb" href="index.html">Home</a>
+    <a class="nb" href="about.html">About</a>
+    <a class="nb" href="academics.html">Academics</a>
+    <a class="nb" href="research.html">Research</a>
+    <a class="nb" href="news.html">News &amp; Events</a>
+    <a class="nb active" href="gallery.html">Gallery</a>
+    <a class="nb" href="alumni.html">Alumni</a>
+    <a class="nb" href="contact.html">Contact</a>
+  </div>
+  <button class="hamburger" id="hamburger" onclick="toggleMenu()" aria-label="Open menu"><span></span><span></span><span></span></button>
+</nav>
+<div class="mobile-menu" id="mobile-menu">
+  <a class="mnb" href="index.html">Home</a>
+  <a class="mnb" href="about.html">About</a>
+  <a class="mnb" href="academics.html">Academics</a>
+  <a class="mnb" href="research.html">Research</a>
+  <a class="mnb" href="news.html">News &amp; Events</a>
+  <a class="mnb active" href="gallery.html">Gallery</a>
+  <a class="mnb" href="alumni.html">Alumni</a>
+  <a class="mnb" href="contact.html">Contact</a>
+</div>
+
+<section class="page-hero">
+  <h1>Life at<br/><em>DOEH</em></h1>
+  <p>Campus, classes, events, and the people who make up this department.</p>
+</section>
+
+<!-- PHOTOS -->
+<section class="sec">
+  <div class="sec-inner">
+    <div class="sec-title">Photos</div>
+    <div class="sec-divider"></div>
+    <div class="gal-tabs">
+      <div class="gal-tab active" onclick="filterGal('all',this)">All</div>
+      <div class="gal-tab" onclick="filterGal('campus',this)">Campus</div>
+      <div class="gal-tab" onclick="filterGal('academic',this)">Academic</div>
+      <div class="gal-tab" onclick="filterGal('events',this)">Events</div>
+      <div class="gal-tab" onclick="filterGal('sports',this)">Sports</div>
+      <div class="gal-tab" onclick="filterGal('cultural',this)">Cultural</div>
+    </div>
+    <div class="gal-grid" id="gal-grid">
+      <div class="gal-item" data-cat="campus">[PLACEHOLDER photo: Campus building]</div>
+      <div class="gal-item" data-cat="campus">[PLACEHOLDER photo: Classroom]</div>
+      <div class="gal-item" data-cat="academic">[PLACEHOLDER photo: Lab session]</div>
+      <div class="gal-item" data-cat="events">[PLACEHOLDER photo: Convocation]</div>
+      <div class="gal-item" data-cat="events">[PLACEHOLDER photo: Department fest]</div>
+      <div class="gal-item" data-cat="sports">[PLACEHOLDER photo: Sports day]</div>
+      <div class="gal-item" data-cat="cultural">[PLACEHOLDER photo: Cultural event]</div>
+      <div class="gal-item" data-cat="campus">[PLACEHOLDER photo: Student life]</div>
+    </div>
+  </div>
+</section>
+
+<!-- VIDEOS -->
+<section class="sec" style="background:var(--offwhite)">
+  <div class="sec-inner">
+    <div class="sec-title">Video gallery</div>
+    <div class="sec-divider"></div>
+    <div class="video-grid">
+      <div class="video-item">[PLACEHOLDER: campus tour video]</div>
+      <div class="video-item">[PLACEHOLDER: student testimonial]</div>
+    </div>
+  </div>
+</section>
+
+<footer class="site-footer">
+  <div class="footer-grid">
+    <div>
+      <img class="footer-brand-logo" src="assets/logo.png" alt="DOEH" onerror="this.style.display='none'"/>
+      <div class="footer-brand-name">DOEH, BUHS</div>
+      <div class="footer-brand-sub">Department of Occupational &amp; Environmental Health<br>Bangladesh University of Health Sciences</div>
+    </div>
+    <div>
+      <div class="footer-col-title">Quick Links</div>
+      <a class="footer-link" href="index.html">Home</a>
+      <a class="footer-link" href="about.html">About DOEH</a>
+      <a class="footer-link" href="research.html">Research</a>
+      <a class="footer-link" href="alumni.html">Alumni</a>
+    </div>
+    <div>
+      <div class="footer-col-title">Contact</div>
+      <a class="footer-link" href="mailto:doeh@buhs.ac.bd">doeh@buhs.ac.bd</a>
+      <span class="footer-link" style="cursor:default">125/1, Darus Salam, Mirpur, Dhaka-1216</span>
+    </div>
+  </div>
+  <div class="footer-bottom"><span class="footer-copy">© 2026 Department of Occupational &amp; Environmental Health, BUHS. All rights reserved.</span></div>
+</footer>
+<script>
+function filterGal(cat, el){
+  document.querySelectorAll('.gal-tab').forEach(t=>t.classList.remove('active'));
+  el.classList.add('active');
+  document.querySelectorAll('.gal-item').forEach(item=>{
+    item.style.display = (cat==='all' || item.dataset.cat===cat) ? 'flex' : 'none';
+  });
+}
+</script>
+<script src="js/main.js"></script>
+</body>
+</html>
