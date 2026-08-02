@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Academics | DOEH, BUHS</title>
+<meta name="description" content="Explore the BPH and MPH programs in Occupational and Environmental Health at BUHS, admission requirements, curriculum, faculty, and academic calendar."/>
+<link rel="canonical" href="https://doeh-buhs.ac/academics.html"/>
+<link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@400;700;900&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="css/style.css"/>
+
+<style>
+.prog-full{background:#fff;border-radius:18px;border:1px solid var(--border);overflow:hidden;margin-bottom:1.5rem}
+.prog-full-head{padding:1.75rem;border-top:4px solid var(--green);cursor:pointer;display:flex;justify-content:space-between;align-items:flex-start;gap:1rem}
+.prog-full-badges{display:flex;gap:8px;margin-bottom:.5rem;flex-wrap:wrap}
+.prog-code-badge{background:var(--green-pale);color:var(--green2);font-size:.68rem;font-weight:700;padding:.2rem .65rem;border-radius:100px;border:1px solid var(--green-dim)}
+.prog-iosh-badge{background:#e6f1fb;color:#185FA5;font-size:.65rem;font-weight:700;padding:.2rem .65rem;border-radius:100px}
+.prog-full-head h3{font-family:'Merriweather',serif;font-size:1.15rem;color:var(--green3);margin-bottom:.3rem}
+.prog-full-head p{font-size:.88rem;color:var(--gray);line-height:1.7;max-width:600px}
+.prog-stats{display:flex;gap:1.5rem;flex-wrap:wrap;font-size:.78rem;color:var(--gray);white-space:nowrap}
+.prog-stats strong{color:var(--green3);display:block;font-size:1rem;font-family:'Merriweather',serif}
+.prog-full-body{padding:0 1.75rem 1.75rem;border-top:1px solid var(--border)}
+.prog-full-body h4{font-size:.85rem;font-weight:700;color:var(--green3);margin:1.25rem 0 .6rem}
+.prog-full-body ul{padding-left:1.2rem}
+.prog-full-body li{font-size:.85rem;color:var(--gray);line-height:1.8}
+
+.sem-accordion{background:#fff;border:1px solid var(--border);border-radius:12px;margin-bottom:.75rem;overflow:hidden}
+.sem-accordion summary{padding:1rem 1.5rem;cursor:pointer;font-weight:600;color:var(--green3);font-size:.9rem;list-style:none;display:flex;justify-content:space-between}
+.sem-accordion summary::-webkit-details-marker{display:none}
+.sem-accordion summary::after{content:'+';font-size:1.2rem;color:var(--green)}
+.sem-accordion[open] summary::after{content:'−'}
+.sem-body{padding:0 1.5rem 1.25rem;font-size:.85rem;color:var(--gray);line-height:1.8}
+
+.leader-card{background:#fff;border-radius:16px;padding:1.75rem;border:1px solid var(--border);display:flex;gap:1.25rem;align-items:flex-start}
+.leader-photo{width:64px;height:64px;border-radius:50%;flex-shrink:0;background:var(--green-pale);display:flex;align-items:center;justify-content:center;font-family:'Merriweather',serif;font-weight:900;color:var(--green2);font-size:1.1rem}
+.leader-name{font-family:'Merriweather',serif;font-weight:700;color:var(--green3);font-size:.98rem}
+.leader-title{font-size:.78rem;color:var(--green);font-weight:600;margin-bottom:.6rem}
+.leader-msg{font-size:.87rem;color:var(--gray);line-height:1.75}
+
+.calendar-card{background:#fff;border-radius:12px;padding:1.5rem;border:1px solid var(--border);border-left:3px solid var(--green)}
+.calendar-label{font-family:'Merriweather',serif;font-weight:700;color:var(--green3);font-size:.95rem;margin-bottom:.4rem}
+.calendar-desc{font-size:.82rem;color:var(--gray);line-height:1.65}
+
+.site-footer{background:var(--green3);padding:2.75rem 2rem 0}
+.footer-grid{max-width:1100px;margin:0 auto;display:grid;grid-template-columns:1.4fr 1fr 1fr;gap:2.5rem;padding-bottom:2rem}
+.footer-brand-logo{width:46px;height:46px;object-fit:contain;background:white;border-radius:9px;padding:2px;margin-bottom:.85rem}
+.footer-brand-name{font-family:'Merriweather',serif;font-size:.95rem;font-weight:700;color:#fff;line-height:1.3}
+.footer-brand-sub{font-size:.72rem;color:rgba(255,255,255,.4);margin-top:.2rem;line-height:1.5}
+@media(max-width:768px){ .footer-grid{grid-template-columns:1fr;gap:1.5rem} .prog-full-head{flex-direction:column} }
+</style>
+</head>
+<body>
+
+<nav>
+  <a class="nav-brand" href="index.html">
+    <img class="nav-logo-img" src="assets/logo.png" alt="DOEH BUHS" onerror="this.style.background='var(--green-pale)'"/>
+    <div class="nav-name">DOEH, BUHS<small>Dept. of Occupational &amp; Environmental Health</small></div>
+  </a>
+  <div class="nav-links">
+    <a class="nb" href="index.html">Home</a>
+    <a class="nb" href="about.html">About</a>
+    <a class="nb active" href="academics.html">Academics</a>
+    <a class="nb" href="research.html">Research</a>
+    <a class="nb" href="news.html">News &amp; Events</a>
+    <a class="nb" href="gallery.html">Gallery</a>
+    <a class="nb" href="alumni.html">Alumni</a>
+    <a class="nb" href="contact.html">Contact</a>
+  </div>
+  <button class="hamburger" id="hamburger" onclick="toggleMenu()" aria-label="Open menu"><span></span><span></span><span></span></button>
+</nav>
+<div class="mobile-menu" id="mobile-menu">
+  <a class="mnb" href="index.html">Home</a>
+  <a class="mnb" href="about.html">About</a>
+  <a class="mnb active" href="academics.html">Academics</a>
+  <a class="mnb" href="research.html">Research</a>
+  <a class="mnb" href="news.html">News &amp; Events</a>
+  <a class="mnb" href="gallery.html">Gallery</a>
+  <a class="mnb" href="alumni.html">Alumni</a>
+  <a class="mnb" href="contact.html">Contact</a>
+</div>
+
+<section class="page-hero">
+  <h1>Three paths into<br/><em>one field</em></h1>
+  <p>Every program here leads somewhere real. Choose based on where you want to end up, not just where you are now.</p>
+</section>
+
+<!-- PROGRAMS -->
+<section class="sec">
+  <div class="sec-inner">
+    <div class="sec-title">Programs offered</div>
+    <div class="sec-divider"></div>
+    <p class="sec-sub">Click a program to see its full curriculum, admission requirements, and career outcomes.</p>
+
+    <div class="prog-full">
+      <div class="prog-full-head" onclick="this.nextElementSibling.classList.toggle('open')">
+        <div>
+          <div class="prog-full-badges"><span class="prog-code-badge">BPH</span><span class="prog-iosh-badge">IOSH Accredited</span></div>
+          <h3>Bachelor of Public Health, Occupational &amp; Environmental Health and Safety</h3>
+          <p>If you want to start from the beginning and build a full career in this field, this is your program. Hands-on lab and field work from day one, so you graduate ready to walk onto a construction site, into a factory, or straight into a master's program, at home or abroad.</p>
+        </div>
+        <div class="prog-stats">
+          <div><strong>4 yrs</strong>Duration</div>
+          <div><strong>8</strong>Semesters</div>
+          <div><strong>160</strong>Credits</div>
+          <div><strong>48</strong>Courses</div>
+        </div>
+      </div>
+      <div class="prog-full-body" style="display:none" id="bph-body">
+        <h4>Admission eligibility</h4>
+        <ul>
+          <li>SSC (Science) and HSC (Science) or equivalent, with a minimum CGPA of 2.5 in either and a combined CGPA of 5.0</li>
+          <li>O/A-Level: minimum 5 O-Level and 2 A-Level subjects; Grade B (GPA 4.00) in at least 4 subjects, Grade C (GPA 3.50) in 3 subjects</li>
+          <li>Four-year Diploma in MATS, IHT, or other relevant disciplines also considered</li>
+          <li>Foreign students with equivalent qualifications are eligible; equivalence decided by BUHS's Equivalence Committee</li>
+        </ul>
+        <h4>Where BPH graduates work</h4>
+        <ul>
+          <li>Mega construction projects</li>
+          <li>Oil, gas &amp; power supply sector</li>
+          <li>Garments, jute &amp; leather industry</li>
+          <li>Steel &amp; engineering industry</li>
+          <li>Food &amp; chemical industry</li>
+          <li>Environment protection &amp; disaster management</li>
+          <li>Government &amp; NGOs</li>
+          <li>Universities, research centers &amp; consulting firms</li>
+          <li>United Nations &amp; international organizations</li>
+        </ul>
+        <h4>Curriculum, semester by semester</h4>
+        <details class="sem-accordion"><summary>Semester 1 & 2</summary><div class="sem-body">[PLACEHOLDER: real course list]</div></details>
+        <details class="sem-accordion"><summary>Semester 3 & 4</summary><div class="sem-body">[PLACEHOLDER: real course list]</div></details>
+        <details class="sem-accordion"><summary>Semester 5 & 6</summary><div class="sem-body">[PLACEHOLDER: real course list]</div></details>
+        <details class="sem-accordion"><summary>Semester 7 & 8</summary><div class="sem-body">[PLACEHOLDER: real course list, including thesis/internship]</div></details>
+      </div>
+    </div>
+
+    <div class="prog-full">
+      <div class="prog-full-head" onclick="this.nextElementSibling.classList.toggle('open')">
+        <div>
+          <div class="prog-full-badges"><span class="prog-code-badge">MPH-OHS</span><span class="prog-iosh-badge">IOSH Accredited</span></div>
+          <h3>Master of Public Health, Occupational Health &amp; Safety</h3>
+          <p>[PLACEHOLDER: written the same way as BPH above, once real details are confirmed]</p>
+        </div>
+        <div class="prog-stats">
+          <div><strong>1.5 yrs</strong>Duration</div>
+          <div><strong>3</strong>Semesters</div>
+          <div><strong>70</strong>Credits</div>
+        </div>
+      </div>
+      <div class="prog-full-body" style="display:none">
+        <h4>Admission eligibility</h4>
+        <ul><li>[PLACEHOLDER: real MPH-OHS admission requirements]</li></ul>
+      </div>
+    </div>
+
+    <div class="prog-full">
+      <div class="prog-full-head" onclick="this.nextElementSibling.classList.toggle('open')">
+        <div>
+          <div class="prog-full-badges"><span class="prog-code-badge">MPH-EHS</span></div>
+          <h3>Master of Public Health, Environmental Health &amp; Safety</h3>
+          <p>[PLACEHOLDER: written the same way as BPH above, once real details are confirmed]</p>
+        </div>
+        <div class="prog-stats">
+          <div><strong>2 yrs</strong>Duration</div>
+          <div><strong>4</strong>Semesters</div>
+          <div><strong>80</strong>Credits</div>
+        </div>
+      </div>
+      <div class="prog-full-body" style="display:none">
+        <h4>Admission eligibility</h4>
+        <ul><li>[PLACEHOLDER: real MPH-EHS admission requirements]</li></ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FACULTY -->
+<section class="sec" style="background:var(--offwhite)">
+  <div class="sec-inner">
+    <div class="sec-title">Faculty</div>
+    <div class="sec-divider"></div>
+    <p class="sec-sub">The people teaching these programs, and why the way they teach matters.</p>
+    <div class="grid">
+      <div class="leader-card">
+        <div class="leader-photo">FA</div>
+        <div>
+          <div class="leader-name">[Faculty name]</div>
+          <div class="leader-title">[Title, specialization]</div>
+          <div class="leader-msg">[PLACEHOLDER: one honest sentence on how they teach, not just a CV summary]</div>
+        </div>
+      </div>
+      <div class="leader-card">
+        <div class="leader-photo">FA</div>
+        <div>
+          <div class="leader-name">[Faculty name]</div>
+          <div class="leader-title">[Title, specialization]</div>
+          <div class="leader-msg">[PLACEHOLDER]</div>
+        </div>
+      </div>
+      <div class="leader-card">
+        <div class="leader-photo">FA</div>
+        <div>
+          <div class="leader-name">[Faculty name]</div>
+          <div class="leader-title">[Title, specialization]</div>
+          <div class="leader-msg">[PLACEHOLDER]</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CALENDAR -->
+<section class="sec">
+  <div class="sec-inner">
+    <div class="sec-title">Academic calendar</div>
+    <div class="sec-divider"></div>
+    <div class="grid">
+      <div class="calendar-card"><div class="calendar-label">Intake</div><div class="calendar-desc">Programs commence in Spring (April) and Fall (October) each year.</div></div>
+      <div class="calendar-card"><div class="calendar-label">Exams</div><div class="calendar-desc">[PLACEHOLDER: exam period timing]</div></div>
+      <div class="calendar-card"><div class="calendar-label">Breaks</div><div class="calendar-desc">[PLACEHOLDER: semester break schedule]</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- LEARNING RESOURCES -->
+<section class="sec" style="background:var(--offwhite)">
+  <div class="sec-inner">
+    <div class="sec-title">Learning resources</div>
+    <div class="sec-divider"></div>
+    <div class="grid">
+      <div class="calendar-card"><div class="calendar-label">Library access</div><div class="calendar-desc">[PLACEHOLDER]</div></div>
+      <div class="calendar-card"><div class="calendar-label">Journals &amp; databases</div><div class="calendar-desc">[PLACEHOLDER]</div></div>
+      <div class="calendar-card"><div class="calendar-label">Lab &amp; field equipment</div><div class="calendar-desc">[PLACEHOLDER]</div></div>
+    </div>
+  </div>
+</section>
+
+<footer class="site-footer">
+  <div class="footer-grid">
+    <div>
+      <img class="footer-brand-logo" src="assets/logo.png" alt="DOEH" onerror="this.style.display='none'"/>
+      <div class="footer-brand-name">DOEH, BUHS</div>
+      <div class="footer-brand-sub">Department of Occupational &amp; Environmental Health<br>Bangladesh University of Health Sciences</div>
+    </div>
+    <div>
+      <div class="footer-col-title">Quick Links</div>
+      <a class="footer-link" href="index.html">Home</a>
+      <a class="footer-link" href="about.html">About DOEH</a>
+      <a class="footer-link" href="academics.html">Academics</a>
+      <a class="footer-link" href="research.html">Research</a>
+      <a class="footer-link" href="alumni.html">Alumni</a>
+    </div>
+    <div>
+      <div class="footer-col-title">Contact</div>
+      <a class="footer-link" href="mailto:doeh@buhs.ac.bd">doeh@buhs.ac.bd</a>
+      <span class="footer-link" style="cursor:default">125/1, Darus Salam, Mirpur, Dhaka-1216</span>
+    </div>
+  </div>
+  <div class="footer-bottom"><span class="footer-copy">© 2026 Department of Occupational &amp; Environmental Health, BUHS. All rights reserved.</span></div>
+</footer>
+
+<style>.prog-full-body.open,.prog-full-body[style*="block"]{display:block !important}</style>
+<script>
+document.querySelectorAll('.prog-full-head').forEach(h=>{
+  h.addEventListener('click', ()=>{
+    const body = h.nextElementSibling;
+    body.style.display = body.style.display === 'none' ? 'block' : 'none';
+  });
+});
+</script>
+<script src="js/main.js"></script>
+</body>
+</html>
