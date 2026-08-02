@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>News & Events | DOEH, BUHS</title>
+<meta name="description" content="Latest announcements, upcoming events, achievements, and past events from the Department of Occupational and Environmental Health, BUHS."/>
+<link rel="canonical" href="https://doeh-buhs.ac/news.html"/>
+<link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@400;700;900&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="css/style.css"/>
+
+<style>
+.news-card{background:#fff;border-radius:14px;padding:1.5rem;border:1px solid var(--border);transition:transform .22s,box-shadow .22s}
+.news-card:hover{transform:translateY(-3px);box-shadow:var(--shadow-lg)}
+.news-tag{font-size:.68rem;font-weight:700;padding:.2rem .7rem;border-radius:100px}
+.news-date{font-size:.75rem;color:var(--gray)}
+.news-title{font-size:.92rem;font-weight:600;color:var(--green3);line-height:1.5;margin-top:.85rem}
+
+.archive-item{display:flex;justify-content:space-between;align-items:center;padding:1rem 1.25rem;background:#fff;border:1px solid var(--border);border-radius:10px;margin-bottom:.6rem;font-size:.85rem}
+.archive-item span:first-child{color:var(--navy);font-weight:600}
+.archive-item span:last-child{color:var(--gray);font-size:.78rem}
+
+.site-footer{background:var(--green3);padding:2.75rem 2rem 0}
+.footer-grid{max-width:1100px;margin:0 auto;display:grid;grid-template-columns:1.4fr 1fr 1fr;gap:2.5rem;padding-bottom:2rem}
+.footer-brand-logo{width:46px;height:46px;object-fit:contain;background:white;border-radius:9px;padding:2px;margin-bottom:.85rem}
+.footer-brand-name{font-family:'Merriweather',serif;font-size:.95rem;font-weight:700;color:#fff;line-height:1.3}
+.footer-brand-sub{font-size:.72rem;color:rgba(255,255,255,.4);margin-top:.2rem;line-height:1.5}
+@media(max-width:768px){ .footer-grid{grid-template-columns:1fr;gap:1.5rem} }
+</style>
+</head>
+<body>
+
+<nav>
+  <a class="nav-brand" href="index.html">
+    <img class="nav-logo-img" src="assets/logo.png" alt="DOEH BUHS" onerror="this.style.background='var(--green-pale)'"/>
+    <div class="nav-name">DOEH, BUHS<small>Dept. of Occupational &amp; Environmental Health</small></div>
+  </a>
+  <div class="nav-links">
+    <a class="nb" href="index.html">Home</a>
+    <a class="nb" href="about.html">About</a>
+    <a class="nb" href="academics.html">Academics</a>
+    <a class="nb" href="research.html">Research</a>
+    <a class="nb active" href="news.html">News &amp; Events</a>
+    <a class="nb" href="gallery.html">Gallery</a>
+    <a class="nb" href="alumni.html">Alumni</a>
+    <a class="nb" href="contact.html">Contact</a>
+  </div>
+  <button class="hamburger" id="hamburger" onclick="toggleMenu()" aria-label="Open menu"><span></span><span></span><span></span></button>
+</nav>
+<div class="mobile-menu" id="mobile-menu">
+  <a class="mnb" href="index.html">Home</a>
+  <a class="mnb" href="about.html">About</a>
+  <a class="mnb" href="academics.html">Academics</a>
+  <a class="mnb" href="research.html">Research</a>
+  <a class="mnb active" href="news.html">News &amp; Events</a>
+  <a class="mnb" href="gallery.html">Gallery</a>
+  <a class="mnb" href="alumni.html">Alumni</a>
+  <a class="mnb" href="contact.html">Contact</a>
+</div>
+
+<section class="page-hero">
+  <h1>What's happening<br/><em>in the department</em></h1>
+  <p>Announcements, events, and milestones from DOEH.</p>
+</section>
+
+<!-- ANNOUNCEMENTS -->
+<section class="sec">
+  <div class="sec-inner">
+    <div class="sec-title">Latest announcements</div>
+    <div class="sec-divider"></div>
+    <div class="grid">
+      <div class="news-card"><span class="news-tag" style="background:var(--green-pale);color:var(--green2)">Admission</span><span class="news-date" style="float:right">[Date]</span><div class="news-title">[PLACEHOLDER: real admission circular]</div></div>
+      <div class="news-card"><span class="news-tag" style="background:#e6f1fb;color:#185FA5">Exam</span><span class="news-date" style="float:right">[Date]</span><div class="news-title">[PLACEHOLDER: real exam notice]</div></div>
+      <div class="news-card"><span class="news-tag" style="background:#faeeda;color:#854F0B">Holiday</span><span class="news-date" style="float:right">[Date]</span><div class="news-title">[PLACEHOLDER: real holiday notice]</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- UPCOMING EVENTS -->
+<section class="sec" style="background:var(--offwhite)">
+  <div class="sec-inner">
+    <div class="sec-title">Upcoming events</div>
+    <div class="sec-divider"></div>
+    <div class="grid">
+      <div class="news-card"><span class="news-tag" style="background:var(--green-pale);color:var(--green2)">Seminar</span><span class="news-date" style="float:right">[Date]</span><div class="news-title">[PLACEHOLDER]</div></div>
+      <div class="news-card"><span class="news-tag" style="background:var(--green-pale);color:var(--green2)">Workshop</span><span class="news-date" style="float:right">[Date]</span><div class="news-title">[PLACEHOLDER]</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ACHIEVEMENTS -->
+<section class="sec">
+  <div class="sec-inner">
+    <div class="sec-title">Achievements &amp; highlights</div>
+    <div class="sec-divider"></div>
+    <div class="grid">
+      <div class="news-card"><span class="news-tag" style="background:#faeeda;color:#854F0B">Award</span><div class="news-title">[PLACEHOLDER: real achievement]</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- PRESS RELEASES -->
+<section class="sec" style="background:var(--offwhite)">
+  <div class="sec-inner">
+    <div class="sec-title">Press releases</div>
+    <div class="sec-divider"></div>
+    <div class="archive-item"><span>[PLACEHOLDER: press release title]</span><span>[Date]</span></div>
+  </div>
+</section>
+
+<!-- EVENT ARCHIVE -->
+<section class="sec">
+  <div class="sec-inner">
+    <div class="sec-title">Event archive</div>
+    <div class="sec-divider"></div>
+    <p class="sec-sub">Past departmental events.</p>
+    <div class="archive-item"><span>[PLACEHOLDER: past event]</span><span>[Date]</span></div>
+    <div class="archive-item"><span>[PLACEHOLDER: past event]</span><span>[Date]</span></div>
+  </div>
+</section>
+
+<footer class="site-footer">
+  <div class="footer-grid">
+    <div>
+      <img class="footer-brand-logo" src="assets/logo.png" alt="DOEH" onerror="this.style.display='none'"/>
+      <div class="footer-brand-name">DOEH, BUHS</div>
+      <div class="footer-brand-sub">Department of Occupational &amp; Environmental Health<br>Bangladesh University of Health Sciences</div>
+    </div>
+    <div>
+      <div class="footer-col-title">Quick Links</div>
+      <a class="footer-link" href="index.html">Home</a>
+      <a class="footer-link" href="about.html">About DOEH</a>
+      <a class="footer-link" href="research.html">Research</a>
+      <a class="footer-link" href="alumni.html">Alumni</a>
+    </div>
+    <div>
+      <div class="footer-col-title">Contact</div>
+      <a class="footer-link" href="mailto:doeh@buhs.ac.bd">doeh@buhs.ac.bd</a>
+      <span class="footer-link" style="cursor:default">125/1, Darus Salam, Mirpur, Dhaka-1216</span>
+    </div>
+  </div>
+  <div class="footer-bottom"><span class="footer-copy">© 2026 Department of Occupational &amp; Environmental Health, BUHS. All rights reserved.</span></div>
+</footer>
+<script src="js/main.js"></script>
+</body>
+</html>
