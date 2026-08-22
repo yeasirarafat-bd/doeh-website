@@ -718,11 +718,9 @@ const SHEET_ID = '17LoK_khSe5xf105uxUCoAEBvd6d5rJfdl2azLJSO6zA';
 const SHEET_NAME = 'Alumni Directory';
 const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbynlMTkFjWenAzP68HP4KTkO_4kMRqQJQnSsi8NTSk9mXTetpJpEaoaJKElCrFxk4xtTg/exec';
 
-const C = {
- name:1, batch:2, role:3, org:4, sector:5, loc:6,
- email:7, phone:8, exp:9, bio:10, li:11, rg:12,
- status:13, photo:14, programme:15, cv:16
-};
+// Data now arrives from Apps Script with named fields (e.g. r['Full Name']),
+// not fixed column positions. This survives future column reordering,
+// and works even with the Sheet itself fully restricted.
 
 // Short programme labels for cards
 function shortProg(p){
@@ -758,52 +756,47 @@ function ini(n){ return (n||'').split(' ').filter(Boolean).map(w=>w[0]).join('')
 // Photo element
 function photoEl(r, cls, size){
  size = size || 80;
- if(r[C.photo] && r[C.photo].includes('drive.google.com')){
- const id = r[C.photo].match(/[-\w]{25,}/)?.[0];
+ if(r['Photo URL'] && r['Photo URL'].includes('drive.google.com')){
+ const id = r['Photo URL'].match(/[-\w]{25,}/)?.[0];
  if(id){
- return `<div class="${cls}"><img src="https://drive.google.com/thumbnail?id=${id}&sz=w${size}" alt="${r[C.name]}" onerror="this.parentElement.innerHTML='${ini(r[C.name])}'"/></div>`;
+ return `<div class="${cls}"><img src="https://drive.google.com/thumbnail?id=${id}&sz=w${size}" alt="${r['Full Name']}" onerror="this.parentElement.innerHTML='${ini(r['Full Name'])}'"/></div>`;
  }
  }
- return `<div class="${cls}">${ini(r[C.name])}</div>`;
+ return `<div class="${cls}">${ini(r['Full Name'])}</div>`;
 }
 
-// Load sheet data
+// Load approved alumni via Apps Script (not a direct Sheet query)
 async function loadData(){
- const url = `https://docs.google.com/spreadsheets/d/${SHEET_ID}/gviz/tq?tqx=out:json&sheet=${encodeURIComponent(SHEET_NAME)}&t=${Date.now()}`;
  try{
- const res = await fetch(url);
- const text = await res.text();
- const m = text.match(/google\.visualization\.Query\.setResponse\(([\s\S]*)\)/);
- if(!m) throw new Error('Parse error');
- const json = JSON.parse(m[1]);
- DATA = (json.table.rows||[])
- .map(r => r.c.map(c => (c && c.v != null) ? String(c.v).trim() : ''))
- .filter(r => r[C.name]);
+ const res = await fetch(SCRIPT_URL);
+ const json = await res.json();
+ if(json.result !== 'success') throw new Error(json.message || 'Unknown error');
+ DATA = json.data || [];
  updateStats();
  renderSpotlight();
  renderCards();
  } catch(e){
+ console.error('Failed to load alumni directory:', e);
  document.getElementById('loading-state').innerHTML = '<p style="color:#dc2626">Could not load alumni data. Please check your connection and try again.</p>';
  }
 }
 
 function updateStats(){
- const ap = DATA.filter(r => r[C.status].toLowerCase() === 'approved');
- document.getElementById('stat-total').textContent = ap.length + '+';
- document.getElementById('stat-orgs').textContent = new Set(ap.map(r=>r[C.org]).filter(Boolean)).size + '+';
- const countries = new Set(ap.map(r => { const p = (r[C.loc]||'').split(','); return p[p.length-1].trim(); }).filter(Boolean));
+ document.getElementById('stat-total').textContent = DATA.length + '+';
+ document.getElementById('stat-orgs').textContent = new Set(DATA.map(r=>r['Current Organization']).filter(Boolean)).size + '+';
+ const countries = new Set(DATA.map(r => { const p = (r['Location (City, Country)']||'').split(','); return p[p.length-1].trim(); }).filter(Boolean));
  document.getElementById('stat-countries').textContent = countries.size + '+';
 }
 
 function renderSpotlight(){
- const featured = DATA.filter(r => r[C.status].toLowerCase()==='approved' && r[C.bio] && r[C.bio].length > 50).slice(0,3);
+ const featured = DATA.filter(r => r['Brief Bio / Career Summary'] && r['Brief Bio / Career Summary'].length > 50).slice(0,3);
  const sec = document.getElementById('spotlight-sec');
  const grid = document.getElementById('spotlight-grid');
  if(!featured.length){ sec.style.display='none'; return; }
  grid.innerHTML = featured.map(r => {
- const text = r[C.bio].length > 180 ? r[C.bio].substring(0,180)+'...' : r[C.bio];
- const prog = shortProg(r[C.programme]);
- const batch = r[C.batch] || '';
+ const text = r['Brief Bio / Career Summary'].length > 180 ? r['Brief Bio / Career Summary'].substring(0,180)+'...' : r['Brief Bio / Career Summary'];
+ const prog = shortProg(r['Programme']);
+ const batch = r['Session'] || '';
  const progLine = prog && batch ? `${prog} · ${batch}` : prog || batch;
  return `
  <div class="spotlight-card">
@@ -812,8 +805,8 @@ function renderSpotlight(){
  <div class="spotlight-author">
  ${photoEl(r,'spotlight-av',80)}
  <div>
- <div class="spotlight-name">${r[C.name]}</div>
- <div class="spotlight-role">${r[C.role]||''} ${r[C.org]?'· '+r[C.org]:''}</div>
+ <div class="spotlight-name">${r['Full Name']}</div>
+ <div class="spotlight-role">${r['Current Designation']||''} ${r['Current Organization']?'· '+r['Current Organization']:''}</div>
  ${progLine?`<div class="spotlight-prog">${progLine}</div>`:''}
  </div>
  </div>
@@ -828,20 +821,21 @@ function renderCards(){
  const qs = (document.getElementById('q-sector').value||'').toLowerCase();
  const qp = (document.getElementById('q-prog').value||'').toLowerCase();
 
+ // No status check needed here anymore. Apps Script only ever sends
+ // already-approved rows, the browser never receives pending entries at all.
  const visible = DATA.filter(r => {
- if(r[C.status].toLowerCase() !== 'approved') return false;
- if(qn && !r[C.name].toLowerCase().includes(qn)) return false;
- if(qb && !(r[C.batch]||'').toLowerCase().includes(qb)) return false;
- if(qo && !(r[C.org]||'').toLowerCase().includes(qo)) return false;
- if(qs && !(r[C.sector]||'').toLowerCase().includes(qs)) return false;
- if(qp && !shortProg(r[C.programme]).toLowerCase().includes(qp) && !(r[C.programme]||'').toLowerCase().includes(qp)) return false;
+ if(qn && !r['Full Name'].toLowerCase().includes(qn)) return false;
+ if(qb && !(r['Session']||'').toLowerCase().includes(qb)) return false;
+ if(qo && !(r['Current Organization']||'').toLowerCase().includes(qo)) return false;
+ if(qs && !(r['Sector / Industry']||'').toLowerCase().includes(qs)) return false;
+ if(qp && !shortProg(r['Programme']).toLowerCase().includes(qp) && !(r['Programme']||'').toLowerCase().includes(qp)) return false;
  return true;
  });
 
  document.getElementById('loading-state').style.display = 'none';
  const grid = document.getElementById('cards-grid');
  const empty = document.getElementById('empty-state');
- const total = DATA.filter(r=>r[C.status].toLowerCase()==='approved').length;
+ const total = DATA.length;
 
  if(!visible.length){
  grid.innerHTML=''; empty.style.display='block';
@@ -850,10 +844,10 @@ function renderCards(){
  empty.style.display='none';
  document.getElementById('count-meta').textContent = `Showing ${visible.length} of ${total} alumni`;
  grid.innerHTML = visible.map((r,i) => {
- const prog = shortProg(r[C.programme]);
- const batch = r[C.batch]||'';
+ const prog = shortProg(r['Programme']);
+ const batch = r['Session']||'';
  const progLine = prog&&batch?`${prog} · ${batch}`:prog||batch;
- const tags = (r[C.exp]||'').split(',').map(t=>t.trim()).filter(Boolean).slice(0,2).map(t=>`<span class="atag">${t}</span>`).join('');
+ const tags = (r['Key Expertise (comma separated)']||'').split(',').map(t=>t.trim()).filter(Boolean).slice(0,2).map(t=>`<span class="atag">${t}</span>`).join('');
  return `
  <div class="acard" style="animation-delay:${(i%9)*.05}s" onclick="openModal(${DATA.indexOf(r)})">
  <div class="acard-top-bar"></div>
@@ -861,14 +855,14 @@ function renderCards(){
  <div class="acard-head">
  ${photoEl(r,'acard-av',100)}
  <div class="acard-info">
- <div class="acard-name">${r[C.name]}</div>
+ <div class="acard-name">${r['Full Name']}</div>
  ${progLine?`<div class="acard-prog-badge">${progLine}</div>`:''}
- <div class="acard-role">${r[C.role]||''}</div>
+ <div class="acard-role">${r['Current Designation']||''}</div>
  </div>
  </div>
  <div class="acard-divider"></div>
- <div class="acard-org"> ${r[C.org]||'N/A'}</div>
- ${r[C.loc]?`<div class="acard-loc"> ${r[C.loc]}</div>`:''}
+ <div class="acard-org"> ${r['Current Organization']||'N/A'}</div>
+ ${r['Location (City, Country)']?`<div class="acard-loc"> ${r['Location (City, Country)']}</div>`:''}
  ${tags?`<div class="acard-tags">${tags}</div>`:''}
  <div class="acard-footer">
  <span class="acard-hint">Click to read full story</span>
@@ -890,35 +884,35 @@ function clearFilters(){
 function openModal(i){
  const r = DATA[i]; if(!r) return;
  const mp = document.getElementById('m-photo');
- if(r[C.photo]&&r[C.photo].includes('drive.google.com')){
- const id = r[C.photo].match(/[-\w]{25,}/)?.[0];
- if(id){ mp.innerHTML=`<img src="https://drive.google.com/thumbnail?id=${id}&sz=w200" alt="${r[C.name]}" onerror="this.parentElement.innerHTML='${ini(r[C.name])}'"/>` }
- else { mp.textContent=ini(r[C.name]); }
- } else { mp.textContent=ini(r[C.name]); }
+ if(r['Photo URL']&&r['Photo URL'].includes('drive.google.com')){
+ const id = r['Photo URL'].match(/[-\w]{25,}/)?.[0];
+ if(id){ mp.innerHTML=`<img src="https://drive.google.com/thumbnail?id=${id}&sz=w200" alt="${r['Full Name']}" onerror="this.parentElement.innerHTML='${ini(r['Full Name'])}'"/>` }
+ else { mp.textContent=ini(r['Full Name']); }
+ } else { mp.textContent=ini(r['Full Name']); }
 
- document.getElementById('m-name').textContent = r[C.name];
- document.getElementById('m-prog').textContent = r[C.programme]&&r[C.batch]?`${r[C.programme]} · ${r[C.batch]}`:r[C.programme]||r[C.batch]||'';
- document.getElementById('m-role').textContent = r[C.role]||'';
+ document.getElementById('m-name').textContent = r['Full Name'];
+ document.getElementById('m-prog').textContent = r['Programme']&&r['Session']?`${r['Programme']} · ${r['Session']}`:r['Programme']||r['Session']||'';
+ document.getElementById('m-role').textContent = r['Current Designation']||'';
 
- const infoRows = [['Organization',r[C.org]],['Sector',r[C.sector]],['Location',r[C.loc]]].filter(([,v])=>v);
+ const infoRows = [['Organization',r['Current Organization']],['Sector',r['Sector / Industry']],['Location',r['Location (City, Country)']]].filter(([,v])=>v);
  document.getElementById('m-info-rows').innerHTML = infoRows.map(([l,v])=>`<div class="mrow"><span class="mrow-label">${l}</span><span class="mrow-val">${v}</span></div>`).join('');
 
  const bioSec = document.getElementById('m-bio-sec');
- if(r[C.bio]){ bioSec.style.display='block'; document.getElementById('m-bio').textContent=r[C.bio]; }
+ if(r['Brief Bio / Career Summary']){ bioSec.style.display='block'; document.getElementById('m-bio').textContent=r['Brief Bio / Career Summary']; }
  else bioSec.style.display='none';
 
  const expSec = document.getElementById('m-exp-sec');
- const tags = (r[C.exp]||'').split(',').map(t=>t.trim()).filter(Boolean);
+ const tags = (r['Key Expertise (comma separated)']||'').split(',').map(t=>t.trim()).filter(Boolean);
  if(tags.length){ expSec.style.display='block'; document.getElementById('m-exp').innerHTML=tags.map(t=>`<span class="modal-tag">${t}</span>`).join(''); }
  else expSec.style.display='none';
 
+ // Email and phone are deliberately never sent to the browser, so no
+ // Email/Call buttons here. LinkedIn is the intended way to make contact.
  const connectSec = document.getElementById('m-connect-sec');
  const links = [
- r[C.li]?`<a class="modal-link" href="${r[C.li]}" target="_blank" rel="noopener">in LinkedIn</a>`:'',
- r[C.rg]?`<a class="modal-link" href="${r[C.rg]}" target="_blank" rel="noopener"> Research</a>`:'',
- r[C.cv]?`<a class="modal-link" href="${r[C.cv]}" target="_blank" rel="noopener"> View CV</a>`:'',
- r[C.email]?`<a class="modal-link" href="mailto:${r[C.email]}"> Email</a>`:'',
- r[C.phone]?`<a class="modal-link" href="tel:${r[C.phone]}"> Call</a>`:'',
+ r['LinkedIn URL']?`<a class="modal-link" href="${r['LinkedIn URL']}" target="_blank" rel="noopener">in LinkedIn</a>`:'',
+ r['ResearchGate / Google Scholar']?`<a class="modal-link" href="${r['ResearchGate / Google Scholar']}" target="_blank" rel="noopener"> Research</a>`:'',
+ r['CV Link']?`<a class="modal-link" href="${r['CV Link']}" target="_blank" rel="noopener"> View CV</a>`:'',
  ].filter(Boolean);
  if(links.length){ connectSec.style.display='block'; document.getElementById('m-links').innerHTML=links.join(''); }
  else connectSec.style.display='none';
