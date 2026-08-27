@@ -3,65 +3,239 @@
 <head>
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<title>About | DOEH, BUHS</title>
-<meta name="description" content="The story, mission, leadership, and facilities of the Department of Occupational and Environmental Health at Bangladesh University of Health Sciences."/>
+<title>About | DOEH, BUHS | Department of Occupational &amp; Environmental Health</title>
+<meta name="description" content="Learn about the Department of Occupational and Environmental Health at Bangladesh University of Health Sciences. Established in 2012, IOSH accredited, field-focused learning for careers in occupational and environmental health."/>
 <link rel="canonical" href="https://doeh-buhs.ac/about.html"/>
 <meta property="og:type" content="website"/>
-<meta property="og:title" content="About | DOEH, BUHS"/>
-<meta property="og:description" content="The story, mission, leadership, and facilities of the Department of Occupational and Environmental Health, BUHS."/>
-<meta property="og:url" content="https://doeh-buhs.ac/about.html"/>
-
-<link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@400;700;900&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet"/>
+<meta property="og:title" content="About DOEH | Bangladesh University of Health Sciences"/>
+<meta property="og:description" content="Established in 2012. IOSH accredited programs. Field-focused learning for careers in occupational and environmental health."/>
+<link href="https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@0,400;0,700;0,900;1,400&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet"/>
 <link rel="stylesheet" href="css/style.css"/>
+<script type="application/ld+json">
+{
+  "@context":"https://schema.org",
+  "@type":"EducationalOrganization",
+  "name":"Department of Occupational and Environmental Health, BUHS",
+  "alternateName":"DOEH, BUHS",
+  "url":"https://doeh-buhs.ac/about.html",
+  "foundingDate":"2012",
+  "description":"The Department of Occupational and Environmental Health at Bangladesh University of Health Sciences offers IOSH-accredited BPH and MPH programs focused on field-based learning, research, and practical training in occupational and environmental health.",
+  "parentOrganization":{"@type":"CollegeOrUniversity","name":"Bangladesh University of Health Sciences"},
+  "address":{"@type":"PostalAddress","streetAddress":"125/1, Darus Salam (Technical Crossing)","addressLocality":"Mirpur, Dhaka","postalCode":"1216","addressCountry":"BD"}
+}
+</script>
 
 <style>
-/* -- STORY -- */
-.story-block{max-width:760px;margin:0 auto}
-.story-block p{font-size:.95rem;color:var(--gray);line-height:1.85;margin-bottom:1.25rem}
-.story-block p:last-child{margin-bottom:0}
-
-.pillars{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:1.5rem;margin-top:2.5rem}
-.pillar-card{background:#fff;border-radius:14px;padding:1.75rem;border:1px solid var(--border)}
-.pillar-label{font-size:.7rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--green);margin-bottom:.6rem}
-.pillar-text{font-size:.9rem;color:var(--navy);line-height:1.7}
-
-/* -- LEADERSHIP -- */
-.leader-card{background:#fff;border-radius:16px;padding:1.75rem;border:1px solid var(--border);display:flex;gap:1.25rem;align-items:flex-start}
-.leader-photo{width:64px;height:64px;border-radius:50%;flex-shrink:0;background:var(--green-pale);display:flex;align-items:center;justify-content:center;font-family:'Merriweather',serif;font-weight:900;color:var(--green2);font-size:1.1rem;overflow:hidden}
-.leader-photo img{width:100%;height:100%;object-fit:cover}
-.leader-name{font-family:'Merriweather',serif;font-weight:700;color:var(--green3);font-size:.98rem}
-.leader-title{font-size:.78rem;color:var(--green);font-weight:600;margin-bottom:.6rem}
-.leader-msg{font-size:.87rem;color:var(--gray);line-height:1.75;font-style:italic}
-
-/* -- ACCREDITATION -- */
-.accred-band{background:linear-gradient(135deg,var(--green3),var(--green2));border-radius:20px;padding:2.5rem;display:flex;align-items:center;gap:2rem;flex-wrap:wrap}
-.accred-badge{width:76px;height:76px;border-radius:16px;background:#fff;display:flex;align-items:center;justify-content:center;font-family:'Merriweather',serif;font-weight:900;color:var(--green2);font-size:1rem;flex-shrink:0}
-.accred-text h3{font-family:'Merriweather',serif;color:#fff;font-size:1.1rem;margin-bottom:.5rem}
-.accred-text p{font-size:.88rem;color:rgba(255,255,255,.75);line-height:1.7;max-width:560px}
-
-/* -- FACILITIES -- */
-.facility-card{background:#fff;border-radius:12px;padding:1.5rem;border:1px solid var(--border);border-left:3px solid var(--green)}
-.facility-name{font-family:'Merriweather',serif;font-weight:700;color:var(--green3);font-size:.95rem;margin-bottom:.4rem}
-.facility-desc{font-size:.82rem;color:var(--gray);line-height:1.65}
-
-/* -- LOCATION -- */
-.location-wrap{display:grid;grid-template-columns:1fr 1fr;gap:2.5rem;align-items:start}
-.location-details p{font-size:.88rem;color:var(--gray);line-height:1.8;margin-bottom:.5rem}
-.location-details strong{color:var(--navy)}
-.map-embed{border-radius:14px;overflow:hidden;border:1px solid var(--border);height:280px}
-.map-embed iframe{width:100%;height:100%;border:0}
-
-@media(max-width:768px){
-  .location-wrap{grid-template-columns:1fr}
-  .leader-card{flex-direction:column;text-align:center}
-  .leader-card .leader-photo{margin:0 auto}
+/* ── ABOUT PAGE ── */
+:root{
+  --transition:cubic-bezier(.22,.68,0,1.2);
 }
+@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+
+/* HERO */
+.about-hero{
+  background:linear-gradient(150deg,var(--green3) 0%,var(--green2) 60%,var(--green) 100%);
+  padding:5rem 2rem 4rem;position:relative;overflow:hidden;
+}
+.about-hero::before{
+  content:'';position:absolute;inset:0;pointer-events:none;
+  background:url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%23ffffff' fill-opacity='0.03'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4z'/%3E%3C/g%3E%3C/svg%3E")
+}
+.about-hero-inner{max-width:1100px;margin:0 auto;display:grid;grid-template-columns:1fr 380px;gap:3rem;align-items:center;position:relative;z-index:1}
+.about-hero-eyebrow{font-size:.72rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:rgba(255,255,255,.55);margin-bottom:1.1rem}
+.about-hero h1{font-family:'Merriweather',serif;font-size:clamp(2rem,5vw,3rem);font-weight:900;color:#fff;line-height:1.15;margin-bottom:1rem}
+.about-hero h1 em{color:#a8e6bc;font-style:normal}
+.about-hero-sub{font-size:1rem;color:rgba(255,255,255,.7);line-height:1.75;max-width:520px}
+.about-hero-badge{background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.18);border-radius:14px;padding:1.5rem;display:flex;flex-direction:column;gap:.4rem}
+.about-hero-badge-label{font-size:.68rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.45)}
+.about-hero-badge-val{font-family:'Merriweather',serif;font-size:1.6rem;font-weight:900;color:#a8e6bc}
+.about-hero-badge-desc{font-size:.82rem;color:rgba(255,255,255,.6);line-height:1.5}
+.about-hero-badge-divider{height:1px;background:rgba(255,255,255,.1);margin:.5rem 0}
+
+/* JOURNEY */
+.journey-section{background:var(--white);padding:5rem 2rem}
+.journey-inner{max-width:1100px;margin:0 auto}
+.section-eyebrow{font-size:.7rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--green);margin-bottom:.5rem}
+.section-heading{font-family:'Merriweather',serif;font-size:clamp(1.5rem,3.5vw,2.2rem);font-weight:900;color:var(--green3);margin-bottom:.5rem}
+.section-bar{width:36px;height:3px;background:var(--green);border-radius:2px;margin-bottom:1rem}
+.section-sub{font-size:.95rem;color:var(--gray);line-height:1.75;max-width:560px;margin-bottom:2.5rem}
+
+/* HISTORY CARD */
+.history-card{background:var(--cream);border:1px solid var(--border);border-radius:20px;padding:2.5rem;display:grid;grid-template-columns:auto 1fr;gap:2rem;align-items:start;position:relative;overflow:hidden}
+.history-card::before{content:'';position:absolute;right:-30px;top:-30px;width:180px;height:180px;border-radius:50%;background:rgba(30,122,62,.06);pointer-events:none}
+.history-icon-col{display:flex;flex-direction:column;align-items:center;gap:0}
+.history-icon{width:52px;height:52px;background:var(--green-pale);border-radius:14px;display:flex;align-items:center;justify-content:center;margin-bottom:1rem}
+.history-icon svg{width:26px;height:26px;stroke:var(--green);fill:none;stroke-width:1.8;stroke-linecap:round}
+.history-timeline{display:flex;flex-direction:column;gap:0}
+.history-step{display:flex;align-items:flex-start;gap:1rem;padding:.75rem 0}
+.history-step:not(:last-child){border-bottom:1px solid var(--border)}
+.history-year{font-family:'Merriweather',serif;font-size:1.5rem;font-weight:900;color:var(--green);min-width:52px}
+.history-step-label{font-weight:700;color:var(--green3);font-size:.9rem;margin-bottom:.2rem}
+.history-step-desc{font-size:.82rem;color:var(--gray);line-height:1.6}
+.history-today{background:var(--green3);border-radius:12px;padding:1rem 1.25rem;display:flex;gap:.75rem;align-items:flex-start;margin-top:1rem}
+.history-today-dot{width:8px;height:8px;border-radius:50%;background:#a8e6bc;flex-shrink:0;margin-top:4px}
+.history-today-text{font-size:.85rem;color:rgba(255,255,255,.85);line-height:1.6}
+
+/* MISSION + VISION */
+.mv-section{background:var(--offwhite);padding:5rem 2rem}
+.mv-grid{display:grid;grid-template-columns:1fr 1fr;gap:1.5rem;margin-top:2rem}
+.mv-card{
+  background:#fff;border-radius:18px;padding:2.25rem;
+  border:1.5px solid var(--border);
+  transition:transform .3s var(--transition),box-shadow .3s ease,border-color .3s ease,background .3s ease;
+  position:relative;overflow:hidden;cursor:default;
+}
+.mv-card::after{
+  content:'';position:absolute;bottom:0;left:0;right:0;height:3px;
+  background:var(--green);transform:scaleX(0);transform-origin:left;
+  transition:transform .35s var(--transition);border-radius:0 0 2px 2px;
+}
+.mv-card:hover{
+  transform:translateY(-6px);
+  box-shadow:0 20px 48px rgba(14,69,38,.12);
+  border-color:var(--green);
+  background:rgba(232,245,237,.35);
+}
+.mv-card:hover::after{transform:scaleX(1)}
+.mv-card:focus-within{transform:translateY(-6px);box-shadow:0 20px 48px rgba(14,69,38,.12);border-color:var(--green)}
+.mv-icon{width:48px;height:48px;background:var(--green-pale);border-radius:12px;display:flex;align-items:center;justify-content:center;margin-bottom:1.1rem;transition:transform .3s var(--transition)}
+.mv-card:hover .mv-icon{transform:scale(1.1)}
+.mv-icon svg{width:24px;height:24px;stroke:var(--green);fill:none;stroke-width:1.8;stroke-linecap:round}
+.mv-label{font-size:.68rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--green);margin-bottom:.4rem}
+.mv-title{font-family:'Merriweather',serif;font-size:1.15rem;font-weight:900;color:var(--green3);margin-bottom:.75rem}
+.mv-text{font-size:.88rem;color:var(--gray);line-height:1.8}
+
+/* H1 TRANSITION */
+.purpose-band{background:var(--green3);padding:4rem 2rem;text-align:center}
+.purpose-band h1{font-family:'Merriweather',serif;font-size:clamp(1.5rem,4vw,2.4rem);font-weight:900;color:#fff;line-height:1.25;margin-bottom:.75rem}
+.purpose-band h1 em{color:#a8e6bc;font-style:normal}
+.purpose-band p{font-size:.95rem;color:rgba(255,255,255,.65);line-height:1.75;max-width:600px;margin:0 auto}
+
+/* THREE PILLARS */
+.pillars-section{background:var(--white);padding:5rem 2rem}
+.pillars-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;margin-top:2.5rem}
+.pillar-card{background:var(--cream);border-radius:18px;padding:2rem;border:1px solid var(--border);position:relative;overflow:hidden;transition:transform .3s var(--transition),box-shadow .3s ease}
+.pillar-card:hover{transform:translateY(-4px);box-shadow:0 16px 40px rgba(14,69,38,.1)}
+.pillar-accent{position:absolute;top:0;left:0;right:0;height:4px}
+.pillar-accent.field{background:linear-gradient(90deg,var(--green3),var(--green))}
+.pillar-accent.research{background:linear-gradient(90deg,var(--green),var(--green-light))}
+.pillar-accent.impact{background:linear-gradient(90deg,var(--green-light),#a8e6bc)}
+.pillar-icon{width:52px;height:52px;border-radius:14px;display:flex;align-items:center;justify-content:center;margin-bottom:1.25rem}
+.pillar-icon.field{background:rgba(14,69,38,.1)}
+.pillar-icon.research{background:rgba(30,122,62,.1)}
+.pillar-icon.impact{background:rgba(39,163,82,.1)}
+.pillar-icon svg{width:26px;height:26px;stroke:var(--green2);fill:none;stroke-width:1.8;stroke-linecap:round}
+.pillar-tag{font-size:.65rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--green);margin-bottom:.35rem}
+.pillar-title{font-family:'Merriweather',serif;font-size:1.05rem;font-weight:700;color:var(--green3);margin-bottom:.6rem}
+.pillar-desc{font-size:.84rem;color:var(--gray);line-height:1.75}
+
+/* STRENGTHS */
+.strengths-section{background:var(--offwhite);padding:5rem 2rem}
+.strengths-radial{position:relative;max-width:900px;margin:2.5rem auto 0;min-height:520px;display:grid;grid-template-columns:1fr 220px 1fr;grid-template-rows:auto;gap:1rem;align-items:center}
+.strengths-center{grid-column:2;grid-row:1 / 3;display:flex;flex-direction:column;align-items:center;justify-content:center;background:var(--green3);border-radius:50%;width:180px;height:180px;margin:0 auto;text-align:center;padding:1.5rem;position:relative;z-index:2;box-shadow:0 12px 40px rgba(14,69,38,.25)}
+.strengths-center-icon svg{width:36px;height:36px;stroke:#a8e6bc;fill:none;stroke-width:1.5;stroke-linecap:round;margin-bottom:.5rem}
+.strengths-center-label{font-family:'Merriweather',serif;font-size:.9rem;font-weight:900;color:#fff;line-height:1.2;margin-bottom:.2rem}
+.strengths-center-sub{font-size:.65rem;color:rgba(255,255,255,.55);text-transform:uppercase;letter-spacing:.08em}
+.strengths-col{display:flex;flex-direction:column;gap:.75rem}
+.strength-group{background:#fff;border-radius:14px;padding:1.1rem;border:1px solid var(--border);transition:all .25s ease;cursor:default}
+.strength-group:hover{border-color:var(--green);box-shadow:0 8px 24px rgba(14,69,38,.1);transform:translateX(0) scale(1.01)}
+.strength-group-label{font-size:.65rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--green);margin-bottom:.5rem;display:flex;align-items:center;gap:.4rem}
+.strength-group-label svg{width:13px;height:13px;stroke:var(--green);fill:none;stroke-width:2}
+.strength-item{font-size:.8rem;color:var(--gray);line-height:1.55;padding:.2rem 0;border-bottom:1px solid var(--green-pale)}
+.strength-item:last-child{border-bottom:none}
+.strengths-promise{background:var(--green-pale);border:1px solid var(--green-dim);border-radius:14px;padding:1.25rem 1.75rem;text-align:center;margin-top:2.5rem;font-size:.9rem;color:var(--green3);font-style:italic;max-width:640px;margin-left:auto;margin-right:auto}
+
+/* KEY STRENGTHS STRIP */
+.ks-strip{background:var(--white);padding:3rem 2rem;border-top:1px solid var(--border)}
+.ks-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1.5rem;max-width:900px;margin:0 auto}
+.ks-item{text-align:center}
+.ks-icon{width:44px;height:44px;background:var(--green-pale);border-radius:12px;display:flex;align-items:center;justify-content:center;margin:0 auto .75rem}
+.ks-icon svg{width:22px;height:22px;stroke:var(--green);fill:none;stroke-width:1.8;stroke-linecap:round}
+.ks-title{font-family:'Merriweather',serif;font-size:.88rem;font-weight:700;color:var(--green3);margin-bottom:.25rem}
+.ks-desc{font-size:.75rem;color:var(--gray);line-height:1.5}
+
+/* IOSH */
+.iosh-section{background:var(--green3);padding:4rem 2rem;position:relative;overflow:hidden}
+.iosh-section::before{content:'';position:absolute;right:-60px;top:-60px;width:300px;height:300px;border-radius:50%;background:rgba(255,255,255,.03);pointer-events:none}
+.iosh-inner{max-width:1100px;margin:0 auto;display:grid;grid-template-columns:auto 1fr;gap:3rem;align-items:center}
+.iosh-badge-wrap{display:flex;flex-direction:column;align-items:center;gap:.75rem}
+.iosh-badge{width:100px;height:100px;background:rgba(255,255,255,.1);border:2px solid rgba(255,255,255,.2);border-radius:50%;display:flex;align-items:center;justify-content:center}
+.iosh-badge-text{font-family:'Merriweather',serif;font-size:1.2rem;font-weight:900;color:#fff;letter-spacing:.05em}
+.iosh-badge-sub{font-size:.68rem;color:rgba(255,255,255,.5);text-align:center;text-transform:uppercase;letter-spacing:.08em;max-width:100px}
+.iosh-content-eyebrow{font-size:.68rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:#a8e6bc;margin-bottom:.6rem}
+.iosh-content h2{font-family:'Merriweather',serif;font-size:clamp(1.3rem,3vw,1.8rem);font-weight:900;color:#fff;margin-bottom:.75rem}
+.iosh-content p{font-size:.9rem;color:rgba(255,255,255,.7);line-height:1.8;max-width:560px;margin-bottom:1.5rem}
+.iosh-pills{display:flex;flex-wrap:wrap;gap:.75rem}
+.iosh-pill{background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.15);border-radius:100px;padding:.4rem 1rem;font-size:.75rem;color:rgba(255,255,255,.8);font-weight:600}
+
+/* LEADERSHIP */
+.leadership-section{background:var(--white);padding:5rem 2rem}
+.leadership-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;margin-top:2.5rem}
+.leader-card{background:var(--cream);border-radius:18px;padding:2rem;border:1px solid var(--border);position:relative;transition:all .3s ease}
+.leader-card:hover{transform:translateY(-4px);box-shadow:0 16px 40px rgba(14,69,38,.1);border-color:var(--green-dim)}
+.leader-avatar{width:56px;height:56px;border-radius:50%;background:var(--green-pale);display:flex;align-items:center;justify-content:center;font-family:'Merriweather',serif;font-weight:900;color:var(--green2);font-size:1rem;margin-bottom:1rem;border:2px solid var(--green-dim)}
+.leader-name{font-family:'Merriweather',serif;font-weight:700;color:var(--green3);font-size:.95rem;margin-bottom:.2rem}
+.leader-title{font-size:.75rem;color:var(--green);font-weight:600;margin-bottom:.1rem}
+.leader-dept{font-size:.72rem;color:var(--gray);margin-bottom:1rem}
+.leader-quote-mark{font-family:'Merriweather',serif;font-size:2.5rem;color:var(--green-dim);line-height:.7;margin-bottom:.5rem}
+.leader-msg{font-size:.85rem;color:var(--gray);line-height:1.8;font-style:italic}
+.leader-draft-note{font-size:.7rem;color:var(--green);margin-top:.75rem;opacity:.7}
+
+/* FACILITIES */
+.facilities-section{background:var(--offwhite);padding:5rem 2rem}
+.facilities-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:1rem;margin-top:2.5rem}
+.facility-card{background:#fff;border-radius:14px;padding:1.5rem;border:1px solid var(--border);border-left:3px solid var(--green);transition:all .25s ease;cursor:default}
+.facility-card:hover{border-color:var(--green);box-shadow:0 8px 24px rgba(14,69,38,.1);transform:translateY(-2px)}
+.facility-card:hover .facility-icon{transform:scale(1.1)}
+.facility-icon{width:40px;height:40px;background:var(--green-pale);border-radius:10px;display:flex;align-items:center;justify-content:center;margin-bottom:.85rem;transition:transform .25s var(--transition)}
+.facility-icon svg{width:20px;height:20px;stroke:var(--green2);fill:none;stroke-width:1.8;stroke-linecap:round}
+.facility-name{font-family:'Merriweather',serif;font-weight:700;color:var(--green3);font-size:.9rem;margin-bottom:.35rem}
+.facility-desc{font-size:.78rem;color:var(--gray);line-height:1.6}
+
+/* LOCATION */
+.location-section{background:var(--white);padding:5rem 2rem}
+.location-inner{max-width:1100px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:2.5rem;align-items:start}
+.location-detail-row{display:flex;gap:.85rem;align-items:flex-start;padding:.85rem 0;border-bottom:1px solid var(--border)}
+.location-detail-row:last-child{border-bottom:none}
+.location-detail-icon{width:34px;height:34px;background:var(--green-pale);border-radius:8px;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.location-detail-icon svg{width:16px;height:16px;stroke:var(--green);fill:none;stroke-width:2;stroke-linecap:round}
+.location-detail-label{font-size:.68rem;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:var(--green);margin-bottom:.2rem}
+.location-detail-val{font-size:.86rem;color:var(--navy);line-height:1.6}
+.map-wrap{border-radius:16px;overflow:hidden;border:1px solid var(--border);height:300px}
+.map-wrap iframe{width:100%;height:100%;border:0}
+
+/* FOOTER REUSE */
 .site-footer{background:var(--green3);padding:2.75rem 2rem 0}
 .footer-grid{max-width:1100px;margin:0 auto;display:grid;grid-template-columns:1.4fr 1fr 1fr;gap:2.5rem;padding-bottom:2rem}
 .footer-brand-logo{width:46px;height:46px;object-fit:contain;background:white;border-radius:9px;padding:2px;margin-bottom:.85rem}
-.footer-brand-name{font-family:'Merriweather',serif;font-size:.95rem;font-weight:700;color:#fff;line-height:1.3}
+.footer-brand-name{font-family:'Merriweather',serif;font-size:.95rem;font-weight:700;color:#fff}
 .footer-brand-sub{font-size:.72rem;color:rgba(255,255,255,.4);margin-top:.2rem;line-height:1.5}
-@media(max-width:768px){ .footer-grid{grid-template-columns:1fr;gap:1.5rem} }
+
+/* SCROLL REVEAL */
+.reveal{opacity:0;transform:translateY(24px);transition:opacity .55s ease,transform .55s ease}
+.reveal.in{opacity:1;transform:none}
+.reveal-delay-1{transition-delay:.1s}
+.reveal-delay-2{transition-delay:.2s}
+.reveal-delay-3{transition-delay:.3s}
+
+/* RESPONSIVE */
+@media(max-width:900px){
+  .about-hero-inner{grid-template-columns:1fr;gap:2rem}
+  .about-hero-badge{display:none}
+  .mv-grid,.leadership-grid,.pillars-grid{grid-template-columns:1fr}
+  .strengths-radial{grid-template-columns:1fr;min-height:auto}
+  .strengths-center{display:none}
+  .ks-grid{grid-template-columns:1fr 1fr}
+  .iosh-inner{grid-template-columns:1fr;gap:1.5rem}
+  .iosh-badge-wrap{flex-direction:row;align-items:center}
+  .location-inner{grid-template-columns:1fr}
+  .footer-grid{grid-template-columns:1fr;gap:1.5rem}
+}
+@media(max-width:600px){
+  .ks-grid{grid-template-columns:1fr 1fr}
+  .facilities-grid{grid-template-columns:1fr 1fr}
+  .pillars-grid{grid-template-columns:1fr}
+}
 </style>
 </head>
 <body>
@@ -82,9 +256,7 @@
     <a class="nb" href="alumni.html">Alumni</a>
     <a class="nb" href="contact.html">Contact</a>
   </div>
-  <button class="hamburger" id="hamburger" onclick="toggleMenu()" aria-label="Open menu">
-    <span></span><span></span><span></span>
-  </button>
+  <button class="hamburger" id="hamburger" onclick="toggleMenu()" aria-label="Open menu"><span></span><span></span><span></span></button>
 </nav>
 <div class="mobile-menu" id="mobile-menu">
   <a class="mnb" href="index.html">Home</a>
@@ -98,122 +270,378 @@
 </div>
 
 <!-- HERO -->
-<section class="page-hero">
-  <h1>Built for people who protect<br/><em>others for a living</em></h1>
-  <p>Every occupational and environmental health professional starts somewhere. This is ours.</p>
-</section>
-
-<!-- OUR STORY -->
-<section class="sec">
-  <div class="sec-inner story-block">
-    <div class="sec-title" style="text-align:center">Why this department exists</div>
-    <div class="sec-divider" style="margin-left:auto;margin-right:auto"></div>
-    <p>[PLACEHOLDER: Real founding story goes here: when DOEH began, what gap it was built to fill, and how it grew under Bangladesh University of Health Sciences and the Diabetic Association of Bangladesh. Write this the way you'd explain it to a confused 18-year-old, not the way it would appear in an annual report.]</p>
-    <p>[PLACEHOLDER: A sentence connecting the department's founding to what students experience today. The through-line from "why we started" to "why it still matters."]</p>
-
-    <div class="pillars">
-      <div class="pillar-card">
-        <div class="pillar-label">Our mission</div>
-        <div class="pillar-text">To develop skilled public health professionals capable of effectively and efficiently addressing occupational and environmental health issues at both national and global levels.</div>
-      </div>
-      <div class="pillar-card">
-        <div class="pillar-label">Our vision</div>
-        <div class="pillar-text">To be recognized as a global leader in occupational and environmental health, pioneering innovative approaches and producing skilled professionals dedicated to sustainable healthy environments and safer workplaces.</div>
-      </div>
-      <div class="pillar-card">
-        <div class="pillar-label">What we value</div>
-        <div class="pillar-text">Field-first learning. We believe you can't teach safety from a textbook alone, so every program here is built around real labs, real sites, and real problems.</div>
-      </div>
+<section class="about-hero" aria-label="About DOEH">
+  <div class="about-hero-inner">
+    <div>
+      <div class="about-hero-eyebrow">Department of Occupational &amp; Environmental Health, BUHS</div>
+      <h1>For a sustainable, healthy environment<br/><em>and safer workplace</em></h1>
+      <p class="about-hero-sub">The journey of the Department of Occupational and Environmental Health, built on education, research, and field-based learning that connects science with the realities of work and environment.</p>
+    </div>
+    <div class="about-hero-badge" aria-hidden="true">
+      <div class="about-hero-badge-label">Established</div>
+      <div class="about-hero-badge-val">2012</div>
+      <div class="about-hero-badge-desc">Department founded under the Faculty of Public Health, Bangladesh University of Health Sciences</div>
+      <div class="about-hero-badge-divider"></div>
+      <div class="about-hero-badge-label">Academic program began</div>
+      <div class="about-hero-badge-val">2013</div>
+      <div class="about-hero-badge-desc">Field-based, IOSH-accredited programs in occupational and environmental health</div>
     </div>
   </div>
 </section>
 
-<!-- LEADERSHIP MESSAGES -->
-<section class="sec" style="background:var(--offwhite)">
-  <div class="sec-inner">
-    <div class="sec-title">A word from the people who lead this department</div>
-    <div class="sec-divider"></div>
-    <p class="sec-sub">Not formal statements. A few honest words from the people shaping this department, to the students deciding whether to join it.</p>
-    <div class="grid">
-      <div class="leader-card">
-        <div class="leader-photo">VC</div>
-        <div>
-          <div class="leader-name">[Vice Chancellor name]</div>
-          <div class="leader-title">Vice Chancellor, BUHS</div>
-          <div class="leader-msg">"[PLACEHOLDER: A genuine 2-4 sentence message to a prospective student, not a formal welcome, an honest one.]"</div>
+<!-- JOURNEY OF DOEH -->
+<section class="journey-section">
+  <div class="journey-inner">
+    <div class="reveal">
+      <div class="section-heading">Journey of DOEH</div>
+      <div class="section-bar"></div>
+      <p class="section-sub">From a strong foundation in public health to field-focused education, research, and professional impact.</p>
+    </div>
+    <div class="history-card reveal">
+      <div class="history-icon-col">
+        <div class="history-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
         </div>
       </div>
-      <div class="leader-card">
-        <div class="leader-photo">HD</div>
-        <div>
-          <div class="leader-name">[Department Head name]</div>
-          <div class="leader-title">Head of Department, DOEH</div>
-          <div class="leader-msg">"When students ask me why this field matters, I tell them: someone has to notice the danger before it becomes a tragedy. That's the job. [PLACEHOLDER: continue in her real voice.]"</div>
+      <div class="history-timeline">
+        <div class="history-step">
+          <div class="history-year">2012</div>
+          <div>
+            <div class="history-step-label">Department established</div>
+            <div class="history-step-desc">The Department of Occupational and Environmental Health and Safety was founded under the Faculty of Public Health at Bangladesh University of Health Sciences, established by the Diabetic Association of Bangladesh.</div>
+          </div>
         </div>
-      </div>
-      <div class="leader-card">
-        <div class="leader-photo">FA</div>
-        <div>
-          <div class="leader-name">[Faculty member name]</div>
-          <div class="leader-title">Faculty, DOEH</div>
-          <div class="leader-msg">"[PLACEHOLDER: A faculty voice on what teaching this subject actually feels like.]"</div>
+        <div class="history-step">
+          <div class="history-year">2013</div>
+          <div>
+            <div class="history-step-label">Academic program began</div>
+            <div class="history-step-desc">The BPH in Occupational and Environmental Health and Safety program commenced, bringing structured, field-focused public health education to students across Bangladesh.</div>
+          </div>
         </div>
-      </div>
-      <div class="leader-card">
-        <div class="leader-photo">TR</div>
-        <div>
-          <div class="leader-name">[Treasurer name]</div>
-          <div class="leader-title">Treasurer, BUHS</div>
-          <div class="leader-msg">"[PLACEHOLDER: A short message on the department's growth and investment in students.]"</div>
+        <div class="history-today">
+          <div class="history-today-dot"></div>
+          <div class="history-today-text">Today, DOEH remains committed to advancing education, research, and field-based learning, preparing public health professionals to address real-world occupational and environmental health challenges.</div>
         </div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ACCREDITATION -->
-<section class="sec">
-  <div class="sec-inner">
-    <div class="accred-band">
-      <div class="accred-badge">IOSH</div>
-      <div class="accred-text">
-        <h3>Recognized where it counts</h3>
-        <p>Our BPH and MPH in Occupational Health & Safety programs carry IOSH accreditation, an internationally recognized standard in occupational safety. [PLACEHOLDER: one concrete sentence on what this means for a graduate's career, e.g. recognized by employers in which industries/countries.]</p>
+<!-- MISSION + VISION -->
+<section class="mv-section">
+  <div style="max-width:1100px;margin:0 auto">
+    <div class="reveal">
+      <div class="section-eyebrow">What drives us</div>
+      <div class="section-heading">Mission &amp; Vision</div>
+      <div class="section-bar"></div>
+    </div>
+    <div class="mv-grid">
+      <div class="mv-card reveal reveal-delay-1" tabindex="0">
+        <div class="mv-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+        </div>
+        <div class="mv-label">Our mission</div>
+        <div class="mv-title">What we are here to do</div>
+        <p class="mv-text">To develop skilled public health professionals capable of effectively addressing occupational and environmental health issues at both national and global levels, to prevent workplace hazards, protect health, and promote safe, sustainable environments.</p>
+      </div>
+      <div class="mv-card reveal reveal-delay-2" tabindex="0">
+        <div class="mv-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="2"/><path d="M12 4.5C7 4.5 2.73 7.61 1 12c1.73 4.39 6 7.5 11 7.5s9.27-3.11 11-7.5c-1.73-4.39-6-7.5-11-7.5z"/></svg>
+        </div>
+        <div class="mv-label">Our vision</div>
+        <div class="mv-title">Where we are heading</div>
+        <p class="mv-text">To be a leading center of excellence in occupational and environmental health, pioneering innovative approaches and producing skilled professionals dedicated to healthy environments and safer workplaces, recognized at national and global levels.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- H1 PURPOSE BAND -->
+<section class="purpose-band">
+  <div style="max-width:760px;margin:0 auto" class="reveal">
+    <h2 style="font-family:'Merriweather',serif;font-size:clamp(1.4rem,3.5vw,2.1rem);font-weight:900;color:#fff;line-height:1.25;margin-bottom:.75rem">The three dimensions of<br/><em>learning at DOEH</em></h2>
+    <p>Education, research, and field-based learning that connects science with the realities of work and environment.</p>
+  </div>
+</section>
+
+<!-- THREE PILLARS -->
+<section class="pillars-section">
+  <div style="max-width:1100px;margin:0 auto">
+    <div class="reveal">
+      <div class="section-heading">What makes us different</div>
+      <div class="section-bar"></div>
+    </div>
+    <div class="pillars-grid">
+      <div class="pillar-card reveal reveal-delay-1">
+        <div class="pillar-accent field"></div>
+        <div class="pillar-icon field" aria-hidden="true">
+          <svg viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+        </div>
+        <div class="pillar-tag">Field</div>
+        <div class="pillar-title">Field-Focused Learning</div>
+        <p class="pillar-desc">Academic knowledge meets real workplaces, industries, and environments. Students visit factories, construction sites, and environmental zones, not just classrooms. Learning happens where the risk actually is.</p>
+      </div>
+      <div class="pillar-card reveal reveal-delay-2">
+        <div class="pillar-accent research"></div>
+        <div class="pillar-icon research" aria-hidden="true">
+          <svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+        </div>
+        <div class="pillar-tag">Research</div>
+        <div class="pillar-title">Evidence, Research &amp; Innovation</div>
+        <p class="pillar-desc">From thesis work to faculty publications, DOEH builds a culture where questions drive practice. Students engage with real research methodology, data analysis, and the kind of evidence that shapes real health and safety policy.</p>
+      </div>
+      <div class="pillar-card reveal reveal-delay-3">
+        <div class="pillar-accent impact"></div>
+        <div class="pillar-icon impact" aria-hidden="true">
+          <svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+        </div>
+        <div class="pillar-tag">Impact</div>
+        <div class="pillar-title">Healthier Workplaces &amp; Sustainable Environments</div>
+        <p class="pillar-desc">The end goal is not a degree. It is a profession that protects people. Graduates enter sectors ranging from international organizations to government and industry, where their work directly reduces harm.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- OUR STRENGTHS -->
+<section class="strengths-section">
+  <div style="max-width:1100px;margin:0 auto">
+    <div class="reveal" style="text-align:center">
+      <div class="section-heading">Our Strengths</div>
+      <div class="section-bar" style="margin-left:auto;margin-right:auto"></div>
+      <p class="section-sub" style="margin-left:auto;margin-right:auto;text-align:center">The foundations that make the DOEH experience different.</p>
+    </div>
+    <div class="strengths-radial reveal">
+      <div class="strengths-col">
+        <div class="strength-group">
+          <div class="strength-group-label">
+            <svg viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/></svg>
+            Foundation
+          </div>
+          <div class="strength-item">First university in Bangladesh in health sciences</div>
+          <div class="strength-item">Established by BADAS, a renowned national organization</div>
+          <div class="strength-item">Own campus at the heart of Dhaka city</div>
+        </div>
+        <div class="strength-group">
+          <div class="strength-group-label">
+            <svg viewBox="0 0 24 24"><path d="M2 3h6a4 4 0 014 4v14a3 3 0 00-3-3H2z"/><path d="M22 3h-6a4 4 0 00-4 4v14a3 3 0 013-3h7z"/></svg>
+            Learning
+          </div>
+          <div class="strength-item">Experienced regular faculty</div>
+          <div class="strength-item">Regular academic field visits to industries and relevant sites</div>
+          <div class="strength-item">Direct exposure to occupational and environmental issues</div>
+        </div>
+        <div class="strength-group">
+          <div class="strength-group-label">
+            <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="2"/><path d="M12 4.5C7 4.5 2.73 7.61 1 12c1.73 4.39 6 7.5 11 7.5s9.27-3.11 11-7.5c-1.73-4.39-6-7.5-11-7.5z"/></svg>
+            Digital Presence
+          </div>
+          <div class="strength-item">Own website and active digital community</div>
+        </div>
+      </div>
+      <div class="strengths-center" aria-hidden="true">
+        <div class="strengths-center-icon">
+          <svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+        </div>
+        <div class="strengths-center-label">Our Strengths</div>
+        <div class="strengths-center-sub">What makes us different</div>
+      </div>
+      <div class="strengths-col">
+        <div class="strength-group">
+          <div class="strength-group-label">
+            <svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87"/><path d="M16 3.13a4 4 0 010 7.75"/></svg>
+            Student Experience
+          </div>
+          <div class="strength-item">Good working environment</div>
+          <div class="strength-item">Supportive institutional authority</div>
+        </div>
+        <div class="strength-group">
+          <div class="strength-group-label">
+            <svg viewBox="0 0 24 24"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg>
+            Community
+          </div>
+          <div class="strength-item">Active and growing alumni network</div>
+          <div class="strength-item">Departmental newsletter</div>
+        </div>
+        <div class="strength-group">
+          <div class="strength-group-label">
+            <svg viewBox="0 0 24 24"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 000 7h5a3.5 3.5 0 010 7H6"/></svg>
+            Accessibility
+          </div>
+          <div class="strength-item">Comparatively accessible tuition with flexible payment structure</div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- KEY STRENGTH STRIP -->
+<div class="ks-strip">
+  <div class="ks-grid">
+    <div class="ks-item reveal">
+      <div class="ks-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg></div>
+      <div class="ks-title">Field-Focused Learning</div>
+      <div class="ks-desc">Hands-on. Real-world. Always.</div>
+    </div>
+    <div class="ks-item reveal reveal-delay-1">
+      <div class="ks-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 014 10 15.3 15.3 0 01-4 10 15.3 15.3 0 01-4-10 15.3 15.3 0 014-10z"/></svg></div>
+      <div class="ks-title">Global Perspective</div>
+      <div class="ks-desc">Aligned with international standards.</div>
+    </div>
+    <div class="ks-item reveal reveal-delay-2">
+      <div class="ks-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87"/></svg></div>
+      <div class="ks-title">Community Driven</div>
+      <div class="ks-desc">People. Partnerships. Purpose.</div>
+    </div>
+    <div class="ks-item reveal reveal-delay-3">
+      <div class="ks-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/><polyline points="17 6 23 6 23 12"/></svg></div>
+      <div class="ks-title">Future Focused</div>
+      <div class="ks-desc">Innovation today, impact tomorrow.</div>
+    </div>
+  </div>
+</div>
+
+<!-- IOSH ACCREDITATION -->
+<section class="iosh-section" aria-labelledby="iosh-heading">
+  <div class="iosh-inner">
+    <div class="iosh-badge-wrap reveal">
+      <div class="iosh-badge"><div class="iosh-badge-text">IOSH</div></div>
+      <div class="iosh-badge-sub">Accredited Programs</div>
+    </div>
+    <div class="iosh-content reveal reveal-delay-1">
+      <div class="iosh-content-eyebrow">International recognition</div>
+      <h2 id="iosh-heading">Internationally Recognized. Professionally Relevant.</h2>
+      <p>Our BPH and MPH in Occupational Health and Safety programs carry IOSH accreditation, an internationally recognized standard in occupational safety and health. IOSH, the Institution of Occupational Safety and Health, is the world's largest professional body for health and safety practitioners. Accreditation means our graduates are recognized by employers and institutions globally, not just at home.</p>
+      <div class="iosh-pills">
+        <span class="iosh-pill">Internationally Recognized</span>
+        <span class="iosh-pill">Industry Aligned</span>
+        <span class="iosh-pill">Professional Competency</span>
+        <span class="iosh-pill">Better Career Opportunities</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- LEADERSHIP -->
+<section class="leadership-section" aria-labelledby="leadership-heading">
+  <div style="max-width:1100px;margin:0 auto">
+    <div class="reveal">
+      <div class="section-heading" id="leadership-heading">A word from the people who lead DOEH</div>
+      <div class="section-bar"></div>
+    </div>
+    <div class="leadership-grid">
+      <div class="leader-card reveal reveal-delay-1">
+        <div class="leader-avatar" aria-hidden="true">VC</div>
+        <div class="leader-name">J. M. A. Hannan</div>
+        <div class="leader-title">Vice Chancellor</div>
+        <div class="leader-dept">Bangladesh University of Health Sciences (BUHS)</div>
+        <div class="leader-quote-mark" aria-hidden="true">"</div>
+        <p class="leader-msg">DOEH represents our commitment to preparing public health professionals capable of safeguarding individuals, workplaces, and communities through knowledge, responsibility, and technological advancement.</p>
+      </div>
+      <div class="leader-card reveal reveal-delay-2">
+        <div class="leader-avatar" aria-hidden="true">AA</div>
+        <div class="leader-name">Professor Dr. Sk. Akhtar Ahmad</div>
+        <div class="leader-title">Professor &amp; Advisor</div>
+        <div class="leader-dept">Occupational and Environmental Health</div>
+        <div class="leader-quote-mark" aria-hidden="true">"</div>
+        <p class="leader-msg">Occupational and environmental health links scientific knowledge with the realities of the workplace and the environment. Our goal is to assist students in comprehending these realities and translating their knowledge and skills into effective action.</p>
+      </div>
+      <div class="leader-card reveal reveal-delay-3">
+        <div class="leader-avatar" aria-hidden="true">MF</div>
+        <div class="leader-name">Professor Dr. M. H. Faruquee</div>
+        <div class="leader-title">Professor &amp; Head of Department</div>
+        <div class="leader-dept">Occupational and Environmental Health</div>
+        <div class="leader-quote-mark" aria-hidden="true">"</div>
+        <p class="leader-msg">At DOEH, students gain up-to-date knowledge, which becomes more effective when applied to real-world challenges in their academic performance. Through field exposure, research, and practical learning, we equip them with the skills necessary to protect and promote both the workplace and the environment.</p>
       </div>
     </div>
   </div>
 </section>
 
 <!-- FACILITIES -->
-<section class="sec" style="background:var(--offwhite)">
-  <div class="sec-inner">
-    <div class="sec-title">Where the learning actually happens</div>
-    <div class="sec-divider"></div>
-    <p class="sec-sub">Facilities built for hands-on work, not just lectures.</p>
-    <div class="grid">
-      <div class="facility-card"><div class="facility-name">Environmental Lab</div><div class="facility-desc">[PLACEHOLDER: what students actually do here.]</div></div>
-      <div class="facility-card"><div class="facility-name">Occupational Lab</div><div class="facility-desc">[PLACEHOLDER]</div></div>
-      <div class="facility-card"><div class="facility-name">GIS Lab</div><div class="facility-desc">[PLACEHOLDER]</div></div>
-      <div class="facility-card"><div class="facility-name">Computer Lab</div><div class="facility-desc">[PLACEHOLDER]</div></div>
-      <div class="facility-card"><div class="facility-name">Library</div><div class="facility-desc">[PLACEHOLDER]</div></div>
-      <div class="facility-card"><div class="facility-name">Sports &amp; Extracurricular</div><div class="facility-desc">[PLACEHOLDER]</div></div>
+<section class="facilities-section" aria-labelledby="facilities-heading">
+  <div style="max-width:1100px;margin:0 auto">
+    <div class="reveal">
+      <div class="section-heading" id="facilities-heading">Where the learning actually happens</div>
+      <div class="section-bar"></div>
+      <p class="section-sub">Facilities built for hands-on work, practical skills, and real-world learning.</p>
+    </div>
+    <div class="facilities-grid">
+      <div class="facility-card reveal">
+        <div class="facility-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M9 3H5a2 2 0 00-2 2v4m6-6h10a2 2 0 012 2v4M9 3v11m0 0H5m4 0h4m6-11v11m0 0h-4m4 0h-6"/></svg></div>
+        <div class="facility-name">Environmental Lab</div>
+        <div class="facility-desc">Analyze, monitor, and understand environmental health risks through hands-on testing and measurement.</div>
+      </div>
+      <div class="facility-card reveal reveal-delay-1">
+        <div class="facility-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div>
+        <div class="facility-name">Occupational Lab</div>
+        <div class="facility-desc">Explore workplace safety, occupational hazards, ergonomics, and risk control in a dedicated learning environment.</div>
+      </div>
+      <div class="facility-card reveal reveal-delay-2">
+        <div class="facility-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><polygon points="3 11 22 2 13 21 11 13 3 11"/></svg></div>
+        <div class="facility-name">GIS Lab</div>
+        <div class="facility-desc">Spatial tools for mapping, visualizing, and analyzing health and environmental data across geographic areas.</div>
+      </div>
+      <div class="facility-card reveal reveal-delay-2">
+        <div class="facility-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M15 14c.2-1 .7-1.7 1.5-2.5 1-.9 1.5-2.2 1.5-3.5A6 6 0 006 8c0 1 .2 2.2 1.5 3.5.7.7 1.3 1.5 1.5 2.5"/><path d="M9 18h6m-5 4h4"/></svg></div>
+        <div class="facility-name">Fire Safety &amp; Emergency Response Lab</div>
+        <div class="facility-desc">Practical training in fire prevention, emergency preparedness, response procedures, and workplace safety.</div>
+      </div>
+      <div class="facility-card reveal reveal-delay-3">
+        <div class="facility-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg></div>
+        <div class="facility-name">Computer Lab</div>
+        <div class="facility-desc">Data analysis, modelling, statistical software, and digital learning support for research and coursework.</div>
+      </div>
+      <div class="facility-card reveal">
+        <div class="facility-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M4 19.5A2.5 2.5 0 016.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 014 19.5v-15A2.5 2.5 0 016.5 2z"/></svg></div>
+        <div class="facility-name">Library</div>
+        <div class="facility-desc">A rich collection of resources supporting academic research, learning, and professional discovery.</div>
+      </div>
+      <div class="facility-card reveal reveal-delay-1">
+        <div class="facility-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="7"/><polyline points="8.21 13.89 7 23 12 20 17 23 15.79 13.88"/></svg></div>
+        <div class="facility-name">Sports &amp; Extracurricular</div>
+        <div class="facility-desc">Supporting a healthy, active student community because wellbeing is part of the curriculum too.</div>
+      </div>
+
     </div>
   </div>
 </section>
 
 <!-- LOCATION -->
-<section class="sec">
-  <div class="sec-inner">
-    <div class="sec-title">Find us in Dhaka</div>
-    <div class="sec-divider"></div>
-    <div class="location-wrap">
-      <div class="location-details">
-        <p><strong>Address:</strong> 125/1, Darus Salam (Technical Crossing), Mirpur, Dhaka-1216, Bangladesh</p>
-        <p><strong>Phone:</strong> +88-01791 042087 / +88-01552146362</p>
-        <p><strong>Email:</strong> doeh@buhs.ac.bd</p>
+<section class="location-section" aria-labelledby="location-heading">
+  <div style="max-width:1100px;margin:0 auto">
+    <div class="reveal">
+      <div class="section-eyebrow">Dhaka, Bangladesh</div>
+      <div class="section-heading" id="location-heading">Find DOEH in Dhaka</div>
+      <div class="section-bar"></div>
+    </div>
+    <div class="location-inner reveal">
+      <div>
+        <div class="location-detail-row">
+          <div class="location-detail-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg></div>
+          <div>
+            <div class="location-detail-label">Address</div>
+            <div class="location-detail-val">125/1, Darus Salam (Technical Crossing)<br/>Mirpur, Dhaka-1216, Bangladesh</div>
+          </div>
+        </div>
+        <div class="location-detail-row">
+          <div class="location-detail-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 12a19.79 19.79 0 01-3.07-8.67A2 2 0 012 1.34h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L6.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 16.92z"/></svg></div>
+          <div>
+            <div class="location-detail-label">Phone</div>
+            <div class="location-detail-val">+88-01911 383522&nbsp;&nbsp;+88-01970 405772</div>
+          </div>
+        </div>
+        <div class="location-detail-row">
+          <div class="location-detail-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg></div>
+          <div>
+            <div class="location-detail-label">Email</div>
+            <div class="location-detail-val"><a href="mailto:oeh@buhs.ac.bd" style="color:var(--green2);text-decoration:none">oeh@buhs.ac.bd</a><br/><a href="mailto:mahmudfaruquee@buhs.ac.bd" style="color:var(--green2);text-decoration:none">mahmudfaruquee@buhs.ac.bd</a></div>
+          </div>
+        </div>
       </div>
-      <div class="map-embed">
-        <iframe src="https://www.google.com/maps?q=Bangladesh+University+of+Health+Sciences,+Mirpur,+Dhaka&output=embed" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+      <div class="map-wrap">
+        <iframe src="https://www.google.com/maps?q=Bangladesh+University+of+Health+Sciences,+Mirpur,+Dhaka&output=embed" loading="lazy" title="DOEH BUHS location on Google Maps" referrerpolicy="no-referrer-when-downgrade"></iframe>
       </div>
     </div>
   </div>
@@ -238,16 +666,24 @@
     </div>
     <div>
       <div class="footer-col-title">Contact</div>
-      <a class="footer-link" href="mailto:doeh@buhs.ac.bd">doeh@buhs.ac.bd</a>
+      <a class="footer-link" href="mailto:oeh@buhs.ac.bd">oeh@buhs.ac.bd</a>
       <span class="footer-link" style="cursor:default">125/1, Darus Salam, Mirpur, Dhaka-1216</span>
-      <span class="footer-link" style="cursor:default">+88-01791 042087</span>
+      <span class="footer-link" style="cursor:default">+88-01911 383522</span>
     </div>
   </div>
   <div class="footer-bottom">
-    <span class="footer-copy">© 2026 Department of Occupational &amp; Environmental Health, BUHS. All rights reserved.</span>
+    <span class="footer-copy">2026 Department of Occupational &amp; Environmental Health, BUHS. All rights reserved.</span>
+    <span class="footer-copy">Established by Diabetic Association of Bangladesh</span>
   </div>
 </footer>
 
 <script src="js/main.js"></script>
+<script>
+// Scroll reveal
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(e => { if(e.isIntersecting){ e.target.classList.add('in'); observer.unobserve(e.target); } });
+}, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+</script>
 </body>
 </html>
