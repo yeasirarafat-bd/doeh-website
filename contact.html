@@ -73,7 +73,11 @@
       <div>
         <div class="contact-card">
           <div class="contact-label">General inquiries</div>
-          <div class="contact-detail"><a href="mailto:doeh@buhs.ac.bd">doeh@buhs.ac.bd</a><br/>+88-01791 042087 &middot; +88-01552146362</div>
+          <div class="contact-detail">
+            <a href="mailto:oeh@buhs.ac.bd">oeh@buhs.ac.bd</a><br/>
+            <a href="mailto:mahmudfaruquee@buhs.ac.bd">mahmudfaruquee@buhs.ac.bd</a><br/>
+            +88-01911 383522 &middot; +88-01970 405772
+          </div>
         </div>
         <div class="contact-card">
           <div class="contact-label">Admissions</div>
@@ -93,14 +97,26 @@
         </div>
       </div>
 
-      <form class="cform" onsubmit="event.preventDefault(); alert('Contact form is not yet connected to a backend. This needs an email service or Apps Script hookup before going live.');">
-        <div><label>Name</label><input type="text" required/></div>
-        <div><label>Email</label><input type="email" required/></div>
-        <div><label>Reason for contact</label>
-          <select><option>General inquiry</option><option>Admissions</option><option>Alumni</option><option>Media/Press</option></select>
+      <form class="cform" id="contact-form" onsubmit="submitContact(event)">
+        <div><label for="cf-name">Name</label><input id="cf-name" type="text" placeholder="Your full name" required/></div>
+        <div><label for="cf-email">Email</label><input id="cf-email" type="email" placeholder="your@email.com" required/></div>
+        <div><label for="cf-reason">Reason for contact</label>
+          <select id="cf-reason">
+            <option value="General inquiry">General inquiry</option>
+            <option value="Admissions">Admissions</option>
+            <option value="Alumni">Alumni</option>
+            <option value="Media / Press">Media / Press</option>
+            <option value="Other">Other</option>
+          </select>
         </div>
-        <div><label>Message</label><textarea required></textarea></div>
-        <button class="btn btn-green" type="submit" style="align-self:flex-start">Send message</button>
+        <div><label for="cf-message">Message</label><textarea id="cf-message" placeholder="Write your message here..." required></textarea></div>
+        <div id="cf-success" style="display:none;background:var(--green-pale);border:1px solid var(--green-dim);border-radius:8px;padding:.85rem 1rem;font-size:.88rem;color:var(--green3)">
+          Your message has been sent. We will get back to you as soon as possible.
+        </div>
+        <div id="cf-error" style="display:none;background:#fef2f2;border:1px solid #fca5a5;border-radius:8px;padding:.85rem 1rem;font-size:.88rem;color:#b91c1c">
+          Something went wrong. Please try again or email us directly at <a href="mailto:oeh@buhs.ac.bd" style="color:#b91c1c">oeh@buhs.ac.bd</a>
+        </div>
+        <button class="btn btn-green" type="submit" id="cf-btn" style="align-self:flex-start">Send message</button>
       </form>
     </div>
 
@@ -132,6 +148,50 @@
   </div>
   <div class="footer-bottom"><span class="footer-copy">© 2026 Department of Occupational &amp; Environmental Health, BUHS. All rights reserved.</span></div>
 </footer>
+<script>
+// IMPORTANT: paste your deployed Apps Script URL here after you deploy ContactForm.gs
+var CONTACT_SCRIPT_URL = 'PASTE_YOUR_CONTACT_SCRIPT_URL_HERE';
+
+async function submitContact(e) {
+  e.preventDefault();
+  var btn = document.getElementById('cf-btn');
+  var success = document.getElementById('cf-success');
+  var error = document.getElementById('cf-error');
+  success.style.display = 'none';
+  error.style.display = 'none';
+  btn.textContent = 'Sending...';
+  btn.disabled = true;
+
+  var data = {
+    name:    document.getElementById('cf-name').value.trim(),
+    email:   document.getElementById('cf-email').value.trim(),
+    reason:  document.getElementById('cf-reason').value,
+    message: document.getElementById('cf-message').value.trim(),
+  };
+
+  try {
+    var res = await fetch(CONTACT_SCRIPT_URL, {
+      method: 'POST',
+      headers: { 'Content-Type': 'text/plain;charset=utf-8' },
+      body: JSON.stringify(data)
+    });
+    var json = await res.json();
+    if (json.result === 'success') {
+      success.style.display = 'block';
+      document.getElementById('contact-form').reset();
+    } else {
+      error.style.display = 'block';
+      console.error('Contact form error:', json.message);
+    }
+  } catch (err) {
+    error.style.display = 'block';
+    console.error('Contact form network error:', err);
+  } finally {
+    btn.textContent = 'Send message';
+    btn.disabled = false;
+  }
+}
+</script>
 <script src="js/main.js"></script>
 </body>
 </html>
