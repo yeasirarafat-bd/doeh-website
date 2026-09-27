@@ -49,7 +49,7 @@
 .about-hero-badge{background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.18);border-radius:14px;padding:1.5rem;display:flex;flex-direction:column;gap:.4rem}
 .about-hero-badge-label{font-size:.68rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.45)}
 .about-hero-badge-val{font-family:'Merriweather',serif;font-size:1.6rem;font-weight:900;color:#a8e6bc}
-.about-hero-badge-desc{font-size:.82rem;color:rgba(255,255,255,.6);line-height:1.5}
+.about-hero-badge-desc{font-size:.9rem;color:rgba(255,255,255,.6);line-height:1.55}
 .about-hero-badge-divider{height:1px;background:rgba(255,255,255,.1);margin:.5rem 0}
 
 /* JOURNEY */
@@ -64,52 +64,17 @@
 .history-card{background:var(--cream);border:1px solid var(--border);border-radius:20px;padding:2.5rem;display:grid;grid-template-columns:auto 1fr;gap:2rem;align-items:start;position:relative;overflow:hidden}
 .history-card::before{content:'';position:absolute;right:-30px;top:-30px;width:180px;height:180px;border-radius:50%;background:rgba(30,122,62,.06);pointer-events:none}
 .history-icon-col{display:flex;flex-direction:column;align-items:center;gap:0}
-.history-icon{width:52px;height:52px;background:var(--green-pale);border-radius:14px;display:flex;align-items:center;justify-content:center;margin-bottom:1rem}
+.history-icon{width:52px;height:52px;background:var(--green-pale);border-radius:14px;display:flex;align-items:center;justify-content:center;margin-bottom:1rem;box-shadow:0 6px 16px rgba(14,69,38,.14)}
 .history-icon svg{width:26px;height:26px;stroke:var(--green);fill:none;stroke-width:1.8;stroke-linecap:round}
 .history-timeline{display:flex;flex-direction:column;gap:0}
 .history-step{display:flex;align-items:flex-start;gap:1rem;padding:.75rem 0}
 .history-step:not(:last-child){border-bottom:1px solid var(--border)}
 .history-year{font-family:'Merriweather',serif;font-size:1.5rem;font-weight:900;color:var(--green);min-width:52px}
 .history-step-label{font-weight:700;color:var(--green3);font-size:.9rem;margin-bottom:.2rem}
-.history-step-desc{font-size:.82rem;color:var(--gray);line-height:1.6}
+.history-step-desc{font-size:.9rem;color:var(--gray);line-height:1.65}
 .history-today{background:var(--green3);border-radius:12px;padding:1rem 1.25rem;display:flex;gap:.75rem;align-items:flex-start;margin-top:1rem}
 .history-today-dot{width:8px;height:8px;border-radius:50%;background:#a8e6bc;flex-shrink:0;margin-top:4px}
-.history-today-text{font-size:.85rem;color:rgba(255,255,255,.85);line-height:1.6}
-
-/* MISSION + VISION */
-.mv-section{background:var(--offwhite);padding:5rem 2rem}
-.mv-grid{display:grid;grid-template-columns:1fr 1fr;gap:1.5rem;margin-top:2rem}
-.mv-card{
-  background:#fff;border-radius:18px;padding:2.25rem;
-  border:1.5px solid var(--border);
-  transition:transform .3s var(--transition),box-shadow .3s ease,border-color .3s ease,background .3s ease;
-  position:relative;overflow:hidden;cursor:default;
-}
-.mv-card::after{
-  content:'';position:absolute;bottom:0;left:0;right:0;height:3px;
-  background:var(--green);transform:scaleX(0);transform-origin:left;
-  transition:transform .35s var(--transition);border-radius:0 0 2px 2px;
-}
-.mv-card:hover{
-  transform:translateY(-6px);
-  box-shadow:0 20px 48px rgba(14,69,38,.12);
-  border-color:var(--green);
-  background:rgba(232,245,237,.35);
-}
-.mv-card:hover::after{transform:scaleX(1)}
-.mv-card:focus-within{transform:translateY(-6px);box-shadow:0 20px 48px rgba(14,69,38,.12);border-color:var(--green)}
-.mv-icon{width:48px;height:48px;background:var(--green-pale);border-radius:12px;display:flex;align-items:center;justify-content:center;margin-bottom:1.1rem;transition:transform .3s var(--transition)}
-.mv-card:hover .mv-icon{transform:scale(1.1)}
-.mv-icon svg{width:24px;height:24px;stroke:var(--green);fill:none;stroke-width:1.8;stroke-linecap:round}
-.mv-label{font-size:.68rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--green);margin-bottom:.4rem}
-.mv-title{font-family:'Merriweather',serif;font-size:1.15rem;font-weight:900;color:var(--green3);margin-bottom:.75rem}
-.mv-text{font-size:.88rem;color:var(--gray);line-height:1.8}
-
-/* H1 TRANSITION */
-.purpose-band{background:var(--green3);padding:4rem 2rem;text-align:center}
-.purpose-band h1{font-family:'Merriweather',serif;font-size:clamp(1.5rem,4vw,2.4rem);font-weight:900;color:#fff;line-height:1.25;margin-bottom:.75rem}
-.purpose-band h1 em{color:#a8e6bc;font-style:normal}
-.purpose-band p{font-size:.95rem;color:rgba(255,255,255,.65);line-height:1.75;max-width:600px;margin:0 auto}
+.history-today-text{font-size:.92rem;color:rgba(255,255,255,.85);line-height:1.65}
 
 /* THREE PILLARS */
 .pillars-section{background:var(--white);padding:5rem 2rem}
@@ -120,65 +85,124 @@
 .pillar-accent.field{background:linear-gradient(90deg,var(--green3),var(--green))}
 .pillar-accent.research{background:linear-gradient(90deg,var(--green),var(--green-light))}
 .pillar-accent.impact{background:linear-gradient(90deg,var(--green-light),#a8e6bc)}
-.pillar-icon{width:52px;height:52px;border-radius:14px;display:flex;align-items:center;justify-content:center;margin-bottom:1.25rem}
+.pillar-icon{width:52px;height:52px;border-radius:14px;display:flex;align-items:center;justify-content:center;margin-bottom:1.25rem;box-shadow:0 6px 16px rgba(14,69,38,.14)}
 .pillar-icon.field{background:rgba(14,69,38,.1)}
 .pillar-icon.research{background:rgba(30,122,62,.1)}
 .pillar-icon.impact{background:rgba(39,163,82,.1)}
 .pillar-icon svg{width:26px;height:26px;stroke:var(--green2);fill:none;stroke-width:1.8;stroke-linecap:round}
-.pillar-tag{font-size:.65rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--green);margin-bottom:.35rem}
-.pillar-title{font-family:'Merriweather',serif;font-size:1.05rem;font-weight:700;color:var(--green3);margin-bottom:.6rem}
-.pillar-desc{font-size:.84rem;color:var(--gray);line-height:1.75}
+.pillar-title{font-family:'Merriweather',serif;font-size:1.12rem;font-weight:700;color:var(--green3);margin-bottom:.6rem}
+.pillar-desc{font-size:.92rem;color:var(--gray);line-height:1.8}
 
-/* STRENGTHS */
-.strengths-section{background:var(--offwhite);padding:5rem 2rem}
-.strengths-radial{position:relative;max-width:900px;margin:2.5rem auto 0;min-height:520px;display:grid;grid-template-columns:1fr 220px 1fr;grid-template-rows:auto;gap:1rem;align-items:center}
-.strengths-center{grid-column:2;grid-row:1 / 3;display:flex;flex-direction:column;align-items:center;justify-content:center;background:var(--green3);border-radius:50%;width:180px;height:180px;margin:0 auto;text-align:center;padding:1.5rem;position:relative;z-index:2;box-shadow:0 12px 40px rgba(14,69,38,.25)}
-.strengths-center-icon svg{width:36px;height:36px;stroke:#a8e6bc;fill:none;stroke-width:1.5;stroke-linecap:round;margin-bottom:.5rem}
-.strengths-center-label{font-family:'Merriweather',serif;font-size:.9rem;font-weight:900;color:#fff;line-height:1.2;margin-bottom:.2rem}
-.strengths-center-sub{font-size:.65rem;color:rgba(255,255,255,.55);text-transform:uppercase;letter-spacing:.08em}
-.strengths-col{display:flex;flex-direction:column;gap:.75rem}
-.strength-group{background:#fff;border-radius:14px;padding:1.1rem;border:1px solid var(--border);transition:all .25s ease;cursor:default}
-.strength-group:hover{border-color:var(--green);box-shadow:0 8px 24px rgba(14,69,38,.1);transform:translateX(0) scale(1.01)}
-.strength-group-label{font-size:.65rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--green);margin-bottom:.5rem;display:flex;align-items:center;gap:.4rem}
-.strength-group-label svg{width:13px;height:13px;stroke:var(--green);fill:none;stroke-width:2}
-.strength-item{font-size:.8rem;color:var(--gray);line-height:1.55;padding:.2rem 0;border-bottom:1px solid var(--green-pale)}
-.strength-item:last-child{border-bottom:none}
-.strengths-promise{background:var(--green-pale);border:1px solid var(--green-dim);border-radius:14px;padding:1.25rem 1.75rem;text-align:center;margin-top:2.5rem;font-size:.9rem;color:var(--green3);font-style:italic;max-width:640px;margin-left:auto;margin-right:auto}
+/* STRENGTHS, sun and rays */
+.strengths-section{background:var(--offwhite);padding:5rem 2rem;position:relative;overflow:hidden}
+.strengths-composition{position:relative;max-width:1080px;margin:3rem auto 0;--core:170px;--gap:1.75rem}
+.connector-layer{position:absolute;inset:0;width:100%;height:100%;pointer-events:none;overflow:visible;z-index:1}
+.connector-line{fill:none;stroke:rgba(30,122,62,.35);stroke-width:1.5;vector-effect:non-scaling-stroke}
+.connector-dot{fill:var(--green)}
+.strengths-grid{position:relative;z-index:2;display:grid;grid-template-columns:1fr minmax(180px,var(--core)) 1fr;grid-template-rows:auto auto auto;gap:var(--gap);align-items:center}
+.visual-core{grid-column:2;grid-row:1/4;display:grid;place-items:center;min-height:420px}
+.sun{position:relative;width:var(--core);aspect-ratio:1;border-radius:50%;display:grid;place-items:center;background:radial-gradient(circle at 35% 25%,#fff4a0 0%,#ffe45b 15%,#ffd02a 38%,#ffb914 74%,#f2a000 100%);box-shadow:0 0 0 10px rgba(255,248,190,.6),0 0 0 22px rgba(255,240,157,.16),0 0 55px rgba(255,194,24,.4),0 0 100px rgba(255,222,88,.2);animation:sunPulse 6s ease-in-out infinite}
+.sun::before{content:'';position:absolute;inset:8%;border-radius:50%;background:radial-gradient(circle at 35% 25%,rgba(255,255,255,.3),transparent 40%)}
+@keyframes sunPulse{0%,100%{box-shadow:0 0 0 10px rgba(255,248,190,.6),0 0 0 22px rgba(255,240,157,.16),0 0 55px rgba(255,194,24,.4),0 0 100px rgba(255,222,88,.2)}50%{box-shadow:0 0 0 13px rgba(255,248,190,.5),0 0 0 26px rgba(255,240,157,.13),0 0 68px rgba(255,194,24,.45),0 0 115px rgba(255,222,88,.24)}}
+.strength-card{position:relative;z-index:3;width:100%;min-height:104px;display:flex;align-items:center;gap:0;padding:1.1rem 1.1rem 1.1rem 4.6rem;border:1px solid var(--border);border-radius:16px;background:#fff;box-shadow:0 10px 26px rgba(14,69,38,.06);transition:transform .3s var(--transition),box-shadow .3s ease,border-color .3s ease}
+.strength-card:hover{transform:translateY(-4px);border-color:var(--green-dim);box-shadow:0 16px 36px rgba(14,69,38,.11)}
+.strength-card-icon{position:absolute;left:.9rem;top:50%;transform:translateY(-50%);width:44px;height:44px;border-radius:50%;background:var(--green-pale);border:3px solid #fff;display:grid;place-items:center;box-shadow:0 4px 14px rgba(14,69,38,.14)}
+.strength-card-icon svg{width:20px;height:20px;stroke:var(--green);fill:none;stroke-width:1.8;stroke-linecap:round}
+.strength-card h3{margin:0 0 .3rem;font-size:.68rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--green)}
+.strength-card p{margin:0;font-size:.85rem;color:var(--gray);line-height:1.6}
+.foundation{grid-column:2;grid-row:1;align-self:start;z-index:4}
+.learning{grid-column:1;grid-row:1}
+.student{grid-column:3;grid-row:1}
+.digital{grid-column:1;grid-row:2}
+.community{grid-column:3;grid-row:2}
+.future{grid-column:1;grid-row:3}
+.access{grid-column:3;grid-row:3}
+@media(prefers-reduced-motion:no-preference){
+  .foundation{animation:floatA 6.5s ease-in-out infinite}
+  .learning,.student{animation:floatB 7s ease-in-out infinite}
+  .digital,.community{animation:floatA 7.3s ease-in-out infinite}
+  .future,.access{animation:floatB 7.5s ease-in-out infinite}
+}
+@keyframes floatA{0%,100%{transform:translateY(0)}50%{transform:translateY(-4px)}}
+@keyframes floatB{0%,100%{transform:translateY(0)}50%{transform:translateY(4px)}}
 
 /* KEY STRENGTHS STRIP */
 .ks-strip{background:var(--white);padding:3rem 2rem;border-top:1px solid var(--border)}
 .ks-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1.5rem;max-width:900px;margin:0 auto}
 .ks-item{text-align:center}
-.ks-icon{width:44px;height:44px;background:var(--green-pale);border-radius:12px;display:flex;align-items:center;justify-content:center;margin:0 auto .75rem}
+.ks-icon{width:44px;height:44px;background:var(--green-pale);border-radius:12px;display:flex;align-items:center;justify-content:center;margin:0 auto .75rem;box-shadow:0 6px 16px rgba(14,69,38,.14)}
 .ks-icon svg{width:22px;height:22px;stroke:var(--green);fill:none;stroke-width:1.8;stroke-linecap:round}
 .ks-title{font-family:'Merriweather',serif;font-size:.88rem;font-weight:700;color:var(--green3);margin-bottom:.25rem}
-.ks-desc{font-size:.75rem;color:var(--gray);line-height:1.5}
+.ks-desc{font-size:.85rem;color:var(--gray);line-height:1.55}
 
-/* IOSH */
-.iosh-section{background:var(--green3);padding:4rem 2rem;position:relative;overflow:hidden}
-.iosh-section::before{content:'';position:absolute;right:-60px;top:-60px;width:300px;height:300px;border-radius:50%;background:rgba(255,255,255,.03);pointer-events:none}
-.iosh-inner{max-width:1100px;margin:0 auto;display:grid;grid-template-columns:auto 1fr;gap:3rem;align-items:center}
-.iosh-badge-wrap{display:flex;flex-direction:column;align-items:center;gap:.75rem}
-.iosh-badge{width:100px;height:100px;background:rgba(255,255,255,.1);border:2px solid rgba(255,255,255,.2);border-radius:50%;display:flex;align-items:center;justify-content:center}
-.iosh-badge-text{font-family:'Merriweather',serif;font-size:1.2rem;font-weight:900;color:#fff;letter-spacing:.05em}
-.iosh-badge-sub{font-size:.68rem;color:rgba(255,255,255,.5);text-align:center;text-transform:uppercase;letter-spacing:.08em;max-width:100px}
-.iosh-content-eyebrow{font-size:.68rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:#a8e6bc;margin-bottom:.6rem}
-.iosh-content h2{font-family:'Merriweather',serif;font-size:clamp(1.3rem,3vw,1.8rem);font-weight:900;color:#fff;margin-bottom:.75rem}
-.iosh-content p{font-size:.9rem;color:rgba(255,255,255,.7);line-height:1.8;max-width:560px;margin-bottom:1.5rem}
-.iosh-pills{display:flex;flex-wrap:wrap;gap:.75rem}
-.iosh-pill{background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.15);border-radius:100px;padding:.4rem 1rem;font-size:.75rem;color:rgba(255,255,255,.8);font-weight:600}
+/* IOSH ACCREDITATION */
+.iosh-section{position:relative;isolation:isolate;overflow:hidden;padding:clamp(56px,7vw,96px) clamp(20px,5vw,64px);background:radial-gradient(circle at 15% 42%,rgba(255,225,105,.22),transparent 30%),radial-gradient(circle at 78% 30%,rgba(197,239,211,.6),transparent 34%),linear-gradient(115deg,var(--white) 0%,var(--offwhite) 45%,var(--green-pale) 100%)}
+.iosh-section::before{content:'';position:absolute;z-index:-1;width:560px;height:560px;right:-180px;top:-200px;border-radius:50%;background:radial-gradient(circle,rgba(14,69,38,.14) 0 42%,rgba(14,69,38,.05) 43% 60%,transparent 61%)}
+.iosh-wrap{width:min(1220px,100%);margin:auto}
+.iosh-grid{display:grid;grid-template-columns:minmax(0,1.05fr) minmax(360px,.95fr);gap:clamp(36px,5vw,72px);align-items:center}
+.iosh-kicker{display:flex;align-items:center;gap:14px;margin:0 0 18px;color:var(--green);font-size:.68rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase}
+.iosh-kicker::before{content:'';width:38px;height:2px;background:var(--green);border-radius:2px}
+.iosh-title{max-width:640px;margin:0;color:var(--green3);font-family:'Merriweather',serif;font-weight:900;font-size:clamp(1.7rem,3.6vw,2.6rem);line-height:1.12;letter-spacing:-.01em}
+.iosh-title span{display:inline;position:relative}
+.iosh-title em{display:block;margin-top:.4rem;color:var(--green);font-size:.66em;font-style:italic;font-weight:700}
+.iosh-description{max-width:560px;margin:1.25rem 0 0;color:var(--gray);font-size:.95rem;line-height:1.75}
+.iosh-logo-row{display:flex;align-items:center;gap:1.5rem;margin-top:1.75rem}
+.iosh-logo{width:96px;height:70px;object-fit:contain;flex:0 0 auto}
+.iosh-divider{width:1px;height:52px;background:var(--border)}
+.iosh-body-copy{max-width:340px}
+.iosh-body-copy strong{display:block;color:var(--green3);font-family:'Merriweather',serif;font-weight:700;font-size:.95rem;line-height:1.3}
+.iosh-body-copy span{display:block;margin-top:.4rem;color:var(--gray);font-size:.82rem;line-height:1.6}
+.gateway{position:relative;display:flex;align-items:center;gap:1.1rem;margin-top:1.75rem;padding:1.1rem 1.4rem;border:1px solid var(--border);border-radius:22px;background:rgba(255,255,255,.7);box-shadow:0 12px 32px rgba(14,69,38,.08)}
+.gateway-icon{width:52px;height:52px;display:grid;place-items:center;flex:0 0 auto;border-radius:50%;background:var(--green-pale);color:var(--green3);box-shadow:0 6px 16px rgba(14,69,38,.14)}
+.gateway-icon svg{width:24px;height:24px}
+.gateway-title{margin:0;color:var(--green3);font-family:'Merriweather',serif;font-weight:700;font-size:1.02rem;line-height:1.35}
+.gateway-title em{display:block;margin-top:.2rem;font-style:italic;font-size:.85em;color:var(--gray);font-weight:400}
+.airplane{margin-left:auto;width:52px;color:var(--green);opacity:.55;transform:rotate(-5deg)}
+.airplane svg{display:block;width:100%;height:auto}
+.programs{margin-top:1.75rem}
+.programs-heading{display:flex;align-items:center;gap:.8rem;margin-bottom:.9rem;color:var(--green);font-size:.7rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase}
+.programs-heading::after{content:'';width:52px;height:1px;background:var(--border)}
+.program-list{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:.85rem}
+.program{min-height:88px;display:flex;align-items:center;gap:.9rem;padding:.9rem 1.1rem;border:1px solid var(--border);border-radius:16px;background:var(--white);box-shadow:0 8px 22px rgba(14,69,38,.07);text-decoration:none;transition:transform .25s var(--transition),box-shadow .25s ease,border-color .25s ease}
+.program:hover{transform:translateY(-3px);border-color:var(--green-dim);box-shadow:0 14px 30px rgba(14,69,38,.12)}
+.program-icon{width:42px;height:42px;display:grid;place-items:center;flex:0 0 auto;border-radius:50%;background:var(--green-pale);color:var(--green)}
+.program-icon svg{width:20px;height:20px}
+.program-name{margin:0;color:var(--green3);font-size:.82rem;line-height:1.45;font-weight:600}
+.program-arrow{margin-left:auto;color:var(--green);font-size:1.2rem}
+.apply-button{position:relative;display:flex;align-items:center;justify-content:center;gap:.8rem;width:min(360px,100%);min-height:52px;margin:1.75rem auto 0;padding:.85rem 1.5rem;border-radius:999px;background:linear-gradient(135deg,var(--green3),var(--green));color:#fff;text-decoration:none;font-size:.8rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;box-shadow:0 14px 32px rgba(14,69,38,.2);transition:transform .3s ease,box-shadow .3s ease}
+.apply-button span{font-size:1.1rem;line-height:1;transition:transform .3s ease}
+.apply-button:hover{transform:translateY(-3px);box-shadow:0 20px 42px rgba(14,69,38,.26)}
+.apply-button:hover span{transform:translateX(4px)}
+.certificate-side{position:relative;display:flex;flex-direction:column;justify-content:center;align-items:center;min-height:420px}
+.certificate-glow{position:absolute;width:420px;height:420px;border-radius:50%;background:radial-gradient(circle,rgba(255,247,185,.5),rgba(197,239,211,.25) 42%,transparent 70%)}
+.certificate-card{position:relative;z-index:2;width:min(360px,100%);padding:12px;border:1px solid var(--border);border-radius:22px;background:rgba(255,255,255,.75);box-shadow:0 20px 52px rgba(14,69,38,.18);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);transform:rotate(1.2deg);transition:transform .4s cubic-bezier(.2,.8,.2,1),box-shadow .4s ease;cursor:pointer}
+.certificate-card:hover{transform:translateY(-8px) rotate(0) scale(1.01);box-shadow:0 28px 64px rgba(14,69,38,.24)}
+.certificate-inner{position:relative;overflow:hidden;aspect-ratio:1/1.36;border-radius:14px;background:#fff;box-shadow:0 8px 22px rgba(0,0,0,.08)}
+.certificate-preview{width:100%;height:100%;display:block;border:0;background:#fff}
+.certificate-badge{position:absolute;z-index:4;right:-18px;top:56px;width:80px;height:80px;display:grid;place-items:center;border-radius:50%;background:radial-gradient(circle at 35% 28%,#ffeeb0,#d7a52c 72%);border:4px solid rgba(255,248,208,.92);box-shadow:0 10px 22px rgba(101,70,5,.25);color:#725312;text-align:center;font-family:'Merriweather',serif;font-weight:700;font-size:.7rem;line-height:1.1;transform:rotate(7deg)}
+.certificate-hint{position:absolute;z-index:5;left:50%;bottom:-16px;transform:translateX(-50%);white-space:nowrap;padding:.5rem .9rem;border:1px solid var(--border);border-radius:999px;background:rgba(255,255,255,.9);box-shadow:0 8px 20px rgba(14,69,38,.1);color:var(--green3);font-size:.65rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;opacity:0;transition:opacity .3s ease,transform .3s ease}
+.certificate-card:hover .certificate-hint{opacity:1;transform:translate(-50%,-3px)}
+.iosh-modal{position:fixed;inset:0;z-index:9999;display:none;place-items:center;padding:1.25rem;background:rgba(2,30,21,.7);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px)}
+.iosh-modal.is-open{display:grid}
+.iosh-modal-panel{width:min(900px,100%);height:min(88vh,780px);overflow:hidden;display:flex;flex-direction:column;border-radius:18px;background:#fff;box-shadow:0 30px 80px rgba(0,0,0,.3)}
+.iosh-modal-top{min-height:52px;display:flex;align-items:center;justify-content:space-between;padding:0 .9rem 0 1.1rem;background:var(--offwhite);border-bottom:1px solid var(--border)}
+.iosh-modal-title{color:var(--green3);font-size:.8rem;font-weight:700}
+.iosh-modal-close{width:34px;height:34px;border:0;border-radius:50%;background:var(--green-pale);color:var(--green3);font-size:1.2rem;cursor:pointer}
+.iosh-modal iframe{width:100%;height:100%;border:0;background:#fff}
+@media(max-width:1100px){.iosh-grid{grid-template-columns:1fr}.certificate-side{min-height:auto;padding:1.5rem 0}}
+@media(max-width:720px){.iosh-logo-row{flex-wrap:wrap}.program-list{grid-template-columns:1fr}.gateway{flex-wrap:wrap}.airplane{display:none}}
 
 /* LEADERSHIP */
 .leadership-section{background:var(--white);padding:5rem 2rem}
 .leadership-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;margin-top:2.5rem}
 .leader-card{background:var(--cream);border-radius:18px;padding:2rem;border:1px solid var(--border);position:relative;transition:all .3s ease}
 .leader-card:hover{transform:translateY(-4px);box-shadow:0 16px 40px rgba(14,69,38,.1);border-color:var(--green-dim)}
-.leader-avatar{width:56px;height:56px;border-radius:50%;background:var(--green-pale);display:flex;align-items:center;justify-content:center;font-family:'Merriweather',serif;font-weight:900;color:var(--green2);font-size:1rem;margin-bottom:1rem;border:2px solid var(--green-dim)}
+.leader-avatar{width:64px;height:64px;border-radius:50%;background:var(--green-pale);object-fit:cover;display:block;margin-bottom:1rem;border:2px solid var(--green-dim);box-shadow:0 6px 16px rgba(14,69,38,.16)}
 .leader-name{font-family:'Merriweather',serif;font-weight:700;color:var(--green3);font-size:.95rem;margin-bottom:.2rem}
 .leader-title{font-size:.75rem;color:var(--green);font-weight:600;margin-bottom:.1rem}
 .leader-dept{font-size:.72rem;color:var(--gray);margin-bottom:1rem}
 .leader-quote-mark{font-family:'Merriweather',serif;font-size:2.5rem;color:var(--green-dim);line-height:.7;margin-bottom:.5rem}
-.leader-msg{font-size:.85rem;color:var(--gray);line-height:1.8;font-style:italic}
+.leader-msg{font-size:.95rem;color:var(--gray);line-height:1.85;font-style:italic}
 .leader-draft-note{font-size:.7rem;color:var(--green);margin-top:.75rem;opacity:.7}
 
 /* FACILITIES */
@@ -187,10 +211,10 @@
 .facility-card{background:#fff;border-radius:14px;padding:1.5rem;border:1px solid var(--border);border-left:3px solid var(--green);transition:all .25s ease;cursor:default}
 .facility-card:hover{border-color:var(--green);box-shadow:0 8px 24px rgba(14,69,38,.1);transform:translateY(-2px)}
 .facility-card:hover .facility-icon{transform:scale(1.1)}
-.facility-icon{width:40px;height:40px;background:var(--green-pale);border-radius:10px;display:flex;align-items:center;justify-content:center;margin-bottom:.85rem;transition:transform .25s var(--transition)}
+.facility-icon{width:40px;height:40px;background:var(--green-pale);border-radius:10px;display:flex;align-items:center;justify-content:center;margin-bottom:.85rem;transition:transform .25s var(--transition);box-shadow:0 5px 14px rgba(14,69,38,.13)}
 .facility-icon svg{width:20px;height:20px;stroke:var(--green2);fill:none;stroke-width:1.8;stroke-linecap:round}
 .facility-name{font-family:'Merriweather',serif;font-weight:700;color:var(--green3);font-size:.9rem;margin-bottom:.35rem}
-.facility-desc{font-size:.78rem;color:var(--gray);line-height:1.6}
+.facility-desc{font-size:.88rem;color:var(--gray);line-height:1.65}
 
 /* LOCATION */
 .location-section{background:var(--white);padding:5rem 2rem}
@@ -200,7 +224,7 @@
 .location-detail-icon{width:34px;height:34px;background:var(--green-pale);border-radius:8px;display:flex;align-items:center;justify-content:center;flex-shrink:0}
 .location-detail-icon svg{width:16px;height:16px;stroke:var(--green);fill:none;stroke-width:2;stroke-linecap:round}
 .location-detail-label{font-size:.68rem;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:var(--green);margin-bottom:.2rem}
-.location-detail-val{font-size:.86rem;color:var(--navy);line-height:1.6}
+.location-detail-val{font-size:.92rem;color:var(--navy);line-height:1.6}
 .map-wrap{border-radius:16px;overflow:hidden;border:1px solid var(--border);height:300px}
 .map-wrap iframe{width:100%;height:100%;border:0}
 
@@ -222,12 +246,12 @@
 @media(max-width:900px){
   .about-hero-inner{grid-template-columns:1fr;gap:2rem}
   .about-hero-badge{display:none}
-  .mv-grid,.leadership-grid,.pillars-grid{grid-template-columns:1fr}
-  .strengths-radial{grid-template-columns:1fr;min-height:auto}
-  .strengths-center{display:none}
+  .leadership-grid,.pillars-grid{grid-template-columns:1fr}
+  .strengths-grid{grid-template-columns:1fr;grid-template-rows:none;display:flex;flex-direction:column;gap:1rem}
+  .visual-core{order:-1;min-height:180px}
+  .foundation,.learning,.student,.digital,.community,.future,.access{grid-column:auto;grid-row:auto}
+  .connector-layer{display:none}
   .ks-grid{grid-template-columns:1fr 1fr}
-  .iosh-inner{grid-template-columns:1fr;gap:1.5rem}
-  .iosh-badge-wrap{flex-direction:row;align-items:center}
   .location-inner{grid-template-columns:1fr}
   .footer-grid{grid-template-columns:1fr;gap:1.5rem}
 }
@@ -327,43 +351,6 @@
   </div>
 </section>
 
-<!-- MISSION + VISION -->
-<section class="mv-section">
-  <div style="max-width:1100px;margin:0 auto">
-    <div class="reveal">
-      <div class="section-eyebrow">What drives us</div>
-      <div class="section-heading">Mission &amp; Vision</div>
-      <div class="section-bar"></div>
-    </div>
-    <div class="mv-grid">
-      <div class="mv-card reveal reveal-delay-1" tabindex="0">
-        <div class="mv-icon" aria-hidden="true">
-          <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-        </div>
-        <div class="mv-label">Our mission</div>
-        <div class="mv-title">What we are here to do</div>
-        <p class="mv-text">To develop skilled public health professionals capable of effectively addressing occupational and environmental health issues at both national and global levels, to prevent workplace hazards, protect health, and promote safe, sustainable environments.</p>
-      </div>
-      <div class="mv-card reveal reveal-delay-2" tabindex="0">
-        <div class="mv-icon" aria-hidden="true">
-          <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="2"/><path d="M12 4.5C7 4.5 2.73 7.61 1 12c1.73 4.39 6 7.5 11 7.5s9.27-3.11 11-7.5c-1.73-4.39-6-7.5-11-7.5z"/></svg>
-        </div>
-        <div class="mv-label">Our vision</div>
-        <div class="mv-title">Where we are heading</div>
-        <p class="mv-text">To be a leading center of excellence in occupational and environmental health, pioneering innovative approaches and producing skilled professionals dedicated to healthy environments and safer workplaces, recognized at national and global levels.</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- H1 PURPOSE BAND -->
-<section class="purpose-band">
-  <div style="max-width:760px;margin:0 auto" class="reveal">
-    <h2 style="font-family:'Merriweather',serif;font-size:clamp(1.4rem,3.5vw,2.1rem);font-weight:900;color:#fff;line-height:1.25;margin-bottom:.75rem">The three dimensions of<br/><em>learning at DOEH</em></h2>
-    <p>Education, research, and field-based learning that connects science with the realities of work and environment.</p>
-  </div>
-</section>
-
 <!-- THREE PILLARS -->
 <section class="pillars-section">
   <div style="max-width:1100px;margin:0 auto">
@@ -377,7 +364,6 @@
         <div class="pillar-icon field" aria-hidden="true">
           <svg viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
         </div>
-        <div class="pillar-tag">Field</div>
         <div class="pillar-title">Field-Focused Learning</div>
         <p class="pillar-desc">Academic knowledge meets real workplaces, industries, and environments. Students visit factories, construction sites, and environmental zones, not just classrooms. Learning happens where the risk actually is.</p>
       </div>
@@ -386,7 +372,6 @@
         <div class="pillar-icon research" aria-hidden="true">
           <svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
         </div>
-        <div class="pillar-tag">Research</div>
         <div class="pillar-title">Evidence, Research &amp; Innovation</div>
         <p class="pillar-desc">From thesis work to faculty publications, DOEH builds a culture where questions drive practice. Students engage with real research methodology, data analysis, and the kind of evidence that shapes real health and safety policy.</p>
       </div>
@@ -395,7 +380,6 @@
         <div class="pillar-icon impact" aria-hidden="true">
           <svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
         </div>
-        <div class="pillar-tag">Impact</div>
         <div class="pillar-title">Healthier Workplaces &amp; Sustainable Environments</div>
         <p class="pillar-desc">The end goal is not a degree. It is a profession that protects people. Graduates enter sectors ranging from international organizations to government and industry, where their work directly reduces harm.</p>
       </div>
@@ -411,65 +395,53 @@
       <div class="section-bar" style="margin-left:auto;margin-right:auto"></div>
       <p class="section-sub" style="margin-left:auto;margin-right:auto;text-align:center">The foundations that make the DOEH experience different.</p>
     </div>
-    <div class="strengths-radial reveal">
-      <div class="strengths-col">
-        <div class="strength-group">
-          <div class="strength-group-label">
-            <svg viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/></svg>
-            Foundation
-          </div>
-          <div class="strength-item">First university in Bangladesh in health sciences</div>
-          <div class="strength-item">Established by BADAS, a renowned national organization</div>
-          <div class="strength-item">Own campus at the heart of Dhaka city</div>
-        </div>
-        <div class="strength-group">
-          <div class="strength-group-label">
-            <svg viewBox="0 0 24 24"><path d="M2 3h6a4 4 0 014 4v14a3 3 0 00-3-3H2z"/><path d="M22 3h-6a4 4 0 00-4 4v14a3 3 0 013-3h7z"/></svg>
-            Learning
-          </div>
-          <div class="strength-item">Experienced regular faculty</div>
-          <div class="strength-item">Regular academic field visits to industries and relevant sites</div>
-          <div class="strength-item">Direct exposure to occupational and environmental issues</div>
-        </div>
-        <div class="strength-group">
-          <div class="strength-group-label">
-            <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="2"/><path d="M12 4.5C7 4.5 2.73 7.61 1 12c1.73 4.39 6 7.5 11 7.5s9.27-3.11 11-7.5c-1.73-4.39-6-7.5-11-7.5z"/></svg>
-            Digital Presence
-          </div>
-          <div class="strength-item">Own website and active digital community</div>
-        </div>
-      </div>
-      <div class="strengths-center" aria-hidden="true">
-        <div class="strengths-center-icon">
-          <svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
-        </div>
-        <div class="strengths-center-label">Our Strengths</div>
-        <div class="strengths-center-sub">What makes us different</div>
-      </div>
-      <div class="strengths-col">
-        <div class="strength-group">
-          <div class="strength-group-label">
-            <svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87"/><path d="M16 3.13a4 4 0 010 7.75"/></svg>
-            Student Experience
-          </div>
-          <div class="strength-item">Good working environment</div>
-          <div class="strength-item">Supportive institutional authority</div>
-        </div>
-        <div class="strength-group">
-          <div class="strength-group-label">
-            <svg viewBox="0 0 24 24"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg>
-            Community
-          </div>
-          <div class="strength-item">Active and growing alumni network</div>
-          <div class="strength-item">Departmental newsletter</div>
-        </div>
-        <div class="strength-group">
-          <div class="strength-group-label">
-            <svg viewBox="0 0 24 24"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 000 7h5a3.5 3.5 0 010 7H6"/></svg>
-            Accessibility
-          </div>
-          <div class="strength-item">Comparatively accessible tuition with flexible payment structure</div>
-        </div>
+    <div class="strengths-composition reveal">
+      <svg class="connector-layer" viewBox="0 0 1000 620" preserveAspectRatio="none" aria-hidden="true">
+        <path class="connector-line" d="M500 220 L500 82"/><circle class="connector-dot" cx="500" cy="82" r="4"/>
+        <path class="connector-line" d="M400 275 L250 150 L105 150"/><circle class="connector-dot" cx="105" cy="150" r="4"/>
+        <path class="connector-line" d="M600 275 L750 150 L895 150"/><circle class="connector-dot" cx="895" cy="150" r="4"/>
+        <path class="connector-line" d="M390 310 L105 310"/><circle class="connector-dot" cx="105" cy="310" r="4"/>
+        <path class="connector-line" d="M610 310 L895 310"/><circle class="connector-dot" cx="895" cy="310" r="4"/>
+        <path class="connector-line" d="M415 350 L275 505 L200 505"/><circle class="connector-dot" cx="200" cy="505" r="4"/>
+        <path class="connector-line" d="M585 350 L725 505 L800 505"/><circle class="connector-dot" cx="800" cy="505" r="4"/>
+      </svg>
+      <div class="strengths-grid">
+        <div class="visual-core"><div class="sun" aria-hidden="true"></div></div>
+
+        <article class="strength-card foundation">
+          <div class="strength-card-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/></svg></div>
+          <div><h3>Foundation</h3><p>First university in Bangladesh in health sciences, established by BADAS, a renowned national organization, with its own campus at the heart of Dhaka city.</p></div>
+        </article>
+
+        <article class="strength-card learning">
+          <div class="strength-card-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M2 3h6a4 4 0 014 4v14a3 3 0 00-3-3H2z"/><path d="M22 3h-6a4 4 0 00-4 4v14a3 3 0 013-3h7z"/></svg></div>
+          <div><h3>Learning</h3><p>Experienced regular faculty leading academic field visits to industries and relevant sites, giving direct exposure to occupational and environmental issues.</p></div>
+        </article>
+
+        <article class="strength-card student">
+          <div class="strength-card-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87"/><path d="M16 3.13a4 4 0 010 7.75"/></svg></div>
+          <div><h3>Student Experience</h3><p>A good working environment backed by supportive institutional authority.</p></div>
+        </article>
+
+        <article class="strength-card digital">
+          <div class="strength-card-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="2"/><path d="M12 4.5C7 4.5 2.73 7.61 1 12c1.73 4.39 6 7.5 11 7.5s9.27-3.11 11-7.5c-1.73-4.39-6-7.5-11-7.5z"/></svg></div>
+          <div><h3>Digital Presence</h3><p>Own website and an active digital community.</p></div>
+        </article>
+
+        <article class="strength-card community">
+          <div class="strength-card-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg></div>
+          <div><h3>Community</h3><p>An active and growing alumni network, connected through a departmental newsletter.</p></div>
+        </article>
+
+        <article class="strength-card future">
+          <div class="strength-card-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/><polyline points="17 6 23 6 23 12"/></svg></div>
+          <div><h3>Future Focused</h3><p>Committed to innovation, research and sustainable impact.</p></div>
+        </article>
+
+        <article class="strength-card access">
+          <div class="strength-card-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 000 7h5a3.5 3.5 0 010 7H6"/></svg></div>
+          <div><h3>Accessibility</h3><p>Comparatively accessible tuition with a flexible payment structure.</p></div>
+        </article>
       </div>
     </div>
 
@@ -503,25 +475,79 @@
 </div>
 
 <!-- IOSH ACCREDITATION -->
-<section class="iosh-section" aria-labelledby="iosh-heading">
-  <div class="iosh-inner">
-    <div class="iosh-badge-wrap reveal">
-      <div class="iosh-badge"><div class="iosh-badge-text">IOSH</div></div>
-      <div class="iosh-badge-sub">Accredited Programs</div>
-    </div>
-    <div class="iosh-content reveal reveal-delay-1">
-      <div class="iosh-content-eyebrow">International recognition</div>
-      <h2 id="iosh-heading">Internationally Recognized. Professionally Relevant.</h2>
-      <p>Our BPH and MPH in Occupational Health and Safety programs carry IOSH accreditation, an internationally recognized standard in occupational safety and health. IOSH, the Institution of Occupational Safety and Health, is the world's largest professional body for health and safety practitioners. Accreditation means our graduates are recognized by employers and institutions globally, not just at home.</p>
-      <div class="iosh-pills">
-        <span class="iosh-pill">Internationally Recognized</span>
-        <span class="iosh-pill">Industry Aligned</span>
-        <span class="iosh-pill">Professional Competency</span>
-        <span class="iosh-pill">Better Career Opportunities</span>
+<section class="iosh-section" id="iosh-accreditation" aria-labelledby="iosh-heading">
+  <div class="iosh-wrap">
+    <div class="iosh-grid">
+      <div class="iosh-content reveal">
+        <p class="iosh-kicker">IOSH Accreditation</p>
+        <h2 class="iosh-title" id="iosh-heading">Gateway Open Now<em>to Professional International Jobs</em></h2>
+        <p class="iosh-description">Our BPH in Occupational and Environmental Health and Safety and MPH in Occupational Health and Safety programs carry IOSH accreditation, an internationally recognized standard in occupational safety and health.</p>
+        <div class="iosh-logo-row">
+          <img class="iosh-logo" src="assets/iosh-logo.png" alt="Institution of Occupational Safety and Health (IOSH) logo"/>
+          <span class="iosh-divider"></span>
+          <div class="iosh-body-copy">
+            <strong>Institution of Occupational Safety and Health (IOSH)</strong>
+            <span>The world's largest professional body for health and safety practitioners.</span>
+          </div>
+        </div>
+        <div class="gateway">
+          <div class="gateway-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="8.5"/><path d="M3.8 9h16.4M3.8 15h16.4M12 3.5c2.2 2.35 3.25 5.18 3.25 8.5S14.2 18.15 12 20.5c-2.2-2.35-3.25-5.18-3.25-8.5S9.8 5.85 12 3.5Z"/></svg>
+          </div>
+          <div class="gateway-copy">
+            <h3 class="gateway-title">Your Pathway<em>to Global Careers</em></h3>
+          </div>
+          <div class="airplane" aria-hidden="true">
+            <svg viewBox="0 0 100 55" fill="none"><path d="M7 39.5 95 4 68 48 57 31 39 51 43 29 7 39.5Z" fill="currentColor"/><path d="M43 29 95 4M49 25 36 12" stroke="currentColor" stroke-width="2"/></svg>
+          </div>
+        </div>
+        <div class="programs">
+          <div class="programs-heading">Accredited Programs</div>
+          <div class="program-list">
+            <a class="program" href="academics.html#bph-body">
+              <div class="program-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="m3 9 9-5 9 5-9 5-9-5Z"/><path d="M6 11.2V17c3.5 2.2 8.5 2.2 12 0v-5.8M21 9v5"/></svg></div>
+              <p class="program-name">BPH in Occupational &amp; Environmental Health and Safety</p>
+              <span class="program-arrow" aria-hidden="true">→</span>
+            </a>
+            <a class="program" href="academics.html#mph-ohs-body">
+              <div class="program-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M5 20c5.4-.4 10.7-4.2 12.8-10.6"/><path d="M7 15c-2.2-3.5-.4-7.4 3.7-8.6 1.4 3.5.5 6.4-3.7 8.6Z"/><path d="M14.2 12.2c1.8-2.9 4.3-3.5 6.2-3.1-.2 3.2-2.1 5.2-6.2 3.1Z"/></svg></div>
+              <p class="program-name">MPH in Occupational Health and Safety</p>
+              <span class="program-arrow" aria-hidden="true">→</span>
+            </a>
+          </div>
+        </div>
+      </div>
+      <div class="certificate-side reveal reveal-delay-1">
+        <div class="certificate-glow"></div>
+        <div class="certificate-card" role="button" tabindex="0" aria-label="Open IOSH accreditation certificate" onclick="openIoshCertificate()" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();openIoshCertificate()}">
+          <div class="certificate-inner">
+            <iframe class="certificate-preview" src="assets/iosh-accreditation-certificate.pdf#page=1&toolbar=0&navpanes=0&scrollbar=0" title="IOSH accreditation certificate preview"></iframe>
+          </div>
+          <div class="certificate-badge">IOSH<br/>ACCREDITED</div>
+          <div class="certificate-hint">View certificate</div>
+        </div>
+        <a class="apply-button" href="https://onlineapplication.buhs.ac.bd/admission/" target="_blank" rel="noopener">Apply Now <span aria-hidden="true">→</span></a>
       </div>
     </div>
   </div>
 </section>
+
+<div class="iosh-modal" id="ioshCertificateModal" aria-hidden="true">
+  <div class="iosh-modal-panel" role="dialog" aria-modal="true">
+    <div class="iosh-modal-top">
+      <span class="iosh-modal-title">IOSH Accreditation Certificate</span>
+      <button class="iosh-modal-close" onclick="closeIoshCertificate()" aria-label="Close certificate">×</button>
+    </div>
+    <iframe src="assets/iosh-accreditation-certificate.pdf#toolbar=1&navpanes=0" title="Official IOSH accreditation certificate"></iframe>
+  </div>
+</div>
+<script>
+const ioshModal=document.getElementById('ioshCertificateModal');
+function openIoshCertificate(){ioshModal.classList.add('is-open');ioshModal.setAttribute('aria-hidden','false');document.body.style.overflow='hidden'}
+function closeIoshCertificate(){ioshModal.classList.remove('is-open');ioshModal.setAttribute('aria-hidden','true');document.body.style.overflow=''}
+ioshModal.addEventListener('click',e=>{if(e.target===ioshModal)closeIoshCertificate()});
+document.addEventListener('keydown',e=>{if(e.key==='Escape'&&ioshModal.classList.contains('is-open'))closeIoshCertificate()});
+</script>
 
 <!-- LEADERSHIP -->
 <section class="leadership-section" aria-labelledby="leadership-heading">
@@ -532,7 +558,7 @@
     </div>
     <div class="leadership-grid">
       <div class="leader-card reveal reveal-delay-1">
-        <div class="leader-avatar" aria-hidden="true">VC</div>
+        <img class="leader-avatar" src="assets/leadership/jma-hannan.jpg" alt="Prof. JMA Hannan" onerror="this.style.display='none'"/>
         <div class="leader-name">J. M. A. Hannan</div>
         <div class="leader-title">Vice Chancellor</div>
         <div class="leader-dept">Bangladesh University of Health Sciences (BUHS)</div>
@@ -540,7 +566,7 @@
         <p class="leader-msg">DOEH represents our commitment to preparing public health professionals capable of safeguarding individuals, workplaces, and communities through knowledge, responsibility, and technological advancement.</p>
       </div>
       <div class="leader-card reveal reveal-delay-2">
-        <div class="leader-avatar" aria-hidden="true">AA</div>
+        <img class="leader-avatar" src="assets/leadership/sk-akhtar-ahmad.jpg" alt="Professor Dr. Sk. Akhtar Ahmad" onerror="this.style.display='none'"/>
         <div class="leader-name">Professor Dr. Sk. Akhtar Ahmad</div>
         <div class="leader-title">Professor &amp; Advisor</div>
         <div class="leader-dept">Occupational and Environmental Health</div>
@@ -548,7 +574,7 @@
         <p class="leader-msg">Occupational and environmental health links scientific knowledge with the realities of the workplace and the environment. Our goal is to assist students in comprehending these realities and translating their knowledge and skills into effective action.</p>
       </div>
       <div class="leader-card reveal reveal-delay-3">
-        <div class="leader-avatar" aria-hidden="true">MF</div>
+        <img class="leader-avatar" src="assets/leadership/mh-faruquee.jpg" alt="Professor Dr. M. H. Faruquee" onerror="this.style.display='none'"/>
         <div class="leader-name">Professor Dr. M. H. Faruquee</div>
         <div class="leader-title">Professor &amp; Head of Department</div>
         <div class="leader-dept">Occupational and Environmental Health</div>
