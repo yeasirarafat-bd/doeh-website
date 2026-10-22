@@ -77,14 +77,14 @@
 .prog-full-head{padding:1.75rem;border-top:4px solid var(--green);cursor:pointer;display:flex;justify-content:space-between;align-items:flex-start;gap:1rem}
 .prog-full-head:focus-visible{outline:2px solid var(--green);outline-offset:-2px}
 .prog-full-badges{display:flex;gap:8px;margin-bottom:.5rem;flex-wrap:wrap}
-.prog-code-badge{background:var(--green-pale);color:var(--green2);font-size:.68rem;font-weight:700;padding:.2rem .65rem;border-radius:100px;border:1px solid var(--green-dim)}
-.prog-iosh-badge{background:#e6f1fb;color:#185FA5;font-size:.65rem;font-weight:700;padding:.2rem .65rem;border-radius:100px}
-.prog-full-head h3{font-family:'Merriweather',serif;font-size:1.15rem;color:var(--green3);margin-bottom:.3rem}
+.prog-code-badge{background:var(--green-pale);color:var(--green2);font-size:.75rem;font-weight:700;padding:.2rem .65rem;border-radius:100px;border:1px solid var(--green-dim)}
+.prog-iosh-badge{background:#e6f1fb;color:#185FA5;font-size:.75rem;font-weight:700;padding:.2rem .65rem;border-radius:100px}
+.prog-full-head h2{font-family:'Merriweather',serif;font-size:1.15rem;color:var(--green3);margin-bottom:.3rem}
 .prog-full-head p{font-size:.88rem;color:var(--gray);line-height:1.7;max-width:600px}
 .prog-stats{display:flex;gap:1.5rem;flex-wrap:wrap;font-size:.78rem;color:var(--gray);white-space:nowrap}
 .prog-stats strong{color:var(--green3);display:block;font-size:1rem;font-family:'Merriweather',serif}
 .prog-full-body{padding:0 1.75rem 1.75rem;border-top:1px solid var(--border)}
-.prog-full-body h4{font-size:.85rem;font-weight:700;color:var(--green3);margin:1.25rem 0 .6rem}
+.prog-full-body h3{font-size:.85rem;font-weight:700;color:var(--green3);margin:1.25rem 0 .6rem}
 .prog-full-body ul{padding-left:1.2rem}
 .prog-full-body li{font-size:.85rem;color:var(--gray);line-height:1.8}
 
@@ -119,16 +119,18 @@
 .fac-card:hover .fac-view span{transform:translateX(3px)}
 .fac-view span{transition:transform .25s ease;display:inline-block}
 
-.fac-overlay{position:fixed;inset:0;z-index:200;visibility:hidden;opacity:0;transition:opacity .28s ease,visibility .28s ease}
+.fac-overlay{position:fixed;inset:0;z-index:300;display:flex;align-items:center;justify-content:center;padding:clamp(12px,3vw,32px);visibility:hidden;opacity:0;transition:opacity .25s ease,visibility .25s ease}
 .fac-overlay.open{visibility:visible;opacity:1}
-.fac-backdrop{position:absolute;inset:0;background:rgba(10,30,20,.55);backdrop-filter:blur(6px)}
-.fac-panel{position:absolute;top:14px;right:14px;bottom:14px;width:min(680px,calc(100% - 28px));overflow:hidden;border-radius:22px;background:var(--offwhite);box-shadow:0 26px 70px rgba(0,0,0,.28);transform:translateX(24px);transition:transform .35s cubic-bezier(.2,.8,.2,1)}
-.fac-overlay.open .fac-panel{transform:translateX(0)}
-.fac-close{position:absolute;z-index:3;top:16px;right:16px;width:38px;height:38px;border:1px solid var(--border);border-radius:50%;background:rgba(255,255,255,.9);color:var(--green3);font-size:1.2rem;cursor:pointer}
-.fac-scroll{height:100%;overflow:auto;padding:52px 2.25rem 2.25rem}
+.fac-backdrop{position:absolute;inset:0;background:rgba(10,30,20,.34)}
+.fac-panel{position:relative;display:flex;flex-direction:column;width:min(760px,100%);max-height:min(88vh,880px);max-height:min(88dvh,880px);overflow:hidden;border-radius:20px;background:var(--offwhite);border:1px solid var(--border2);box-shadow:0 18px 48px rgba(0,0,0,.2);opacity:0;transform:translateY(14px) scale(.985);transition:transform .32s cubic-bezier(.22,1,.36,1),opacity .25s ease}
+.fac-overlay.open .fac-panel{opacity:1;transform:none}
+.fac-close{position:absolute;z-index:3;top:14px;right:14px;width:44px;height:44px;border:1px solid var(--border);border-radius:50%;background:rgba(255,255,255,.9);color:var(--green3);font-size:1.2rem;cursor:pointer}
+.fac-scroll{flex:1;min-height:0;overflow:auto;overscroll-behavior:contain;padding:56px 2.25rem 2.25rem}
 .fac-panel-hero{display:flex;gap:1.25rem;align-items:center;padding-bottom:1.75rem;border-bottom:1px solid var(--border)}
 .fac-panel-photo{width:92px;height:92px;border-radius:50%;object-fit:cover;flex:0 0 92px;background:var(--green-pale);box-shadow:0 8px 20px rgba(14,69,38,.16)}
 .fac-panel-photo-fallback{width:92px;height:92px;border-radius:50%;flex:0 0 92px;background:var(--green-pale);color:var(--green2);display:flex;align-items:center;justify-content:center;font-family:'Merriweather',serif;font-weight:900;font-size:1.6rem}
+@media(prefers-contrast:more){.fac-backdrop{background:rgba(0,0,0,.6)}.fac-panel{border:2px solid var(--green3)}}
+@media(prefers-reduced-motion:reduce){.fac-panel{transform:none}}
 .fac-panel-name{margin:0 0 .3rem;font-family:'Merriweather',serif;font-weight:900;font-size:1.5rem;color:var(--green3)}
 .fac-panel-title{margin:0;color:var(--green);font-weight:600;font-size:.88rem}
 .fac-section{padding:1.5rem 0;border-bottom:1px solid var(--border)}
@@ -144,9 +146,8 @@
 @media(max-width:900px){.fac-grid{grid-template-columns:1fr 1fr}}
 @media(max-width:620px){
   .fac-grid{grid-template-columns:1fr}
-  .fac-panel{position:relative;top:auto;right:auto;bottom:auto;width:100%;max-height:92vh;border-radius:22px 22px 0 0;transform:translateY(24px)}
-  .fac-overlay{display:flex;align-items:flex-end}
-  .fac-overlay.open .fac-panel{transform:translateY(0)}
+  .fac-overlay{padding:10px}
+  .fac-panel{max-height:calc(100vh - 20px);max-height:calc(100dvh - 20px);border-radius:18px}
   .fac-scroll{padding:48px 1.25rem 1.75rem}
 }
 
@@ -167,80 +168,56 @@
 .footer-grid{max-width:68.75rem;margin:0 auto;display:grid;grid-template-columns:1.4fr 1fr 1fr;gap:2.5rem;padding-bottom:2rem}
 .footer-brand-logo{width:46px;height:46px;object-fit:contain;background:white;border-radius:9px;padding:2px;margin-bottom:.85rem}
 .footer-brand-name{font-family:'Merriweather',serif;font-size:.95rem;font-weight:700;color:#fff;line-height:1.3}
-.footer-brand-sub{font-size:.72rem;color:rgba(255,255,255,.4);margin-top:.2rem;line-height:1.5}
+.footer-brand-sub{font-size:.75rem;color:rgba(255,255,255,.72);margin-top:.2rem;line-height:1.5}
 .btn-outline{background:transparent;border:1.5px solid var(--green);color:var(--green);padding:.55rem 1.2rem;border-radius:8px;font-weight:600;font-size:.85rem;cursor:pointer;transition:all .18s;text-decoration:none;display:inline-block}
 .btn-outline:hover{background:var(--green);color:#fff}
 @media(max-width:768px){ .footer-grid{grid-template-columns:1fr;gap:1.5rem} .prog-full-head{flex-direction:column} }
 
-/* ===== SITE HEADER (v6) ===== */
-.super-header,.site-header{font-family:'Outfit',sans-serif}
-.super-header *,.site-header *{box-sizing:border-box;margin:0;padding:0}
-.dropdown a .dd-title{display:block;color:var(--green3,#0e4526);font-size:.97rem;font-weight:600;line-height:1.35}
-.dropdown a .dd-sub{display:block;margin-top:.1rem;color:var(--gray,#5b6e63);font-size:.8rem;font-weight:400;line-height:1.4}
-.dropdown{min-width:340px}
-
-/* 1. IDENTITY BAR (centered, bold, JHU style) */
-.super-header{background:#fff;border-bottom:1px solid var(--border,#e2e8f0);padding:1.15rem 2rem}
-.super-header-inner{max-width:82.5rem;margin:0 auto}
-.super-header-text{display:flex;align-items:center;justify-content:center;gap:1.6rem;font-weight:700;font-size:1.2rem;letter-spacing:.05em;color:var(--green3,#0e4526);text-transform:uppercase;flex-wrap:wrap;text-align:center}
-.topbar-link{color:var(--green3,#0e4526);text-decoration:none}
-.topbar-link:hover{text-decoration:underline}
-.super-pipe{width:2px;height:1.7rem;background:#8cc9a3;flex-shrink:0}
-.est-badas-inline{display:flex;align-items:baseline;gap:.6rem}
-.est-text{font-size:1.2rem;color:var(--green3,#0e4526);font-weight:700;letter-spacing:.05em}
-.by-badas-link{font-size:.9rem;color:var(--green2,#1e7a3e);font-weight:800;letter-spacing:.05em;text-decoration:none;text-transform:uppercase}
-.by-badas-link:hover{text-decoration:underline}
-.super-subtext{font-size:1.2rem;color:var(--green2,#1e7a3e);font-weight:600;letter-spacing:.05em}
-
-/* 2. MAIN HEADER (JHU structure): logo left, utility row over primary row on the right, no divider */
-.site-header{background:var(--green3,#0e4526);color:#fff;padding:1.4rem 2rem}
+/* ===== SITE HEADER (final: white theme, no top bar) ===== */
+.site-header{--hpad:2rem;--hd-ink:#0e4526;--hd-ink2:#156030;--hd-muted:#4a5d52;--hd-line:#d4e6da;--hd-tint:#e8f5ed;--hd-hover:#f1f7f3;--hd-active:#dff0e5;font-family:'Outfit',sans-serif;position:sticky;top:0;z-index:200;margin:0;padding:.6rem var(--hpad);background:#fff;color:var(--hd-ink);border-bottom:1px solid var(--hd-line);box-shadow:0 6px 18px rgba(14,69,38,.07)}
+.site-header *{box-sizing:border-box;margin:0;padding:0}
 .header-container{max-width:82.5rem;margin:0 auto;display:flex;align-items:center;justify-content:space-between;gap:2.5rem}
-.brand-link{display:flex;align-items:center;gap:1.1rem;text-decoration:none;color:#fff}
-.brand-badge{width:60px;height:60px;border-radius:10px;background:#fff;color:var(--green3,#0e4526);display:flex;align-items:center;justify-content:center;font-family:'Merriweather',serif;font-weight:900;font-size:.95rem;letter-spacing:.03em;flex-shrink:0}
-.brand-title-only{font-family:'Merriweather',serif;font-size:1.35rem;font-weight:900;letter-spacing:.01em;line-height:1.3;max-width:360px}
+.brand-link{display:flex;align-items:center;gap:.9rem;text-decoration:none;color:var(--hd-ink);min-width:0}
+.brand-logo{display:block;width:60px;height:60px;object-fit:contain;flex:none}
+.brand-badge{width:56px;height:56px;border-radius:12px;background:var(--hd-ink);color:#fff;display:flex;align-items:center;justify-content:center;font-family:'Merriweather',serif;font-weight:900;font-size:.95rem;letter-spacing:.03em;flex-shrink:0}
+.brand-title-only{font-family:'Merriweather',serif;font-size:1.3rem;font-weight:900;letter-spacing:.01em;line-height:1.3;max-width:370px;color:var(--hd-ink)}
+.nav-wrapper{display:flex;flex-direction:column;align-items:flex-end;gap:.45rem;flex-shrink:0}
 
-.nav-wrapper{display:flex;flex-direction:column;align-items:flex-end;gap:1.3rem;flex-shrink:0}
-
-.utility-nav{display:flex;align-items:center;gap:1rem;font-size:.92rem;font-weight:600;letter-spacing:.02em}
-.utility-nav a{color:rgba(255,255,255,.8);text-decoration:none}
-.utility-nav a:hover{color:#fff}
-.utility-divider{color:rgba(255,255,255,.35);font-weight:300}
-.search-button{background:transparent;border:none;color:rgba(255,255,255,.85);cursor:pointer;display:flex;margin-left:.6rem}
-.search-button:hover{color:#fff}
+.utility-nav{display:flex;align-items:center;gap:1rem;font-size:.95rem;font-weight:600;letter-spacing:.02em}
+.utility-nav a{color:var(--hd-muted);text-decoration:none;text-underline-offset:4px;transition:color .2s ease}
+.utility-nav a:hover{color:var(--hd-ink);text-decoration:underline}
+.utility-divider{color:#b7cdbd;font-weight:300}
+.search-button{background:transparent;border:0;color:var(--hd-ink);cursor:pointer;display:flex;margin-left:.6rem}
+.search-button:hover{color:var(--hd-ink2)}
 .search-button svg{width:19px;height:19px;stroke:currentColor}
+.utility-nav .btn-apply{background:var(--hd-ink);color:#fff;font-weight:800;font-size:.92rem;letter-spacing:.04em;padding:.4rem 1.4rem;border-radius:6px;text-transform:uppercase;margin-left:.4rem;text-decoration:none;transition:background .2s ease,transform .25s ease,box-shadow .25s ease}
+.utility-nav .btn-apply:hover{background:var(--hd-ink2);color:#fff;text-decoration:none;transform:translateY(-1px);box-shadow:0 6px 14px rgba(14,69,38,.25)}
 
-.primary-nav{display:flex;align-items:center;gap:1.8rem;white-space:nowrap}
+.search-m,.hdr-sep{display:none}
+.primary-nav{display:flex;align-items:center;gap:.15rem;white-space:nowrap}
 .nav-item{position:relative}
-.nav-item>a{display:flex;align-items:center;gap:.4rem;color:#fff;text-decoration:none;font-weight:700;font-size:1.05rem;letter-spacing:.02em;white-space:nowrap}
-.nav-item>a:hover{opacity:.85}
-.nav-item.active>a{position:relative}
-.nav-item.active>a::after{content:'';position:absolute;bottom:-7px;left:0;right:0;height:3px;background:#fff}
+.nav-item>a{display:flex;align-items:center;gap:.4rem;color:var(--hd-ink);text-decoration:none;font-weight:600;font-size:1.05rem;letter-spacing:.015em;white-space:nowrap;padding:.4rem .9rem;border-radius:999px;transition:background .2s ease}
+.nav-item>a:hover,.nav-item:hover>a,.nav-item:focus-within>a{background:var(--hd-hover)}
+.nav-item.active>a,.nav-item.active:hover>a{background:var(--hd-active);font-weight:700}
 .caret{width:11px;height:11px;transition:transform .2s ease}
 .nav-item:hover .caret,.nav-item:focus-within .caret{transform:rotate(180deg)}
-.utility-nav .btn-apply{background:#fff;color:var(--green3,#0e4526);font-weight:800;font-size:.92rem;letter-spacing:.04em;padding:.5rem 1.6rem;border-radius:2px;text-transform:uppercase;margin-left:.4rem}
-.utility-nav .btn-apply:hover{background:#f1f5f9;color:var(--green3,#0e4526)}
 
 /* Dropdowns open under their own item */
-.dropdown{position:absolute;top:100%;left:-.85rem;margin-top:16px;min-width:290px;background:#fff;border:1px solid var(--border,#e2e8f0);border-radius:10px;box-shadow:0 18px 40px rgba(14,69,38,.25);padding:.55rem;opacity:0;visibility:hidden;transform:translateY(6px);transition:opacity .18s ease,transform .18s ease,visibility .18s;z-index:50}
-.dropdown::before{content:'';position:absolute;left:0;right:0;top:-18px;height:18px}
+.dropdown{position:absolute;top:100%;left:-.85rem;margin-top:14px;min-width:340px;background:#fff;border:1px solid var(--hd-line);border-top:3px solid var(--green,#1e7a3e);border-radius:0 0 12px 12px;box-shadow:0 18px 40px rgba(14,69,38,.22);padding:.55rem;opacity:0;visibility:hidden;transform:translateY(6px);transition:opacity .18s ease,transform .18s ease,visibility .18s;z-index:50}
+.dropdown::before{content:'';position:absolute;left:0;right:0;top:-19px;height:19px}
 .nav-item:hover .dropdown,.nav-item:focus-within .dropdown{opacity:1;visibility:visible;transform:translateY(0)}
-.dropdown a{display:block;padding:.65rem .85rem;border-radius:8px;font-size:.95rem;font-weight:500;color:var(--gray,#5b6560);text-decoration:none}
-.dropdown a:hover{background:var(--green-pale,#e8f5ed);color:var(--green3,#0e4526)}
+.dropdown a{display:block;padding:.7rem .9rem;border-radius:8px;font-size:1rem;font-weight:500;color:var(--hd-muted);text-decoration:none}
+.dropdown a:hover{background:var(--hd-tint);color:var(--hd-ink)}
+.dropdown a .dd-title{display:block;color:var(--hd-ink);font-size:1.02rem;font-weight:600;line-height:1.35}
+.dropdown a .dd-sub{display:block;margin-top:.1rem;color:var(--hd-muted);font-size:.86rem;font-weight:400;line-height:1.4}
 
-a:focus-visible,button:focus-visible{outline:2px solid #fff;outline-offset:3px}
-.dropdown a:focus-visible{outline-color:var(--green2,#1e7a3e);outline-offset:-2px}
-
-@media(max-width:600px){
-  .super-header,.site-header{padding-left:1rem;padding-right:1rem}
-  .brand-title-only{font-size:1.05rem}
-  .super-pipe{display:none}
-  .super-header-text,.est-text,.super-subtext{font-size:.95rem}
-}
+a:focus-visible,button:focus-visible{outline:2px solid #1e7a3e;outline-offset:3px}
+.dropdown a:focus-visible{outline-offset:-2px}
 @media(prefers-reduced-motion:reduce){.caret,.dropdown{transition:none}}
 
 /* Reset anything the shared stylesheet applies to the old nav or body offset */
+html,body{margin:0}
 body{padding-top:0!important}
-.site-header,.super-header{position:relative;z-index:60}
 .legacy-nav-stub{display:none!important}
 
 /* Footer (BRAC University style: light, five columns, social row) */
@@ -273,7 +250,7 @@ body{padding-top:0!important}
 .cta-band *{box-sizing:border-box}
 .cta-inner{max-width:68.75rem;margin:0 auto;display:flex;align-items:center;justify-content:space-between;gap:2rem;flex-wrap:wrap}
 .cta-text{flex:1 1 420px}
-.cta-title{font-family:'Merriweather',serif;font-size:clamp(1.5rem,3vw,2.1rem);font-weight:900;line-height:1.25;margin:0 0 .6rem;color:#fff}
+.cta-title{font-family:'Merriweather',serif;font-size:clamp(1.5rem,3vw,2.1rem);font-weight:900;line-height:1.3;margin:0 0 .6rem;color:#fff}
 .cta-sub{font-size:1rem;line-height:1.65;color:rgba(255,255,255,.88);max-width:560px;margin:0}
 .cta-actions{display:flex;gap:.9rem;flex-wrap:wrap}
 .cta-btn{display:inline-flex;align-items:center;gap:.55rem;padding:.9rem 1.6rem;border-radius:6px;font-weight:700;font-size:.95rem;letter-spacing:.03em;text-decoration:none;border:2px solid #fff;transition:background .2s ease}
@@ -288,43 +265,75 @@ body{padding-top:0!important}
 .cta-btn:focus-visible,.wa-float:focus-visible{outline:3px solid #ffd84d;outline-offset:3px}
 @media(max-width:600px){.cta-band{padding:2.5rem 1rem}.wa-float{right:.9rem;bottom:.9rem}}
 
-/* Mobile and tablet menu (hamburger) */
-.nav-toggle{display:none;width:48px;height:48px;border:1px solid rgba(255,255,255,.35);border-radius:8px;background:transparent;cursor:pointer;flex-direction:column;align-items:center;justify-content:center;gap:5px;flex-shrink:0}
-.nav-toggle span{display:block;width:22px;height:2px;background:#fff;border-radius:2px;transition:transform .2s ease,opacity .2s ease}
-.site-header.open .nav-toggle span:nth-child(1){transform:translateY(7px) rotate(45deg)}
-.site-header.open .nav-toggle span:nth-child(2){opacity:0}
-.site-header.open .nav-toggle span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
+/* Mobile and tablet: bar (logo, name, search, divider, hamburger) and the sliding menu */
+.nav-toggle{display:none;width:48px;height:48px;border:0;border-radius:0;background:transparent;cursor:pointer;flex-direction:column;align-items:center;justify-content:center;gap:6px;flex-shrink:0;padding:0;-webkit-tap-highlight-color:transparent}
+.nav-toggle span{display:block;width:28px;height:3px;background:var(--hd-ink);border-radius:2px;transition:transform .35s cubic-bezier(.4,0,.2,1),opacity .2s ease}
+.site-header.open .nav-toggle span:nth-child(1){transform:translateY(9px) rotate(45deg)}
+.site-header.open .nav-toggle span:nth-child(2){opacity:0;transform:scaleX(.2)}
+.site-header.open .nav-toggle span:nth-child(3){transform:translateY(-9px) rotate(-45deg)}
+@keyframes navIn{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
 @media(max-width:1240px){
-  .site-header{position:sticky;top:0;padding:.85rem 1.25rem}
+  .site-header{--hpad:1.1rem;padding:.65rem var(--hpad);transition:padding .3s ease}
+  .site-header.open{padding-bottom:0}
   .header-container{flex-wrap:wrap;gap:0;align-items:center}
-  .brand-link{flex:1;min-width:0}
-  .brand-badge{width:48px;height:48px;font-size:.8rem}
-  .brand-title-only{font-size:1.02rem;max-width:none}
-  .nav-toggle{display:flex;order:2}
-  .nav-wrapper{display:none;order:3;flex-basis:100%;width:100%;flex-direction:column;align-items:stretch;gap:0;margin-top:.8rem;padding:.25rem 0 1.25rem;border-top:1px solid rgba(255,255,255,.2);max-height:calc(100vh - 100px);max-height:calc(100dvh - 100px);overflow-y:auto}
-  .site-header.open .nav-wrapper{display:flex}
+  .brand-link{flex:1;min-width:0;gap:.8rem;padding-right:.6rem}
+  .brand-logo{width:52px;height:52px}
+  .brand-badge{width:50px;height:50px;font-size:.85rem}
+  .brand-title-only{font-size:1.05rem;line-height:1.3;max-width:none}
+  .search-m{display:flex;align-items:center;justify-content:center;order:1;width:42px;height:44px;margin:0;padding:0;border-radius:0}
+  .search-m svg{width:24px;height:24px}
+  .hdr-sep{display:block;order:1;width:1px;height:30px;background:var(--hd-line);margin:0 .2rem}
+  .nav-toggle{display:flex;order:2;width:44px;height:44px}
+  /* panel: edge to edge, always laid out, animated open and closed (never display toggled) */
+  .nav-wrapper{order:3;flex-basis:calc(100% + 2*var(--hpad));width:calc(100% + 2*var(--hpad));margin:0 calc(var(--hpad)*-1);padding:0 var(--hpad);display:flex;flex-direction:column;align-items:stretch;gap:0;max-height:0;overflow:hidden;opacity:0;visibility:hidden;border-top:3px solid transparent;transform:translateY(-8px);transition:max-height .42s cubic-bezier(.4,0,.2,1),opacity .25s ease,transform .35s ease,margin-top .3s ease,padding .3s ease,border-color .3s ease,visibility 0s linear .42s}
+  .site-header.open .nav-wrapper{max-height:calc(100vh - 100px);max-height:calc(100dvh - 100px);overflow-y:auto;overscroll-behavior:contain;-webkit-overflow-scrolling:touch;opacity:1;visibility:visible;transform:none;margin-top:.8rem;padding-top:.4rem;padding-bottom:1.5rem;border-top-color:var(--green,#1e7a3e);transition-delay:0s}
+  /* block 1: main navigation */
   .primary-nav{order:1;flex-direction:column;align-items:stretch;gap:0;white-space:normal}
-  .nav-item{display:block;border-bottom:1px solid rgba(255,255,255,.14)}
-  .nav-item>a{justify-content:space-between;padding:1rem .25rem;font-size:1.1rem}
-  .nav-item.active>a{color:#9be3b5}
-  .nav-item.active>a::after{display:none}
+  .nav-item{display:block;border:0}
+  .nav-item>a{justify-content:space-between;padding:.85rem .75rem;font-size:1.15rem;font-weight:600;letter-spacing:.005em;line-height:1.3;border-radius:14px}
+  .nav-item>a:hover,.nav-item:hover>a,.nav-item:focus-within>a{background:var(--hd-hover)}
+  .nav-item.active>a,.nav-item.active:hover>a{background:var(--hd-tint);color:var(--green,#1e7a3e);font-weight:700}
+  .caret{width:16px;height:16px;transition:transform .3s cubic-bezier(.4,0,.2,1)}
   .nav-item:hover .caret,.nav-item:focus-within .caret{transform:none}
   .nav-item.open .caret{transform:rotate(180deg)}
-  .dropdown{position:static;display:none;min-width:0;margin:0 0 .75rem;padding:.35rem;border:0;border-radius:8px;background:rgba(255,255,255,.08);box-shadow:none;opacity:1;visibility:visible;transform:none;transition:none}
+  .dropdown{position:static;display:block;min-width:0;margin:0;padding:0 .35rem;border:0;border-radius:14px;background:var(--cream,#f0f7f2);box-shadow:none;opacity:0;visibility:hidden;transform:none;max-height:0;overflow:hidden;transition:max-height .4s cubic-bezier(.4,0,.2,1),opacity .25s ease,margin .3s ease,padding .3s ease,visibility 0s linear .4s}
   .dropdown::before{display:none}
-  .nav-item.open .dropdown{display:block}
-  .dropdown a:hover{background:rgba(255,255,255,.14)}
-  .dropdown a .dd-title{color:#fff}
-  .dropdown a .dd-sub{color:rgba(255,255,255,.72)}
-  .utility-nav{order:2;flex-direction:column;align-items:stretch;gap:0;margin-top:.75rem;flex-wrap:nowrap}
-  .utility-nav a{padding:.85rem .25rem;font-size:1rem}
+  .nav-item.open .dropdown{max-height:560px;opacity:1;visibility:visible;margin:.2rem 0 .6rem;padding:.4rem .35rem;transition-delay:0s}
+  .dropdown a{padding:.7rem .85rem}
+  .dropdown a .dd-title{font-size:1rem}
+  .dropdown a .dd-sub{font-size:.85rem}
+  /* block 2: utility links, separated by a full width line */
+  .utility-nav{order:2;flex-direction:column;align-items:stretch;gap:0;margin:.9rem calc(var(--hpad)*-1) 0;padding:.2rem var(--hpad) 0;border-top:1px solid var(--hd-line)}
+  .utility-nav a{padding:.9rem .75rem;font-size:1rem;font-weight:400;letter-spacing:.005em;color:#34463b;border-bottom:1px solid var(--hd-line);border-radius:0}
+  .utility-nav a:hover{color:var(--hd-ink);text-decoration:none}
   .utility-divider{display:none}
-  .utility-nav .search-button{margin:.3rem 0;padding:.6rem .25rem;align-self:flex-start}
-  .utility-nav .btn-apply{margin:.9rem 0 0;padding:.95rem;text-align:center}
+  .utility-nav .search-button{display:none}
+  .utility-nav .btn-apply{margin:1.2rem 0 0;padding:.95rem;font-size:.98rem;text-align:center;color:#fff;border:0;border-radius:12px}
+  /* motion: items glide in one after another */
+  .site-header.open .primary-nav>.nav-item,.site-header.open .utility-nav>a{animation:navIn .45s cubic-bezier(.2,.7,.2,1) both}
+  .site-header.open .primary-nav>.nav-item:nth-child(2){animation-delay:.03s}
+  .site-header.open .primary-nav>.nav-item:nth-child(3){animation-delay:.06s}
+  .site-header.open .primary-nav>.nav-item:nth-child(4){animation-delay:.09s}
+  .site-header.open .primary-nav>.nav-item:nth-child(5){animation-delay:.12s}
+  .site-header.open .primary-nav>.nav-item:nth-child(6){animation-delay:.15s}
+  .site-header.open .primary-nav>.nav-item:nth-child(7){animation-delay:.18s}
+  .site-header.open .utility-nav>a{animation-delay:.24s}
 }
 @media(max-width:600px){
-  .site-header{padding:.75rem 1rem}
-  .brand-title-only{font-size:.95rem}
+  .site-header{--hpad:.85rem;padding-top:.5rem;padding-bottom:.5rem}
+  .site-header.open{padding-bottom:0}
+  .brand-link{gap:.55rem;padding-right:.25rem}
+  .brand-logo{width:40px;height:40px}
+  .brand-badge{width:40px;height:40px;font-size:.75rem}
+  .brand-title-only{font-size:.86rem;font-weight:700;line-height:1.3;letter-spacing:0}
+  .search-m{width:38px}
+  .hdr-sep{margin:0}
+  .nav-toggle{width:42px}
+}
+@media(max-width:340px){.brand-title-only{font-size:.8rem}.brand-logo{width:34px;height:34px}}
+@media(prefers-reduced-motion:reduce){
+  .nav-wrapper,.dropdown,.nav-toggle span,.caret,.site-header{transition:none!important}
+  .site-header.open .primary-nav>.nav-item,.site-header.open .utility-nav>a{animation:none!important}
 }
 /* Large screens: scale the whole layout up so desktops and TVs are not left with a narrow column */
 @media(min-width:1700px){html{font-size:112.5%}}
@@ -347,94 +356,18 @@ body{padding-top:0!important}
 .ssr-empty{margin:.9rem .25rem 0;color:var(--gray,#5b6e63);font-size:.92rem}
 
 
-/* BADAS lockup (EST. 2012 / BADAS) in the top bar, like JHU's JH150 mark */
-.badas-mark{display:inline-flex;flex-direction:column;align-items:center;gap:.12rem;color:#127bb5;text-decoration:none;line-height:1;flex:none}
-.badas-mark .bm-est,.badas-mark .bm-by{font-family:'Outfit',sans-serif;font-weight:700;font-size:.62rem;letter-spacing:.24em;padding-left:.24em;text-transform:uppercase}
-.badas-mark .bm-year{font-family:'Merriweather',serif;font-weight:900;font-size:1.5rem;letter-spacing:.01em}
-.badas-mark:hover .bm-year,.badas-mark:focus-visible .bm-year{color:#0e6ba0}
-.badas-mark:focus-visible{outline:2px solid #127bb5;outline-offset:4px;border-radius:4px}
-.ftr-badas{display:inline-flex;align-items:center;gap:.6rem;max-width:240px;color:var(--ink2,#374151);text-decoration:none;font-size:.85rem;line-height:1.35}
+/* Footer identity row and BADAS credit (moved here from the old top bar) */
+.ftr-id{max-width:82.5rem;margin:0 auto;padding:1.75rem 2rem;border-top:1px solid #d5e4da}
+.ftr-id-name{display:inline-block;font-family:'Merriweather',serif;font-size:1.15rem;font-weight:700;line-height:1.35;color:var(--green3,#0e4526);text-decoration:none}
+.ftr-id-name:hover{text-decoration:underline}
+.ftr-id-tag{margin:.2rem 0 0;font-size:.98rem;line-height:1.5;color:#3f4a44}
+.ftr-id+.ftr-bottom{border-top:0;padding-top:1.25rem}
+.ftr-badas{display:inline-flex;align-items:center;gap:.6rem;max-width:260px;color:var(--ink2,#374151);text-decoration:none;font-size:.85rem;line-height:1.35}
 .ftr-badas img{width:46px;height:46px;flex:none}
 .ftr-badas:hover span{text-decoration:underline}
-@media(min-width:1241px){
-  .super-header-text{font-size:clamp(.78rem,calc((100vw - 176px)/66),1.1rem)}
-  .topbar-link,.super-subtext{font-size:1em}
-}
-@media(max-width:340px){.topbar-link,.super-subtext{white-space:normal}}
-/* Top bar on phones and tablets: BADAS mark at the left, then name and tagline in a perfectly aligned column (JHU style) */
-@media(max-width:1240px){
-  .super-header{padding:.6rem 1rem}
-  .super-header-inner{max-width:none}
-  .super-header-text{display:grid;grid-template-columns:auto 1fr;grid-template-areas:"mark name" "mark tag";align-items:center;justify-items:start;column-gap:.75rem;row-gap:.12rem;text-align:left;font-size:clamp(.53rem,calc((100vw - 110px)/27),1rem)}
-  .badas-mark{grid-area:mark;align-self:stretch;justify-content:center;padding-right:.75rem;border-right:1.5px solid #2098d8}
-  .badas-mark .bm-est,.badas-mark .bm-by{font-size:min(.8em,.68rem)}
-  .badas-mark .bm-year{font-size:clamp(1.05rem,2em,1.6rem)}
-  .topbar-link{grid-area:name;font-size:1em;letter-spacing:.02em;line-height:1.35;white-space:nowrap}
-  .super-subtext{grid-area:tag;font-size:1em;letter-spacing:.02em;line-height:1.35;font-weight:600;white-space:nowrap;color:var(--green2,#156030)}
-  .super-pipe{display:none}
-}
-
-/* Phone header polish to match the JHU Bloomberg reference: full width, plain three-line menu, roomier bar */
-html,body{margin:0}
-.site-header{margin:0}
-.nav-toggle{border:0;gap:6px}
-.nav-toggle span{width:30px;height:3px}
-.site-header.open .nav-toggle span:nth-child(1){transform:translateY(9px) rotate(45deg)}
-.site-header.open .nav-toggle span:nth-child(3){transform:translateY(-9px) rotate(-45deg)}
-@media(max-width:1240px){.site-header{padding:1.05rem 1.25rem}.brand-badge{width:52px;height:52px}.brand-title-only{font-size:1.1rem;line-height:1.3}}
-@media(max-width:600px){.site-header{padding:1rem 1rem}}
-
-/* ===== WHITE HEADER THEME: tinted top bar, white utility bar and nav, real DOEH logo (matches the live site) ===== */
-.super-header{background:#eef6f1;border-bottom:1px solid #d4e6da}
-.topbar-link{color:var(--green3,#0e4526)}
-.badas-mark{color:#0e6ba0}
-.badas-mark:hover .bm-year,.badas-mark:focus-visible .bm-year{color:#0b557f}
-.badas-mark:focus-visible{outline-color:#0e6ba0}
-.site-header{background:#fff;color:var(--green3,#0e4526);border-bottom:1px solid #d4e6da;box-shadow:0 6px 18px rgba(14,69,38,.07)}
-.brand-link{color:var(--green3,#0e4526)}
-.brand-logo{display:block;height:58px;width:auto;flex:none}
-.brand-badge{background:var(--green3,#0e4526);color:#fff}
-.brand-title-only{color:var(--green3,#0e4526)}
-.utility-nav a{color:#4a5d52}
-.utility-nav a:hover{color:var(--green3,#0e4526)}
-.utility-divider{color:#b7cdbd}
-.search-button{color:var(--green3,#0e4526)}
-.utility-nav .btn-apply{background:var(--green3,#0e4526);color:#fff}
-.utility-nav .btn-apply:hover{background:var(--green2,#156030);color:#fff}
-.nav-item>a{color:var(--green3,#0e4526)}
-.nav-item.active>a::after{display:none}
-a:focus-visible,button:focus-visible{outline:2px solid #1e7a3e;outline-offset:3px}
-.nav-toggle{border:0}
-.nav-toggle span{background:var(--green3,#0e4526)}
-@media(min-width:1241px){
-  .primary-nav{gap:.15rem}
-  .nav-item>a{padding:.5rem .95rem;border-radius:999px;transition:background .2s ease}
-  .nav-item>a:hover{opacity:1;background:#e8f5ed}
-  .nav-item.active>a{background:#e8f5ed}
-}
-@media(max-width:1240px){
-  .nav-wrapper{border-top-color:#d4e6da}
-  .nav-item{border-bottom-color:#d4e6da}
-  .nav-item.active>a{color:#1e7a3e}
-  .dropdown{background:#f0f7f2}
-  .dropdown a:hover{background:#e8f5ed}
-  .dropdown a .dd-title{color:var(--green3,#0e4526)}
-  .dropdown a .dd-sub{color:#4a5d52}
-  .utility-nav a{color:#34463b}
-}
+@media(max-width:600px){.ftr-id{padding-left:1rem;padding-right:1rem}}
 
 /* ===== POLISH PASS ===== */
-.brand-logo{height:64px}
-.brand-title-only{font-size:1.28rem;line-height:1.28}
-.utility-nav a:not(.btn-apply){text-underline-offset:4px;transition:color .2s ease}
-.utility-nav a:not(.btn-apply):hover{text-decoration:underline}
-.utility-nav .btn-apply{border-radius:6px;transition:background .2s ease,transform .25s ease,box-shadow .25s ease}
-.utility-nav .btn-apply:hover{transform:translateY(-1px);box-shadow:0 6px 14px rgba(14,69,38,.25)}
-@media(min-width:1241px){
-  .nav-item>a:hover,.nav-item:hover>a{background:#f1f7f3}
-  .nav-item.active>a,.nav-item.active:hover>a{background:#dff0e5;font-weight:800}
-  .dropdown{border-top:3px solid var(--green,#1e7a3e);border-radius:0 0 12px 12px}
-}
 .cta-band{padding:3.75rem 2rem}
 .cta-inner{max-width:1320px}
 .ftr-contact a[href^="tel:"]{white-space:nowrap}
@@ -442,34 +375,25 @@ a:focus-visible,button:focus-visible{outline:2px solid #1e7a3e;outline-offset:3p
 .cta-btn{transition:background .2s ease,transform .25s ease}
 .cta-btn:hover{transform:translateY(-2px)}
 @media(prefers-reduced-motion:reduce){.utility-nav .btn-apply,.cta-btn,.nav-item>a{transition:none}.utility-nav .btn-apply:hover,.cta-btn:hover{transform:none}}
-
-/* Phones: header scrolls away instead of staying fixed, so long department names do not eat the screen */
-@media(max-width:600px){.site-header{position:static}.brand-title-only{font-size:1rem}.brand-logo{height:56px}.brand-badge{width:48px;height:48px}}
 /* ===== END SITE HEADER AND FOOTER ===== */
 section[id]{scroll-margin-top:110px}
 </style>
+<script>document.documentElement.classList.add('pl')</script>
+<link rel="stylesheet" href="css/polish.css"/>
 </head>
 <body>
+<a class="skip" href="#main">Skip to main content</a>
 
 <!-- HEADER -->
-<header class="super-header">
-  <div class="super-header-inner">
-    <div class="super-header-text">
-      <a href="https://buhs.ac.bd" target="_blank" rel="noopener" class="topbar-link">BANGLADESH UNIVERSITY OF HEALTH SCIENCES</a>
-      <span class="super-pipe" aria-hidden="true"></span>
-      <a class="badas-mark" href="https://dab-bd.org" target="_blank" rel="noopener" aria-label="Established 2012 by the Diabetic Association of Bangladesh (BADAS)"><span class="bm-est">EST.</span><span class="bm-year">2012</span><span class="bm-by">BADAS</span></a>
-      <span class="super-pipe" aria-hidden="true"></span>
-      <span class="super-subtext">BANGLADESH'S FIRST HEALTH SCIENCES UNIVERSITY</span>
-    </div>
-  </div>
-</header>
-
 <header class="site-header">
   <div class="header-container">
     <a href="index.html" class="brand-link">
-      <img class="brand-logo" src="assets/doeh-logo-icon.png" alt="DOEH, BUHS logo" width="44" height="58" onerror="this.outerHTML='<span class=&quot;brand-badge&quot;>DOEH</span>'"/>
-      <h1 class="brand-title-only">Department of Occupational and Environmental Health</h1>
+      <img class="brand-logo" src="assets/logo.png" alt="" width="60" height="60" onerror="this.outerHTML='<span class=&quot;brand-badge&quot;>DOEH</span>'"/>
+      <span class="brand-title-only">Department of Occupational and Environmental Health</span>
     </a>
+
+    <button class="search-button search-m" id="siteSearchBtnM" type="button" aria-haspopup="dialog" aria-label="Search the site"><svg viewBox="0 0 24 24" fill="none" stroke-width="2.2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg></button>
+    <span class="hdr-sep" aria-hidden="true"></span>
 
     <button class="nav-toggle" id="navToggle" type="button" aria-expanded="false" aria-controls="siteNav" aria-label="Open menu"><span></span><span></span><span></span></button>
     <div class="nav-wrapper" id="siteNav">
@@ -527,6 +451,7 @@ section[id]{scroll-margin-top:110px}
 
 <!-- legacy hooks kept hidden so js/main.js does not break -->
 <div class="legacy-nav-stub" aria-hidden="true"><button class="hamburger" id="hamburger" onclick="toggleMenu()" tabindex="-1"></button><div class="mobile-menu" id="mobile-menu"></div></div>
+<main id="main" tabindex="-1">
 
 
 <section class="acad-hero">
@@ -553,7 +478,7 @@ section[id]{scroll-margin-top:110px}
       <div class="prog-full-head" role="button" tabindex="0" aria-expanded="false" aria-controls="bph-body">
         <div>
           <div class="prog-full-badges"><span class="prog-code-badge">BPH</span><span class="prog-iosh-badge">IOSH Accredited</span></div>
-          <h3>Bachelor of Public Health, Occupational &amp; Environmental Health and Safety</h3>
+          <h2>Bachelor of Public Health, Occupational &amp; Environmental Health and Safety</h2>
           <p>If you want to start from the beginning and build a full career in this field, this is your program. Hands-on lab and field work from day one, so you graduate ready to walk onto a construction site, into a factory, or straight into a master's program, at home or abroad.</p>
         </div>
         <div class="prog-stats">
@@ -564,16 +489,16 @@ section[id]{scroll-margin-top:110px}
         </div>
       </div>
       <div class="prog-full-body" style="display:none" id="bph-body">
-        <h4>Educational objectives</h4>
+        <h3>Educational objectives</h3>
         <p style="font-size:.85rem;color:var(--gray);line-height:1.8">This program prepares graduates to explain and address occupational and environmental health issues through a combination of scientific knowledge, practical fieldwork, and policy understanding. Students develop skills in hazard identification, risk assessment, workplace safety management, and environmental impact analysis, grounded in both national and international standards.</p>
-        <h4>Admission eligibility</h4>
+        <h3>Admission eligibility</h3>
         <ul>
           <li>SSC (Science) and HSC (Science) or equivalent, with a minimum CGPA of 2.5 in either and a combined CGPA of 5.0</li>
           <li>O/A-Level: minimum 5 O-Level and 2 A-Level subjects; Grade B (GPA 4.00) in at least 4 subjects, Grade C (GPA 3.50) in 3 subjects</li>
           <li>Four-year Diploma in MATS, IHT, or other relevant disciplines also considered</li>
           <li>Foreign students with equivalent qualifications are eligible; equivalence decided by BUHS's Equivalence Committee</li>
         </ul>
-        <h4>Where BPH graduates work</h4>
+        <h3>Where BPH graduates work</h3>
         <ul>
           <li>Mega construction projects</li>
           <li>Oil, gas &amp; power supply sector</li>
@@ -585,7 +510,7 @@ section[id]{scroll-margin-top:110px}
           <li>Universities, research centers &amp; consulting firms</li>
           <li>International organizations &amp; development agencies</li>
         </ul>
-        <h4>Curriculum</h4>
+        <h3>Curriculum</h3>
         <details class="sem-accordion"><summary>Semester 1 <span style="font-size:.75rem;color:var(--gray);font-weight:400">&nbsp;19 credits &middot; 6 courses</span></summary>
         <div class="sem-body">
           <table class="cur-table"><thead><tr><th>Code</th><th>Course</th><th>Credits</th></tr></thead><tbody>
@@ -682,7 +607,7 @@ section[id]{scroll-margin-top:110px}
       <div class="prog-full-head" role="button" tabindex="0" aria-expanded="false" aria-controls="mph-ohs-body">
         <div>
           <div class="prog-full-badges"><span class="prog-code-badge">MPH-OHS</span><span class="prog-iosh-badge">IOSH Accredited</span></div>
-          <h3>Master of Public Health, Occupational Health &amp; Safety</h3>
+          <h2>Master of Public Health, Occupational Health &amp; Safety</h2>
           <p>Already have a foundation in the field and want to specialize further. A focused, 1.5-year program covering everything from workplace hazard and risk management to fire safety, ergonomics, and occupational toxicology, built for people ready to move straight into a specialist or leadership role.</p>
         </div>
         <div class="prog-stats">
@@ -693,9 +618,9 @@ section[id]{scroll-margin-top:110px}
         </div>
       </div>
       <div class="prog-full-body" style="display:none" id="mph-ohs-body">
-        <h4>Educational objectives</h4>
+        <h3>Educational objectives</h3>
         <p style="font-size:.85rem;color:var(--gray);line-height:1.8">This program develops specialists in occupational health and safety who can assess workplace hazards, implement safety management systems, and apply evidence-based approaches to preventing occupational illness and injury across diverse industries.</p>
-        <h4>Admission eligibility</h4>
+        <h3>Admission eligibility</h3>
         <ul>
           <li>Honours in Occupational Health and Safety or its equivalent from any recognized university</li>
           <li>Four years university graduation in any science programme, or graduation in engineering/agriculture with at least 2nd class (or equivalent GPA) from a recognized university</li>
@@ -703,7 +628,7 @@ section[id]{scroll-margin-top:110px}
           <li>Foreign students with equivalent qualifications are eligible; equivalence decided by BUHS's Equivalence Committee</li>
           <li>Minimum CGPA of 2.00 in the Honours program is required for admission</li>
         </ul>
-        <h4>Where MPH-OHS graduates work</h4>
+        <h3>Where MPH-OHS graduates work</h3>
         <ul>
           <li>Mega construction projects</li>
           <li>Oil, gas &amp; power supply sector</li>
@@ -715,7 +640,7 @@ section[id]{scroll-margin-top:110px}
           <li>Universities, research centers &amp; consulting firms</li>
           <li>International organizations &amp; development agencies</li>
         </ul>
-        <h4>Curriculum</h4>
+        <h3>Curriculum</h3>
         <details class="sem-accordion"><summary>Semester 1 <span style="font-size:.75rem;color:var(--gray);font-weight:400">&nbsp;24 credits &middot; 8 courses</span></summary>
         <div class="sem-body">
           <table class="cur-table"><thead><tr><th>Code</th><th>Course</th><th>Credits</th></tr></thead><tbody>
@@ -759,7 +684,7 @@ section[id]{scroll-margin-top:110px}
       <div class="prog-full-head" role="button" tabindex="0" aria-expanded="false" aria-controls="mph-ehs-body">
         <div>
           <div class="prog-full-badges"><span class="prog-code-badge">MPH-EHS</span></div>
-          <h3>Master of Public Health, Environmental Health &amp; Safety</h3>
+          <h2>Master of Public Health, Environmental Health &amp; Safety</h2>
           <p>For people drawn to the environmental side of this field specifically: pollution, climate impact, ecological risk. A 2-year program combining fieldwork, lab work, and research, with faculty actively publishing in peer-reviewed journals and taking part in international collaborations.</p>
         </div>
         <div class="prog-stats">
@@ -770,9 +695,9 @@ section[id]{scroll-margin-top:110px}
         </div>
       </div>
       <div class="prog-full-body" style="display:none" id="mph-ehs-body">
-        <h4>Educational objectives</h4>
+        <h3>Educational objectives</h3>
         <p style="font-size:.85rem;color:var(--gray);line-height:1.8">This program equips graduates to understand environmental health risks, assess ecological impacts, and develop strategies for environmental protection and sustainability, with a focus on connecting scientific knowledge to policy and real-world environmental challenges.</p>
-        <h4>Admission eligibility</h4>
+        <h3>Admission eligibility</h3>
         <ul>
           <li>Honours in Environmental Health and Safety or Environmental Science, or its equivalent, from any recognized university</li>
           <li>Four years university graduation in any science programme, or graduation in engineering/agriculture with at least 2nd class (or equivalent GPA) from a recognized university</li>
@@ -780,7 +705,7 @@ section[id]{scroll-margin-top:110px}
           <li>Foreign students with equivalent qualifications are eligible; equivalence decided by BUHS's Equivalence Committee</li>
           <li>Minimum CGPA of 2.00 in the Honours program is required for admission</li>
         </ul>
-        <h4>Where MPH-EHS graduates work</h4>
+        <h3>Where MPH-EHS graduates work</h3>
         <ul>
           <li>Environmental health specialist, research program manager, environmental health &amp; safety manager, industrial hygienist, or research assistant</li>
           <li>Academic roles in colleges, institutes, and universities</li>
@@ -788,7 +713,7 @@ section[id]{scroll-margin-top:110px}
           <li>Roles across various government departments</li>
           <li>Higher education (PhD) and training opportunities, at home and abroad</li>
         </ul>
-        <h4>Curriculum</h4>
+        <h3>Curriculum</h3>
         <details class="sem-accordion"><summary>Semester 1 <span style="font-size:.75rem;color:var(--gray);font-weight:400">&nbsp;24 credits &middot; 8 courses</span></summary>
         <div class="sem-body">
           <table class="cur-table"><thead><tr><th>Code</th><th>Course</th><th>Credits</th></tr></thead><tbody>
@@ -843,45 +768,45 @@ section[id]{scroll-margin-top:110px}
     <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:1.5rem;max-width:900px;margin:0 auto">
       <div style="text-align:center">
         <div style="width:44px;height:44px;background:rgba(255,255,255,.1);border-radius:12px;display:flex;align-items:center;justify-content:center;margin:0 auto .75rem">
-          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#a8e6bc" stroke-width="1.8" stroke-linecap="round"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg>
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#d0f4db" stroke-width="1.8" stroke-linecap="round"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg>
         </div>
         <div style="font-family:'Merriweather',serif;font-size:.88rem;font-weight:700;color:#fff;margin-bottom:.2rem">UGC Approved</div>
-        <div style="font-size:.72rem;color:rgba(255,255,255,.55)">Recognized programs</div>
+        <div style="font-size:.75rem;color:rgba(255,255,255,.72)">Recognized programs</div>
       </div>
       <div style="text-align:center">
         <div style="width:44px;height:44px;background:rgba(255,255,255,.1);border-radius:12px;display:flex;align-items:center;justify-content:center;margin:0 auto .75rem">
-          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#a8e6bc" stroke-width="1.8" stroke-linecap="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#d0f4db" stroke-width="1.8" stroke-linecap="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
         </div>
         <div style="font-family:'Merriweather',serif;font-size:.88rem;font-weight:700;color:#fff;margin-bottom:.2rem">IOSH Accredited</div>
-        <div style="font-size:.72rem;color:rgba(255,255,255,.55)">International standard</div>
+        <div style="font-size:.75rem;color:rgba(255,255,255,.72)">International standard</div>
       </div>
       <div style="text-align:center">
         <div style="width:44px;height:44px;background:rgba(255,255,255,.1);border-radius:12px;display:flex;align-items:center;justify-content:center;margin:0 auto .75rem">
-          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#a8e6bc" stroke-width="1.8" stroke-linecap="round"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87"/><path d="M16 3.13a4 4 0 010 7.75"/></svg>
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#d0f4db" stroke-width="1.8" stroke-linecap="round"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87"/><path d="M16 3.13a4 4 0 010 7.75"/></svg>
         </div>
         <div style="font-family:'Merriweather',serif;font-size:.88rem;font-weight:700;color:#fff;margin-bottom:.2rem">Strong Faculty</div>
-        <div style="font-size:.72rem;color:rgba(255,255,255,.55)">Experienced professors</div>
+        <div style="font-size:.75rem;color:rgba(255,255,255,.72)">Experienced professors</div>
       </div>
       <div style="text-align:center">
         <div style="width:44px;height:44px;background:rgba(255,255,255,.1);border-radius:12px;display:flex;align-items:center;justify-content:center;margin:0 auto .75rem">
-          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#a8e6bc" stroke-width="1.8" stroke-linecap="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#d0f4db" stroke-width="1.8" stroke-linecap="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
         </div>
         <div style="font-family:'Merriweather',serif;font-size:.88rem;font-weight:700;color:#fff;margin-bottom:.2rem">Research Driven</div>
-        <div style="font-size:.72rem;color:rgba(255,255,255,.55)">Active research culture</div>
+        <div style="font-size:.75rem;color:rgba(255,255,255,.72)">Active research culture</div>
       </div>
       <div style="text-align:center">
         <div style="width:44px;height:44px;background:rgba(255,255,255,.1);border-radius:12px;display:flex;align-items:center;justify-content:center;margin:0 auto .75rem">
-          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#a8e6bc" stroke-width="1.8" stroke-linecap="round"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#d0f4db" stroke-width="1.8" stroke-linecap="round"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
         </div>
         <div style="font-family:'Merriweather',serif;font-size:.88rem;font-weight:700;color:#fff;margin-bottom:.2rem">Fixed Calendar</div>
-        <div style="font-size:.72rem;color:rgba(255,255,255,.55)">Spring &amp; Fall intake</div>
+        <div style="font-size:.75rem;color:rgba(255,255,255,.72)">Spring &amp; Fall intake</div>
       </div>
       <div style="text-align:center">
         <div style="width:44px;height:44px;background:rgba(255,255,255,.1);border-radius:12px;display:flex;align-items:center;justify-content:center;margin:0 auto .75rem">
-          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#a8e6bc" stroke-width="1.8" stroke-linecap="round"><polygon points="3 11 22 2 13 21 11 13 3 11"/></svg>
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#d0f4db" stroke-width="1.8" stroke-linecap="round"><polygon points="3 11 22 2 13 21 11 13 3 11"/></svg>
         </div>
         <div style="font-family:'Merriweather',serif;font-size:.88rem;font-weight:700;color:#fff;margin-bottom:.2rem">Field Practice</div>
-        <div style="font-size:.72rem;color:rgba(255,255,255,.55)">Real-world training</div>
+        <div style="font-size:.75rem;color:rgba(255,255,255,.72)">Real-world training</div>
       </div>
     </div>
   </div>
@@ -892,91 +817,91 @@ section[id]{scroll-margin-top:110px}
   <div class="sec-inner">
     <div class="sec-title">Faculty</div>
     <div class="sec-divider"></div>
-    <div class="fac-grid" aria-label="Faculty">
+    <div class="fac-grid" role="group" aria-label="Faculty">
 
-      <article class="fac-card" tabindex="0" role="button" aria-haspopup="dialog" data-id="akhtar">
-        <img class="fac-photo" src="assets/faculty/photos/sk-akhtar-ahmad.jpg" alt="Prof. Dr. Sk Akhtar Ahmad" onerror="this.outerHTML='&lt;div class=&quot;fac-photo-fallback&quot;&gt;AA&lt;/div&gt;'"/>
+      <div class="fac-card" tabindex="0" role="button" aria-haspopup="dialog" data-id="akhtar">
+        <img class="fac-photo" src="assets/faculty/photos/sk-akhtar-ahmad.jpg" alt="Prof. Dr. Sk Akhtar Ahmad" onerror="this.outerHTML='&lt;div class=&quot;fac-photo-fallback&quot;&gt;AA&lt;/div&gt;'" loading="lazy" decoding="async"/>
         <div class="fac-name">Prof. Dr. Sk Akhtar Ahmad</div>
         <div class="fac-title">Professor &amp; Advisor</div>
         <span class="fac-view">View profile <span aria-hidden="true">→</span></span>
-      </article>
+      </div>
 
-      <article class="fac-card" tabindex="0" role="button" aria-haspopup="dialog" data-id="faruquee">
-        <img class="fac-photo" src="assets/faculty/photos/mh-faruquee.jpg" alt="Prof. Dr. M H Faruquee" onerror="this.outerHTML='&lt;div class=&quot;fac-photo-fallback&quot;&gt;MF&lt;/div&gt;'"/>
+      <div class="fac-card" tabindex="0" role="button" aria-haspopup="dialog" data-id="faruquee">
+        <img class="fac-photo" src="assets/faculty/photos/mh-faruquee.jpg" alt="Prof. Dr. M H Faruquee" onerror="this.outerHTML='&lt;div class=&quot;fac-photo-fallback&quot;&gt;MF&lt;/div&gt;'" loading="lazy" decoding="async"/>
         <div class="fac-name">Prof. Dr. M H Faruquee</div>
         <div class="fac-title">Professor &amp; Head of Department</div>
         <span class="fac-view">View profile <span aria-hidden="true">→</span></span>
-      </article>
+      </div>
 
-      <article class="fac-card" tabindex="0" role="button" aria-haspopup="dialog" data-id="nizam">
-        <img class="fac-photo" src="assets/faculty/photos/saika-nizam.jpg" alt="Dr Saika Nizam" onerror="this.outerHTML='&lt;div class=&quot;fac-photo-fallback&quot;&gt;SN&lt;/div&gt;'"/>
+      <div class="fac-card" tabindex="0" role="button" aria-haspopup="dialog" data-id="nizam">
+        <img class="fac-photo" src="assets/faculty/photos/saika-nizam.jpg" alt="Dr Saika Nizam" onerror="this.outerHTML='&lt;div class=&quot;fac-photo-fallback&quot;&gt;SN&lt;/div&gt;'" loading="lazy" decoding="async"/>
         <div class="fac-name">Dr Saika Nizam</div>
         <div class="fac-title">Associate Professor</div>
         <span class="fac-view">View profile <span aria-hidden="true">→</span></span>
-      </article>
+      </div>
 
-      <article class="fac-card" tabindex="0" role="button" aria-haspopup="dialog" data-id="sarwar">
-        <img class="fac-photo" src="assets/faculty/photos/afm-sarwar.jpg" alt="Prof. A F M Sarwar" onerror="this.outerHTML='&lt;div class=&quot;fac-photo-fallback&quot;&gt;AS&lt;/div&gt;'"/>
+      <div class="fac-card" tabindex="0" role="button" aria-haspopup="dialog" data-id="sarwar">
+        <img class="fac-photo" src="assets/faculty/photos/afm-sarwar.jpg" alt="Prof. A F M Sarwar" onerror="this.outerHTML='&lt;div class=&quot;fac-photo-fallback&quot;&gt;AS&lt;/div&gt;'" loading="lazy" decoding="async"/>
         <div class="fac-name">Prof. A F M Sarwar</div>
         <div class="fac-title">Honorary Professor</div>
         <span class="fac-view">View profile <span aria-hidden="true">→</span></span>
-      </article>
+      </div>
 
-      <article class="fac-card" tabindex="0" role="button" aria-haspopup="dialog" data-id="shahidullah">
-        <img class="fac-photo" src="assets/faculty/photos/abu-nayeem-shahidullah.jpg" alt="Mr. Abu Nayeem Md Shahidullah" onerror="this.outerHTML='&lt;div class=&quot;fac-photo-fallback&quot;&gt;AN&lt;/div&gt;'"/>
+      <div class="fac-card" tabindex="0" role="button" aria-haspopup="dialog" data-id="shahidullah">
+        <img class="fac-photo" src="assets/faculty/photos/abu-nayeem-shahidullah.jpg" alt="Mr. Abu Nayeem Md Shahidullah" onerror="this.outerHTML='&lt;div class=&quot;fac-photo-fallback&quot;&gt;AN&lt;/div&gt;'" loading="lazy" decoding="async"/>
         <div class="fac-name">Mr. Abu Nayeem Md Shahidullah</div>
         <div class="fac-title">Ex Director General, Fire Service &amp; Civil Defence</div>
         <span class="fac-view">View profile <span aria-hidden="true">→</span></span>
-      </article>
+      </div>
 
-      <article class="fac-card" tabindex="0" role="button" aria-haspopup="dialog" data-id="shafiur">
-        <img class="fac-photo" src="assets/faculty/photos/shafiur-rahman.jpg" alt="Dr. Md. Shafiur Rahman" onerror="this.outerHTML='&lt;div class=&quot;fac-photo-fallback&quot;&gt;SR&lt;/div&gt;'"/>
+      <div class="fac-card" tabindex="0" role="button" aria-haspopup="dialog" data-id="shafiur">
+        <img class="fac-photo" src="assets/faculty/photos/shafiur-rahman.jpg" alt="Dr. Md. Shafiur Rahman" onerror="this.outerHTML='&lt;div class=&quot;fac-photo-fallback&quot;&gt;SR&lt;/div&gt;'" loading="lazy" decoding="async"/>
         <div class="fac-name">Dr. Md. Shafiur Rahman</div>
         <div class="fac-title">Associate Professor</div>
         <span class="fac-view">View profile <span aria-hidden="true">→</span></span>
-      </article>
+      </div>
 
-      <article class="fac-card" tabindex="0" role="button" aria-haspopup="dialog" data-id="ehsan">
-        <img class="fac-photo" src="assets/faculty/photos/abul-ehsan.jpg" alt="Dr. Md. Abul Ehsan" onerror="this.outerHTML='&lt;div class=&quot;fac-photo-fallback&quot;&gt;AE&lt;/div&gt;'"/>
+      <div class="fac-card" tabindex="0" role="button" aria-haspopup="dialog" data-id="ehsan">
+        <img class="fac-photo" src="assets/faculty/photos/abul-ehsan.jpg" alt="Dr. Md. Abul Ehsan" onerror="this.outerHTML='&lt;div class=&quot;fac-photo-fallback&quot;&gt;AE&lt;/div&gt;'" loading="lazy" decoding="async"/>
         <div class="fac-name">Dr. Md. Abul Ehsan</div>
         <div class="fac-title">Associate Professor</div>
         <span class="fac-view">View profile <span aria-hidden="true">→</span></span>
-      </article>
+      </div>
 
-      <article class="fac-card" tabindex="0" role="button" aria-haspopup="dialog" data-id="masum">
-        <img class="fac-photo" src="assets/faculty/photos/masum-ul-alam.jpg" alt="Mr. A K M Masum Ul Alam" onerror="this.outerHTML='&lt;div class=&quot;fac-photo-fallback&quot;&gt;MA&lt;/div&gt;'"/>
+      <div class="fac-card" tabindex="0" role="button" aria-haspopup="dialog" data-id="masum">
+        <img class="fac-photo" src="assets/faculty/photos/masum-ul-alam.jpg" alt="Mr. A K M Masum Ul Alam" onerror="this.outerHTML='&lt;div class=&quot;fac-photo-fallback&quot;&gt;MA&lt;/div&gt;'" loading="lazy" decoding="async"/>
         <div class="fac-name">Mr. A K M Masum Ul Alam</div>
         <div class="fac-title">Adjunct Faculty</div>
         <span class="fac-view">View profile <span aria-hidden="true">→</span></span>
-      </article>
+      </div>
 
-      <article class="fac-card" tabindex="0" role="button" aria-haspopup="dialog" data-id="wali">
-        <img class="fac-photo" src="assets/faculty/photos/afm-wali-islam.jpg" alt="Dr. AFM Wali Islam" onerror="this.outerHTML='&lt;div class=&quot;fac-photo-fallback&quot;&gt;WI&lt;/div&gt;'"/>
+      <div class="fac-card" tabindex="0" role="button" aria-haspopup="dialog" data-id="wali">
+        <img class="fac-photo" src="assets/faculty/photos/afm-wali-islam.jpg" alt="Dr. AFM Wali Islam" onerror="this.outerHTML='&lt;div class=&quot;fac-photo-fallback&quot;&gt;WI&lt;/div&gt;'" loading="lazy" decoding="async"/>
         <div class="fac-name">Dr. AFM Wali Islam</div>
         <div class="fac-title">Professor</div>
         <span class="fac-view">View profile <span aria-hidden="true">→</span></span>
-      </article>
+      </div>
 
-      <article class="fac-card" tabindex="0" role="button" aria-haspopup="dialog" data-id="tanzir">
-        <img class="fac-photo" src="assets/faculty/photos/tanzir-nawaz-khan.jpg" alt="Tanzir Nawaz Khan" onerror="this.outerHTML='&lt;div class=&quot;fac-photo-fallback&quot;&gt;TN&lt;/div&gt;'"/>
+      <div class="fac-card" tabindex="0" role="button" aria-haspopup="dialog" data-id="tanzir">
+        <img class="fac-photo" src="assets/faculty/photos/tanzir-nawaz-khan.jpg" alt="Tanzir Nawaz Khan" onerror="this.outerHTML='&lt;div class=&quot;fac-photo-fallback&quot;&gt;TN&lt;/div&gt;'" loading="lazy" decoding="async"/>
         <div class="fac-name">Tanzir Nawaz Khan</div>
         <div class="fac-title">Adjunct Faculty</div>
         <span class="fac-view">View profile <span aria-hidden="true">→</span></span>
-      </article>
+      </div>
 
-      <article class="fac-card" tabindex="0" role="button" aria-haspopup="dialog" data-id="rafiqul">
-        <img class="fac-photo" src="assets/faculty/photos/abm-rafiqul-islam.jpg" alt="Dr. ABM Rafiqul Islam" onerror="this.outerHTML='&lt;div class=&quot;fac-photo-fallback&quot;&gt;RI&lt;/div&gt;'"/>
+      <div class="fac-card" tabindex="0" role="button" aria-haspopup="dialog" data-id="rafiqul">
+        <img class="fac-photo" src="assets/faculty/photos/abm-rafiqul-islam.jpg" alt="Dr. ABM Rafiqul Islam" onerror="this.outerHTML='&lt;div class=&quot;fac-photo-fallback&quot;&gt;RI&lt;/div&gt;'" loading="lazy" decoding="async"/>
         <div class="fac-name">Dr. ABM Rafiqul Islam</div>
         <div class="fac-title">Adjunct Faculty</div>
         <span class="fac-view">View profile <span aria-hidden="true">→</span></span>
-      </article>
+      </div>
 
-      <article class="fac-card" tabindex="0" role="button" aria-haspopup="dialog" data-id="maliha">
-        <img class="fac-photo" src="assets/faculty/photos/maliha-farzana.jpg" alt="Dr. Maliha Farzana" onerror="this.outerHTML='&lt;div class=&quot;fac-photo-fallback&quot;&gt;MF&lt;/div&gt;'"/>
+      <div class="fac-card" tabindex="0" role="button" aria-haspopup="dialog" data-id="maliha">
+        <img class="fac-photo" src="assets/faculty/photos/maliha-farzana.jpg" alt="Dr. Maliha Farzana" onerror="this.outerHTML='&lt;div class=&quot;fac-photo-fallback&quot;&gt;MF&lt;/div&gt;'" loading="lazy" decoding="async"/>
         <div class="fac-name">Dr. Maliha Farzana</div>
         <div class="fac-title">Adjunct Faculty</div>
         <span class="fac-view">View profile <span aria-hidden="true">→</span></span>
-      </article>
+      </div>
 
     </div>
   </div>
@@ -986,9 +911,9 @@ section[id]{scroll-margin-top:110px}
   <div class="fac-backdrop" data-fac-close></div>
   <section class="fac-panel" role="dialog" aria-modal="true" aria-labelledby="facPanelName">
     <button class="fac-close" data-fac-close aria-label="Close profile">×</button>
-    <div class="fac-scroll">
+    <div class="fac-scroll" tabindex="0">
       <header class="fac-panel-hero">
-        <img class="fac-panel-photo" id="facPanelPhoto" src="" alt="" onerror="this.outerHTML='&lt;div class=&quot;fac-panel-photo-fallback&quot; id=&quot;facPanelPhoto&quot;&gt;&lt;/div&gt;'"/>
+        <img class="fac-panel-photo" id="facPanelPhoto" src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" alt="" onerror="this.outerHTML='&lt;div class=&quot;fac-panel-photo-fallback&quot; id=&quot;facPanelPhoto&quot;&gt;&lt;/div&gt;'" loading="lazy" decoding="async"/>
         <div>
           <h2 class="fac-panel-name" id="facPanelName"></h2>
           <p class="fac-panel-title" id="facPanelTitle"></p>
@@ -1135,9 +1060,13 @@ function openFacProfile(id){
   facSet('facEducation',f.education);
   facSet('facExperience',f.experience);
   facSet('facPublications',f.publications);
+  facLast=document.activeElement;
   facOverlay.classList.add('open');facOverlay.setAttribute('aria-hidden','false');document.body.style.overflow='hidden';
+  const sc=facOverlay.querySelector('.fac-scroll');if(sc)sc.scrollTop=0;
+  setTimeout(()=>{const c=facOverlay.querySelector('.fac-close');if(c)c.focus()},40);
 }
-function closeFacProfile(){facOverlay.classList.remove('open');facOverlay.setAttribute('aria-hidden','true');document.body.style.overflow=''}
+let facLast=null;
+function closeFacProfile(){const was=facOverlay.classList.contains('open');facOverlay.classList.remove('open');facOverlay.setAttribute('aria-hidden','true');document.body.style.overflow='';if(was&&facLast&&facLast.focus){facLast.focus();facLast=null}}
 function facHas(id){const f=facultyData[id];return !!(f&&(f.overview||f.research||f.education||f.experience||f.publications))}
 document.querySelectorAll('.fac-card').forEach(c=>{
   if(!facHas(c.dataset.id)){c.removeAttribute('role');c.removeAttribute('tabindex');c.removeAttribute('aria-haspopup');c.setAttribute('data-static','1');return}
@@ -1146,6 +1075,7 @@ document.querySelectorAll('.fac-card').forEach(c=>{
 });
 document.querySelectorAll('[data-fac-close]').forEach(x=>x.addEventListener('click',closeFacProfile));
 document.addEventListener('keydown',e=>{if(e.key==='Escape')closeFacProfile()});
+document.addEventListener('keydown',e=>{if(e.key!=='Tab'||!facOverlay.classList.contains('open'))return;const f=[...facOverlay.querySelectorAll('a[href],button,[tabindex]:not([tabindex="-1"])')].filter(x=>x.offsetParent!==null);if(!f.length)return;const a1=f[0],z1=f[f.length-1];if(e.shiftKey&&document.activeElement===a1){e.preventDefault();z1.focus()}else if(!e.shiftKey&&document.activeElement===z1){e.preventDefault();a1.focus()}});
 </script>
 
 <!-- ACADEMIC CALENDAR -->
@@ -1179,7 +1109,8 @@ document.addEventListener('keydown',e=>{if(e.key==='Escape')closeFacProfile()});
     </div>
   </div>
 </section>
-<a class="wa-float" href="https://wa.me/8801911383522?text=Hello%20DOEH%2C%20I%20would%20like%20to%20know%20more%20about%20the%20programs." target="_blank" rel="noopener" aria-label="Chat with DOEH on WhatsApp"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg></a>
+</main>
+<aside aria-label="Chat on WhatsApp"><a class="wa-float" href="https://wa.me/8801911383522?text=Hello%20DOEH%2C%20I%20would%20like%20to%20know%20more%20about%20the%20programs." target="_blank" rel="noopener" aria-label="Chat with DOEH on WhatsApp"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg></a></aside>
 
 <!-- FOOTER -->
 <footer class="ftr">
@@ -1226,12 +1157,16 @@ document.addEventListener('keydown',e=>{if(e.key==='Escape')closeFacProfile()});
       </div>
     </div>
   </div>
+  <div class="ftr-id">
+    <a class="ftr-id-name" href="https://buhs.ac.bd" target="_blank" rel="noopener">Bangladesh University of Health Sciences</a>
+    <p class="ftr-id-tag">Bangladesh's first health sciences university, established in 2012 by the Diabetic Association of Bangladesh (BADAS).</p>
+  </div>
   <div class="ftr-bottom">
-    <img class="ftr-logo" src="assets/doeh-logo-icon.png" alt="DOEH, BUHS logo" onerror="this.style.display='none'"/>
+    <img class="ftr-logo" src="assets/logo.png" alt="DOEH, BUHS logo" onerror="this.style.display='none'" loading="lazy" decoding="async"/>
     <div class="ftr-copy">&copy; 2026 Department of Occupational &amp; Environmental Health, Bangladesh University of Health Sciences. All rights reserved.</div>
-    <a class="ftr-badas" href="https://dab-bd.org" target="_blank" rel="noopener"><img src="assets/badas-logo.png" alt="Diabetic Association of Bangladesh (BADAS) logo" width="46" height="46" loading="lazy" onerror="this.style.display='none'"/><span>Established by the Diabetic Association of Bangladesh</span></a>
-    <!-- Facebook, YouTube, LinkedIn: add each real URL to href and delete the hidden attribute on that icon -->
-    <div class="ftr-social"><a href="https://wa.me/8801911383522?text=Hello%20DOEH%2C%20I%20would%20like%20to%20know%20more%20about%20the%20programs." target="_blank" rel="noopener" aria-label="Message DOEH on WhatsApp"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg></a><a href="" hidden target="_blank" rel="noopener" aria-label="DOEH on Facebook"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M22 12a10 10 0 1 0-11.6 9.9v-7H7.9V12h2.5V9.8c0-2.5 1.5-3.9 3.8-3.9 1.1 0 2.2.2 2.2.2v2.5h-1.3c-1.2 0-1.6.8-1.6 1.6V12h2.8l-.4 2.9h-2.3v7A10 10 0 0 0 22 12z"/></svg></a><a href="" hidden target="_blank" rel="noopener" aria-label="DOEH on YouTube"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M21.6 7.2a2.5 2.5 0 0 0-1.8-1.8C18.2 5 12 5 12 5s-6.2 0-7.8.4A2.5 2.5 0 0 0 2.4 7.2C2 8.8 2 12 2 12s0 3.2.4 4.8a2.5 2.5 0 0 0 1.8 1.8C5.8 19 12 19 12 19s6.2 0 7.8-.4a2.5 2.5 0 0 0 1.8-1.8c.4-1.6.4-4.8.4-4.8s0-3.2-.4-4.8zM10 15V9l5.2 3L10 15z"/></svg></a><a href="" hidden target="_blank" rel="noopener" aria-label="DOEH on LinkedIn"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4.98 3.5a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5zM3 9.75h4V21H3V9.75zm6.5 0h3.8v1.54h.05c.53-1 1.82-2.04 3.75-2.04 4 0 4.75 2.63 4.75 6.05V21h-4v-5.1c0-1.22-.02-2.78-1.7-2.78-1.7 0-1.96 1.33-1.96 2.7V21h-4V9.75z"/></svg></a></div>
+    <a class="ftr-badas" href="https://dab-bd.org" target="_blank" rel="noopener"><img src="assets/badas-logo.png" alt="Diabetic Association of Bangladesh (BADAS) logo" width="46" height="46" loading="lazy" onerror="this.style.display='none'"/><span>Established in 2012 by the Diabetic Association of Bangladesh</span></a>
+    <!-- LinkedIn: add the real URL to href and delete the hidden attribute on that icon -->
+    <div class="ftr-social"><a href="https://www.facebook.com/share/19NrNVjGQQ/" target="_blank" rel="noopener" aria-label="DOEH on Facebook"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M22 12a10 10 0 1 0-11.6 9.9v-7H7.9V12h2.5V9.8c0-2.5 1.5-3.9 3.8-3.9 1.1 0 2.2.2 2.2.2v2.5h-1.3c-1.2 0-1.6.8-1.6 1.6V12h2.8l-.4 2.9h-2.3v7A10 10 0 0 0 22 12z"/></svg></a><a href="https://www.youtube.com/@doeh_buhs" target="_blank" rel="noopener" aria-label="DOEH on YouTube"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M21.6 7.2a2.5 2.5 0 0 0-1.8-1.8C18.2 5 12 5 12 5s-6.2 0-7.8.4A2.5 2.5 0 0 0 2.4 7.2C2 8.8 2 12 2 12s0 3.2.4 4.8a2.5 2.5 0 0 0 1.8 1.8C5.8 19 12 19 12 19s6.2 0 7.8-.4a2.5 2.5 0 0 0 1.8-1.8c.4-1.6.4-4.8.4-4.8s0-3.2-.4-4.8zM10 15V9l5.2 3L10 15z"/></svg></a><a href="mailto:oeh@buhs.ac.bd" aria-label="Email DOEH at oeh@buhs.ac.bd"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M3 6.5A2.5 2.5 0 0 1 5.5 4h13A2.5 2.5 0 0 1 21 6.5v11a2.5 2.5 0 0 1-2.5 2.5h-13A2.5 2.5 0 0 1 3 17.5v-11zm2.4-.3L12 11.3l6.6-5.1a.5.5 0 0 0-.1-.2h-13a.5.5 0 0 0-.1.2zM19 8.5l-6.4 4.9a1 1 0 0 1-1.2 0L5 8.5v9c0 .3.2.5.5.5h13c.3 0 .5-.2.5-.5v-9z"/></svg></a><a href="https://wa.me/8801911383522?text=Hello%20DOEH%2C%20I%20would%20like%20to%20know%20more%20about%20the%20programs." target="_blank" rel="noopener" aria-label="Message DOEH on WhatsApp"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg></a><a href="" hidden target="_blank" rel="noopener" aria-label="DOEH on LinkedIn"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4.98 3.5a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5zM3 9.75h4V21H3V9.75zm6.5 0h3.8v1.54h.05c.53-1 1.82-2.04 3.75-2.04 4 0 4.75 2.63 4.75 6.05V21h-4v-5.1c0-1.22-.02-2.78-1.7-2.78-1.7 0-1.96 1.33-1.96 2.7V21h-4V9.75z"/></svg></a></div>
   </div>
 </footer>
 <!-- HEADER MENU SCRIPT -->
@@ -1277,7 +1212,7 @@ document.addEventListener('keydown',e=>{if(e.key==='Escape')closeFacProfile()});
    ['MPH in Environmental Health and Safety','academics.html#mph-ehs-body',"Master's program",'mph masters ehs environmental'],
    ['Faculty and Academic Staff','academics.html#faculty','Professors and adjunct faculty','faculty teachers professors staff'],
    ['Academic Calendar','academics.html#calendar','Spring and Fall intakes','calendar intake spring fall april october admission'],
-   ['Research','research.html','Research areas and publications','research publications projects'],
+   ['Research','research.html','Research themes, faculty expertise and publications','research publications themes faculty arsenic lead occupational garment safety'],
    ['News & Events','news.html','Updates, notices and events','news events notices seminars'],
    ['Gallery','gallery.html','Photos and videos from the department','gallery photos videos fieldwork'],
    ['Alumni','alumni.html','Alumni directory and success stories','alumni graduates directory'],
@@ -1304,7 +1239,7 @@ document.addEventListener('keydown',e=>{if(e.key==='Escape')closeFacProfile()});
   function open(){last=document.activeElement;box.classList.add('open');box.setAttribute('aria-hidden','false');document.body.style.overflow='hidden';inp.value='';render('');setTimeout(function(){inp.focus()},30)}
   function close(){box.classList.remove('open');box.setAttribute('aria-hidden','true');document.body.style.overflow='';if(last&&last.focus)last.focus()}
   function move(d){var a=list.querySelectorAll('a');if(!a.length)return;if(sel>-1)a[sel].classList.remove('sel');sel=(sel+d+a.length)%a.length;a[sel].classList.add('sel');a[sel].scrollIntoView({block:'nearest'})}
-  btn.addEventListener('click',open);
+  btn.addEventListener('click',open);var btnM=document.getElementById('siteSearchBtnM');if(btnM)btnM.addEventListener('click',open);
   document.getElementById('ssrClose').addEventListener('click',close);
   box.addEventListener('click',function(e){if(e.target===box)close()});
   inp.addEventListener('input',function(){render(inp.value)});
@@ -1344,7 +1279,9 @@ if(location.hash){
     setTimeout(()=>target.scrollIntoView({behavior:'smooth', block:'start'}), 50);
   }
 }
+(function(){const m=/^#profile-([a-z]+)$/.exec(location.hash);if(m&&typeof facultyData!=='undefined'&&facultyData[m[1]]&&typeof openFacProfile==='function'){const s=document.getElementById('faculty');if(s)s.scrollIntoView();setTimeout(function(){openFacProfile(m[1])},300)}})();
 </script>
 <script src="js/main.js"></script>
+<script src="js/polish.js" defer></script>
 </body>
 </html>
