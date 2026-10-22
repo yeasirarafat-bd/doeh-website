@@ -8,6 +8,10 @@
 <link rel="canonical" href="https://doeh-buhs.ac/contact.html"/>
 <link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@400;700;900&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet"/>
 <link rel="stylesheet" href="css/style.css"/>
+<link rel="icon" type="image/png" sizes="64x64" href="assets/favicon-64.png"/>
+<link rel="apple-touch-icon" href="assets/apple-touch-icon.png"/>
+<meta name="theme-color" content="#156030"/>
+
 
 <style>
 .contact-wrap{display:grid;grid-template-columns:1fr 1fr;gap:2.5rem;align-items:start}
@@ -17,7 +21,7 @@
 .contact-detail a{color:var(--green2);text-decoration:none;font-weight:600}
 
 .cform{display:flex;flex-direction:column;gap:1rem}
-.cform label{font-size:.72rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--navy)}
+.cform label{font-size:.75rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--navy)}
 .cform input,.cform select,.cform textarea{padding:.75rem .9rem;border:1.5px solid var(--border2);border-radius:8px;font-family:'Outfit',sans-serif;font-size:.9rem;width:100%}
 .cform textarea{min-height:120px;resize:vertical}
 
@@ -28,40 +32,288 @@
 .footer-grid{max-width:1100px;margin:0 auto;display:grid;grid-template-columns:1.4fr 1fr 1fr;gap:2.5rem;padding-bottom:2rem}
 .footer-brand-logo{width:46px;height:46px;object-fit:contain;background:white;border-radius:9px;padding:2px;margin-bottom:.85rem}
 .footer-brand-name{font-family:'Merriweather',serif;font-size:.95rem;font-weight:700;color:#fff;line-height:1.3}
-.footer-brand-sub{font-size:.72rem;color:rgba(255,255,255,.4);margin-top:.2rem;line-height:1.5}
+.footer-brand-sub{font-size:.75rem;color:rgba(255,255,255,.72);margin-top:.2rem;line-height:1.5}
 @media(max-width:768px){ .footer-grid{grid-template-columns:1fr;gap:1.5rem} .contact-wrap{grid-template-columns:1fr} }
 </style>
+<style id="site-chrome">
+/* ===== SITE HEADER (final: white theme, no top bar) ===== */
+.site-header{--hpad:2rem;--hd-ink:#0e4526;--hd-ink2:#156030;--hd-muted:#4a5d52;--hd-line:#d4e6da;--hd-tint:#e8f5ed;--hd-hover:#f1f7f3;--hd-active:#dff0e5;font-family:'Outfit',sans-serif;position:sticky;top:0;z-index:200;margin:0;padding:.6rem var(--hpad);background:#fff;color:var(--hd-ink);border-bottom:1px solid var(--hd-line);box-shadow:0 6px 18px rgba(14,69,38,.07)}
+.site-header *{box-sizing:border-box;margin:0;padding:0}
+.header-container{max-width:82.5rem;margin:0 auto;display:flex;align-items:center;justify-content:space-between;gap:2.5rem}
+.brand-link{display:flex;align-items:center;gap:.9rem;text-decoration:none;color:var(--hd-ink);min-width:0}
+.brand-logo{display:block;width:60px;height:60px;object-fit:contain;flex:none}
+.brand-badge{width:56px;height:56px;border-radius:12px;background:var(--hd-ink);color:#fff;display:flex;align-items:center;justify-content:center;font-family:'Merriweather',serif;font-weight:900;font-size:.95rem;letter-spacing:.03em;flex-shrink:0}
+.brand-title-only{font-family:'Merriweather',serif;font-size:1.3rem;font-weight:900;letter-spacing:.01em;line-height:1.3;max-width:370px;color:var(--hd-ink)}
+.nav-wrapper{display:flex;flex-direction:column;align-items:flex-end;gap:.45rem;flex-shrink:0}
+
+.utility-nav{display:flex;align-items:center;gap:1rem;font-size:.95rem;font-weight:600;letter-spacing:.02em}
+.utility-nav a{color:var(--hd-muted);text-decoration:none;text-underline-offset:4px;transition:color .2s ease}
+.utility-nav a:hover{color:var(--hd-ink);text-decoration:underline}
+.utility-divider{color:#b7cdbd;font-weight:300}
+.search-button{background:transparent;border:0;color:var(--hd-ink);cursor:pointer;display:flex;margin-left:.6rem}
+.search-button:hover{color:var(--hd-ink2)}
+.search-button svg{width:19px;height:19px;stroke:currentColor}
+.utility-nav .btn-apply{background:var(--hd-ink);color:#fff;font-weight:800;font-size:.92rem;letter-spacing:.04em;padding:.4rem 1.4rem;border-radius:6px;text-transform:uppercase;margin-left:.4rem;text-decoration:none;transition:background .2s ease,transform .25s ease,box-shadow .25s ease}
+.utility-nav .btn-apply:hover{background:var(--hd-ink2);color:#fff;text-decoration:none;transform:translateY(-1px);box-shadow:0 6px 14px rgba(14,69,38,.25)}
+
+.search-m,.hdr-sep{display:none}
+.primary-nav{display:flex;align-items:center;gap:.15rem;white-space:nowrap}
+.nav-item{position:relative}
+.nav-item>a{display:flex;align-items:center;gap:.4rem;color:var(--hd-ink);text-decoration:none;font-weight:600;font-size:1.05rem;letter-spacing:.015em;white-space:nowrap;padding:.4rem .9rem;border-radius:999px;transition:background .2s ease}
+.nav-item>a:hover,.nav-item:hover>a,.nav-item:focus-within>a{background:var(--hd-hover)}
+.nav-item.active>a,.nav-item.active:hover>a{background:var(--hd-active);font-weight:700}
+.caret{width:11px;height:11px;transition:transform .2s ease}
+.nav-item:hover .caret,.nav-item:focus-within .caret{transform:rotate(180deg)}
+
+/* Dropdowns open under their own item */
+.dropdown{position:absolute;top:100%;left:-.85rem;margin-top:14px;min-width:340px;background:#fff;border:1px solid var(--hd-line);border-top:3px solid var(--green,#1e7a3e);border-radius:0 0 12px 12px;box-shadow:0 18px 40px rgba(14,69,38,.22);padding:.55rem;opacity:0;visibility:hidden;transform:translateY(6px);transition:opacity .18s ease,transform .18s ease,visibility .18s;z-index:50}
+.dropdown::before{content:'';position:absolute;left:0;right:0;top:-19px;height:19px}
+.nav-item:hover .dropdown,.nav-item:focus-within .dropdown{opacity:1;visibility:visible;transform:translateY(0)}
+.dropdown a{display:block;padding:.7rem .9rem;border-radius:8px;font-size:1rem;font-weight:500;color:var(--hd-muted);text-decoration:none}
+.dropdown a:hover{background:var(--hd-tint);color:var(--hd-ink)}
+.dropdown a .dd-title{display:block;color:var(--hd-ink);font-size:1.02rem;font-weight:600;line-height:1.35}
+.dropdown a .dd-sub{display:block;margin-top:.1rem;color:var(--hd-muted);font-size:.86rem;font-weight:400;line-height:1.4}
+
+a:focus-visible,button:focus-visible{outline:2px solid #1e7a3e;outline-offset:3px}
+.dropdown a:focus-visible{outline-offset:-2px}
+@media(prefers-reduced-motion:reduce){.caret,.dropdown{transition:none}}
+
+/* Reset anything the shared stylesheet applies to the old nav or body offset */
+html,body{margin:0}
+body{padding-top:0!important}
+.legacy-nav-stub{display:none!important}
+
+/* Footer (BRAC University style: light, five columns, social row) */
+.ftr{background:var(--offwhite,#f5faf6);border-top:4px solid var(--green3,#0e4526);color:var(--green3,#0e4526);font-family:'Outfit',sans-serif}
+.ftr *{box-sizing:border-box}
+.ftr-inner{max-width:82.5rem;margin:0 auto;padding:3.5rem 2rem 2.5rem}
+.ftr-grid{display:grid;grid-template-columns:1.25fr 1fr 1fr 1fr 1fr;gap:2.5rem}
+.ftr-title{font-family:'Merriweather',serif;font-size:1.15rem;font-weight:700;color:var(--green3,#0e4526);padding-bottom:.75rem;margin:0 0 1.1rem;border-bottom:1px solid #d5e4da}
+.ftr-link{display:block;color:#1f2937;text-decoration:none;font-size:1rem;line-height:1.5;padding:.32rem 0}
+.ftr-link:hover{color:var(--green2,#1e7a3e);text-decoration:underline}
+.ftr-contact p{font-size:.98rem;line-height:1.7;margin:0 0 .6rem;color:#1f2937}
+.ftr-contact strong{font-weight:700}
+.ftr-contact a{color:inherit;text-decoration:none}
+.ftr-contact a:hover{text-decoration:underline}
+.ftr-map{margin-top:1rem;border-radius:8px;overflow:hidden;border:1px solid #d5e4da;height:170px}
+.ftr-map iframe{width:100%;height:100%;border:0}
+.ftr-bottom{max-width:82.5rem;margin:0 auto;padding:1.5rem 2rem 2rem;border-top:1px solid #d5e4da;display:flex;align-items:center;gap:1.5rem;flex-wrap:wrap}
+.ftr-logo{width:52px;height:52px;object-fit:contain;background:#fff;border-radius:10px;padding:3px;border:1px solid #d5e4da}
+.ftr-copy{font-size:.92rem;line-height:1.6;color:#3f4a44;flex:1 1 320px}
+.ftr-social{display:flex;gap:1.1rem}
+.ftr-social a{color:var(--green3,#0e4526);display:inline-flex}
+.ftr-social a:hover{color:var(--green2,#1e7a3e)}
+.ftr-social svg{width:26px;height:26px;fill:currentColor}
+.ftr [hidden]{display:none!important}
+@media(max-width:1100px){.ftr-grid{grid-template-columns:repeat(2,1fr)}.ftr-contact{grid-column:1/-1}}
+@media(max-width:600px){.ftr-grid{grid-template-columns:1fr}.ftr-inner,.ftr-bottom{padding-left:1rem;padding-right:1rem}}
+
+/* Call to action band and WhatsApp button */
+.cta-band{background:linear-gradient(135deg,var(--green3,#0e4526),var(--green2,#1e7a3e));color:#fff;font-family:'Outfit',sans-serif;padding:3.5rem 2rem}
+.cta-band *{box-sizing:border-box}
+.cta-inner{max-width:68.75rem;margin:0 auto;display:flex;align-items:center;justify-content:space-between;gap:2rem;flex-wrap:wrap}
+.cta-text{flex:1 1 420px}
+.cta-title{font-family:'Merriweather',serif;font-size:clamp(1.5rem,3vw,2.1rem);font-weight:900;line-height:1.3;margin:0 0 .6rem;color:#fff}
+.cta-sub{font-size:1rem;line-height:1.65;color:rgba(255,255,255,.88);max-width:560px;margin:0}
+.cta-actions{display:flex;gap:.9rem;flex-wrap:wrap}
+.cta-btn{display:inline-flex;align-items:center;gap:.55rem;padding:.9rem 1.6rem;border-radius:6px;font-weight:700;font-size:.95rem;letter-spacing:.03em;text-decoration:none;border:2px solid #fff;transition:background .2s ease}
+.cta-btn-primary{background:#fff;color:var(--green3,#0e4526)}
+.cta-btn-primary:hover{background:#f1f5f9}
+.cta-btn-ghost{background:transparent;color:#fff}
+.cta-btn-ghost:hover{background:rgba(255,255,255,.14)}
+.cta-btn svg{width:20px;height:20px;fill:currentColor}
+.wa-float{position:fixed;right:1.25rem;bottom:1.25rem;z-index:70;width:58px;height:58px;border-radius:50%;background:#25D366;color:#fff;display:grid;place-items:center;box-shadow:0 10px 24px rgba(0,0,0,.25);transition:transform .2s ease}
+.wa-float:hover{transform:translateY(-3px)}
+.wa-float svg{width:32px;height:32px;fill:currentColor}
+.cta-btn:focus-visible,.wa-float:focus-visible{outline:3px solid #ffd84d;outline-offset:3px}
+@media(max-width:600px){.cta-band{padding:2.5rem 1rem}.wa-float{right:.9rem;bottom:.9rem}}
+
+/* Mobile and tablet: bar (logo, name, search, divider, hamburger) and the sliding menu */
+.nav-toggle{display:none;width:48px;height:48px;border:0;border-radius:0;background:transparent;cursor:pointer;flex-direction:column;align-items:center;justify-content:center;gap:6px;flex-shrink:0;padding:0;-webkit-tap-highlight-color:transparent}
+.nav-toggle span{display:block;width:28px;height:3px;background:var(--hd-ink);border-radius:2px;transition:transform .35s cubic-bezier(.4,0,.2,1),opacity .2s ease}
+.site-header.open .nav-toggle span:nth-child(1){transform:translateY(9px) rotate(45deg)}
+.site-header.open .nav-toggle span:nth-child(2){opacity:0;transform:scaleX(.2)}
+.site-header.open .nav-toggle span:nth-child(3){transform:translateY(-9px) rotate(-45deg)}
+@keyframes navIn{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
+@media(max-width:1240px){
+  .site-header{--hpad:1.1rem;padding:.65rem var(--hpad);transition:padding .3s ease}
+  .site-header.open{padding-bottom:0}
+  .header-container{flex-wrap:wrap;gap:0;align-items:center}
+  .brand-link{flex:1;min-width:0;gap:.8rem;padding-right:.6rem}
+  .brand-logo{width:52px;height:52px}
+  .brand-badge{width:50px;height:50px;font-size:.85rem}
+  .brand-title-only{font-size:1.05rem;line-height:1.3;max-width:none}
+  .search-m{display:flex;align-items:center;justify-content:center;order:1;width:42px;height:44px;margin:0;padding:0;border-radius:0}
+  .search-m svg{width:24px;height:24px}
+  .hdr-sep{display:block;order:1;width:1px;height:30px;background:var(--hd-line);margin:0 .2rem}
+  .nav-toggle{display:flex;order:2;width:44px;height:44px}
+  /* panel: edge to edge, always laid out, animated open and closed (never display toggled) */
+  .nav-wrapper{order:3;flex-basis:calc(100% + 2*var(--hpad));width:calc(100% + 2*var(--hpad));margin:0 calc(var(--hpad)*-1);padding:0 var(--hpad);display:flex;flex-direction:column;align-items:stretch;gap:0;max-height:0;overflow:hidden;opacity:0;visibility:hidden;border-top:3px solid transparent;transform:translateY(-8px);transition:max-height .42s cubic-bezier(.4,0,.2,1),opacity .25s ease,transform .35s ease,margin-top .3s ease,padding .3s ease,border-color .3s ease,visibility 0s linear .42s}
+  .site-header.open .nav-wrapper{max-height:calc(100vh - 100px);max-height:calc(100dvh - 100px);overflow-y:auto;overscroll-behavior:contain;-webkit-overflow-scrolling:touch;opacity:1;visibility:visible;transform:none;margin-top:.8rem;padding-top:.4rem;padding-bottom:1.5rem;border-top-color:var(--green,#1e7a3e);transition-delay:0s}
+  /* block 1: main navigation */
+  .primary-nav{order:1;flex-direction:column;align-items:stretch;gap:0;white-space:normal}
+  .nav-item{display:block;border:0}
+  .nav-item>a{justify-content:space-between;padding:.85rem .75rem;font-size:1.15rem;font-weight:600;letter-spacing:.005em;line-height:1.3;border-radius:14px}
+  .nav-item>a:hover,.nav-item:hover>a,.nav-item:focus-within>a{background:var(--hd-hover)}
+  .nav-item.active>a,.nav-item.active:hover>a{background:var(--hd-tint);color:var(--green,#1e7a3e);font-weight:700}
+  .caret{width:16px;height:16px;transition:transform .3s cubic-bezier(.4,0,.2,1)}
+  .nav-item:hover .caret,.nav-item:focus-within .caret{transform:none}
+  .nav-item.open .caret{transform:rotate(180deg)}
+  .dropdown{position:static;display:block;min-width:0;margin:0;padding:0 .35rem;border:0;border-radius:14px;background:var(--cream,#f0f7f2);box-shadow:none;opacity:0;visibility:hidden;transform:none;max-height:0;overflow:hidden;transition:max-height .4s cubic-bezier(.4,0,.2,1),opacity .25s ease,margin .3s ease,padding .3s ease,visibility 0s linear .4s}
+  .dropdown::before{display:none}
+  .nav-item.open .dropdown{max-height:560px;opacity:1;visibility:visible;margin:.2rem 0 .6rem;padding:.4rem .35rem;transition-delay:0s}
+  .dropdown a{padding:.7rem .85rem}
+  .dropdown a .dd-title{font-size:1rem}
+  .dropdown a .dd-sub{font-size:.85rem}
+  /* block 2: utility links, separated by a full width line */
+  .utility-nav{order:2;flex-direction:column;align-items:stretch;gap:0;margin:.9rem calc(var(--hpad)*-1) 0;padding:.2rem var(--hpad) 0;border-top:1px solid var(--hd-line)}
+  .utility-nav a{padding:.9rem .75rem;font-size:1rem;font-weight:400;letter-spacing:.005em;color:#34463b;border-bottom:1px solid var(--hd-line);border-radius:0}
+  .utility-nav a:hover{color:var(--hd-ink);text-decoration:none}
+  .utility-divider{display:none}
+  .utility-nav .search-button{display:none}
+  .utility-nav .btn-apply{margin:1.2rem 0 0;padding:.95rem;font-size:.98rem;text-align:center;color:#fff;border:0;border-radius:12px}
+  /* motion: items glide in one after another */
+  .site-header.open .primary-nav>.nav-item,.site-header.open .utility-nav>a{animation:navIn .45s cubic-bezier(.2,.7,.2,1) both}
+  .site-header.open .primary-nav>.nav-item:nth-child(2){animation-delay:.03s}
+  .site-header.open .primary-nav>.nav-item:nth-child(3){animation-delay:.06s}
+  .site-header.open .primary-nav>.nav-item:nth-child(4){animation-delay:.09s}
+  .site-header.open .primary-nav>.nav-item:nth-child(5){animation-delay:.12s}
+  .site-header.open .primary-nav>.nav-item:nth-child(6){animation-delay:.15s}
+  .site-header.open .primary-nav>.nav-item:nth-child(7){animation-delay:.18s}
+  .site-header.open .utility-nav>a{animation-delay:.24s}
+}
+@media(max-width:600px){
+  .site-header{--hpad:.85rem;padding-top:.5rem;padding-bottom:.5rem}
+  .site-header.open{padding-bottom:0}
+  .brand-link{gap:.55rem;padding-right:.25rem}
+  .brand-logo{width:40px;height:40px}
+  .brand-badge{width:40px;height:40px;font-size:.75rem}
+  .brand-title-only{font-size:.86rem;font-weight:700;line-height:1.3;letter-spacing:0}
+  .search-m{width:38px}
+  .hdr-sep{margin:0}
+  .nav-toggle{width:42px}
+}
+@media(max-width:340px){.brand-title-only{font-size:.8rem}.brand-logo{width:34px;height:34px}}
+@media(prefers-reduced-motion:reduce){
+  .nav-wrapper,.dropdown,.nav-toggle span,.caret,.site-header{transition:none!important}
+  .site-header.open .primary-nav>.nav-item,.site-header.open .utility-nav>a{animation:none!important}
+}
+/* Large screens: scale the whole layout up so desktops and TVs are not left with a narrow column */
+@media(min-width:1700px){html{font-size:112.5%}}
+@media(min-width:2300px){html{font-size:131.25%}}
+
+/* Site search overlay */
+.ssr{position:fixed;inset:0;z-index:900;display:none;align-items:flex-start;justify-content:center;padding:8vh 1rem 1rem;background:rgba(7,32,20,.6);-webkit-backdrop-filter:blur(4px);backdrop-filter:blur(4px)}
+.ssr.open{display:flex}
+.ssr-panel{width:min(640px,100%);max-height:84vh;overflow:auto;background:var(--white,#fff);color:var(--navy,#0d2318);border-radius:14px;box-shadow:0 24px 60px rgba(0,0,0,.35);padding:1.25rem;font-family:'Outfit',sans-serif}
+.ssr-head{display:flex;align-items:center;justify-content:space-between;margin-bottom:.75rem}
+.ssr-title{margin:0;font-family:'Merriweather',serif;font-size:1.1rem;color:var(--green3,#0e4526)}
+.ssr-close{width:44px;height:44px;border:0;border-radius:50%;background:var(--cream,#f0f7f2);color:var(--green3,#0e4526);font-size:1.4rem;line-height:1;cursor:pointer}
+.ssr-field{display:block;width:100%;padding:.85rem 1rem;border:1.5px solid var(--border2,#c2dbc9);border-radius:10px;background:var(--cream,#f0f7f2);color:inherit;font:inherit;font-size:1rem}
+.ssr-field:focus{outline:0;border-color:var(--green,#1e7a3e);box-shadow:0 0 0 3px rgba(30,122,62,.22)}
+.ssr-list{list-style:none;margin:.75rem 0 0;padding:0}
+.ssr-list a{display:block;padding:.7rem .85rem;border-radius:10px;color:inherit;text-decoration:none}
+.ssr-list a:hover,.ssr-list a.sel{background:var(--green-pale,#e8f5ed)}
+.ssr-list b{display:block;font-size:.98rem;color:var(--green3,#0e4526)}
+.ssr-list small{color:var(--gray,#5b6e63);font-size:.82rem}
+.ssr-empty{margin:.9rem .25rem 0;color:var(--gray,#5b6e63);font-size:.92rem}
+
+
+/* Footer identity row and BADAS credit (moved here from the old top bar) */
+.ftr-id{max-width:82.5rem;margin:0 auto;padding:1.75rem 2rem;border-top:1px solid #d5e4da}
+.ftr-id-name{display:inline-block;font-family:'Merriweather',serif;font-size:1.15rem;font-weight:700;line-height:1.35;color:var(--green3,#0e4526);text-decoration:none}
+.ftr-id-name:hover{text-decoration:underline}
+.ftr-id-tag{margin:.2rem 0 0;font-size:.98rem;line-height:1.5;color:#3f4a44}
+.ftr-id+.ftr-bottom{border-top:0;padding-top:1.25rem}
+.ftr-badas{display:inline-flex;align-items:center;gap:.6rem;max-width:260px;color:var(--ink2,#374151);text-decoration:none;font-size:.85rem;line-height:1.35}
+.ftr-badas img{width:46px;height:46px;flex:none}
+.ftr-badas:hover span{text-decoration:underline}
+@media(max-width:600px){.ftr-id{padding-left:1rem;padding-right:1rem}}
+
+/* ===== POLISH PASS ===== */
+.cta-band{padding:3.75rem 2rem}
+.cta-inner{max-width:1320px}
+.ftr-contact a[href^="tel:"]{white-space:nowrap}
+.ftr-bottom{padding-bottom:5rem}
+.cta-btn{transition:background .2s ease,transform .25s ease}
+.cta-btn:hover{transform:translateY(-2px)}
+@media(prefers-reduced-motion:reduce){.utility-nav .btn-apply,.cta-btn,.nav-item>a{transition:none}.utility-nav .btn-apply:hover,.cta-btn:hover{transform:none}}
+/* ===== END SITE HEADER AND FOOTER ===== */
+section[id]{scroll-margin-top:110px}
+</style>
+<script>document.documentElement.classList.add('pl')</script>
+<link rel="stylesheet" href="css/polish.css"/>
 </head>
 <body>
+<a class="skip" href="#main">Skip to main content</a>
 
-<nav>
-  <a class="nav-brand" href="index.html">
-    <img class="nav-logo-img" src="assets/logo.png" alt="DOEH BUHS" onerror="this.style.background='var(--green-pale)'"/>
-    <div class="nav-name">DOEH, BUHS<small>Dept. of Occupational &amp; Environmental Health</small></div>
-  </a>
-  <div class="nav-links">
-    <a class="nb" href="index.html">Home</a>
-    <a class="nb" href="about.html">About</a>
-    <a class="nb" href="academics.html">Academics</a>
-    <a class="nb" href="research.html">Research</a>
-    <a class="nb" href="news.html">News &amp; Events</a>
-    <a class="nb" href="gallery.html">Gallery</a>
-    <a class="nb" href="alumni.html">Alumni</a>
-    <a class="nb active" href="contact.html">Contact</a>
+<header class="site-header">
+  <div class="header-container">
+    <a href="index.html" class="brand-link">
+      <img class="brand-logo" src="assets/logo.png" alt="" width="60" height="60" onerror="this.outerHTML='<span class=&quot;brand-badge&quot;>DOEH</span>'"/>
+      <span class="brand-title-only">Department of Occupational and Environmental Health</span>
+    </a>
+
+    <button class="search-button search-m" id="siteSearchBtnM" type="button" aria-haspopup="dialog" aria-label="Search the site"><svg viewBox="0 0 24 24" fill="none" stroke-width="2.2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg></button>
+    <span class="hdr-sep" aria-hidden="true"></span>
+
+    <button class="nav-toggle" id="navToggle" type="button" aria-expanded="false" aria-controls="siteNav" aria-label="Open menu"><span></span><span></span><span></span></button>
+    <div class="nav-wrapper" id="siteNav">
+      <div class="utility-nav" role="navigation" aria-label="Utility">
+        <a href="academics.html#calendar">Academic Calendar</a>
+        <span class="utility-divider">|</span>
+        <a href="news.html">Notices</a>
+        <span class="utility-divider">|</span>
+        <a href="contact.html">Contact</a>
+        <button class="search-button" id="siteSearchBtn" type="button" aria-haspopup="dialog" aria-label="Search the site">
+          <svg viewBox="0 0 24 24" fill="none" stroke-width="2.4"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+        </button>
+        <a href="https://onlineapplication.buhs.ac.bd/admission/" target="_blank" rel="noopener" class="btn-apply">Apply</a>
+      </div>
+
+      <div class="primary-nav" role="navigation" aria-label="Primary">
+        <div class="nav-item"><a href="index.html">Home</a></div>
+        <div class="nav-item">
+          <a href="about.html">About <svg class="caret" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg></a>
+          <div class="dropdown">
+            <a href="about.html#our-strengths-title" title="Why study Occupational and Environmental Health at DOEH, BUHS"><span class="dd-title">Why Study at DOEH</span><span class="dd-sub">What sets the department apart</span></a>
+            <a href="about.html#iosh-accreditation" title="IOSH accreditation of DOEH programs"><span class="dd-title">IOSH Accreditation</span><span class="dd-sub">Internationally recognized standards</span></a>
+            <a href="about.html#leadership" title="DOEH and BUHS leadership"><span class="dd-title">Department Leadership</span><span class="dd-sub">Messages from our leaders</span></a>
+            <a href="about.html#history" title="Journey and history of DOEH"><span class="dd-title">Our Journey and History</span><span class="dd-sub">How the department has grown</span></a>
+            <a href="about.html#location" title="DOEH campus address and map"><span class="dd-title">Campus and Location</span><span class="dd-sub">Address, phone and map</span></a>
+          </div>
+        </div>
+        <div class="nav-item">
+          <a href="academics.html">Academics <svg class="caret" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg></a>
+          <div class="dropdown">
+            <a href="academics.html#bph-body" title="Bachelor of Public Health in Occupational and Environmental Health and Safety"><span class="dd-title">BPH in Occupational &amp; Environmental Health and Safety</span><span class="dd-sub">Bachelor's program</span></a>
+            <a href="academics.html#mph-ohs-body" title="Master of Public Health in Occupational Health and Safety"><span class="dd-title">MPH in Occupational Health and Safety</span><span class="dd-sub">Master's program</span></a>
+            <a href="academics.html#mph-ehs-body" title="Master of Public Health in Environmental Health and Safety"><span class="dd-title">MPH in Environmental Health and Safety</span><span class="dd-sub">Master's program</span></a>
+            <a href="academics.html#faculty" title="DOEH faculty and academic staff"><span class="dd-title">Faculty and Academic Staff</span><span class="dd-sub">Professors, associate professors and adjunct faculty</span></a>
+            <a href="academics.html#calendar" title="DOEH academic calendar and intakes"><span class="dd-title">Academic Calendar</span><span class="dd-sub">Spring and Fall intakes</span></a>
+          </div>
+        </div>
+        <div class="nav-item"><a href="research.html">Research</a></div>
+        <div class="nav-item"><a href="news.html">News &amp; Events</a></div>
+        <div class="nav-item"><a href="gallery.html">Gallery</a></div>
+        <div class="nav-item"><a href="alumni.html">Alumni</a></div>
+      </div>
+    </div>
   </div>
-  <button class="hamburger" id="hamburger" onclick="toggleMenu()" aria-label="Open menu"><span></span><span></span><span></span></button>
-</nav>
-<div class="mobile-menu" id="mobile-menu">
-  <a class="mnb" href="index.html">Home</a>
-  <a class="mnb" href="about.html">About</a>
-  <a class="mnb" href="academics.html">Academics</a>
-  <a class="mnb" href="research.html">Research</a>
-  <a class="mnb" href="news.html">News &amp; Events</a>
-  <a class="mnb" href="gallery.html">Gallery</a>
-  <a class="mnb" href="alumni.html">Alumni</a>
-  <a class="mnb active" href="contact.html">Contact</a>
+</header>
+<!-- SITE SEARCH -->
+<div class="ssr" id="siteSearch" aria-hidden="true">
+  <div class="ssr-panel" role="dialog" aria-modal="true" aria-labelledby="ssrTitle">
+    <div class="ssr-head"><h2 class="ssr-title" id="ssrTitle">Search DOEH</h2><button class="ssr-close" id="ssrClose" type="button" aria-label="Close search">&times;</button></div>
+    <input class="ssr-field" id="ssrInput" type="search" placeholder="Try IOSH, MPH, faculty or intake" autocomplete="off" spellcheck="false" aria-label="Search the site"/>
+    <ul class="ssr-list" id="ssrList"></ul>
+    <p class="ssr-empty" id="ssrEmpty" hidden>No match yet. Try a program name, "faculty" or "apply".</p>
+  </div>
 </div>
 
+<!-- legacy hooks kept hidden so js/main.js does not break -->
+<div class="legacy-nav-stub" aria-hidden="true"><button class="hamburger" id="hamburger" onclick="toggleMenu()" tabindex="-1"></button><div class="mobile-menu" id="mobile-menu"></div></div>
+<main id="main" tabindex="-1">
 <section class="page-hero">
   <h1>Talk to us<br/><em>directly</em></h1>
   <p>Questions about programs, admissions, or the department. We're reachable.</p>
@@ -93,7 +345,7 @@
         </div>
         <div class="contact-card">
           <div class="contact-label">Follow us</div>
-          <div class="contact-detail">[PLACEHOLDER: real social links, if active]</div>
+          <div class="contact-detail"><a href="https://www.facebook.com/share/19NrNVjGQQ/" target="_blank" rel="noopener">Facebook</a> &middot; <a href="https://www.youtube.com/@doeh_buhs" target="_blank" rel="noopener">YouTube</a></div>
         </div>
       </div>
 
@@ -121,32 +373,71 @@
     </div>
 
     <div class="map-embed">
-      <iframe src="https://www.google.com/maps?q=Bangladesh+University+of+Health+Sciences,+Mirpur,+Dhaka&output=embed" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+      <iframe title="Map showing Bangladesh University of Health Sciences, Mirpur, Dhaka" src="https://www.google.com/maps?q=Bangladesh+University+of+Health+Sciences,+Mirpur,+Dhaka&output=embed" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
     </div>
   </div>
 </section>
 
-<footer class="site-footer">
-  <div class="footer-grid">
-    <div>
-      <img class="footer-brand-logo" src="assets/logo.png" alt="DOEH" onerror="this.style.display='none'"/>
-      <div class="footer-brand-name">DOEH, BUHS</div>
-      <div class="footer-brand-sub">Department of Occupational &amp; Environmental Health<br>Bangladesh University of Health Sciences</div>
-    </div>
-    <div>
-      <div class="footer-col-title">Quick Links</div>
-      <a class="footer-link" href="index.html">Home</a>
-      <a class="footer-link" href="about.html">About DOEH</a>
-      <a class="footer-link" href="academics.html">Academics</a>
-      <a class="footer-link" href="alumni.html">Alumni</a>
-    </div>
-    <div>
-      <div class="footer-col-title">Contact</div>
-      <a class="footer-link" href="mailto:doeh@buhs.ac.bd">doeh@buhs.ac.bd</a>
-      <span class="footer-link" style="cursor:default">125/1, Darus Salam, Mirpur, Dhaka-1216</span>
+
+</main>
+<aside aria-label="Chat on WhatsApp"><a class="wa-float" href="https://wa.me/8801911383522?text=Hello%20DOEH%2C%20I%20would%20like%20to%20know%20more%20about%20the%20programs." target="_blank" rel="noopener" aria-label="Chat with DOEH on WhatsApp"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg></a></aside>
+
+<!-- FOOTER -->
+<footer class="ftr">
+  <div class="ftr-inner">
+    <div class="ftr-grid">
+      <div class="ftr-contact">
+        <h2 class="ftr-title">Contact Us</h2>
+        <p><strong>Address:</strong> 125/1, Darus Salam (Technical Crossing), Mirpur, Dhaka-1216, Bangladesh</p>
+        <p><strong>Tel:</strong> <a href="tel:+8801911383522">+88-01911 383522</a>, <a href="tel:+8801970405772">+88-01970 405772</a></p>
+        <p><strong>Email:</strong> <a href="mailto:oeh@buhs.ac.bd">oeh@buhs.ac.bd</a></p>
+        <div class="ftr-map"><iframe src="https://www.google.com/maps?q=Bangladesh+University+of+Health+Sciences,+Mirpur,+Dhaka&amp;output=embed" loading="lazy" title="DOEH BUHS location on Google Maps" referrerpolicy="no-referrer-when-downgrade"></iframe></div>
+      </div>
+      <div>
+        <h2 class="ftr-title">About</h2>
+        <a class="ftr-link" href="about.html">About DOEH</a>
+        <a class="ftr-link" href="about.html#our-strengths-title">Why Study at DOEH</a>
+        <a class="ftr-link" href="about.html#iosh-accreditation">IOSH Accreditation</a>
+        <a class="ftr-link" href="about.html#leadership">Department Leadership</a>
+        <a class="ftr-link" href="about.html#history">Our Journey and History</a>
+        <a class="ftr-link" href="about.html#location">Campus and Location</a>
+      </div>
+      <div>
+        <h2 class="ftr-title">Academics</h2>
+        <a class="ftr-link" href="academics.html#bph-body">BPH in Occupational &amp; Environmental Health and Safety</a>
+        <a class="ftr-link" href="academics.html#mph-ohs-body">MPH in Occupational Health and Safety</a>
+        <a class="ftr-link" href="academics.html#mph-ehs-body">MPH in Environmental Health and Safety</a>
+        <a class="ftr-link" href="academics.html#faculty">Faculty and Academic Staff</a>
+        <a class="ftr-link" href="academics.html#calendar">Academic Calendar</a>
+      </div>
+      <div>
+        <h2 class="ftr-title">Resources</h2>
+        <a class="ftr-link" href="research.html">Research</a>
+        <a class="ftr-link" href="news.html">News &amp; Events</a>
+        <a class="ftr-link" href="gallery.html">Gallery</a>
+        <a class="ftr-link" href="alumni.html">Alumni</a>
+      </div>
+      <div>
+        <h2 class="ftr-title">Quick Links</h2>
+        <a class="ftr-link" href="https://onlineapplication.buhs.ac.bd/admission/" target="_blank" rel="noopener">Apply Now</a>
+        <a class="ftr-link" href="contact.html">Contact DOEH</a>
+        <a class="ftr-link" href="https://buhs.ac.bd" target="_blank" rel="noopener">BUHS Official Website</a>
+        <a class="ftr-link" href="https://dab-bd.org" target="_blank" rel="noopener">Diabetic Association of Bangladesh</a>
+        <a class="ftr-link" href="https://iosh.com" target="_blank" rel="noopener">IOSH</a>
+      </div>
     </div>
   </div>
-  <div class="footer-bottom"><span class="footer-copy">© 2026 Department of Occupational &amp; Environmental Health, BUHS. All rights reserved.</span></div>
+  <div class="ftr-id">
+    <a class="ftr-id-name" href="https://buhs.ac.bd" target="_blank" rel="noopener">Bangladesh University of Health Sciences</a>
+    <p class="ftr-id-tag">Bangladesh's first health sciences university, established in 2012 by the Diabetic Association of Bangladesh (BADAS).</p>
+  </div>
+  <div class="ftr-bottom">
+    <img class="ftr-logo" src="assets/logo.png" alt="DOEH, BUHS logo" onerror="this.style.display='none'" loading="lazy" decoding="async"/>
+    <div class="ftr-copy">&copy; 2026 Department of Occupational &amp; Environmental Health, Bangladesh University of Health Sciences. All rights reserved.</div>
+    <a class="ftr-badas" href="https://dab-bd.org" target="_blank" rel="noopener"><img src="assets/badas-logo.png" alt="Diabetic Association of Bangladesh (BADAS) logo" width="46" height="46" loading="lazy" onerror="this.style.display='none'"/><span>Established in 2012 by the Diabetic Association of Bangladesh</span></a>
+    <!-- LinkedIn: add the real URL to href and delete the hidden attribute on that icon -->
+    <div class="ftr-social"><a href="https://www.facebook.com/share/19NrNVjGQQ/" target="_blank" rel="noopener" aria-label="DOEH on Facebook"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M22 12a10 10 0 1 0-11.6 9.9v-7H7.9V12h2.5V9.8c0-2.5 1.5-3.9 3.8-3.9 1.1 0 2.2.2 2.2.2v2.5h-1.3c-1.2 0-1.6.8-1.6 1.6V12h2.8l-.4 2.9h-2.3v7A10 10 0 0 0 22 12z"/></svg></a><a href="https://www.youtube.com/@doeh_buhs" target="_blank" rel="noopener" aria-label="DOEH on YouTube"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M21.6 7.2a2.5 2.5 0 0 0-1.8-1.8C18.2 5 12 5 12 5s-6.2 0-7.8.4A2.5 2.5 0 0 0 2.4 7.2C2 8.8 2 12 2 12s0 3.2.4 4.8a2.5 2.5 0 0 0 1.8 1.8C5.8 19 12 19 12 19s6.2 0 7.8-.4a2.5 2.5 0 0 0 1.8-1.8c.4-1.6.4-4.8.4-4.8s0-3.2-.4-4.8zM10 15V9l5.2 3L10 15z"/></svg></a><a href="mailto:oeh@buhs.ac.bd" aria-label="Email DOEH at oeh@buhs.ac.bd"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M3 6.5A2.5 2.5 0 0 1 5.5 4h13A2.5 2.5 0 0 1 21 6.5v11a2.5 2.5 0 0 1-2.5 2.5h-13A2.5 2.5 0 0 1 3 17.5v-11zm2.4-.3L12 11.3l6.6-5.1a.5.5 0 0 0-.1-.2h-13a.5.5 0 0 0-.1.2zM19 8.5l-6.4 4.9a1 1 0 0 1-1.2 0L5 8.5v9c0 .3.2.5.5.5h13c.3 0 .5-.2.5-.5v-9z"/></svg></a><a href="https://wa.me/8801911383522?text=Hello%20DOEH%2C%20I%20would%20like%20to%20know%20more%20about%20the%20programs." target="_blank" rel="noopener" aria-label="Message DOEH on WhatsApp"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg></a><a href="" hidden target="_blank" rel="noopener" aria-label="DOEH on LinkedIn"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4.98 3.5a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5zM3 9.75h4V21H3V9.75zm6.5 0h3.8v1.54h.05c.53-1 1.82-2.04 3.75-2.04 4 0 4.75 2.63 4.75 6.05V21h-4v-5.1c0-1.22-.02-2.78-1.7-2.78-1.7 0-1.96 1.33-1.96 2.7V21h-4V9.75z"/></svg></a></div>
+  </div>
 </footer>
 <script>
 // IMPORTANT: paste your deployed Apps Script URL here after you deploy ContactForm.gs
@@ -192,6 +483,91 @@ async function submitContact(e) {
   }
 }
 </script>
+<script>
+(function(){
+  var h=document.querySelector('.site-header'),t=document.getElementById('navToggle');
+  if(!h||!t)return;
+  var mq=window.matchMedia('(max-width:1240px)');
+  function setOpen(o){h.classList.toggle('open',o);t.setAttribute('aria-expanded',o?'true':'false');t.setAttribute('aria-label',o?'Close menu':'Open menu');}
+  function closeSubs(){h.querySelectorAll('.nav-item.open').forEach(function(i){i.classList.remove('open');});}
+  t.addEventListener('click',function(){setOpen(!h.classList.contains('open'));});
+  h.querySelectorAll('.nav-item').forEach(function(item){
+    var a=item.children[0];
+    if(!item.querySelector('.dropdown'))return;
+    a.addEventListener('click',function(e){
+      if(!mq.matches||item.classList.contains('open'))return;
+      e.preventDefault();closeSubs();item.classList.add('open');
+    });
+  });
+  h.addEventListener('click',function(e){
+    var a=e.target.closest&&e.target.closest('a');
+    if(a&&mq.matches&&!e.defaultPrevented){setOpen(false);closeSubs();}
+  });
+  document.addEventListener('keydown',function(e){if(e.key==='Escape'){setOpen(false);closeSubs();}});
+  var onChange=function(){if(!mq.matches){setOpen(false);closeSubs();}};
+  if(mq.addEventListener)mq.addEventListener('change',onChange);
+})();
+</script>
+<!-- SITE SEARCH SCRIPT -->
+<script>
+(function(){
+  var IDX=[
+   ['Home','index.html','DOEH at BUHS: programs, news and how to apply','home department occupational environmental health buhs'],
+   ['About DOEH','about.html','Who we are, our mission and how the department began','about mission vision department'],
+   ['Why Study at DOEH','about.html#our-strengths-title','What sets the department apart','strengths why study choose'],
+   ['IOSH Accreditation','about.html#iosh-accreditation','Internationally recognized standards in occupational safety and health','iosh accreditation certificate standards'],
+   ['Department Leadership','about.html#leadership','Messages from the people who lead DOEH','leadership vice chancellor head message'],
+   ['Our Journey and History','about.html#history','How the department has grown','history journey timeline'],
+   ['Campus and Location','about.html#location','Address, phone and map','location address map mirpur campus'],
+   ['Academics','academics.html','Programs, curriculum and intakes','academics programs courses'],
+   ['BPH in Occupational & Environmental Health and Safety','academics.html#bph-body',"Bachelor's program",'bph bachelor undergraduate public health'],
+   ['MPH in Occupational Health and Safety','academics.html#mph-ohs-body',"Master's program",'mph masters ohs occupational'],
+   ['MPH in Environmental Health and Safety','academics.html#mph-ehs-body',"Master's program",'mph masters ehs environmental'],
+   ['Faculty and Academic Staff','academics.html#faculty','Professors and adjunct faculty','faculty teachers professors staff'],
+   ['Academic Calendar','academics.html#calendar','Spring and Fall intakes','calendar intake spring fall april october admission'],
+   ['Research','research.html','Research themes, faculty expertise and publications','research publications themes faculty arsenic lead occupational garment safety'],
+   ['News & Events','news.html','Updates, notices and events','news events notices seminars'],
+   ['Gallery','gallery.html','Photos and videos from the department','gallery photos videos fieldwork'],
+   ['Alumni','alumni.html','Alumni directory and success stories','alumni graduates directory'],
+   ['Contact','contact.html','Reach the department','contact email phone whatsapp'],
+   ['Apply Now','https://onlineapplication.buhs.ac.bd/admission/','Apply through the BUHS online portal','apply admission application']
+  ];
+  var box=document.getElementById('siteSearch'),inp=document.getElementById('ssrInput'),list=document.getElementById('ssrList'),emp=document.getElementById('ssrEmpty'),btn=document.getElementById('siteSearchBtn');
+  if(!box||!inp||!btn)return;
+  var sel=-1,last=null;
+  function esc(s){return s.replace(/&/g,'&amp;').replace(/</g,'&lt;')}
+  function render(q){
+    var t=q.toLowerCase().split(/\s+/).filter(Boolean),out=[];
+    IDX.forEach(function(e){
+      var T=e[0].toLowerCase(),R=(e[2]+' '+e[3]).toLowerCase(),s=0,ok=true;
+      t.forEach(function(w){if(T.indexOf(w)>-1)s+=3;else if(R.indexOf(w)>-1)s+=1;else ok=false;});
+      if(ok&&(t.length||true))out.push([s,e]);
+    });
+    out.sort(function(a,b){return b[0]-a[0]});
+    if(!t.length)out=IDX.slice(0,6).map(function(e){return[0,e]});
+    out=out.slice(0,8);sel=-1;
+    list.innerHTML=out.map(function(o){var e=o[1];return '<li><a href="'+e[1]+'"'+(e[1].indexOf('http')===0?' target="_blank" rel="noopener"':'')+'><b>'+esc(e[0])+'</b><small>'+esc(e[2])+'</small></a></li>'}).join('');
+    emp.hidden=out.length>0;
+  }
+  function open(){last=document.activeElement;box.classList.add('open');box.setAttribute('aria-hidden','false');document.body.style.overflow='hidden';inp.value='';render('');setTimeout(function(){inp.focus()},30)}
+  function close(){box.classList.remove('open');box.setAttribute('aria-hidden','true');document.body.style.overflow='';if(last&&last.focus)last.focus()}
+  function move(d){var a=list.querySelectorAll('a');if(!a.length)return;if(sel>-1)a[sel].classList.remove('sel');sel=(sel+d+a.length)%a.length;a[sel].classList.add('sel');a[sel].scrollIntoView({block:'nearest'})}
+  btn.addEventListener('click',open);var btnM=document.getElementById('siteSearchBtnM');if(btnM)btnM.addEventListener('click',open);
+  document.getElementById('ssrClose').addEventListener('click',close);
+  box.addEventListener('click',function(e){if(e.target===box)close()});
+  inp.addEventListener('input',function(){render(inp.value)});
+  document.addEventListener('keydown',function(e){
+    if(!box.classList.contains('open'))return;
+    if(e.key==='Escape'){close()}
+    else if(e.key==='ArrowDown'){e.preventDefault();move(1)}
+    else if(e.key==='ArrowUp'){e.preventDefault();move(-1)}
+    else if(e.key==='Enter'){var a=list.querySelectorAll('a');var t=a[sel>-1?sel:0];if(t){e.preventDefault();t.click()}}
+  });
+  list.addEventListener('click',function(e){var a=e.target.closest&&e.target.closest('a');if(a&&a.getAttribute('href').indexOf('#')>-1&&a.getAttribute('href').split('#')[0]===location.pathname.split('/').pop())close()});
+})();
+</script>
+
 <script src="js/main.js"></script>
+<script src="js/polish.js" defer></script>
 </body>
 </html>
