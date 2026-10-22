@@ -4,220 +4,923 @@
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 <title>Research | DOEH, BUHS</title>
-<meta name="description" content="Research areas, ongoing projects, student research opportunities, publications, and the thesis archive at the Department of Occupational and Environmental Health, BUHS."/>
+<meta name="description" content="Research themes, faculty expertise and publications from the Department of Occupational and Environmental Health, Bangladesh University of Health Sciences."/>
 <link rel="canonical" href="https://doeh-buhs.ac/research.html"/>
 <link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@400;700;900&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet"/>
 <link rel="stylesheet" href="css/style.css"/>
+<link rel="icon" type="image/png" sizes="64x64" href="assets/favicon-64.png"/>
+<link rel="apple-touch-icon" href="assets/apple-touch-icon.png"/>
+<meta name="theme-color" content="#156030"/>
+
 
 <style>
-.area-card{background:#fff;border-radius:12px;padding:1.5rem;border:1px solid var(--border);border-left:3px solid var(--green)}
-.area-name{font-family:'Merriweather',serif;font-weight:700;color:var(--green3);font-size:.95rem;margin-bottom:.4rem}
-.area-desc{font-size:.82rem;color:var(--gray);line-height:1.65}
-
-.pathway-steps{display:flex;flex-direction:column;gap:1rem;max-width:640px}
-.pathway-step{display:flex;gap:1rem;align-items:flex-start}
-.pathway-num{width:32px;height:32px;border-radius:50%;background:var(--green);color:#fff;display:flex;align-items:center;justify-content:center;font-family:'Merriweather',serif;font-weight:900;font-size:.9rem;flex-shrink:0}
-.pathway-text h4{font-size:.9rem;color:var(--green3);font-weight:700;margin-bottom:.25rem}
-.pathway-text p{font-size:.85rem;color:var(--gray);line-height:1.7}
-
-.archive-filters{display:flex;gap:.75rem;margin-bottom:1.25rem;flex-wrap:wrap}
-.archive-filters select,.archive-filters input{padding:.6rem .9rem;border:1.5px solid var(--border2);border-radius:8px;font-family:'Outfit',sans-serif;font-size:.85rem;background:#fff}
-.archive-table{width:100%;border-collapse:collapse;background:#fff;border-radius:12px;overflow:hidden;border:1px solid var(--border)}
-.archive-table th{text-align:left;font-size:.72rem;text-transform:uppercase;letter-spacing:.06em;color:var(--gray);padding:.9rem 1rem;background:var(--offwhite);border-bottom:1px solid var(--border)}
-.archive-table td{padding:.9rem 1rem;font-size:.85rem;color:var(--navy);border-bottom:1px solid var(--border)}
-.archive-table tr:last-child td{border-bottom:none}
-.archive-table a{color:var(--green2);text-decoration:none;font-weight:600}
-.archive-table a:hover{text-decoration:underline}
-
-.leader-card{background:#fff;border-radius:16px;padding:1.75rem;border:1px solid var(--border);display:flex;gap:1.25rem;align-items:flex-start}
-.leader-photo{width:64px;height:64px;border-radius:50%;flex-shrink:0;background:var(--green-pale);display:flex;align-items:center;justify-content:center;font-family:'Merriweather',serif;font-weight:900;color:var(--green2);font-size:1.1rem}
-.leader-name{font-family:'Merriweather',serif;font-weight:700;color:var(--green3);font-size:.98rem}
-.leader-title{font-size:.78rem;color:var(--green);font-weight:600;margin-bottom:.6rem}
-.leader-msg{font-size:.87rem;color:var(--gray);line-height:1.75}
-
-.site-footer{background:var(--green3);padding:2.75rem 2rem 0}
-.footer-grid{max-width:1100px;margin:0 auto;display:grid;grid-template-columns:1.4fr 1fr 1fr;gap:2.5rem;padding-bottom:2rem}
-.footer-brand-logo{width:46px;height:46px;object-fit:contain;background:white;border-radius:9px;padding:2px;margin-bottom:.85rem}
-.footer-brand-name{font-family:'Merriweather',serif;font-size:.95rem;font-weight:700;color:#fff;line-height:1.3}
-.footer-brand-sub{font-size:.72rem;color:rgba(255,255,255,.4);margin-top:.2rem;line-height:1.5}
-@media(max-width:768px){ .footer-grid{grid-template-columns:1fr;gap:1.5rem} .archive-table{display:block;overflow-x:auto} }
+.rs-hero .page-hero-text{min-width:0}
+.rs-hero h1{font-size:clamp(1.7rem,4.6vw,2.6rem);max-width:20ch;overflow-wrap:break-word}
+.rs-hero p{max-width:620px;font-size:1rem}
+.rs-hero-actions{display:flex;flex-wrap:wrap;gap:.75rem;margin-top:1.6rem}
+.rs-hero-actions .btn{min-height:46px}
+.rs-alt{background:var(--offwhite)}
+.rs-grid,.rs-feature-grid,.rs-fac,.rs-steps{display:grid;gap:1.25rem}
+.rs-grid{grid-template-columns:repeat(auto-fit,minmax(min(100%,250px),1fr))}
+.rs-feature-grid{grid-template-columns:repeat(auto-fit,minmax(min(100%,340px),1fr))}
+.rs-fac{grid-template-columns:repeat(auto-fit,minmax(min(100%,290px),1fr))}
+.rs-steps{list-style:none;counter-reset:step;grid-template-columns:repeat(auto-fit,minmax(min(100%,290px),1fr))}
+.rs-theme,.rs-feature,.rs-person,.rs-pub,.rs-steps li{min-width:0;background:#fff;border:1px solid var(--border);border-radius:16px;overflow-wrap:anywhere}
+.rs-theme{display:flex;flex-direction:column;gap:.7rem;padding:1.5rem;transition:box-shadow .25s ease,transform .25s ease}
+@media(hover:hover){.rs-theme:hover,.rs-feature:hover,.rs-person:hover{box-shadow:0 10px 28px rgba(14,69,38,.09)}}
+.rs-theme-head{display:flex;align-items:flex-start;gap:.75rem}
+.rs-ico{flex:none;color:var(--green2);line-height:0;padding-top:.15rem}
+.rs-ico svg{width:26px;height:26px;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+.rs-theme h3,.rs-feature h3,.rs-person h3,.rs-steps h3{font-family:'Merriweather',serif;font-weight:700;color:var(--green3);line-height:1.35}
+.rs-theme h3{font-size:1.05rem}
+.rs-theme p{font-size:.93rem;color:var(--gray);line-height:1.7}
+.rs-tags{list-style:none;display:flex;flex-wrap:wrap;gap:.4rem;margin-top:auto;padding-top:.4rem}
+.rs-tags li{font-size:.8rem;font-weight:600;color:var(--green2);background:var(--offwhite);border:1px solid var(--border);border-radius:999px;padding:.25rem .7rem}
+.rs-feature{display:flex;flex-direction:column;gap:.7rem;padding:1.6rem}
+.rs-feature h3{font-size:1.12rem;line-height:1.4}
+.rs-badge{align-self:flex-start;font-size:.78rem;font-weight:700;letter-spacing:.04em;text-transform:uppercase;color:var(--green2);background:var(--green-pale);border-radius:999px;padding:.25rem .8rem}
+.rs-badge-sm{display:inline-block;margin-bottom:.35rem}
+.rs-meta{font-size:.88rem;color:var(--gray);line-height:1.6}
+.rs-sum{font-size:.95rem;color:var(--navy);line-height:1.7}
+.rs-link{display:inline-flex;align-items:center;gap:.4rem;min-height:44px;margin-top:auto;font-size:.92rem;font-weight:700;color:var(--green2);text-decoration:none}
+.rs-link:hover{text-decoration:underline;text-underline-offset:3px}
+.rs-pubs{list-style:none;display:grid;gap:.9rem;padding:0}
+.rs-pub{padding:1.2rem 1.4rem;border-radius:14px}
+.rs-pub h3{font-family:'Outfit',sans-serif;font-size:1.02rem;font-weight:700;color:var(--navy);line-height:1.5;margin-bottom:.3rem}
+.rs-pub h3 a{color:inherit;text-decoration:none}
+.rs-pub h3 a:hover{color:var(--green2);text-decoration:underline;text-underline-offset:3px}
+.rs-empty{margin-top:1.25rem;padding:1.25rem 1.4rem;border:1.5px dashed var(--border2);border-radius:14px;background:#fff;color:var(--gray);font-size:.95rem;line-height:1.7}
+.rs-empty strong{display:block;margin-bottom:.2rem;font-family:'Merriweather',serif;color:var(--green3)}
+.rs-person{display:flex;flex-direction:column;gap:.75rem;padding:1.3rem 1.35rem}
+.rs-person-top{display:flex;gap:.9rem;align-items:center}
+.rs-person h3{font-size:1rem}
+.rs-role{font-size:.84rem;font-weight:600;color:var(--green2);line-height:1.4;margin-top:.15rem}
+.rs-avatar,.rs-avatar-fb{width:56px;height:56px;border-radius:50%;flex:none}
+.rs-avatar{object-fit:cover;background:var(--green-pale)}
+.rs-avatar-fb{display:grid;place-items:center;background:var(--green-pale);color:var(--green2);font-family:'Merriweather',serif;font-weight:900}
+.rs-person ul{margin:0;padding-left:1.1rem;color:var(--gray);font-size:.9rem;line-height:1.65}
+.rs-steps li{counter-increment:step;position:relative;padding:1.25rem 1.25rem 1.25rem 4rem;border-radius:14px}
+.rs-steps li::before{content:counter(step);position:absolute;left:1.1rem;top:1.2rem;width:32px;height:32px;border-radius:50%;display:grid;place-items:center;background:var(--green);color:#fff;font-family:'Merriweather',serif;font-weight:900;font-size:.9rem}
+.rs-steps h3{font-size:.98rem;margin-bottom:.3rem}
+.rs-steps p{font-size:.9rem;color:var(--gray);line-height:1.65}
+.rs-note{margin-top:1.4rem;font-size:.92rem;color:var(--gray)}
+.rs-note a{color:var(--green2);font-weight:600}
+@media(max-width:600px){.rs-theme,.rs-feature{padding:1.25rem}.rs-pub{padding:1.05rem 1.1rem}.rs-hero-actions .btn{flex:1 1 100%;justify-content:center}}
 </style>
+<style id="site-chrome">
+/* ===== SITE HEADER (final: white theme, no top bar) ===== */
+.site-header{--hpad:2rem;--hd-ink:#0e4526;--hd-ink2:#156030;--hd-muted:#4a5d52;--hd-line:#d4e6da;--hd-tint:#e8f5ed;--hd-hover:#f1f7f3;--hd-active:#dff0e5;font-family:'Outfit',sans-serif;position:sticky;top:0;z-index:200;margin:0;padding:.6rem var(--hpad);background:#fff;color:var(--hd-ink);border-bottom:1px solid var(--hd-line);box-shadow:0 6px 18px rgba(14,69,38,.07)}
+.site-header *{box-sizing:border-box;margin:0;padding:0}
+.header-container{max-width:82.5rem;margin:0 auto;display:flex;align-items:center;justify-content:space-between;gap:2.5rem}
+.brand-link{display:flex;align-items:center;gap:.9rem;text-decoration:none;color:var(--hd-ink);min-width:0}
+.brand-logo{display:block;width:60px;height:60px;object-fit:contain;flex:none}
+.brand-badge{width:56px;height:56px;border-radius:12px;background:var(--hd-ink);color:#fff;display:flex;align-items:center;justify-content:center;font-family:'Merriweather',serif;font-weight:900;font-size:.95rem;letter-spacing:.03em;flex-shrink:0}
+.brand-title-only{font-family:'Merriweather',serif;font-size:1.3rem;font-weight:900;letter-spacing:.01em;line-height:1.3;max-width:370px;color:var(--hd-ink)}
+.nav-wrapper{display:flex;flex-direction:column;align-items:flex-end;gap:.45rem;flex-shrink:0}
+
+.utility-nav{display:flex;align-items:center;gap:1rem;font-size:.95rem;font-weight:600;letter-spacing:.02em}
+.utility-nav a{color:var(--hd-muted);text-decoration:none;text-underline-offset:4px;transition:color .2s ease}
+.utility-nav a:hover{color:var(--hd-ink);text-decoration:underline}
+.utility-divider{color:#b7cdbd;font-weight:300}
+.search-button{background:transparent;border:0;color:var(--hd-ink);cursor:pointer;display:flex;margin-left:.6rem}
+.search-button:hover{color:var(--hd-ink2)}
+.search-button svg{width:19px;height:19px;stroke:currentColor}
+.utility-nav .btn-apply{background:var(--hd-ink);color:#fff;font-weight:800;font-size:.92rem;letter-spacing:.04em;padding:.4rem 1.4rem;border-radius:6px;text-transform:uppercase;margin-left:.4rem;text-decoration:none;transition:background .2s ease,transform .25s ease,box-shadow .25s ease}
+.utility-nav .btn-apply:hover{background:var(--hd-ink2);color:#fff;text-decoration:none;transform:translateY(-1px);box-shadow:0 6px 14px rgba(14,69,38,.25)}
+
+.search-m,.hdr-sep{display:none}
+.primary-nav{display:flex;align-items:center;gap:.15rem;white-space:nowrap}
+.nav-item{position:relative}
+.nav-item>a{display:flex;align-items:center;gap:.4rem;color:var(--hd-ink);text-decoration:none;font-weight:600;font-size:1.05rem;letter-spacing:.015em;white-space:nowrap;padding:.4rem .9rem;border-radius:999px;transition:background .2s ease}
+.nav-item>a:hover,.nav-item:hover>a,.nav-item:focus-within>a{background:var(--hd-hover)}
+.nav-item.active>a,.nav-item.active:hover>a{background:var(--hd-active);font-weight:700}
+.caret{width:11px;height:11px;transition:transform .2s ease}
+.nav-item:hover .caret,.nav-item:focus-within .caret{transform:rotate(180deg)}
+
+/* Dropdowns open under their own item */
+.dropdown{position:absolute;top:100%;left:-.85rem;margin-top:14px;min-width:340px;background:#fff;border:1px solid var(--hd-line);border-top:3px solid var(--green,#1e7a3e);border-radius:0 0 12px 12px;box-shadow:0 18px 40px rgba(14,69,38,.22);padding:.55rem;opacity:0;visibility:hidden;transform:translateY(6px);transition:opacity .18s ease,transform .18s ease,visibility .18s;z-index:50}
+.dropdown::before{content:'';position:absolute;left:0;right:0;top:-19px;height:19px}
+.nav-item:hover .dropdown,.nav-item:focus-within .dropdown{opacity:1;visibility:visible;transform:translateY(0)}
+.dropdown a{display:block;padding:.7rem .9rem;border-radius:8px;font-size:1rem;font-weight:500;color:var(--hd-muted);text-decoration:none}
+.dropdown a:hover{background:var(--hd-tint);color:var(--hd-ink)}
+.dropdown a .dd-title{display:block;color:var(--hd-ink);font-size:1.02rem;font-weight:600;line-height:1.35}
+.dropdown a .dd-sub{display:block;margin-top:.1rem;color:var(--hd-muted);font-size:.86rem;font-weight:400;line-height:1.4}
+
+a:focus-visible,button:focus-visible{outline:2px solid #1e7a3e;outline-offset:3px}
+.dropdown a:focus-visible{outline-offset:-2px}
+@media(prefers-reduced-motion:reduce){.caret,.dropdown{transition:none}}
+
+/* Reset anything the shared stylesheet applies to the old nav or body offset */
+html,body{margin:0}
+body{padding-top:0!important}
+.legacy-nav-stub{display:none!important}
+
+/* Footer (BRAC University style: light, five columns, social row) */
+.ftr{background:var(--offwhite,#f5faf6);border-top:4px solid var(--green3,#0e4526);color:var(--green3,#0e4526);font-family:'Outfit',sans-serif}
+.ftr *{box-sizing:border-box}
+.ftr-inner{max-width:82.5rem;margin:0 auto;padding:3.5rem 2rem 2.5rem}
+.ftr-grid{display:grid;grid-template-columns:1.25fr 1fr 1fr 1fr 1fr;gap:2.5rem}
+.ftr-title{font-family:'Merriweather',serif;font-size:1.15rem;font-weight:700;color:var(--green3,#0e4526);padding-bottom:.75rem;margin:0 0 1.1rem;border-bottom:1px solid #d5e4da}
+.ftr-link{display:block;color:#1f2937;text-decoration:none;font-size:1rem;line-height:1.5;padding:.32rem 0}
+.ftr-link:hover{color:var(--green2,#1e7a3e);text-decoration:underline}
+.ftr-contact p{font-size:.98rem;line-height:1.7;margin:0 0 .6rem;color:#1f2937}
+.ftr-contact strong{font-weight:700}
+.ftr-contact a{color:inherit;text-decoration:none}
+.ftr-contact a:hover{text-decoration:underline}
+.ftr-map{margin-top:1rem;border-radius:8px;overflow:hidden;border:1px solid #d5e4da;height:170px}
+.ftr-map iframe{width:100%;height:100%;border:0}
+.ftr-bottom{max-width:82.5rem;margin:0 auto;padding:1.5rem 2rem 2rem;border-top:1px solid #d5e4da;display:flex;align-items:center;gap:1.5rem;flex-wrap:wrap}
+.ftr-logo{width:52px;height:52px;object-fit:contain;background:#fff;border-radius:10px;padding:3px;border:1px solid #d5e4da}
+.ftr-copy{font-size:.92rem;line-height:1.6;color:#3f4a44;flex:1 1 320px}
+.ftr-social{display:flex;gap:1.1rem}
+.ftr-social a{color:var(--green3,#0e4526);display:inline-flex}
+.ftr-social a:hover{color:var(--green2,#1e7a3e)}
+.ftr-social svg{width:26px;height:26px;fill:currentColor}
+.ftr [hidden]{display:none!important}
+@media(max-width:1100px){.ftr-grid{grid-template-columns:repeat(2,1fr)}.ftr-contact{grid-column:1/-1}}
+@media(max-width:600px){.ftr-grid{grid-template-columns:1fr}.ftr-inner,.ftr-bottom{padding-left:1rem;padding-right:1rem}}
+
+/* Call to action band and WhatsApp button */
+.cta-band{background:linear-gradient(135deg,var(--green3,#0e4526),var(--green2,#1e7a3e));color:#fff;font-family:'Outfit',sans-serif;padding:3.5rem 2rem}
+.cta-band *{box-sizing:border-box}
+.cta-inner{max-width:68.75rem;margin:0 auto;display:flex;align-items:center;justify-content:space-between;gap:2rem;flex-wrap:wrap}
+.cta-text{flex:1 1 420px}
+.cta-title{font-family:'Merriweather',serif;font-size:clamp(1.5rem,3vw,2.1rem);font-weight:900;line-height:1.3;margin:0 0 .6rem;color:#fff}
+.cta-sub{font-size:1rem;line-height:1.65;color:rgba(255,255,255,.88);max-width:560px;margin:0}
+.cta-actions{display:flex;gap:.9rem;flex-wrap:wrap}
+.cta-btn{display:inline-flex;align-items:center;gap:.55rem;padding:.9rem 1.6rem;border-radius:6px;font-weight:700;font-size:.95rem;letter-spacing:.03em;text-decoration:none;border:2px solid #fff;transition:background .2s ease}
+.cta-btn-primary{background:#fff;color:var(--green3,#0e4526)}
+.cta-btn-primary:hover{background:#f1f5f9}
+.cta-btn-ghost{background:transparent;color:#fff}
+.cta-btn-ghost:hover{background:rgba(255,255,255,.14)}
+.cta-btn svg{width:20px;height:20px;fill:currentColor}
+.wa-float{position:fixed;right:1.25rem;bottom:1.25rem;z-index:70;width:58px;height:58px;border-radius:50%;background:#25D366;color:#fff;display:grid;place-items:center;box-shadow:0 10px 24px rgba(0,0,0,.25);transition:transform .2s ease}
+.wa-float:hover{transform:translateY(-3px)}
+.wa-float svg{width:32px;height:32px;fill:currentColor}
+.cta-btn:focus-visible,.wa-float:focus-visible{outline:3px solid #ffd84d;outline-offset:3px}
+@media(max-width:600px){.cta-band{padding:2.5rem 1rem}.wa-float{right:.9rem;bottom:.9rem}}
+
+/* Mobile and tablet: bar (logo, name, search, divider, hamburger) and the sliding menu */
+.nav-toggle{display:none;width:48px;height:48px;border:0;border-radius:0;background:transparent;cursor:pointer;flex-direction:column;align-items:center;justify-content:center;gap:6px;flex-shrink:0;padding:0;-webkit-tap-highlight-color:transparent}
+.nav-toggle span{display:block;width:28px;height:3px;background:var(--hd-ink);border-radius:2px;transition:transform .35s cubic-bezier(.4,0,.2,1),opacity .2s ease}
+.site-header.open .nav-toggle span:nth-child(1){transform:translateY(9px) rotate(45deg)}
+.site-header.open .nav-toggle span:nth-child(2){opacity:0;transform:scaleX(.2)}
+.site-header.open .nav-toggle span:nth-child(3){transform:translateY(-9px) rotate(-45deg)}
+@keyframes navIn{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
+@media(max-width:1240px){
+  .site-header{--hpad:1.1rem;padding:.65rem var(--hpad);transition:padding .3s ease}
+  .site-header.open{padding-bottom:0}
+  .header-container{flex-wrap:wrap;gap:0;align-items:center}
+  .brand-link{flex:1;min-width:0;gap:.8rem;padding-right:.6rem}
+  .brand-logo{width:52px;height:52px}
+  .brand-badge{width:50px;height:50px;font-size:.85rem}
+  .brand-title-only{font-size:1.05rem;line-height:1.3;max-width:none}
+  .search-m{display:flex;align-items:center;justify-content:center;order:1;width:42px;height:44px;margin:0;padding:0;border-radius:0}
+  .search-m svg{width:24px;height:24px}
+  .hdr-sep{display:block;order:1;width:1px;height:30px;background:var(--hd-line);margin:0 .2rem}
+  .nav-toggle{display:flex;order:2;width:44px;height:44px}
+  /* panel: edge to edge, always laid out, animated open and closed (never display toggled) */
+  .nav-wrapper{order:3;flex-basis:calc(100% + 2*var(--hpad));width:calc(100% + 2*var(--hpad));margin:0 calc(var(--hpad)*-1);padding:0 var(--hpad);display:flex;flex-direction:column;align-items:stretch;gap:0;max-height:0;overflow:hidden;opacity:0;visibility:hidden;border-top:3px solid transparent;transform:translateY(-8px);transition:max-height .42s cubic-bezier(.4,0,.2,1),opacity .25s ease,transform .35s ease,margin-top .3s ease,padding .3s ease,border-color .3s ease,visibility 0s linear .42s}
+  .site-header.open .nav-wrapper{max-height:calc(100vh - 100px);max-height:calc(100dvh - 100px);overflow-y:auto;overscroll-behavior:contain;-webkit-overflow-scrolling:touch;opacity:1;visibility:visible;transform:none;margin-top:.8rem;padding-top:.4rem;padding-bottom:1.5rem;border-top-color:var(--green,#1e7a3e);transition-delay:0s}
+  /* block 1: main navigation */
+  .primary-nav{order:1;flex-direction:column;align-items:stretch;gap:0;white-space:normal}
+  .nav-item{display:block;border:0}
+  .nav-item>a{justify-content:space-between;padding:.85rem .75rem;font-size:1.15rem;font-weight:600;letter-spacing:.005em;line-height:1.3;border-radius:14px}
+  .nav-item>a:hover,.nav-item:hover>a,.nav-item:focus-within>a{background:var(--hd-hover)}
+  .nav-item.active>a,.nav-item.active:hover>a{background:var(--hd-tint);color:var(--green,#1e7a3e);font-weight:700}
+  .caret{width:16px;height:16px;transition:transform .3s cubic-bezier(.4,0,.2,1)}
+  .nav-item:hover .caret,.nav-item:focus-within .caret{transform:none}
+  .nav-item.open .caret{transform:rotate(180deg)}
+  .dropdown{position:static;display:block;min-width:0;margin:0;padding:0 .35rem;border:0;border-radius:14px;background:var(--cream,#f0f7f2);box-shadow:none;opacity:0;visibility:hidden;transform:none;max-height:0;overflow:hidden;transition:max-height .4s cubic-bezier(.4,0,.2,1),opacity .25s ease,margin .3s ease,padding .3s ease,visibility 0s linear .4s}
+  .dropdown::before{display:none}
+  .nav-item.open .dropdown{max-height:560px;opacity:1;visibility:visible;margin:.2rem 0 .6rem;padding:.4rem .35rem;transition-delay:0s}
+  .dropdown a{padding:.7rem .85rem}
+  .dropdown a .dd-title{font-size:1rem}
+  .dropdown a .dd-sub{font-size:.85rem}
+  /* block 2: utility links, separated by a full width line */
+  .utility-nav{order:2;flex-direction:column;align-items:stretch;gap:0;margin:.9rem calc(var(--hpad)*-1) 0;padding:.2rem var(--hpad) 0;border-top:1px solid var(--hd-line)}
+  .utility-nav a{padding:.9rem .75rem;font-size:1rem;font-weight:400;letter-spacing:.005em;color:#34463b;border-bottom:1px solid var(--hd-line);border-radius:0}
+  .utility-nav a:hover{color:var(--hd-ink);text-decoration:none}
+  .utility-divider{display:none}
+  .utility-nav .search-button{display:none}
+  .utility-nav .btn-apply{margin:1.2rem 0 0;padding:.95rem;font-size:.98rem;text-align:center;color:#fff;border:0;border-radius:12px}
+  /* motion: items glide in one after another */
+  .site-header.open .primary-nav>.nav-item,.site-header.open .utility-nav>a{animation:navIn .45s cubic-bezier(.2,.7,.2,1) both}
+  .site-header.open .primary-nav>.nav-item:nth-child(2){animation-delay:.03s}
+  .site-header.open .primary-nav>.nav-item:nth-child(3){animation-delay:.06s}
+  .site-header.open .primary-nav>.nav-item:nth-child(4){animation-delay:.09s}
+  .site-header.open .primary-nav>.nav-item:nth-child(5){animation-delay:.12s}
+  .site-header.open .primary-nav>.nav-item:nth-child(6){animation-delay:.15s}
+  .site-header.open .primary-nav>.nav-item:nth-child(7){animation-delay:.18s}
+  .site-header.open .utility-nav>a{animation-delay:.24s}
+}
+@media(max-width:600px){
+  .site-header{--hpad:.85rem;padding-top:.5rem;padding-bottom:.5rem}
+  .site-header.open{padding-bottom:0}
+  .brand-link{gap:.55rem;padding-right:.25rem}
+  .brand-logo{width:40px;height:40px}
+  .brand-badge{width:40px;height:40px;font-size:.75rem}
+  .brand-title-only{font-size:.86rem;font-weight:700;line-height:1.3;letter-spacing:0}
+  .search-m{width:38px}
+  .hdr-sep{margin:0}
+  .nav-toggle{width:42px}
+}
+@media(max-width:340px){.brand-title-only{font-size:.8rem}.brand-logo{width:34px;height:34px}}
+@media(prefers-reduced-motion:reduce){
+  .nav-wrapper,.dropdown,.nav-toggle span,.caret,.site-header{transition:none!important}
+  .site-header.open .primary-nav>.nav-item,.site-header.open .utility-nav>a{animation:none!important}
+}
+/* Large screens: scale the whole layout up so desktops and TVs are not left with a narrow column */
+@media(min-width:1700px){html{font-size:112.5%}}
+@media(min-width:2300px){html{font-size:131.25%}}
+
+/* Site search overlay */
+.ssr{position:fixed;inset:0;z-index:900;display:none;align-items:flex-start;justify-content:center;padding:8vh 1rem 1rem;background:rgba(7,32,20,.6);-webkit-backdrop-filter:blur(4px);backdrop-filter:blur(4px)}
+.ssr.open{display:flex}
+.ssr-panel{width:min(640px,100%);max-height:84vh;overflow:auto;background:var(--white,#fff);color:var(--navy,#0d2318);border-radius:14px;box-shadow:0 24px 60px rgba(0,0,0,.35);padding:1.25rem;font-family:'Outfit',sans-serif}
+.ssr-head{display:flex;align-items:center;justify-content:space-between;margin-bottom:.75rem}
+.ssr-title{margin:0;font-family:'Merriweather',serif;font-size:1.1rem;color:var(--green3,#0e4526)}
+.ssr-close{width:44px;height:44px;border:0;border-radius:50%;background:var(--cream,#f0f7f2);color:var(--green3,#0e4526);font-size:1.4rem;line-height:1;cursor:pointer}
+.ssr-field{display:block;width:100%;padding:.85rem 1rem;border:1.5px solid var(--border2,#c2dbc9);border-radius:10px;background:var(--cream,#f0f7f2);color:inherit;font:inherit;font-size:1rem}
+.ssr-field:focus{outline:0;border-color:var(--green,#1e7a3e);box-shadow:0 0 0 3px rgba(30,122,62,.22)}
+.ssr-list{list-style:none;margin:.75rem 0 0;padding:0}
+.ssr-list a{display:block;padding:.7rem .85rem;border-radius:10px;color:inherit;text-decoration:none}
+.ssr-list a:hover,.ssr-list a.sel{background:var(--green-pale,#e8f5ed)}
+.ssr-list b{display:block;font-size:.98rem;color:var(--green3,#0e4526)}
+.ssr-list small{color:var(--gray,#5b6e63);font-size:.82rem}
+.ssr-empty{margin:.9rem .25rem 0;color:var(--gray,#5b6e63);font-size:.92rem}
+
+
+/* Footer identity row and BADAS credit (moved here from the old top bar) */
+.ftr-id{max-width:82.5rem;margin:0 auto;padding:1.75rem 2rem;border-top:1px solid #d5e4da}
+.ftr-id-name{display:inline-block;font-family:'Merriweather',serif;font-size:1.15rem;font-weight:700;line-height:1.35;color:var(--green3,#0e4526);text-decoration:none}
+.ftr-id-name:hover{text-decoration:underline}
+.ftr-id-tag{margin:.2rem 0 0;font-size:.98rem;line-height:1.5;color:#3f4a44}
+.ftr-id+.ftr-bottom{border-top:0;padding-top:1.25rem}
+.ftr-badas{display:inline-flex;align-items:center;gap:.6rem;max-width:260px;color:var(--ink2,#374151);text-decoration:none;font-size:.85rem;line-height:1.35}
+.ftr-badas img{width:46px;height:46px;flex:none}
+.ftr-badas:hover span{text-decoration:underline}
+@media(max-width:600px){.ftr-id{padding-left:1rem;padding-right:1rem}}
+
+/* ===== POLISH PASS ===== */
+.cta-band{padding:3.75rem 2rem}
+.cta-inner{max-width:1320px}
+.ftr-contact a[href^="tel:"]{white-space:nowrap}
+.ftr-bottom{padding-bottom:5rem}
+.cta-btn{transition:background .2s ease,transform .25s ease}
+.cta-btn:hover{transform:translateY(-2px)}
+@media(prefers-reduced-motion:reduce){.utility-nav .btn-apply,.cta-btn,.nav-item>a{transition:none}.utility-nav .btn-apply:hover,.cta-btn:hover{transform:none}}
+/* ===== END SITE HEADER AND FOOTER ===== */
+section[id]{scroll-margin-top:110px}
+</style>
+<script>document.documentElement.classList.add('pl')</script>
+<link rel="stylesheet" href="css/polish.css"/>
+<script type="application/ld+json" id="rs-ld">
+{
+ "@context": "https://schema.org",
+ "@type": "CollectionPage",
+ "name": "Research at the Department of Occupational and Environmental Health, BUHS",
+ "about": "Occupational, environmental and public health research",
+ "mainEntity": {
+  "@type": "ItemList",
+  "itemListElement": [
+   {
+    "@type": "ListItem",
+    "position": 1,
+    "item": {
+     "@type": "ScholarlyArticle",
+     "name": "Slips, Trips and Falls among the workers in a garment industry in Dhaka, Bangladesh",
+     "url": "https://nepjol.info/index.php/IJOSH/article/view/36062",
+     "datePublished": "2021",
+     "isPartOf": {
+      "@type": "Periodical",
+      "name": "International Journal of Occupational Safety and Health"
+     },
+     "author": [
+      {
+       "@type": "Person",
+       "name": "Ali Kamal Mostofa Rubel"
+      },
+      {
+       "@type": "Person",
+       "name": "Sarmin Sultana"
+      },
+      {
+       "@type": "Person",
+       "name": "AKM Masum Ul Alam"
+      },
+      {
+       "@type": "Person",
+       "name": "Saika Nizam"
+      },
+      {
+       "@type": "Person",
+       "name": "Rabeya Yasmin"
+      },
+      {
+       "@type": "Person",
+       "name": "Sk Akhtar Ahmad"
+      },
+      {
+       "@type": "Person",
+       "name": "Mahmud Hossain Faruquee"
+      }
+     ]
+    }
+   },
+   {
+    "@type": "ListItem",
+    "position": 2,
+    "item": {
+     "@type": "ScholarlyArticle",
+     "name": "Blood Lead Levels and Health Problems of Lead Acid Battery Workers in Bangladesh",
+     "url": "https://doi.org/10.1155/2014/974104",
+     "datePublished": "2014",
+     "isPartOf": {
+      "@type": "Periodical",
+      "name": "The Scientific World Journal"
+     },
+     "author": [
+      {
+       "@type": "Person",
+       "name": "Sk Akhtar Ahmad"
+      },
+      {
+       "@type": "Person",
+       "name": "Manzurul Haque Khan"
+      },
+      {
+       "@type": "Person",
+       "name": "Salamat Khandker"
+      },
+      {
+       "@type": "Person",
+       "name": "A F M Sarwar"
+      },
+      {
+       "@type": "Person",
+       "name": "Nahid Yasmin"
+      },
+      {
+       "@type": "Person",
+       "name": "M H Faruquee"
+      },
+      {
+       "@type": "Person",
+       "name": "Rabeya Yasmin"
+      }
+     ]
+    }
+   },
+   {
+    "@type": "ListItem",
+    "position": 3,
+    "item": {
+     "@type": "ScholarlyArticle",
+     "name": "Enhanced carcinogenicity by coexposure to arsenic and iron and a novel remediation system for the elements in well drinking water",
+     "url": "https://link.springer.com/article/10.1007/s00204-012-0964-6",
+     "datePublished": "2013",
+     "isPartOf": {
+      "@type": "Periodical",
+      "name": "Archives of Toxicology 87(3):439 to 447"
+     },
+     "author": [
+      {
+       "@type": "Person",
+       "name": "Kumasaka MY"
+      },
+      {
+       "@type": "Person",
+       "name": "Yamanoshita O"
+      },
+      {
+       "@type": "Person",
+       "name": "Shimizu S"
+      },
+      {
+       "@type": "Person",
+       "name": "Ohnuma S"
+      },
+      {
+       "@type": "Person",
+       "name": "Furuta A"
+      },
+      {
+       "@type": "Person",
+       "name": "Yajima I"
+      },
+      {
+       "@type": "Person",
+       "name": "Nizam S"
+      },
+      {
+       "@type": "Person",
+       "name": "Khalequzzaman M"
+      },
+      {
+       "@type": "Person",
+       "name": "Shekhar HU"
+      },
+      {
+       "@type": "Person",
+       "name": "Nakajima T"
+      },
+      {
+       "@type": "Person",
+       "name": "Kato M"
+      }
+     ]
+    }
+   },
+   {
+    "@type": "ListItem",
+    "position": 4,
+    "item": {
+     "@type": "ScholarlyArticle",
+     "name": "Differences in Urinary Arsenic Metabolites between Diabetic and Non-Diabetic Subjects in Bangladesh",
+     "url": "https://www.mdpi.com/1660-4601/10/3/1006/html",
+     "datePublished": "2013",
+     "isPartOf": {
+      "@type": "Periodical",
+      "name": "International Journal of Environmental Research and Public Health 10(3):1006 to 1019"
+     },
+     "author": [
+      {
+       "@type": "Person",
+       "name": "Saika Nizam"
+      },
+      {
+       "@type": "Person",
+       "name": "Masashi Kato"
+      },
+      {
+       "@type": "Person",
+       "name": "Hiroshi Yatsuya"
+      },
+      {
+       "@type": "Person",
+       "name": "Md. Khalequzzaman"
+      },
+      {
+       "@type": "Person",
+       "name": "Shoko Ohnuma"
+      },
+      {
+       "@type": "Person",
+       "name": "Hisao Naito"
+      },
+      {
+       "@type": "Person",
+       "name": "Tamie Nakajima"
+      }
+     ]
+    }
+   },
+   {
+    "@type": "ListItem",
+    "position": 5,
+    "item": {
+     "@type": "ScholarlyArticle",
+     "name": "Arsenic in drinking water and pregnancy outcomes",
+     "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC1240346",
+     "datePublished": "2001",
+     "isPartOf": {
+      "@type": "Periodical",
+      "name": "Environmental Health Perspectives 109(6):629 to 631"
+     },
+     "author": [
+      {
+       "@type": "Person",
+       "name": "S A Ahmad"
+      },
+      {
+       "@type": "Person",
+       "name": "M H Sayed"
+      },
+      {
+       "@type": "Person",
+       "name": "S Barua"
+      },
+      {
+       "@type": "Person",
+       "name": "M H Khan"
+      },
+      {
+       "@type": "Person",
+       "name": "M H Faruquee"
+      },
+      {
+       "@type": "Person",
+       "name": "A Jalil"
+      },
+      {
+       "@type": "Person",
+       "name": "S A Hadi"
+      },
+      {
+       "@type": "Person",
+       "name": "H K Talukder"
+      }
+     ]
+    }
+   }
+  ]
+ }
+}
+</script>
 </head>
 <body>
+<a class="skip" href="#main">Skip to main content</a>
 
-<nav>
-  <a class="nav-brand" href="index.html">
-    <img class="nav-logo-img" src="assets/logo.png" alt="DOEH BUHS" onerror="this.style.background='var(--green-pale)'"/>
-    <div class="nav-name">DOEH, BUHS<small>Dept. of Occupational &amp; Environmental Health</small></div>
-  </a>
-  <div class="nav-links">
-    <a class="nb" href="index.html">Home</a>
-    <a class="nb" href="about.html">About</a>
-    <a class="nb" href="academics.html">Academics</a>
-    <a class="nb active" href="research.html">Research</a>
-    <a class="nb" href="news.html">News &amp; Events</a>
-    <a class="nb" href="gallery.html">Gallery</a>
-    <a class="nb" href="alumni.html">Alumni</a>
-    <a class="nb" href="contact.html">Contact</a>
+<header class="site-header">
+  <div class="header-container">
+    <a href="index.html" class="brand-link">
+      <img class="brand-logo" src="assets/logo.png" alt="" width="60" height="60" onerror="this.outerHTML='<span class=&quot;brand-badge&quot;>DOEH</span>'"/>
+      <span class="brand-title-only">Department of Occupational and Environmental Health</span>
+    </a>
+
+    <button class="search-button search-m" id="siteSearchBtnM" type="button" aria-haspopup="dialog" aria-label="Search the site"><svg viewBox="0 0 24 24" fill="none" stroke-width="2.2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg></button>
+    <span class="hdr-sep" aria-hidden="true"></span>
+
+    <button class="nav-toggle" id="navToggle" type="button" aria-expanded="false" aria-controls="siteNav" aria-label="Open menu"><span></span><span></span><span></span></button>
+    <div class="nav-wrapper" id="siteNav">
+      <div class="utility-nav" role="navigation" aria-label="Utility">
+        <a href="academics.html#calendar">Academic Calendar</a>
+        <span class="utility-divider">|</span>
+        <a href="news.html">Notices</a>
+        <span class="utility-divider">|</span>
+        <a href="contact.html">Contact</a>
+        <button class="search-button" id="siteSearchBtn" type="button" aria-haspopup="dialog" aria-label="Search the site">
+          <svg viewBox="0 0 24 24" fill="none" stroke-width="2.4"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+        </button>
+        <a href="https://onlineapplication.buhs.ac.bd/admission/" target="_blank" rel="noopener" class="btn-apply">Apply</a>
+      </div>
+
+      <div class="primary-nav" role="navigation" aria-label="Primary">
+        <div class="nav-item"><a href="index.html">Home</a></div>
+        <div class="nav-item">
+          <a href="about.html">About <svg class="caret" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg></a>
+          <div class="dropdown">
+            <a href="about.html#our-strengths-title" title="Why study Occupational and Environmental Health at DOEH, BUHS"><span class="dd-title">Why Study at DOEH</span><span class="dd-sub">What sets the department apart</span></a>
+            <a href="about.html#iosh-accreditation" title="IOSH accreditation of DOEH programs"><span class="dd-title">IOSH Accreditation</span><span class="dd-sub">Internationally recognized standards</span></a>
+            <a href="about.html#leadership" title="DOEH and BUHS leadership"><span class="dd-title">Department Leadership</span><span class="dd-sub">Messages from our leaders</span></a>
+            <a href="about.html#history" title="Journey and history of DOEH"><span class="dd-title">Our Journey and History</span><span class="dd-sub">How the department has grown</span></a>
+            <a href="about.html#location" title="DOEH campus address and map"><span class="dd-title">Campus and Location</span><span class="dd-sub">Address, phone and map</span></a>
+          </div>
+        </div>
+        <div class="nav-item">
+          <a href="academics.html">Academics <svg class="caret" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg></a>
+          <div class="dropdown">
+            <a href="academics.html#bph-body" title="Bachelor of Public Health in Occupational and Environmental Health and Safety"><span class="dd-title">BPH in Occupational &amp; Environmental Health and Safety</span><span class="dd-sub">Bachelor's program</span></a>
+            <a href="academics.html#mph-ohs-body" title="Master of Public Health in Occupational Health and Safety"><span class="dd-title">MPH in Occupational Health and Safety</span><span class="dd-sub">Master's program</span></a>
+            <a href="academics.html#mph-ehs-body" title="Master of Public Health in Environmental Health and Safety"><span class="dd-title">MPH in Environmental Health and Safety</span><span class="dd-sub">Master's program</span></a>
+            <a href="academics.html#faculty" title="DOEH faculty and academic staff"><span class="dd-title">Faculty and Academic Staff</span><span class="dd-sub">Professors, associate professors and adjunct faculty</span></a>
+            <a href="academics.html#calendar" title="DOEH academic calendar and intakes"><span class="dd-title">Academic Calendar</span><span class="dd-sub">Spring and Fall intakes</span></a>
+          </div>
+        </div>
+        <div class="nav-item active"><a href="research.html">Research</a></div>
+        <div class="nav-item"><a href="news.html">News &amp; Events</a></div>
+        <div class="nav-item"><a href="gallery.html">Gallery</a></div>
+        <div class="nav-item"><a href="alumni.html">Alumni</a></div>
+      </div>
+    </div>
   </div>
-  <button class="hamburger" id="hamburger" onclick="toggleMenu()" aria-label="Open menu"><span></span><span></span><span></span></button>
-</nav>
-<div class="mobile-menu" id="mobile-menu">
-  <a class="mnb" href="index.html">Home</a>
-  <a class="mnb" href="about.html">About</a>
-  <a class="mnb" href="academics.html">Academics</a>
-  <a class="mnb active" href="research.html">Research</a>
-  <a class="mnb" href="news.html">News &amp; Events</a>
-  <a class="mnb" href="gallery.html">Gallery</a>
-  <a class="mnb" href="alumni.html">Alumni</a>
-  <a class="mnb" href="contact.html">Contact</a>
+</header>
+<!-- SITE SEARCH -->
+<div class="ssr" id="siteSearch" aria-hidden="true">
+  <div class="ssr-panel" role="dialog" aria-modal="true" aria-labelledby="ssrTitle">
+    <div class="ssr-head"><h2 class="ssr-title" id="ssrTitle">Search DOEH</h2><button class="ssr-close" id="ssrClose" type="button" aria-label="Close search">&times;</button></div>
+    <input class="ssr-field" id="ssrInput" type="search" placeholder="Try IOSH, MPH, faculty or intake" autocomplete="off" spellcheck="false" aria-label="Search the site"/>
+    <ul class="ssr-list" id="ssrList"></ul>
+    <p class="ssr-empty" id="ssrEmpty" hidden>No match yet. Try a program name, "faculty" or "apply".</p>
+  </div>
 </div>
 
-<section class="page-hero">
-  <h1>Research that finds<br/><em>the danger first</em></h1>
-  <p>Before a workplace hazard becomes a tragedy, someone has to notice it. That's what research in this field is for.</p>
+<!-- legacy hooks kept hidden so js/main.js does not break -->
+<div class="legacy-nav-stub" aria-hidden="true"><button class="hamburger" id="hamburger" onclick="toggleMenu()" tabindex="-1"></button><div class="mobile-menu" id="mobile-menu"></div></div>
+<main id="main" tabindex="-1">
+
+<!-- A. HERO -->
+<section class="page-hero rs-hero" aria-labelledby="rs-h1">
+  <div class="page-hero-inner"><div class="page-hero-text">
+    <h1 id="rs-h1">Research for Healthier Environments and Safer Workplaces</h1>
+    <p>Research at DOEH looks at occupational, environmental and public health challenges, to support evidence-informed decisions, safer workplaces and healthier communities.</p>
+    <div class="rs-hero-actions">
+      <a class="btn btn-white" href="#themes">Explore Research</a>
+      <a class="btn btn-outline-w" href="#publications">Browse Publications</a>
+    </div>
+  </div></div>
 </section>
 
-<!-- KEY AREAS -->
-<section class="sec">
+<!-- B. RESEARCH THEMES (proposed groupings built from faculty profile interests; not formal research centres) -->
+<section class="sec" id="themes" aria-labelledby="themes-h">
   <div class="sec-inner">
-    <div class="sec-title">Key research areas</div>
+    <h2 class="sec-title" id="themes-h">Research themes</h2>
     <div class="sec-divider"></div>
-    <div class="grid">
-      <div class="area-card"><div class="area-name">[Research area 1]</div><div class="area-desc">[PLACEHOLDER: one line]</div></div>
-      <div class="area-card"><div class="area-name">[Research area 2]</div><div class="area-desc">[PLACEHOLDER]</div></div>
-      <div class="area-card"><div class="area-name">[Research area 3]</div><div class="area-desc">[PLACEHOLDER]</div></div>
-      <div class="area-card"><div class="area-name">[Research area 4]</div><div class="area-desc">[PLACEHOLDER]</div></div>
+    <p class="sec-sub">Themes drawn from the research interests listed on faculty profiles. They describe areas of expertise, not formal research centres or laboratories.</p>
+    <div class="rs-grid">
+      <article class="rs-theme"><div class="rs-theme-head"><span class="rs-ico" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 3l7 3v5c0 4.5-3 8.2-7 10-4-1.8-7-5.5-7-10V6l7-3z"/><path d="m9 12 2 2 4-4"/></svg></span>
+        <h3>Occupational Health and Safety</h3></div><p>Workplace hazards, injury prevention, ergonomics and the health of workers, with a focus on garment and other industrial settings.</p>
+        <ul class="rs-tags" aria-label="Topics"><li>Musculoskeletal disorders</li><li>Factory safety and inspection</li><li>Chemical and fire safety</li><li>Worker health</li></ul></article>
+      <article class="rs-theme"><div class="rs-theme-head"><span class="rs-ico" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 3s6 6.2 6 10.5A6 6 0 0 1 6 13.5C6 9.2 12 3 12 3z"/></svg></span>
+        <h3>Environmental Health and Water Quality</h3></div><p>Environmental exposures and their effects on health, including arsenic in drinking water, pollution and waste.</p>
+        <ul class="rs-tags" aria-label="Topics"><li>Arsenic and drinking water</li><li>Air and noise pollution</li><li>Waste disposal</li><li>Indoor air pollution</li></ul></article>
+      <article class="rs-theme"><div class="rs-theme-head"><span class="rs-ico" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M3 14c2 0 2-2 4-2s2 2 4 2 2-2 4-2 2 2 4 2"/><path d="M3 19c2 0 2-2 4-2s2 2 4 2 2-2 4-2 2 2 4 2"/><circle cx="12" cy="6" r="2.5"/></svg></span>
+        <h3>Climate, Disaster and Emergency Response</h3></div><p>How climate change, disasters and emergencies affect health and how communities can prepare and respond.</p>
+        <ul class="rs-tags" aria-label="Topics"><li>Disaster risk reduction</li><li>Climate change and health</li><li>Community resilience</li><li>Fire safety</li></ul></article>
+      <article class="rs-theme"><div class="rs-theme-head"><span class="rs-ico" aria-hidden="true"><svg viewBox="0 0 24 24"><circle cx="9" cy="8" r="3"/><path d="M3 20c0-3.3 2.7-6 6-6s6 2.7 6 6"/><circle cx="17" cy="9" r="2.5"/><path d="M16 14.2c2.9.2 5 2.5 5 5.8"/></svg></span>
+        <h3>Community and Public Health</h3></div><p>The health of communities and vulnerable groups, including nutrition, maternal and child health and non-communicable disease.</p>
+        <ul class="rs-tags" aria-label="Topics"><li>Maternal and child health</li><li>Nutrition and food security</li><li>Non-communicable diseases</li><li>Epidemiology</li></ul></article>
     </div>
   </div>
 </section>
 
-<!-- ONGOING PROJECTS -->
-<section class="sec" style="background:var(--offwhite)">
+<!-- C. RESEARCH IN PRACTICE (only items verified against the publisher or PubMed record) -->
+<section class="sec rs-alt" id="research-in-practice" aria-labelledby="rip-h">
   <div class="sec-inner">
-    <div class="sec-title">Ongoing &amp; current projects</div>
+    <h2 class="sec-title" id="rip-h">Research in practice</h2>
     <div class="sec-divider"></div>
-    <div class="grid">
-      <div class="area-card"><div class="area-name">[Project title]</div><div class="area-desc">[PLACEHOLDER: what it's investigating, who's leading it]</div></div>
-      <div class="area-card"><div class="area-name">[Project title]</div><div class="area-desc">[PLACEHOLDER]</div></div>
+    <p class="sec-sub">Two studies by DOEH faculty that look at the health of workers in Bangladesh.</p>
+    <div class="rs-feature-grid">
+      <article class="rs-feature"><span class="rs-badge">Occupational health</span>
+        <h3>Blood Lead Levels and Health Problems of Lead Acid Battery Workers in Bangladesh</h3><p class="rs-meta">Sk Akhtar Ahmad, Manzurul Haque Khan, Salamat Khandker, A F M Sarwar, Nahid Yasmin, M H Faruquee, Rabeya Yasmin</p><p class="rs-meta"><em>The Scientific World Journal</em>, 2014</p>
+        <p class="rs-sum">Cross-sectional study of 118 workers in 15 lead acid battery industries in Dhaka. Mean blood lead level was 65.25 μg/dL, and higher levels were associated with hypertension and anaemia among the workers.</p>
+        <p class="rs-meta">DOEH faculty authors: Sk Akhtar Ahmad, A F M Sarwar, M H Faruquee.</p>
+        <p class="rs-meta">Affiliation listed on the paper includes the Department of Occupational and Environmental Health, BUHS.</p>
+        <a class="rs-link" href="https://doi.org/10.1155/2014/974104" target="_blank" rel="noopener">Read the article<span class="sr-only"> (opens in a new tab)</span> <span aria-hidden="true">&rarr;</span></a></article>
+      <article class="rs-feature"><span class="rs-badge">Occupational health</span>
+        <h3>Slips, Trips and Falls among the workers in a garment industry in Dhaka, Bangladesh</h3><p class="rs-meta">Ali Kamal Mostofa Rubel, Sarmin Sultana, AKM Masum Ul Alam, Saika Nizam, Rabeya Yasmin, Sk Akhtar Ahmad, Mahmud Hossain Faruquee</p><p class="rs-meta"><em>International Journal of Occupational Safety and Health</em>, 2021</p>
+        <p class="rs-sum">Cross-sectional study of 208 garment workers in one Dhaka factory. 29.8% reported a slip, trip or fall in the previous six months, and workplace stress was the most commonly reported contributing factor.</p>
+        <p class="rs-meta">DOEH faculty authors: AKM Masum Ul Alam, Saika Nizam, Sk Akhtar Ahmad, Mahmud Hossain Faruquee.</p>
+        
+        <a class="rs-link" href="https://nepjol.info/index.php/IJOSH/article/view/36062" target="_blank" rel="noopener">Read the article<span class="sr-only"> (opens in a new tab)</span> <span aria-hidden="true">&rarr;</span></a></article>
     </div>
   </div>
 </section>
 
-<!-- STUDENT RESEARCH -->
-<section class="sec">
+<!-- D. PUBLICATIONS AND STUDENT RESEARCH -->
+<section class="sec" id="publications" aria-labelledby="pubs-h">
   <div class="sec-inner">
-    <div class="sec-title">Student research</div>
+    <h2 class="sec-title" id="pubs-h">Publications</h2>
     <div class="sec-divider"></div>
-    <p class="sec-sub">How a student actually gets involved in research here, step by step.</p>
-    <div class="pathway-steps">
-      <div class="pathway-step">
-        <div class="pathway-num">1</div>
-        <div class="pathway-text"><h4>The thesis requirement</h4><p>[PLACEHOLDER: when in the program students complete a thesis, and what that process looks like]</p></div>
+    <p class="sec-sub">Journal articles by DOEH faculty. Each entry was checked against the publisher or PubMed record and links to the original source.</p>
+    <ol class="rs-pubs">
+        <li class="rs-pub"><span class="rs-badge rs-badge-sm">Occupational health</span>
+          <h3><a href="https://nepjol.info/index.php/IJOSH/article/view/36062" target="_blank" rel="noopener">Slips, Trips and Falls among the workers in a garment industry in Dhaka, Bangladesh<span class="sr-only"> (opens in a new tab)</span></a></h3>
+          <p class="rs-meta">Ali Kamal Mostofa Rubel, Sarmin Sultana, AKM Masum Ul Alam, Saika Nizam, Rabeya Yasmin, Sk Akhtar Ahmad, Mahmud Hossain Faruquee</p>
+          <p class="rs-meta"><em>International Journal of Occupational Safety and Health</em>, 2021</p></li>
+        <li class="rs-pub"><span class="rs-badge rs-badge-sm">Occupational health</span>
+          <h3><a href="https://doi.org/10.1155/2014/974104" target="_blank" rel="noopener">Blood Lead Levels and Health Problems of Lead Acid Battery Workers in Bangladesh<span class="sr-only"> (opens in a new tab)</span></a></h3>
+          <p class="rs-meta">Sk Akhtar Ahmad, Manzurul Haque Khan, Salamat Khandker, A F M Sarwar, Nahid Yasmin, M H Faruquee, Rabeya Yasmin</p>
+          <p class="rs-meta"><em>The Scientific World Journal</em>, 2014</p></li>
+        <li class="rs-pub"><span class="rs-badge rs-badge-sm">Environmental health</span>
+          <h3><a href="https://link.springer.com/article/10.1007/s00204-012-0964-6" target="_blank" rel="noopener">Enhanced carcinogenicity by coexposure to arsenic and iron and a novel remediation system for the elements in well drinking water<span class="sr-only"> (opens in a new tab)</span></a></h3>
+          <p class="rs-meta">Kumasaka MY, Yamanoshita O, Shimizu S, Ohnuma S, Furuta A, Yajima I, Nizam S, Khalequzzaman M, Shekhar HU, Nakajima T, Kato M</p>
+          <p class="rs-meta"><em>Archives of Toxicology 87(3):439 to 447</em>, 2013</p></li>
+        <li class="rs-pub"><span class="rs-badge rs-badge-sm">Environmental health</span>
+          <h3><a href="https://www.mdpi.com/1660-4601/10/3/1006/html" target="_blank" rel="noopener">Differences in Urinary Arsenic Metabolites between Diabetic and Non-Diabetic Subjects in Bangladesh<span class="sr-only"> (opens in a new tab)</span></a></h3>
+          <p class="rs-meta">Saika Nizam, Masashi Kato, Hiroshi Yatsuya, Md. Khalequzzaman, Shoko Ohnuma, Hisao Naito, Tamie Nakajima</p>
+          <p class="rs-meta"><em>International Journal of Environmental Research and Public Health 10(3):1006 to 1019</em>, 2013</p></li>
+        <li class="rs-pub"><span class="rs-badge rs-badge-sm">Environmental health</span>
+          <h3><a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC1240346" target="_blank" rel="noopener">Arsenic in drinking water and pregnancy outcomes<span class="sr-only"> (opens in a new tab)</span></a></h3>
+          <p class="rs-meta">S A Ahmad, M H Sayed, S Barua, M H Khan, M H Faruquee, A Jalil, S A Hadi, H K Talukder</p>
+          <p class="rs-meta"><em>Environmental Health Perspectives 109(6):629 to 631</em>, 2001</p></li>
+    </ol>
+    <div class="rs-empty"><strong>Student dissertations and theses</strong>Student research will be listed here once the department confirms what can be shared publicly.</div>
+  </div>
+</section>
+
+<!-- E. FACULTY RESEARCH EXPERTISE (interests as listed on the existing faculty profiles) -->
+<section class="sec rs-alt" id="faculty-expertise" aria-labelledby="fx-h">
+  <div class="sec-inner">
+    <h2 class="sec-title" id="fx-h">Faculty research expertise</h2>
+    <div class="sec-divider"></div>
+    <p class="sec-sub">Research interests as listed on each faculty profile.</p>
+    <div class="rs-fac">
+      <article class="rs-person"><div class="rs-person-top">
+          <img class="rs-avatar" src="assets/faculty/photos/sk-akhtar-ahmad.jpg" alt="" width="56" height="56" loading="lazy" decoding="async" onerror="this.outerHTML='&lt;span class=&quot;rs-avatar-fb&quot; aria-hidden=&quot;true&quot;&gt;SA&lt;/span&gt;'"/>
+          <div><h3>Prof. Dr. Sk Akhtar Ahmad</h3><p class="rs-role">Professor &amp; Advisor</p></div></div>
+        <ul><li>Environmental health, especially arsenic contamination of water</li><li>Climate change, air and noise pollution, and waste disposal</li><li>Occupational health: hazard assessment, occupational diseases and injury, agricultural workers</li></ul>
+        <a class="rs-link" href="academics.html#profile-akhtar">View full profile <span aria-hidden="true">&rarr;</span></a></article>
+      <article class="rs-person"><div class="rs-person-top">
+          <img class="rs-avatar" src="assets/faculty/photos/mh-faruquee.jpg" alt="" width="56" height="56" loading="lazy" decoding="async" onerror="this.outerHTML='&lt;span class=&quot;rs-avatar-fb&quot; aria-hidden=&quot;true&quot;&gt;MF&lt;/span&gt;'"/>
+          <div><h3>Prof. Dr. M H Faruquee</h3><p class="rs-role">Professor &amp; Head of Department</p></div></div>
+        <ul><li>Climate change and health</li><li>Occupational health and safety</li><li>Environmental health and health systems assessment</li></ul>
+        <a class="rs-link" href="academics.html#profile-faruquee">View full profile <span aria-hidden="true">&rarr;</span></a></article>
+      <article class="rs-person"><div class="rs-person-top">
+          <img class="rs-avatar" src="assets/faculty/photos/saika-nizam.jpg" alt="" width="56" height="56" loading="lazy" decoding="async" onerror="this.outerHTML='&lt;span class=&quot;rs-avatar-fb&quot; aria-hidden=&quot;true&quot;&gt;SN&lt;/span&gt;'"/>
+          <div><h3>Dr Saika Nizam</h3><p class="rs-role">Associate Professor</p></div></div>
+        <ul><li>Arsenic exposure and health</li><li>Occupational noise exposure</li><li>Non-communicable disease epidemiology</li></ul>
+        <a class="rs-link" href="academics.html#profile-nizam">View full profile <span aria-hidden="true">&rarr;</span></a></article>
+      <article class="rs-person"><div class="rs-person-top">
+          <img class="rs-avatar" src="assets/faculty/photos/afm-sarwar.jpg" alt="" width="56" height="56" loading="lazy" decoding="async" onerror="this.outerHTML='&lt;span class=&quot;rs-avatar-fb&quot; aria-hidden=&quot;true&quot;&gt;AS&lt;/span&gt;'"/>
+          <div><h3>Prof. A F M Sarwar</h3><p class="rs-role">Honorary Professor</p></div></div>
+        <ul><li>Oral health among arsenic-exposed and non-exposed populations</li><li>Arsenicosis, fluoride and their health consequences</li><li>Indoor air pollution and behaviour change training</li></ul>
+        <a class="rs-link" href="academics.html#profile-sarwar">View full profile <span aria-hidden="true">&rarr;</span></a></article>
+      <article class="rs-person"><div class="rs-person-top">
+          <img class="rs-avatar" src="assets/faculty/photos/abu-nayeem-shahidullah.jpg" alt="" width="56" height="56" loading="lazy" decoding="async" onerror="this.outerHTML='&lt;span class=&quot;rs-avatar-fb&quot; aria-hidden=&quot;true&quot;&gt;AS&lt;/span&gt;'"/>
+          <div><h3>Mr. Abu Nayeem Md Shahidullah</h3><p class="rs-role">Ex Director General, Fire Service &amp; Civil Defence</p></div></div>
+        <ul><li>Disaster risk reduction and emergency response</li><li>Fire safety and occupational health and safety</li><li>Institutional development and capacity building</li></ul>
+        <a class="rs-link" href="academics.html#profile-shahidullah">View full profile <span aria-hidden="true">&rarr;</span></a></article>
+      <article class="rs-person"><div class="rs-person-top">
+          <img class="rs-avatar" src="assets/faculty/photos/shafiur-rahman.jpg" alt="" width="56" height="56" loading="lazy" decoding="async" onerror="this.outerHTML='&lt;span class=&quot;rs-avatar-fb&quot; aria-hidden=&quot;true&quot;&gt;MR&lt;/span&gt;'"/>
+          <div><h3>Dr. Md. Shafiur Rahman</h3><p class="rs-role">Associate Professor</p></div></div>
+        <ul><li>Tuberculosis among garment workers and in healthcare settings</li><li>Musculoskeletal disorders among weaving workers</li><li>Health problems of nurses, media workers and healthcare workers</li></ul>
+        <a class="rs-link" href="academics.html#profile-shafiur">View full profile <span aria-hidden="true">&rarr;</span></a></article>
+      <article class="rs-person"><div class="rs-person-top">
+          <img class="rs-avatar" src="assets/faculty/photos/abul-ehsan.jpg" alt="" width="56" height="56" loading="lazy" decoding="async" onerror="this.outerHTML='&lt;span class=&quot;rs-avatar-fb&quot; aria-hidden=&quot;true&quot;&gt;ME&lt;/span&gt;'"/>
+          <div><h3>Dr. Md. Abul Ehsan</h3><p class="rs-role">Associate Professor</p></div></div>
+        <ul><li>Factory inspection and occupational safety and health policy</li><li>Structural, fire and electrical risk assessment in garment, plastic and chemical factories</li><li>Employment injury compensation schemes</li></ul>
+        <a class="rs-link" href="academics.html#profile-ehsan">View full profile <span aria-hidden="true">&rarr;</span></a></article>
+      <article class="rs-person"><div class="rs-person-top">
+          <img class="rs-avatar" src="assets/faculty/photos/masum-ul-alam.jpg" alt="" width="56" height="56" loading="lazy" decoding="async" onerror="this.outerHTML='&lt;span class=&quot;rs-avatar-fb&quot; aria-hidden=&quot;true&quot;&gt;AA&lt;/span&gt;'"/>
+          <div><h3>Mr. A K M Masum Ul Alam</h3><p class="rs-role">Adjunct Faculty</p></div></div>
+        <ul><li>Guidelines on safety committees, risk assessment, chemical safety, fire safety and emergency preparedness</li><li>Guidelines on personal protective equipment and electrical safety</li><li>OSH training manuals for employers and youth</li></ul>
+        <a class="rs-link" href="academics.html#profile-masum">View full profile <span aria-hidden="true">&rarr;</span></a></article>
+      <article class="rs-person"><div class="rs-person-top">
+          <img class="rs-avatar" src="assets/faculty/photos/afm-wali-islam.jpg" alt="" width="56" height="56" loading="lazy" decoding="async" onerror="this.outerHTML='&lt;span class=&quot;rs-avatar-fb&quot; aria-hidden=&quot;true&quot;&gt;AI&lt;/span&gt;'"/>
+          <div><h3>Dr. AFM Wali Islam</h3><p class="rs-role">Professor</p></div></div>
+        <ul><li>Mucosal immunology and epithelial barrier function</li><li>Gut and liver immune interactions</li><li>Inflammatory bowel disease and host-microbiome interactions</li></ul>
+        <a class="rs-link" href="academics.html#profile-wali">View full profile <span aria-hidden="true">&rarr;</span></a></article>
+      <article class="rs-person"><div class="rs-person-top">
+          <img class="rs-avatar" src="assets/faculty/photos/maliha-farzana.jpg" alt="" width="56" height="56" loading="lazy" decoding="async" onerror="this.outerHTML='&lt;span class=&quot;rs-avatar-fb&quot; aria-hidden=&quot;true&quot;&gt;MF&lt;/span&gt;'"/>
+          <div><h3>Dr. Maliha Farzana</h3><p class="rs-role">Adjunct Faculty</p></div></div>
+        <ul><li>Environmental risk and hazard analysis</li><li>Dental public health</li><li>Data analysis with SPSS and GIS training</li></ul>
+        <a class="rs-link" href="academics.html#profile-maliha">View full profile <span aria-hidden="true">&rarr;</span></a></article>
+    </div>
+  </div>
+</section>
+
+<!-- F. STUDENT RESEARCH PATHWAY -->
+<section class="sec" id="student-research" aria-labelledby="sr-h">
+  <div class="sec-inner">
+    <h2 class="sec-title" id="sr-h">Doing research as a student</h2>
+    <div class="sec-divider"></div>
+    <p class="sec-sub">The steps of a typical research project, to help you think about your own question.</p>
+    <ol class="rs-steps"><li><h3>Ask a clear question</h3><p>Start from a real problem in a workplace, community or environment, and state what you want to find out.</p></li><li><h3>Review the literature</h3><p>See what is already known, including the studies listed on this page, and find the gap your question fills.</p></li><li><h3>Choose a study design</h3><p>Match the design to the question, for example a cross-sectional survey, a case-control study or an exposure assessment.</p></li><li><h3>Collect and analyse data</h3><p>Plan the sample and measures, collect the data carefully and analyse it with an appropriate method.</p></li><li><h3>Protect participants and data</h3><p>Follow research ethics, obtain informed consent and handle personal data responsibly.</p></li><li><h3>Share the findings</h3><p>Write up the results clearly and communicate them to the people who can use them.</p></li></ol>
+    <p class="rs-note">Thesis requirements and supervision arrangements are set by each program. To ask about current requirements, <a href="contact.html">contact the department</a>.</p>
+  </div>
+</section>
+
+<!-- G+H. CLOSING CALL TO ACTION -->
+<section class="cta-band" aria-labelledby="cta-heading">
+  <div class="cta-inner">
+    <div class="cta-text">
+      <h2 class="cta-title" id="cta-heading">Explore Research with DOEH</h2>
+      <p class="cta-sub">Meet the faculty, read the publications, or get in touch to talk about research or collaboration.</p>
+    </div>
+    <div class="cta-actions">
+      <a class="cta-btn cta-btn-primary" href="academics.html#faculty">Faculty profiles</a>
+      <a class="cta-btn cta-btn-ghost" href="#publications">Browse publications</a>
+      <a class="cta-btn cta-btn-ghost" href="contact.html">Contact the department</a>
+    </div>
+  </div>
+</section>
+</main>
+<aside aria-label="Chat on WhatsApp"><a class="wa-float" href="https://wa.me/8801911383522?text=Hello%20DOEH%2C%20I%20would%20like%20to%20know%20more%20about%20the%20programs." target="_blank" rel="noopener" aria-label="Chat with DOEH on WhatsApp"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg></a></aside>
+
+<!-- FOOTER -->
+<footer class="ftr">
+  <div class="ftr-inner">
+    <div class="ftr-grid">
+      <div class="ftr-contact">
+        <h2 class="ftr-title">Contact Us</h2>
+        <p><strong>Address:</strong> 125/1, Darus Salam (Technical Crossing), Mirpur, Dhaka-1216, Bangladesh</p>
+        <p><strong>Tel:</strong> <a href="tel:+8801911383522">+88-01911 383522</a>, <a href="tel:+8801970405772">+88-01970 405772</a></p>
+        <p><strong>Email:</strong> <a href="mailto:oeh@buhs.ac.bd">oeh@buhs.ac.bd</a></p>
+        <div class="ftr-map"><iframe src="https://www.google.com/maps?q=Bangladesh+University+of+Health+Sciences,+Mirpur,+Dhaka&amp;output=embed" loading="lazy" title="DOEH BUHS location on Google Maps" referrerpolicy="no-referrer-when-downgrade"></iframe></div>
       </div>
-      <div class="pathway-step">
-        <div class="pathway-num">2</div>
-        <div class="pathway-text"><h4>Getting matched with a research area and advisor</h4><p>[PLACEHOLDER: how students choose or get assigned a topic and mentor]</p></div>
+      <div>
+        <h2 class="ftr-title">About</h2>
+        <a class="ftr-link" href="about.html">About DOEH</a>
+        <a class="ftr-link" href="about.html#our-strengths-title">Why Study at DOEH</a>
+        <a class="ftr-link" href="about.html#iosh-accreditation">IOSH Accreditation</a>
+        <a class="ftr-link" href="about.html#leadership">Department Leadership</a>
+        <a class="ftr-link" href="about.html#history">Our Journey and History</a>
+        <a class="ftr-link" href="about.html#location">Campus and Location</a>
       </div>
-      <div class="pathway-step">
-        <div class="pathway-num">3</div>
-        <div class="pathway-text"><h4>Real work from past students</h4><p>A few examples of what past students have actually researched, so you know what's possible:</p></div>
+      <div>
+        <h2 class="ftr-title">Academics</h2>
+        <a class="ftr-link" href="academics.html#bph-body">BPH in Occupational &amp; Environmental Health and Safety</a>
+        <a class="ftr-link" href="academics.html#mph-ohs-body">MPH in Occupational Health and Safety</a>
+        <a class="ftr-link" href="academics.html#mph-ehs-body">MPH in Environmental Health and Safety</a>
+        <a class="ftr-link" href="academics.html#faculty">Faculty and Academic Staff</a>
+        <a class="ftr-link" href="academics.html#calendar">Academic Calendar</a>
       </div>
-    </div>
-    <div class="grid" style="margin-top:1.5rem">
-      <div class="area-card"><div class="area-name">[Past student project title]</div><div class="area-desc">[PLACEHOLDER, linking to thesis archive below]</div></div>
-      <div class="area-card"><div class="area-name">[Past student project title]</div><div class="area-desc">[PLACEHOLDER]</div></div>
-    </div>
-  </div>
-</section>
-
-<!-- PUBLICATIONS & THESIS ARCHIVE -->
-<section class="sec" style="background:var(--offwhite)">
-  <div class="sec-inner">
-    <div class="sec-title">Publications &amp; thesis archive</div>
-    <div class="sec-divider"></div>
-    <p class="sec-sub">Searchable by year and program, not a wall of abstracts.</p>
-    <div class="archive-filters">
-      <input type="text" placeholder="Search by title or author..." style="flex:1;min-width:200px"/>
-      <select><option>All programs</option><option>BPH</option><option>MPH-OHS</option><option>MPH-EHS</option></select>
-      <select><option>All years</option></select>
-    </div>
-    <table class="archive-table">
-      <thead><tr><th>Title</th><th>Author</th><th>Year</th><th>Program</th><th>Advisor</th><th></th></tr></thead>
-      <tbody>
-        <tr><td>[Thesis title]</td><td>[Author name]</td><td>[Year]</td><td>BPH</td><td>[Advisor]</td><td><a href="#">View PDF</a></td></tr>
-        <tr><td>[Thesis title]</td><td>[Author name]</td><td>[Year]</td><td>MPH-OHS</td><td>[Advisor]</td><td><a href="#">View PDF</a></td></tr>
-        <tr><td>[Thesis title]</td><td>[Author name]</td><td>[Year]</td><td>MPH-EHS</td><td>[Advisor]</td><td><a href="#">View PDF</a></td></tr>
-      </tbody>
-    </table>
-  </div>
-</section>
-
-<!-- FACULTY RESEARCH PROFILES -->
-<section class="sec">
-  <div class="sec-inner">
-    <div class="sec-title">Faculty research profiles</div>
-    <div class="sec-divider"></div>
-    <div class="grid">
-      <div class="leader-card">
-        <div class="leader-photo">FA</div>
-        <div><div class="leader-name">[Faculty name]</div><div class="leader-title">[Research focus]</div><div class="leader-msg">[PLACEHOLDER: link to full publication list]</div></div>
+      <div>
+        <h2 class="ftr-title">Resources</h2>
+        <a class="ftr-link" href="research.html">Research</a>
+        <a class="ftr-link" href="news.html">News &amp; Events</a>
+        <a class="ftr-link" href="gallery.html">Gallery</a>
+        <a class="ftr-link" href="alumni.html">Alumni</a>
       </div>
-      <div class="leader-card">
-        <div class="leader-photo">FA</div>
-        <div><div class="leader-name">[Faculty name]</div><div class="leader-title">[Research focus]</div><div class="leader-msg">[PLACEHOLDER]</div></div>
+      <div>
+        <h2 class="ftr-title">Quick Links</h2>
+        <a class="ftr-link" href="https://onlineapplication.buhs.ac.bd/admission/" target="_blank" rel="noopener">Apply Now</a>
+        <a class="ftr-link" href="contact.html">Contact DOEH</a>
+        <a class="ftr-link" href="https://buhs.ac.bd" target="_blank" rel="noopener">BUHS Official Website</a>
+        <a class="ftr-link" href="https://dab-bd.org" target="_blank" rel="noopener">Diabetic Association of Bangladesh</a>
+        <a class="ftr-link" href="https://iosh.com" target="_blank" rel="noopener">IOSH</a>
       </div>
     </div>
   </div>
-</section>
-
-<!-- FACILITIES -->
-<section class="sec" style="background:var(--offwhite)">
-  <div class="sec-inner">
-    <div class="sec-title">Research facilities</div>
-    <div class="sec-divider"></div>
-    <div class="grid">
-      <div class="area-card"><div class="area-name">Environmental Lab</div><div class="area-desc">[PLACEHOLDER]</div></div>
-      <div class="area-card"><div class="area-name">Occupational Lab</div><div class="area-desc">[PLACEHOLDER]</div></div>
-      <div class="area-card"><div class="area-name">GIS Lab</div><div class="area-desc">[PLACEHOLDER]</div></div>
-    </div>
+  <div class="ftr-id">
+    <a class="ftr-id-name" href="https://buhs.ac.bd" target="_blank" rel="noopener">Bangladesh University of Health Sciences</a>
+    <p class="ftr-id-tag">Bangladesh's first health sciences university, established in 2012 by the Diabetic Association of Bangladesh (BADAS).</p>
   </div>
-</section>
-
-<!-- COLLABORATION -->
-<section class="sec">
-  <div class="sec-inner">
-    <div class="sec-title">Collaboration &amp; funding</div>
-    <div class="sec-divider"></div>
-    <p class="sec-sub">Industry partnerships, research foundations, and funding opportunities. <em>(Pending confirmation of real, formalized partners.)</em></p>
-    <div class="grid">
-      <div class="area-card"><div class="area-name">[Partner/foundation]</div><div class="area-desc">[PLACEHOLDER]</div></div>
-    </div>
+  <div class="ftr-bottom">
+    <img class="ftr-logo" src="assets/logo.png" alt="DOEH, BUHS logo" onerror="this.style.display='none'" loading="lazy" decoding="async"/>
+    <div class="ftr-copy">&copy; 2026 Department of Occupational &amp; Environmental Health, Bangladesh University of Health Sciences. All rights reserved.</div>
+    <a class="ftr-badas" href="https://dab-bd.org" target="_blank" rel="noopener"><img src="assets/badas-logo.png" alt="Diabetic Association of Bangladesh (BADAS) logo" width="46" height="46" loading="lazy" onerror="this.style.display='none'"/><span>Established in 2012 by the Diabetic Association of Bangladesh</span></a>
+    <!-- LinkedIn: add the real URL to href and delete the hidden attribute on that icon -->
+    <div class="ftr-social"><a href="https://www.facebook.com/share/19NrNVjGQQ/" target="_blank" rel="noopener" aria-label="DOEH on Facebook"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M22 12a10 10 0 1 0-11.6 9.9v-7H7.9V12h2.5V9.8c0-2.5 1.5-3.9 3.8-3.9 1.1 0 2.2.2 2.2.2v2.5h-1.3c-1.2 0-1.6.8-1.6 1.6V12h2.8l-.4 2.9h-2.3v7A10 10 0 0 0 22 12z"/></svg></a><a href="https://www.youtube.com/@doeh_buhs" target="_blank" rel="noopener" aria-label="DOEH on YouTube"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M21.6 7.2a2.5 2.5 0 0 0-1.8-1.8C18.2 5 12 5 12 5s-6.2 0-7.8.4A2.5 2.5 0 0 0 2.4 7.2C2 8.8 2 12 2 12s0 3.2.4 4.8a2.5 2.5 0 0 0 1.8 1.8C5.8 19 12 19 12 19s6.2 0 7.8-.4a2.5 2.5 0 0 0 1.8-1.8c.4-1.6.4-4.8.4-4.8s0-3.2-.4-4.8zM10 15V9l5.2 3L10 15z"/></svg></a><a href="mailto:oeh@buhs.ac.bd" aria-label="Email DOEH at oeh@buhs.ac.bd"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M3 6.5A2.5 2.5 0 0 1 5.5 4h13A2.5 2.5 0 0 1 21 6.5v11a2.5 2.5 0 0 1-2.5 2.5h-13A2.5 2.5 0 0 1 3 17.5v-11zm2.4-.3L12 11.3l6.6-5.1a.5.5 0 0 0-.1-.2h-13a.5.5 0 0 0-.1.2zM19 8.5l-6.4 4.9a1 1 0 0 1-1.2 0L5 8.5v9c0 .3.2.5.5.5h13c.3 0 .5-.2.5-.5v-9z"/></svg></a><a href="https://wa.me/8801911383522?text=Hello%20DOEH%2C%20I%20would%20like%20to%20know%20more%20about%20the%20programs." target="_blank" rel="noopener" aria-label="Message DOEH on WhatsApp"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg></a><a href="" hidden target="_blank" rel="noopener" aria-label="DOEH on LinkedIn"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4.98 3.5a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5zM3 9.75h4V21H3V9.75zm6.5 0h3.8v1.54h.05c.53-1 1.82-2.04 3.75-2.04 4 0 4.75 2.63 4.75 6.05V21h-4v-5.1c0-1.22-.02-2.78-1.7-2.78-1.7 0-1.96 1.33-1.96 2.7V21h-4V9.75z"/></svg></a></div>
   </div>
-</section>
-
-<footer class="site-footer">
-  <div class="footer-grid">
-    <div>
-      <img class="footer-brand-logo" src="assets/logo.png" alt="DOEH" onerror="this.style.display='none'"/>
-      <div class="footer-brand-name">DOEH, BUHS</div>
-      <div class="footer-brand-sub">Department of Occupational &amp; Environmental Health<br>Bangladesh University of Health Sciences</div>
-    </div>
-    <div>
-      <div class="footer-col-title">Quick Links</div>
-      <a class="footer-link" href="index.html">Home</a>
-      <a class="footer-link" href="about.html">About DOEH</a>
-      <a class="footer-link" href="academics.html">Academics</a>
-      <a class="footer-link" href="alumni.html">Alumni</a>
-    </div>
-    <div>
-      <div class="footer-col-title">Contact</div>
-      <a class="footer-link" href="mailto:doeh@buhs.ac.bd">doeh@buhs.ac.bd</a>
-      <span class="footer-link" style="cursor:default">125/1, Darus Salam, Mirpur, Dhaka-1216</span>
-    </div>
-  </div>
-  <div class="footer-bottom"><span class="footer-copy">© 2026 Department of Occupational &amp; Environmental Health, BUHS. All rights reserved.</span></div>
 </footer>
+<script>
+(function(){
+  var h=document.querySelector('.site-header'),t=document.getElementById('navToggle');
+  if(!h||!t)return;
+  var mq=window.matchMedia('(max-width:1240px)');
+  function setOpen(o){h.classList.toggle('open',o);t.setAttribute('aria-expanded',o?'true':'false');t.setAttribute('aria-label',o?'Close menu':'Open menu');}
+  function closeSubs(){h.querySelectorAll('.nav-item.open').forEach(function(i){i.classList.remove('open');});}
+  t.addEventListener('click',function(){setOpen(!h.classList.contains('open'));});
+  h.querySelectorAll('.nav-item').forEach(function(item){
+    var a=item.children[0];
+    if(!item.querySelector('.dropdown'))return;
+    a.addEventListener('click',function(e){
+      if(!mq.matches||item.classList.contains('open'))return;
+      e.preventDefault();closeSubs();item.classList.add('open');
+    });
+  });
+  h.addEventListener('click',function(e){
+    var a=e.target.closest&&e.target.closest('a');
+    if(a&&mq.matches&&!e.defaultPrevented){setOpen(false);closeSubs();}
+  });
+  document.addEventListener('keydown',function(e){if(e.key==='Escape'){setOpen(false);closeSubs();}});
+  var onChange=function(){if(!mq.matches){setOpen(false);closeSubs();}};
+  if(mq.addEventListener)mq.addEventListener('change',onChange);
+})();
+</script>
+<!-- SITE SEARCH SCRIPT -->
+<script>
+(function(){
+  var IDX=[
+   ['Home','index.html','DOEH at BUHS: programs, news and how to apply','home department occupational environmental health buhs'],
+   ['About DOEH','about.html','Who we are, our mission and how the department began','about mission vision department'],
+   ['Why Study at DOEH','about.html#our-strengths-title','What sets the department apart','strengths why study choose'],
+   ['IOSH Accreditation','about.html#iosh-accreditation','Internationally recognized standards in occupational safety and health','iosh accreditation certificate standards'],
+   ['Department Leadership','about.html#leadership','Messages from the people who lead DOEH','leadership vice chancellor head message'],
+   ['Our Journey and History','about.html#history','How the department has grown','history journey timeline'],
+   ['Campus and Location','about.html#location','Address, phone and map','location address map mirpur campus'],
+   ['Academics','academics.html','Programs, curriculum and intakes','academics programs courses'],
+   ['BPH in Occupational & Environmental Health and Safety','academics.html#bph-body',"Bachelor's program",'bph bachelor undergraduate public health'],
+   ['MPH in Occupational Health and Safety','academics.html#mph-ohs-body',"Master's program",'mph masters ohs occupational'],
+   ['MPH in Environmental Health and Safety','academics.html#mph-ehs-body',"Master's program",'mph masters ehs environmental'],
+   ['Faculty and Academic Staff','academics.html#faculty','Professors and adjunct faculty','faculty teachers professors staff'],
+   ['Academic Calendar','academics.html#calendar','Spring and Fall intakes','calendar intake spring fall april october admission'],
+   ['Research','research.html','Research themes, faculty expertise and publications','research publications themes faculty arsenic lead occupational garment safety'],
+   ['News & Events','news.html','Updates, notices and events','news events notices seminars'],
+   ['Gallery','gallery.html','Photos and videos from the department','gallery photos videos fieldwork'],
+   ['Alumni','alumni.html','Alumni directory and success stories','alumni graduates directory'],
+   ['Contact','contact.html','Reach the department','contact email phone whatsapp'],
+   ['Apply Now','https://onlineapplication.buhs.ac.bd/admission/','Apply through the BUHS online portal','apply admission application']
+  ];
+  var box=document.getElementById('siteSearch'),inp=document.getElementById('ssrInput'),list=document.getElementById('ssrList'),emp=document.getElementById('ssrEmpty'),btn=document.getElementById('siteSearchBtn');
+  if(!box||!inp||!btn)return;
+  var sel=-1,last=null;
+  function esc(s){return s.replace(/&/g,'&amp;').replace(/</g,'&lt;')}
+  function render(q){
+    var t=q.toLowerCase().split(/\s+/).filter(Boolean),out=[];
+    IDX.forEach(function(e){
+      var T=e[0].toLowerCase(),R=(e[2]+' '+e[3]).toLowerCase(),s=0,ok=true;
+      t.forEach(function(w){if(T.indexOf(w)>-1)s+=3;else if(R.indexOf(w)>-1)s+=1;else ok=false;});
+      if(ok&&(t.length||true))out.push([s,e]);
+    });
+    out.sort(function(a,b){return b[0]-a[0]});
+    if(!t.length)out=IDX.slice(0,6).map(function(e){return[0,e]});
+    out=out.slice(0,8);sel=-1;
+    list.innerHTML=out.map(function(o){var e=o[1];return '<li><a href="'+e[1]+'"'+(e[1].indexOf('http')===0?' target="_blank" rel="noopener"':'')+'><b>'+esc(e[0])+'</b><small>'+esc(e[2])+'</small></a></li>'}).join('');
+    emp.hidden=out.length>0;
+  }
+  function open(){last=document.activeElement;box.classList.add('open');box.setAttribute('aria-hidden','false');document.body.style.overflow='hidden';inp.value='';render('');setTimeout(function(){inp.focus()},30)}
+  function close(){box.classList.remove('open');box.setAttribute('aria-hidden','true');document.body.style.overflow='';if(last&&last.focus)last.focus()}
+  function move(d){var a=list.querySelectorAll('a');if(!a.length)return;if(sel>-1)a[sel].classList.remove('sel');sel=(sel+d+a.length)%a.length;a[sel].classList.add('sel');a[sel].scrollIntoView({block:'nearest'})}
+  btn.addEventListener('click',open);var btnM=document.getElementById('siteSearchBtnM');if(btnM)btnM.addEventListener('click',open);
+  document.getElementById('ssrClose').addEventListener('click',close);
+  box.addEventListener('click',function(e){if(e.target===box)close()});
+  inp.addEventListener('input',function(){render(inp.value)});
+  document.addEventListener('keydown',function(e){
+    if(!box.classList.contains('open'))return;
+    if(e.key==='Escape'){close()}
+    else if(e.key==='ArrowDown'){e.preventDefault();move(1)}
+    else if(e.key==='ArrowUp'){e.preventDefault();move(-1)}
+    else if(e.key==='Enter'){var a=list.querySelectorAll('a');var t=a[sel>-1?sel:0];if(t){e.preventDefault();t.click()}}
+  });
+  list.addEventListener('click',function(e){var a=e.target.closest&&e.target.closest('a');if(a&&a.getAttribute('href').indexOf('#')>-1&&a.getAttribute('href').split('#')[0]===location.pathname.split('/').pop())close()});
+})();
+</script>
+
 <script src="js/main.js"></script>
+<script src="js/polish.js" defer></script>
 </body>
 </html>
