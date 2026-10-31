@@ -11,29 +11,78 @@
 <link rel="icon" type="image/png" sizes="64x64" href="assets/favicon-64.png"/>
 <link rel="apple-touch-icon" href="assets/apple-touch-icon.png"/>
 <meta name="theme-color" content="#156030"/>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"ContactPage","name":"Contact | DOEH, BUHS","url":"https://doeh-buhs.ac/contact.html","mainEntity":{"@type":"CollegeOrUniversity","name":"Department of Occupational and Environmental Health, Bangladesh University of Health Sciences","email":"oeh@buhs.ac.bd","telephone":["+8801911383522","+8801970405772"],"address":{"@type":"PostalAddress","streetAddress":"125/1, Darus Salam (Technical Crossing)","addressLocality":"Mirpur, Dhaka","postalCode":"1216","addressCountry":"BD"},"sameAs":["https://www.facebook.com/share/19NrNVjGQQ/","https://www.youtube.com/@doeh_buhs"]}}
+</script>
 
 
 <style>
-.contact-wrap{display:grid;grid-template-columns:1fr 1fr;gap:2.5rem;align-items:start}
-.contact-card{background:#fff;border-radius:12px;padding:1.5rem;border:1px solid var(--border);border-left:3px solid var(--green);margin-bottom:1rem}
-.contact-label{font-family:'Merriweather',serif;font-weight:700;color:var(--green3);font-size:.92rem;margin-bottom:.4rem}
-.contact-detail{font-size:.85rem;color:var(--gray);line-height:1.7}
-.contact-detail a{color:var(--green2);text-decoration:none;font-weight:600}
+/* ===== CONTACT PAGE ===== */
+.cx-stage{background-color:#f5fbf6;background-image:url(assets/contact-bg.webp);background-position:center;background-size:cover;background-repeat:no-repeat;padding:4rem 2rem 4.5rem}
+.contact-wrap{display:grid;grid-template-columns:1fr 1.05fr;gap:2.5rem;align-items:start}
+.cx-info{display:flex;flex-direction:column;gap:1rem}
 
-.cform{display:flex;flex-direction:column;gap:1rem}
-.cform label{font-size:.75rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--navy)}
-.cform input,.cform select,.cform textarea{padding:.75rem .9rem;border:1.5px solid var(--border2);border-radius:8px;font-family:'Outfit',sans-serif;font-size:.9rem;width:100%}
-.cform textarea{min-height:120px;resize:vertical}
+.contact-card{display:flex;gap:1rem;align-items:flex-start;background:#fff;border-radius:14px;padding:1.25rem 1.4rem;border:1px solid var(--border);border-left:3px solid var(--green);transition:border-color .2s ease,box-shadow .2s ease,transform .2s ease}
+.contact-card:hover{border-color:var(--green-dim);border-left-color:var(--green);box-shadow:0 8px 22px rgba(14,69,38,.08);transform:translateY(-2px)}
+.cx-ico{flex:none;width:42px;height:42px;border-radius:50%;background:var(--green-pale);color:var(--green2);display:grid;place-items:center;box-shadow:0 3px 8px rgba(14,69,38,.14)}
+.cx-ico svg{width:20px;height:20px;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+.cx-body{min-width:0;flex:1}
+.contact-label{font-family:'Merriweather',serif;font-weight:700;color:var(--green3);font-size:1.02rem;margin-bottom:.35rem}
+.contact-detail{font-size:.97rem;color:var(--gray);line-height:1.75}
+.contact-detail a{color:var(--green2);text-decoration:none;font-weight:600;overflow-wrap:anywhere}
+.contact-detail a:hover{text-decoration:underline;text-underline-offset:3px}
+.cx-note{font-size:.88rem;color:var(--gray2);margin-top:.4rem}
+.cx-link-btn{display:inline-flex;align-items:center;gap:.4rem;margin-top:.6rem;padding:.5rem 1.05rem;border-radius:8px;background:var(--green);color:#fff !important;font-weight:600;font-size:.88rem;text-decoration:none !important;transition:background .2s ease,transform .2s ease,box-shadow .2s ease}
+.cx-link-btn:hover{background:var(--green2);transform:translateY(-1px);box-shadow:0 6px 14px rgba(14,69,38,.2)}
+.cx-text-link{display:inline-block;margin-top:.35rem}
 
-.map-embed{border-radius:14px;overflow:hidden;border:1px solid var(--border);height:320px;margin-top:1.5rem}
+.cx-social{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:.65rem;margin-top:.7rem}
+.cx-social a{display:flex;align-items:center;gap:.6rem;padding:.6rem .8rem;border:1.5px solid var(--border2);border-radius:10px;background:var(--offwhite);color:var(--green3);font-weight:600;font-size:.92rem;text-decoration:none;transition:border-color .2s ease,background .2s ease,transform .2s ease,box-shadow .2s ease}
+.cx-social a:hover{border-color:var(--green);background:#fff;transform:translateY(-2px);box-shadow:0 6px 14px rgba(14,69,38,.1);text-decoration:none}
+.cx-social svg{width:22px;height:22px;fill:currentColor;flex:none}
+
+.cform{display:flex;flex-direction:column;gap:1.1rem;background:#fff;border:1px solid var(--border);border-radius:16px;padding:2rem;box-shadow:0 12px 32px rgba(14,69,38,.08)}
+.cx-form-title{font-family:'Merriweather',serif;font-size:1.4rem;font-weight:900;color:var(--green3);line-height:1.3}
+.cx-form-sub{font-size:.95rem;color:var(--gray);line-height:1.65;margin-top:-.5rem}
+.cform label{display:block;font-size:.78rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--navy);margin-bottom:.4rem}
+.cform input,.cform select,.cform textarea{padding:.8rem .95rem;border:1.5px solid var(--border2);border-radius:10px;font-family:'Outfit',sans-serif;font-size:.97rem;color:var(--navy);background:#fff;width:100%;transition:border-color .2s ease,box-shadow .2s ease}
+.cform input::placeholder,.cform textarea::placeholder{color:var(--gray2)}
+.cform input:hover,.cform select:hover,.cform textarea:hover{border-color:var(--green-light)}
+.cform input:focus,.cform select:focus,.cform textarea:focus{outline:none;border-color:var(--green);box-shadow:0 0 0 4px rgba(30,122,62,.14)}
+.cform textarea{min-height:150px;resize:vertical}
+.cx-msg{border-radius:10px;padding:.9rem 1rem;font-size:.93rem;line-height:1.55}
+.cx-ok{background:var(--green-pale);border:1px solid var(--green-dim);color:var(--green3)}
+.cx-err{background:#fef2f2;border:1px solid #fca5a5;color:#b91c1c}
+.cx-send{align-self:flex-start;padding:.85rem 2rem;font-size:.97rem;transition:background .2s ease,transform .2s ease,box-shadow .2s ease}
+.cx-send:hover{transform:translateY(-1px);box-shadow:0 8px 18px rgba(14,69,38,.22)}
+.cx-send:active{transform:translateY(0);box-shadow:none}
+.cx-send:disabled{opacity:.65;cursor:progress;transform:none;box-shadow:none}
+.cx-send:focus-visible,.cx-link-btn:focus-visible,.cx-social a:focus-visible,.contact-detail a:focus-visible{outline:3px solid #ffd84d;outline-offset:3px}
+
+.cx-map{padding-top:3.5rem}
+.map-embed{border-radius:14px;overflow:hidden;border:1px solid var(--border);height:380px;margin-top:1.5rem;box-shadow:0 8px 22px rgba(14,69,38,.06)}
 .map-embed iframe{width:100%;height:100%;border:0}
+
+/* staggered entry: transform and opacity only, so nothing shifts */
+@keyframes cxUp{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
+.cx-in{animation:cxUp .5s cubic-bezier(.2,.7,.2,1) both;animation-delay:calc(var(--i,0) * 70ms)}
+@media(prefers-reduced-motion:reduce){.cx-in{animation:none}.contact-card,.cx-social a,.cx-link-btn,.cx-send{transition:none}.contact-card:hover,.cx-social a:hover,.cx-link-btn:hover,.cx-send:hover{transform:none}}
 
 .site-footer{background:var(--green3);padding:2.75rem 2rem 0}
 .footer-grid{max-width:1100px;margin:0 auto;display:grid;grid-template-columns:1.4fr 1fr 1fr;gap:2.5rem;padding-bottom:2rem}
 .footer-brand-logo{width:46px;height:46px;object-fit:contain;background:white;border-radius:9px;padding:2px;margin-bottom:.85rem}
 .footer-brand-name{font-family:'Merriweather',serif;font-size:.95rem;font-weight:700;color:#fff;line-height:1.3}
 .footer-brand-sub{font-size:.75rem;color:rgba(255,255,255,.72);margin-top:.2rem;line-height:1.5}
-@media(max-width:768px){ .footer-grid{grid-template-columns:1fr;gap:1.5rem} .contact-wrap{grid-template-columns:1fr} }
+@media(max-width:900px){.contact-wrap{grid-template-columns:1fr}}
+@media(max-width:768px){
+ .footer-grid{grid-template-columns:1fr;gap:1.5rem}
+ .cx-stage{padding:2.5rem 1rem 3rem;background-image:url(assets/contact-bg-mobile.webp),url(assets/contact-bg-mobile.webp);background-position:center top,center bottom;background-size:100% auto,100% auto}
+ .cform{padding:1.4rem}
+ .cx-send{align-self:stretch;justify-content:center}
+ .map-embed{height:300px}
+ .cx-map{padding-top:2.5rem}
+}
+@media(max-width:420px){.cx-social{grid-template-columns:1fr}}
 </style>
 <style id="site-chrome">
 /* ===== SITE HEADER (final: white theme, no top bar) ===== */
@@ -319,41 +368,68 @@ section[id]{scroll-margin-top:110px}
   <p>Questions about programs, admissions, or the department. We're reachable.</p>
 </section>
 
-<section class="sec">
+<section class="sec cx-stage" aria-label="Contact details and message form">
   <div class="sec-inner">
     <div class="contact-wrap">
-      <div>
-        <div class="contact-card">
-          <div class="contact-label">General inquiries</div>
-          <div class="contact-detail">
-            <a href="mailto:oeh@buhs.ac.bd">oeh@buhs.ac.bd</a><br/>
-            <a href="mailto:mahmudfaruquee@buhs.ac.bd">mahmudfaruquee@buhs.ac.bd</a><br/>
-            +88-01911 383522 &middot; +88-01970 405772
+      <div class="cx-info">
+        <div class="contact-card cx-in" style="--i:0">
+          <span class="cx-ico" aria-hidden="true"><svg viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg></span>
+          <div class="cx-body">
+            <div class="contact-label">General inquiries</div>
+            <div class="contact-detail">
+              <a href="mailto:oeh@buhs.ac.bd">oeh@buhs.ac.bd</a><br/>
+              <a href="mailto:mahmudfaruquee@buhs.ac.bd">mahmudfaruquee@buhs.ac.bd</a><br/>
+              <a href="tel:+8801911383522">+88-01911 383522</a> &middot; <a href="tel:+8801970405772">+88-01970 405772</a>
+            </div>
           </div>
         </div>
-        <div class="contact-card">
-          <div class="contact-label">Admissions</div>
-          <div class="contact-detail">[PLACEHOLDER: dedicated admissions contact, if different from general]</div>
+        <div class="contact-card cx-in" style="--i:1">
+          <span class="cx-ico" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="m2 9 10-5 10 5-10 5z"/><path d="M6 11.5V16c0 1.5 3 3 6 3s6-1.5 6-3v-4.5"/><path d="M22 9v6"/></svg></span>
+          <div class="cx-body">
+            <div class="contact-label">Admissions</div>
+            <div class="contact-detail">Applications are made through the BUHS online admission portal.</div>
+            <a class="cx-link-btn" href="https://onlineapplication.buhs.ac.bd/admission/" target="_blank" rel="noopener">Apply now</a>
+            <div class="cx-note">[PLACEHOLDER: dedicated admissions contact, if different from general]</div>
+          </div>
         </div>
-        <div class="contact-card">
-          <div class="contact-label">Address</div>
-          <div class="contact-detail">125/1, Darus Salam (Technical Crossing)<br/>Mirpur, Dhaka-1216, Bangladesh</div>
+        <div class="contact-card cx-in" style="--i:2">
+          <span class="cx-ico" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M20 10c0 6-8 12-8 12S4 16 4 10a8 8 0 0 1 16 0z"/><circle cx="12" cy="10" r="3"/></svg></span>
+          <div class="cx-body">
+            <div class="contact-label">Address</div>
+            <div class="contact-detail">125/1, Darus Salam (Technical Crossing)<br/>Mirpur, Dhaka-1216, Bangladesh<br/>
+              <a class="cx-text-link" href="https://www.google.com/maps/search/?api=1&amp;query=Bangladesh+University+of+Health+Sciences+Mirpur+Dhaka" target="_blank" rel="noopener">Get directions</a>
+            </div>
+          </div>
         </div>
-        <div class="contact-card">
-          <div class="contact-label">Office hours</div>
-          <div class="contact-detail">[PLACEHOLDER]</div>
+        <div class="contact-card cx-in" style="--i:3">
+          <span class="cx-ico" aria-hidden="true"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg></span>
+          <div class="cx-body">
+            <div class="contact-label">Office hours</div>
+            <div class="contact-detail">[PLACEHOLDER: days and hours the department office is open]</div>
+          </div>
         </div>
-        <div class="contact-card">
-          <div class="contact-label">Follow us</div>
-          <div class="contact-detail"><a href="https://www.facebook.com/share/19NrNVjGQQ/" target="_blank" rel="noopener">Facebook</a> &middot; <a href="https://www.youtube.com/@doeh_buhs" target="_blank" rel="noopener">YouTube</a></div>
+        <div class="contact-card cx-in" style="--i:4">
+          <span class="cx-ico" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M21 12a8 8 0 0 1-11.6 7.1L4 20l1-4.6A8 8 0 1 1 21 12z"/></svg></span>
+          <div class="cx-body">
+            <div class="contact-label">Connect with us</div>
+            <div class="contact-detail">Message us on WhatsApp or follow the department for updates.</div>
+            <div class="cx-social">
+              <a href="https://wa.me/8801911383522?text=Hello%20DOEH%2C%20I%20would%20like%20to%20know%20more%20about%20the%20programs." target="_blank" rel="noopener" aria-label="Message DOEH on WhatsApp"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg><span>WhatsApp</span></a>
+              <a href="https://www.facebook.com/share/19NrNVjGQQ/" target="_blank" rel="noopener" aria-label="DOEH on Facebook"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M22 12a10 10 0 1 0-11.6 9.9v-7H7.9V12h2.5V9.8c0-2.5 1.5-3.9 3.8-3.9 1.1 0 2.2.2 2.2.2v2.5h-1.3c-1.2 0-1.6.8-1.6 1.6V12h2.8l-.4 2.9h-2.3v7A10 10 0 0 0 22 12z"/></svg><span>Facebook</span></a>
+              <a href="https://www.youtube.com/@doeh_buhs" target="_blank" rel="noopener" aria-label="DOEH on YouTube"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M21.6 7.2a2.5 2.5 0 0 0-1.8-1.8C18.2 5 12 5 12 5s-6.2 0-7.8.4A2.5 2.5 0 0 0 2.4 7.2C2 8.8 2 12 2 12s0 3.2.4 4.8a2.5 2.5 0 0 0 1.8 1.8C5.8 19 12 19 12 19s6.2 0 7.8-.4a2.5 2.5 0 0 0 1.8-1.8c.4-1.6.4-4.8.4-4.8s0-3.2-.4-4.8zM10 15V9l5.2 3L10 15z"/></svg><span>YouTube</span></a>
+              <a href="mailto:oeh@buhs.ac.bd" aria-label="Email DOEH at oeh@buhs.ac.bd"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M3 6.5A2.5 2.5 0 0 1 5.5 4h13A2.5 2.5 0 0 1 21 6.5v11a2.5 2.5 0 0 1-2.5 2.5h-13A2.5 2.5 0 0 1 3 17.5v-11zm2.4-.3L12 11.3l6.6-5.1a.5.5 0 0 0-.1-.2h-13a.5.5 0 0 0-.1.2zM19 8.5l-6.4 4.9a1 1 0 0 1-1.2 0L5 8.5v9c0 .3.2.5.5.5h13c.3 0 .5-.2.5-.5v-9z"/></svg><span>Email</span></a>
+            </div>
+          </div>
         </div>
       </div>
 
-      <form class="cform" id="contact-form" onsubmit="submitContact(event)">
-        <div><label for="cf-name">Name</label><input id="cf-name" type="text" placeholder="Your full name" required/></div>
-        <div><label for="cf-email">Email</label><input id="cf-email" type="email" placeholder="your@email.com" required/></div>
+      <form class="cform cx-in" style="--i:2" id="contact-form" onsubmit="submitContact(event)">
+        <h2 class="cx-form-title">Send us a message</h2>
+        <p class="cx-form-sub">Share your question and we will reply to your email address.</p>
+        <div><label for="cf-name">Name</label><input id="cf-name" name="name" type="text" autocomplete="name" placeholder="Your full name" required/></div>
+        <div><label for="cf-email">Email</label><input id="cf-email" name="email" type="email" autocomplete="email" placeholder="your@email.com" required/></div>
         <div><label for="cf-reason">Reason for contact</label>
-          <select id="cf-reason">
+          <select id="cf-reason" name="reason">
             <option value="General inquiry">General inquiry</option>
             <option value="Admissions">Admissions</option>
             <option value="Alumni">Alumni</option>
@@ -361,19 +437,25 @@ section[id]{scroll-margin-top:110px}
             <option value="Other">Other</option>
           </select>
         </div>
-        <div><label for="cf-message">Message</label><textarea id="cf-message" placeholder="Write your message here..." required></textarea></div>
-        <div id="cf-success" style="display:none;background:var(--green-pale);border:1px solid var(--green-dim);border-radius:8px;padding:.85rem 1rem;font-size:.88rem;color:var(--green3)">
+        <div><label for="cf-message">Message</label><textarea id="cf-message" name="message" placeholder="Write your message here..." required></textarea></div>
+        <div id="cf-success" class="cx-msg cx-ok" role="status" style="display:none">
           Your message has been sent. We will get back to you as soon as possible.
         </div>
-        <div id="cf-error" style="display:none;background:#fef2f2;border:1px solid #fca5a5;border-radius:8px;padding:.85rem 1rem;font-size:.88rem;color:#b91c1c">
+        <div id="cf-error" class="cx-msg cx-err" role="alert" style="display:none">
           Something went wrong. Please try again or email us directly at <a href="mailto:oeh@buhs.ac.bd" style="color:#b91c1c">oeh@buhs.ac.bd</a>
         </div>
-        <button class="btn btn-green" type="submit" id="cf-btn" style="align-self:flex-start">Send message</button>
+        <button class="btn btn-green cx-send" type="submit" id="cf-btn">Send message</button>
       </form>
     </div>
+  </div>
+</section>
 
+<section class="sec cx-map" aria-labelledby="cx-map-title">
+  <div class="sec-inner">
+    <h2 class="sec-title" id="cx-map-title">Find us on campus</h2>
+    <div class="sec-divider"></div>
     <div class="map-embed">
-      <iframe title="Map showing Bangladesh University of Health Sciences, Mirpur, Dhaka" src="https://www.google.com/maps?q=Bangladesh+University+of+Health+Sciences,+Mirpur,+Dhaka&output=embed" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+      <iframe title="Map showing Bangladesh University of Health Sciences, Mirpur, Dhaka" src="https://www.google.com/maps?q=Bangladesh+University+of+Health+Sciences,+Mirpur,+Dhaka&amp;output=embed" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
     </div>
   </div>
 </section>
