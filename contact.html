@@ -5,9 +5,16 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 <title>Contact | DOEH, BUHS</title>
 <meta name="description" content="Contact the Department of Occupational and Environmental Health, Bangladesh University of Health Sciences. Address, phone, email, and campus location."/>
+<meta property="og:type" content="website"/>
+<meta property="og:site_name" content="DOEH, BUHS"/>
+<meta property="og:title" content="Contact | DOEH, BUHS"/>
+<meta property="og:description" content="Contact the Department of Occupational and Environmental Health, Bangladesh University of Health Sciences. Address, phone, email, and campus location."/>
+<meta property="og:url" content="https://doeh-buhs.ac/contact.html"/>
+<meta property="og:image" content="https://doeh-buhs.ac/assets/logo.png"/>
+<meta name="twitter:card" content="summary"/>
 <link rel="canonical" href="https://doeh-buhs.ac/contact.html"/>
 <link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@400;700;900&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet"/>
-<link rel="stylesheet" href="css/style.css"/>
+<link rel="stylesheet" href="css/style.css?v=20261101"/>
 <link rel="icon" type="image/png" sizes="64x64" href="assets/favicon-64.png"/>
 <link rel="apple-touch-icon" href="assets/apple-touch-icon.png"/>
 <meta name="theme-color" content="#156030"/>
@@ -287,7 +294,6 @@ body{padding-top:0!important}
 section[id]{scroll-margin-top:110px}
 </style>
 <script>document.documentElement.classList.add('pl')</script>
-<link rel="stylesheet" href="css/polish.css"/>
 </head>
 <body>
 <a class="skip" href="#main">Skip to main content</a>
@@ -471,7 +477,7 @@ section[id]{scroll-margin-top:110px}
     <p class="ftr-id-tag">Bangladesh's first health sciences university, established in 2012 by the Diabetic Association of Bangladesh (BADAS).</p>
   </div>
   <div class="ftr-bottom">
-    <img class="ftr-logo" src="assets/logo.png" alt="DOEH, BUHS logo" onerror="this.style.display='none'" loading="lazy" decoding="async"/>
+    <img width="1024" height="1314" class="ftr-logo" src="assets/logo.png" alt="DOEH, BUHS logo" onerror="this.style.display='none'" loading="lazy" decoding="async"/>
     <div class="ftr-copy">&copy; 2026 Department of Occupational &amp; Environmental Health, Bangladesh University of Health Sciences. All rights reserved.</div>
     <a class="ftr-badas" href="https://dab-bd.org" target="_blank" rel="noopener"><img src="assets/badas-logo.png" alt="Diabetic Association of Bangladesh (BADAS) logo" width="46" height="46" loading="lazy" onerror="this.style.display='none'"/><span>Established in 2012 by the Diabetic Association of Bangladesh</span></a>
     <!-- LinkedIn: add the real URL to href and delete the hidden attribute on that icon -->
@@ -522,91 +528,6 @@ async function submitContact(e) {
   }
 }
 </script>
-<script>
-(function(){
-  var h=document.querySelector('.site-header'),t=document.getElementById('navToggle');
-  if(!h||!t)return;
-  var mq=window.matchMedia('(max-width:1240px)');
-  function setOpen(o){h.classList.toggle('open',o);t.setAttribute('aria-expanded',o?'true':'false');t.setAttribute('aria-label',o?'Close menu':'Open menu');}
-  function closeSubs(){h.querySelectorAll('.nav-item.open').forEach(function(i){i.classList.remove('open');});}
-  t.addEventListener('click',function(){setOpen(!h.classList.contains('open'));});
-  h.querySelectorAll('.nav-item').forEach(function(item){
-    var a=item.children[0];
-    if(!item.querySelector('.dropdown'))return;
-    a.addEventListener('click',function(e){
-      if(!mq.matches||item.classList.contains('open'))return;
-      e.preventDefault();closeSubs();item.classList.add('open');
-    });
-  });
-  h.addEventListener('click',function(e){
-    var a=e.target.closest&&e.target.closest('a');
-    if(a&&mq.matches&&!e.defaultPrevented){setOpen(false);closeSubs();}
-  });
-  document.addEventListener('keydown',function(e){if(e.key==='Escape'){setOpen(false);closeSubs();}});
-  var onChange=function(){if(!mq.matches){setOpen(false);closeSubs();}};
-  if(mq.addEventListener)mq.addEventListener('change',onChange);
-})();
-</script>
-<!-- SITE SEARCH SCRIPT -->
-<script>
-(function(){
-  var IDX=[
-   ['Home','index.html','DOEH at BUHS: programs, news and how to apply','home department occupational environmental health buhs'],
-   ['About DOEH','about.html','Who we are, our mission and how the department began','about mission vision department'],
-   ['Why Study at DOEH','about.html#our-strengths-title','What sets the department apart','strengths why study choose'],
-   ['IOSH Accreditation','about.html#iosh-accreditation','Internationally recognized standards in occupational safety and health','iosh accreditation certificate standards'],
-   ['Department Leadership','about.html#leadership','Messages from the people who lead DOEH','leadership vice chancellor head message'],
-   ['Our Journey and History','about.html#history','How the department has grown','history journey timeline'],
-   ['Campus and Location','about.html#location','Address, phone and map','location address map mirpur campus'],
-   ['Academics','academics.html','Programs, curriculum and intakes','academics programs courses'],
-   ['BPH in Occupational & Environmental Health and Safety','academics.html#bph-body',"Bachelor's program",'bph bachelor undergraduate public health'],
-   ['MPH in Occupational Health and Safety','academics.html#mph-ohs-body',"Master's program",'mph masters ohs occupational'],
-   ['MPH in Environmental Health and Safety','academics.html#mph-ehs-body',"Master's program",'mph masters ehs environmental'],
-   ['Faculty and Academic Staff','academics.html#faculty','Professors and adjunct faculty','faculty teachers professors staff'],
-   ['Academic Calendar','academics.html#calendar','Spring and Fall intakes','calendar intake spring fall april october admission'],
-   ['Research','research.html','Research themes, faculty expertise and publications','research publications themes faculty arsenic lead occupational garment safety'],
-   ['News & Events','news.html','Updates, notices and events','news events notices seminars'],
-   ['Gallery','gallery.html','Photos and videos from the department','gallery photos videos fieldwork'],
-   ['Alumni','alumni.html','Alumni directory and success stories','alumni graduates directory'],
-   ['Contact','contact.html','Reach the department','contact email phone whatsapp'],
-   ['Apply Now','https://onlineapplication.buhs.ac.bd/admission/','Apply through the BUHS online portal','apply admission application']
-  ];
-  var box=document.getElementById('siteSearch'),inp=document.getElementById('ssrInput'),list=document.getElementById('ssrList'),emp=document.getElementById('ssrEmpty'),btn=document.getElementById('siteSearchBtn');
-  if(!box||!inp||!btn)return;
-  var sel=-1,last=null;
-  function esc(s){return s.replace(/&/g,'&amp;').replace(/</g,'&lt;')}
-  function render(q){
-    var t=q.toLowerCase().split(/\s+/).filter(Boolean),out=[];
-    IDX.forEach(function(e){
-      var T=e[0].toLowerCase(),R=(e[2]+' '+e[3]).toLowerCase(),s=0,ok=true;
-      t.forEach(function(w){if(T.indexOf(w)>-1)s+=3;else if(R.indexOf(w)>-1)s+=1;else ok=false;});
-      if(ok&&(t.length||true))out.push([s,e]);
-    });
-    out.sort(function(a,b){return b[0]-a[0]});
-    if(!t.length)out=IDX.slice(0,6).map(function(e){return[0,e]});
-    out=out.slice(0,8);sel=-1;
-    list.innerHTML=out.map(function(o){var e=o[1];return '<li><a href="'+e[1]+'"'+(e[1].indexOf('http')===0?' target="_blank" rel="noopener"':'')+'><b>'+esc(e[0])+'</b><small>'+esc(e[2])+'</small></a></li>'}).join('');
-    emp.hidden=out.length>0;
-  }
-  function open(){last=document.activeElement;box.classList.add('open');box.setAttribute('aria-hidden','false');document.body.style.overflow='hidden';inp.value='';render('');setTimeout(function(){inp.focus()},30)}
-  function close(){box.classList.remove('open');box.setAttribute('aria-hidden','true');document.body.style.overflow='';if(last&&last.focus)last.focus()}
-  function move(d){var a=list.querySelectorAll('a');if(!a.length)return;if(sel>-1)a[sel].classList.remove('sel');sel=(sel+d+a.length)%a.length;a[sel].classList.add('sel');a[sel].scrollIntoView({block:'nearest'})}
-  btn.addEventListener('click',open);var btnM=document.getElementById('siteSearchBtnM');if(btnM)btnM.addEventListener('click',open);
-  document.getElementById('ssrClose').addEventListener('click',close);
-  box.addEventListener('click',function(e){if(e.target===box)close()});
-  inp.addEventListener('input',function(){render(inp.value)});
-  document.addEventListener('keydown',function(e){
-    if(!box.classList.contains('open'))return;
-    if(e.key==='Escape'){close()}
-    else if(e.key==='ArrowDown'){e.preventDefault();move(1)}
-    else if(e.key==='ArrowUp'){e.preventDefault();move(-1)}
-    else if(e.key==='Enter'){var a=list.querySelectorAll('a');var t=a[sel>-1?sel:0];if(t){e.preventDefault();t.click()}}
-  });
-  list.addEventListener('click',function(e){var a=e.target.closest&&e.target.closest('a');if(a&&a.getAttribute('href').indexOf('#')>-1&&a.getAttribute('href').split('#')[0]===location.pathname.split('/').pop())close()});
-})();
-</script>
-
-<script src="js/main.js"></script>
-<script src="js/polish.js" defer></script>
+<script src="js/main.js?v=20261101"></script>
 </body>
 </html>
