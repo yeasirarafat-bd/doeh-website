@@ -1,146 +1,93 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="UTF-8"/>
-<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<title>News & Events | DOEH, BUHS</title>
-<meta name="description" content="Latest announcements, upcoming events, achievements, and past events from the Department of Occupational and Environmental Health, BUHS."/>
-<link rel="canonical" href="https://doeh-buhs.ac/news.html"/>
-<link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@400;700;900&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet"/>
-<link rel="stylesheet" href="css/style.css"/>
+/* DOEH News and Events renderer. Reads window.DOEH_NEWS and window.DOEH_EVENTS from js/news-data.js. */
+(function(){
+  var news=Array.isArray(window.DOEH_NEWS)?window.DOEH_NEWS.slice():[];
+  var events=Array.isArray(window.DOEH_EVENTS)?window.DOEH_EVENTS.slice():[];
+  var $=function(s,r){return (r||document).querySelector(s);};
+  var fmt=new Intl.DateTimeFormat('en-GB',{day:'numeric',month:'short',year:'numeric'});
+  var state={cat:'all',q:'',past:false};
+  (function(){var t=new Date();t.setHours(0,0,0,0);var up=events.some(function(e){return parse(e.date)>=t;});var pa=events.some(function(e){return parse(e.date)<t;});if(!up&&pa)state.past=true;})();
 
-<style>
-.news-card{background:#fff;border-radius:14px;padding:1.5rem;border:1px solid var(--border);transition:transform .22s,box-shadow .22s}
-.news-card:hover{transform:translateY(-3px);box-shadow:var(--shadow-lg)}
-.news-tag{font-size:.68rem;font-weight:700;padding:.2rem .7rem;border-radius:100px}
-.news-date{font-size:.75rem;color:var(--gray)}
-.news-title{font-size:.92rem;font-weight:600;color:var(--green3);line-height:1.5;margin-top:.85rem}
+  function parse(d){var p=String(d||'').split('-');return new Date(+p[0],(+p[1]||1)-1,+p[2]||1);}
+  function el(tag,cls,text){var e=document.createElement(tag);if(cls)e.className=cls;if(text!=null)e.textContent=text;return e;}
+  function safeUrl(u){return /^https?:\/\//i.test(u||'')?u:'';}
 
-.archive-item{display:flex;justify-content:space-between;align-items:center;padding:1rem 1.25rem;background:#fff;border:1px solid var(--border);border-radius:10px;margin-bottom:.6rem;font-size:.85rem}
-.archive-item span:first-child{color:var(--navy);font-weight:600}
-.archive-item span:last-child{color:var(--gray);font-size:.78rem}
+  function newsCard(n,featured){
+    var a=el('article','nw-card'+(featured?' nw-featured':''));
+    if(n.image){var f=el('div','nw-img');var i=document.createElement('img');i.src=n.image;i.alt='';i.width=1600;i.height=900;i.loading='lazy';i.decoding='async';f.appendChild(i);a.appendChild(f);}
+    var b=el('div','nw-body');
+    var m=el('div','nw-meta');m.appendChild(el('span','nw-cat',n.category||'News'));m.appendChild(el('time','',fmt.format(parse(n.date))));
+    b.appendChild(m);
+    var h=el('h3','nw-title');h.appendChild(el('span','',n.title));b.appendChild(h);
+    if(n.summary)b.appendChild(el('p','nw-sum',n.summary));
+    if(n.body){var btn=el('button','nw-more','Read more');btn.type='button';btn.addEventListener('click',function(){openStory(n);});b.appendChild(btn);}
+    else if(safeUrl(n.link)){var l=el('a','nw-more','Read more');l.href=n.link;l.target='_blank';l.rel='noopener';b.appendChild(l);}
+    a.appendChild(b);return a;
+  }
 
-.site-footer{background:var(--green3);padding:2.75rem 2rem 0}
-.footer-grid{max-width:1100px;margin:0 auto;display:grid;grid-template-columns:1.4fr 1fr 1fr;gap:2.5rem;padding-bottom:2rem}
-.footer-brand-logo{width:46px;height:46px;object-fit:contain;background:white;border-radius:9px;padding:2px;margin-bottom:.85rem}
-.footer-brand-name{font-family:'Merriweather',serif;font-size:.95rem;font-weight:700;color:#fff;line-height:1.3}
-.footer-brand-sub{font-size:.72rem;color:rgba(255,255,255,.4);margin-top:.2rem;line-height:1.5}
-@media(max-width:768px){ .footer-grid{grid-template-columns:1fr;gap:1.5rem} }
-</style>
-</head>
-<body>
+  function renderNews(){
+    var q=state.q.toLowerCase();
+    var items=news.filter(function(n){
+      return (state.cat==='all'||n.category===state.cat)&&(!q||((n.title||'')+' '+(n.summary||'')).toLowerCase().indexOf(q)>-1);
+    }).sort(function(a,b){return parse(b.date)-parse(a.date);});
+    var feed=$('#nw-feed'),feat=$('#nw-featured'),empty=$('#nw-empty');
+    feed.textContent='';feat.textContent='';
+    if(items.length){feat.appendChild(newsCard(items[0],true));items.slice(1).forEach(function(n){feed.appendChild(newsCard(n,false));});}
+    empty.hidden=items.length>0;
+    var filtered=state.cat!=='all'||q;
+    $('#nw-empty-text').textContent=news.length&&filtered?'No stories match this view.':'The first update will be posted here soon.';
+    $('#nw-reset').hidden=!filtered;
+    $('#nw-status').textContent=items.length?('Showing '+items.length+(items.length===1?' story':' stories')):'';
+  }
 
-<nav>
-  <a class="nav-brand" href="index.html">
-    <img class="nav-logo-img" src="assets/logo.png" alt="DOEH BUHS" onerror="this.style.background='var(--green-pale)'"/>
-    <div class="nav-name">DOEH, BUHS<small>Dept. of Occupational &amp; Environmental Health</small></div>
-  </a>
-  <div class="nav-links">
-    <a class="nb" href="index.html">Home</a>
-    <a class="nb" href="about.html">About</a>
-    <a class="nb" href="academics.html">Academics</a>
-    <a class="nb" href="research.html">Research</a>
-    <a class="nb active" href="news.html">News &amp; Events</a>
-    <a class="nb" href="gallery.html">Gallery</a>
-    <a class="nb" href="alumni.html">Alumni</a>
-    <a class="nb" href="contact.html">Contact</a>
-  </div>
-  <button class="hamburger" id="hamburger" onclick="toggleMenu()" aria-label="Open menu"><span></span><span></span><span></span></button>
-</nav>
-<div class="mobile-menu" id="mobile-menu">
-  <a class="mnb" href="index.html">Home</a>
-  <a class="mnb" href="about.html">About</a>
-  <a class="mnb" href="academics.html">Academics</a>
-  <a class="mnb" href="research.html">Research</a>
-  <a class="mnb active" href="news.html">News &amp; Events</a>
-  <a class="mnb" href="gallery.html">Gallery</a>
-  <a class="mnb" href="alumni.html">Alumni</a>
-  <a class="mnb" href="contact.html">Contact</a>
-</div>
+  function renderEvents(){
+    var today=new Date();today.setHours(0,0,0,0);
+    var items=events.filter(function(e){var d=parse(e.date);return state.past?d<today:d>=today;})
+      .sort(function(a,b){return state.past?parse(b.date)-parse(a.date):parse(a.date)-parse(b.date);});
+    var g=$('#nw-events');g.textContent='';
+    items.forEach(function(e){
+      var d=parse(e.date),a=el('article','nw-event');
+      if(e.image){var im=el('div','nw-eimg'),ii=document.createElement('img');ii.src=e.image;ii.alt=e.imageAlt||'';ii.width=1583;ii.height=791;ii.loading='lazy';ii.decoding='async';im.appendChild(ii);a.appendChild(im);}
+      var row=el('div','nw-erow');
+      var date=el('div','nw-date');date.appendChild(el('strong','',String(d.getDate())));date.appendChild(el('span','',d.toLocaleString('en-GB',{month:'short'})));
+      var b=el('div','nw-ebody');b.appendChild(el('h3','nw-title',e.title));
+      var meta=[e.time,e.venue].filter(Boolean).join(' · ');if(meta)b.appendChild(el('p','nw-emeta',meta));
+      if(e.summary)b.appendChild(el('p','nw-sum',e.summary));
+      if(safeUrl(e.link)){var l=el('a','nw-more','Register or learn more');l.href=e.link;l.target='_blank';l.rel='noopener';b.appendChild(l);}
+      row.appendChild(date);row.appendChild(b);a.appendChild(row);g.appendChild(a);
+    });
+    $('#nw-ev-empty').hidden=items.length>0;
+    $('#nw-ev-empty-text').textContent=state.past?'No past events yet.':'No upcoming events right now. Check back soon.';
+    var h=$('#nw-events-h');if(h)h.textContent=state.past?'Recent events':'Upcoming events';
+    var sb=$('#nw-events-sub');if(sb)sb.textContent=state.past?'A look back at recent department events.':'Seminars, field sessions and conversations you can join.';
+    var t=$('#nw-past');t.textContent=state.past?'View upcoming events':'View past events';t.setAttribute('aria-pressed',state.past?'true':'false');
+  }
 
-<section class="page-hero">
-  <h1>What's happening<br/><em>in the department</em></h1>
-  <p>Announcements, events, and milestones from DOEH.</p>
-</section>
+  function openStory(n){
+    var dlg=$('#nw-dialog');
+    $('#nw-d-cat').textContent=(n.category||'News')+' · '+fmt.format(parse(n.date));
+    $('#nw-d-title').textContent=n.title;
+    var body=$('#nw-d-body');body.textContent='';
+    String(n.body||'').split(/\n\s*\n/).forEach(function(p){if(p.trim())body.appendChild(el('p','',p.trim()));});
+    if(typeof dlg.showModal==='function')dlg.showModal();else dlg.setAttribute('open','');
+  }
 
-<!-- ANNOUNCEMENTS -->
-<section class="sec">
-  <div class="sec-inner">
-    <div class="sec-title">Latest announcements</div>
-    <div class="sec-divider"></div>
-    <div class="grid">
-      <div class="news-card"><span class="news-tag" style="background:var(--green-pale);color:var(--green2)">Admission</span><span class="news-date" style="float:right">[Date]</span><div class="news-title">[PLACEHOLDER: real admission circular]</div></div>
-      <div class="news-card"><span class="news-tag" style="background:#e6f1fb;color:#185FA5">Exam</span><span class="news-date" style="float:right">[Date]</span><div class="news-title">[PLACEHOLDER: real exam notice]</div></div>
-      <div class="news-card"><span class="news-tag" style="background:#faeeda;color:#854F0B">Holiday</span><span class="news-date" style="float:right">[Date]</span><div class="news-title">[PLACEHOLDER: real holiday notice]</div></div>
-    </div>
-  </div>
-</section>
-
-<!-- UPCOMING EVENTS -->
-<section class="sec" style="background:var(--offwhite)">
-  <div class="sec-inner">
-    <div class="sec-title">Upcoming events</div>
-    <div class="sec-divider"></div>
-    <div class="grid">
-      <div class="news-card"><span class="news-tag" style="background:var(--green-pale);color:var(--green2)">Seminar</span><span class="news-date" style="float:right">[Date]</span><div class="news-title">[PLACEHOLDER]</div></div>
-      <div class="news-card"><span class="news-tag" style="background:var(--green-pale);color:var(--green2)">Workshop</span><span class="news-date" style="float:right">[Date]</span><div class="news-title">[PLACEHOLDER]</div></div>
-    </div>
-  </div>
-</section>
-
-<!-- ACHIEVEMENTS -->
-<section class="sec">
-  <div class="sec-inner">
-    <div class="sec-title">Achievements &amp; highlights</div>
-    <div class="sec-divider"></div>
-    <div class="grid">
-      <div class="news-card"><span class="news-tag" style="background:#faeeda;color:#854F0B">Award</span><div class="news-title">[PLACEHOLDER: real achievement]</div></div>
-    </div>
-  </div>
-</section>
-
-<!-- PRESS RELEASES -->
-<section class="sec" style="background:var(--offwhite)">
-  <div class="sec-inner">
-    <div class="sec-title">Press releases</div>
-    <div class="sec-divider"></div>
-    <div class="archive-item"><span>[PLACEHOLDER: press release title]</span><span>[Date]</span></div>
-  </div>
-</section>
-
-<!-- EVENT ARCHIVE -->
-<section class="sec">
-  <div class="sec-inner">
-    <div class="sec-title">Event archive</div>
-    <div class="sec-divider"></div>
-    <p class="sec-sub">Past departmental events.</p>
-    <div class="archive-item"><span>[PLACEHOLDER: past event]</span><span>[Date]</span></div>
-    <div class="archive-item"><span>[PLACEHOLDER: past event]</span><span>[Date]</span></div>
-  </div>
-</section>
-
-<footer class="site-footer">
-  <div class="footer-grid">
-    <div>
-      <img class="footer-brand-logo" src="assets/logo.png" alt="DOEH" onerror="this.style.display='none'"/>
-      <div class="footer-brand-name">DOEH, BUHS</div>
-      <div class="footer-brand-sub">Department of Occupational &amp; Environmental Health<br>Bangladesh University of Health Sciences</div>
-    </div>
-    <div>
-      <div class="footer-col-title">Quick Links</div>
-      <a class="footer-link" href="index.html">Home</a>
-      <a class="footer-link" href="about.html">About DOEH</a>
-      <a class="footer-link" href="research.html">Research</a>
-      <a class="footer-link" href="alumni.html">Alumni</a>
-    </div>
-    <div>
-      <div class="footer-col-title">Contact</div>
-      <a class="footer-link" href="mailto:doeh@buhs.ac.bd">doeh@buhs.ac.bd</a>
-      <span class="footer-link" style="cursor:default">125/1, Darus Salam, Mirpur, Dhaka-1216</span>
-    </div>
-  </div>
-  <div class="footer-bottom"><span class="footer-copy">© 2026 Department of Occupational &amp; Environmental Health, BUHS. All rights reserved.</span></div>
-</footer>
-<script src="js/main.js"></script>
-</body>
-</html>
+  document.addEventListener('DOMContentLoaded',function(){
+    document.querySelectorAll('.nw-chip').forEach(function(b){
+      b.addEventListener('click',function(){
+        state.cat=b.getAttribute('data-cat');
+        document.querySelectorAll('.nw-chip').forEach(function(x){x.setAttribute('aria-pressed',x===b?'true':'false');});
+        renderNews();
+      });
+    });
+    $('#nw-search').addEventListener('input',function(e){state.q=e.target.value.trim();renderNews();});
+    $('#nw-reset').addEventListener('click',function(){
+      state.cat='all';state.q='';$('#nw-search').value='';
+      document.querySelectorAll('.nw-chip').forEach(function(x){x.setAttribute('aria-pressed',x.getAttribute('data-cat')==='all'?'true':'false');});
+      renderNews();
+    });
+    $('#nw-past').addEventListener('click',function(){state.past=!state.past;renderEvents();});
+    $('#nw-d-close').addEventListener('click',function(){$('#nw-dialog').close();});
+    $('#nw-dialog').addEventListener('click',function(e){if(e.target===this)this.close();});
+    renderNews();renderEvents();
+  });
+})();
