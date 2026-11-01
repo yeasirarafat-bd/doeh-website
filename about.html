@@ -32,29 +32,9 @@
 }
 @media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
 
-/* HERO */
-.about-hero{
-  background:linear-gradient(150deg,var(--green3) 0%,var(--green2) 60%,var(--green) 100%);
-  padding:5rem 2rem 4rem;position:relative;overflow:hidden;
-}
-.about-hero::before{
-  content:'';position:absolute;inset:0;pointer-events:none;
-  background:url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%23ffffff' fill-opacity='0.03'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4z'/%3E%3C/g%3E%3C/svg%3E")
-}
-.about-hero-inner{max-width:68.75rem;margin:0 auto;display:grid;grid-template-columns:1fr 380px;gap:3rem;align-items:center;position:relative;z-index:1}
-.about-hero-eyebrow{font-size:.75rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:rgba(255,255,255,.72);margin-bottom:1.1rem}
-.about-hero h1{font-family:'Merriweather',serif;font-size:clamp(2rem,5vw,3rem);font-weight:900;color:#fff;line-height:1.15;margin-bottom:1rem}
-.about-hero h1 em{color:#d0f4db;font-style:normal}
-.about-hero-sub{font-size:1rem;color:rgba(255,255,255,.7);line-height:1.75;max-width:520px}
-.about-hero-badge{background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.18);border-radius:14px;padding:1.5rem;display:flex;flex-direction:column;gap:.4rem}
-.about-hero-badge-label{font-size:.75rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.72)}
-.about-hero-badge-val{font-family:'Merriweather',serif;font-size:1.6rem;font-weight:900;color:#d0f4db}
-.about-hero-badge-desc{font-size:.9rem;color:rgba(255,255,255,.6);line-height:1.55}
-.about-hero-badge-divider{height:1px;background:rgba(255,255,255,.1);margin:.5rem 0}
-
 /* JOURNEY */
 .journey-section{background:var(--white);padding:5rem 2rem}
-.journey-inner{max-width:68.75rem;margin:0 auto}
+.journey-inner{max-width:var(--wrap,82.5rem);margin:0 auto}
 .section-eyebrow{font-size:.75rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--green);margin-bottom:.5rem}
 .section-heading{font-family:'Merriweather',serif;font-size:clamp(1.5rem,3.5vw,2.2rem);font-weight:900;color:var(--green3);margin-bottom:.5rem}
 .section-bar{width:36px;height:3px;background:var(--green);border-radius:2px;margin-bottom:1rem}
@@ -250,7 +230,7 @@
 
 /* LOCATION */
 .location-section{background:var(--white);padding:5rem 2rem}
-.location-inner{max-width:68.75rem;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:2.5rem;align-items:start}
+.location-inner{max-width:var(--wrap,82.5rem);margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:2.5rem;align-items:start}
 .location-detail-row{display:flex;gap:.85rem;align-items:flex-start;padding:.85rem 0;border-bottom:1px solid var(--border)}
 .location-detail-row:last-child{border-bottom:none}
 .location-detail-icon{width:34px;height:34px;background:var(--green-pale);border-radius:8px;display:flex;align-items:center;justify-content:center;flex-shrink:0}
@@ -499,7 +479,7 @@ body{padding-top:0!important}
 /* ===== END SITE HEADER AND FOOTER ===== */
 </style>
 <script>document.documentElement.classList.add('pl')</script>
-<link rel="stylesheet" href="css/polish.css"/>
+
 </head>
 <body>
 <a class="skip" href="#main">Skip to main content</a>
@@ -576,21 +556,21 @@ body{padding-top:0!important}
 
 
 <!-- HERO -->
-<section class="about-hero" aria-label="About DOEH">
-  <div class="about-hero-inner">
-    <div>
-      <div class="about-hero-eyebrow">Department of Occupational &amp; Environmental Health, BUHS</div>
-      <h1>For a sustainable, healthy environment<br/><em>and safer workplace</em></h1>
-      <p class="about-hero-sub">The journey of the Department of Occupational and Environmental Health, built on education, research, and field-based learning that connects science with the realities of work and environment.</p>
+<section class="cover" aria-label="About DOEH">
+  <div class="cover-inner">
+    <div class="cover-text">
+      <p class="cover-eyebrow">Department of Occupational &amp; Environmental Health, BUHS</p>
+      <h1>For a sustainable, healthy environment <em>and safer workplace</em></h1>
+      <p class="cover-lead">The journey of the Department of Occupational and Environmental Health, built on education, research, and field-based learning that connects science with the realities of work and environment.</p>
     </div>
-    <div class="about-hero-badge" aria-hidden="true">
-      <div class="about-hero-badge-label">Established</div>
-      <div class="about-hero-badge-val">2012</div>
-      <div class="about-hero-badge-desc">Department founded under the Faculty of Public Health, Bangladesh University of Health Sciences</div>
-      <div class="about-hero-badge-divider"></div>
-      <div class="about-hero-badge-label">Academic program began</div>
-      <div class="about-hero-badge-val">2013</div>
-      <div class="about-hero-badge-desc">Field-based, IOSH-accredited programs in occupational and environmental health</div>
+    <div class="cover-media">
+      <div class="cover-glass" aria-hidden="true">
+        <p class="cg-label">Established</p><p class="cg-val">2012</p>
+        <p class="cg-desc">Department founded under the Faculty of Public Health, Bangladesh University of Health Sciences</p>
+        <div class="cg-divider"></div>
+        <p class="cg-label">Academic program began</p><p class="cg-val">2013</p>
+        <p class="cg-desc">Field-based, IOSH-accredited programs in occupational and environmental health</p>
+      </div>
     </div>
   </div>
 </section>
@@ -770,7 +750,7 @@ body{padding-top:0!important}
         <p class="iosh-description">Our BPH in Occupational and Environmental Health and Safety and MPH in Occupational Health and Safety programs carry IOSH accreditation, an internationally recognized standard in occupational safety and health.</p>
         <div class="iosh-logo-row">
           <a href="https://iosh.com" target="_blank" rel="noopener" aria-label="Visit the IOSH official website">
-            <img class="iosh-logo" src="assets/iosh-logo.png" alt="Institution of Occupational Safety and Health (IOSH) logo" loading="lazy" decoding="async"/>
+            <img width="704" height="385" class="iosh-logo" src="assets/iosh-logo.png" alt="Institution of Occupational Safety and Health (IOSH) logo" loading="lazy" decoding="async"/>
           </a>
           <span class="iosh-divider"></span>
           <div class="iosh-body-copy">
@@ -805,7 +785,7 @@ body{padding-top:0!important}
         <div class="certificate-glow"></div>
         <div class="certificate-card" role="button" tabindex="0" aria-label="Open IOSH accreditation certificate" onclick="openIoshCertificate()" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();openIoshCertificate()}">
           <div class="certificate-inner">
-            <img class="certificate-preview" src="assets/iosh-accreditation-certificate.png" alt="IOSH accreditation certificate awarded to BUHS" onerror="this.closest('.certificate-card').style.display='none'" loading="lazy" decoding="async"/>
+            <img width="1241" height="1755" class="certificate-preview" src="assets/iosh-accreditation-certificate.png" alt="IOSH accreditation certificate awarded to BUHS" onerror="this.closest('.certificate-card').style.display='none'" loading="lazy" decoding="async"/>
           </div>
           <div class="certificate-badge">IOSH<br/>ACCREDITED</div>
           <div class="certificate-hint">Click to enlarge</div>
@@ -823,7 +803,7 @@ body{padding-top:0!important}
       <button class="iosh-modal-close" onclick="closeIoshCertificate()" aria-label="Close certificate">×</button>
     </div>
     <div class="iosh-modal-body">
-      <img class="iosh-modal-image" src="assets/iosh-accreditation-certificate.png" alt="IOSH accreditation certificate awarded to BUHS, full size" loading="lazy" decoding="async"/>
+      <img width="1241" height="1755" class="iosh-modal-image" src="assets/iosh-accreditation-certificate.png" alt="IOSH accreditation certificate awarded to BUHS, full size" loading="lazy" decoding="async"/>
       <a class="iosh-modal-download" href="assets/iosh-accreditation-certificate.pdf" target="_blank" rel="noopener">Download PDF</a>
     </div>
   </div>
@@ -845,7 +825,7 @@ document.addEventListener('keydown',e=>{if(e.key==='Escape'&&ioshModal.classList
     </div>
     <div class="leadership-grid">
 <div class="leader-card reveal reveal-delay-1">
-        <img class="leader-avatar" src="assets/leadership/jma-hannan.jpg" alt="Prof. JMA Hannan" onerror="this.style.display='none'" loading="lazy" decoding="async"/>
+        <img width="1024" height="1024" class="leader-avatar" src="assets/leadership/jma-hannan.jpg" alt="Prof. JMA Hannan" onerror="this.style.display='none'" loading="lazy" decoding="async"/>
         <div class="leader-name">J. M. A. Hannan</div>
         <div class="leader-title">Vice Chancellor</div>
         <div class="leader-dept">Bangladesh University of Health Sciences (BUHS)</div>
@@ -853,7 +833,7 @@ document.addEventListener('keydown',e=>{if(e.key==='Escape'&&ioshModal.classList
         <p class="leader-msg">DOEH represents our commitment to preparing public health professionals capable of safeguarding individuals, workplaces, and communities through knowledge, responsibility, and technological advancement.</p>
       </div>
 <div class="leader-card reveal reveal-delay-2">
-        <img class="leader-avatar" src="assets/leadership/sk-akhtar-ahmad.jpg" alt="Professor Dr. Sk. Akhtar Ahmad" onerror="this.style.display='none'" loading="lazy" decoding="async"/>
+        <img width="1024" height="1024" class="leader-avatar" src="assets/leadership/sk-akhtar-ahmad.jpg" alt="Professor Dr. Sk. Akhtar Ahmad" onerror="this.style.display='none'" loading="lazy" decoding="async"/>
         <div class="leader-name">Professor Dr. Sk. Akhtar Ahmad</div>
         <div class="leader-title">Professor &amp; Advisor</div>
         <div class="leader-dept">Department of Occupational and Environmental Health<br/>Bangladesh University of Health Sciences</div>
@@ -861,7 +841,7 @@ document.addEventListener('keydown',e=>{if(e.key==='Escape'&&ioshModal.classList
         <p class="leader-msg">Occupational and environmental health links scientific knowledge with the realities of the workplace and the environment. Our goal is to assist students in comprehending these realities and translating their knowledge and skills into effective action.</p>
       </div>
 <div class="leader-card reveal reveal-delay-3">
-        <img class="leader-avatar" src="assets/leadership/mh-faruquee.jpg" alt="Professor Dr. M. H. Faruquee" onerror="this.style.display='none'" loading="lazy" decoding="async"/>
+        <img width="1231" height="1280" class="leader-avatar" src="assets/leadership/mh-faruquee.jpg" alt="Professor Dr. M. H. Faruquee" onerror="this.style.display='none'" loading="lazy" decoding="async"/>
         <div class="leader-name">Professor Dr. M. H. Faruquee</div>
         <div class="leader-title">Professor &amp; Head</div>
         <div class="leader-dept">Department of Occupational and Environmental Health<br/>Bangladesh University of Health Sciences</div>
@@ -1031,97 +1011,15 @@ document.addEventListener('keydown',e=>{if(e.key==='Escape'&&ioshModal.classList
     <p class="ftr-id-tag">Bangladesh's first health sciences university, established in 2012 by the Diabetic Association of Bangladesh (BADAS).</p>
   </div>
   <div class="ftr-bottom">
-    <img class="ftr-logo" src="assets/logo.png" alt="DOEH, BUHS logo" onerror="this.style.display='none'" loading="lazy" decoding="async"/>
+    <img width="1024" height="1314" class="ftr-logo" src="assets/logo.png" alt="DOEH, BUHS logo" onerror="this.style.display='none'" loading="lazy" decoding="async"/>
     <div class="ftr-copy">&copy; 2026 Department of Occupational &amp; Environmental Health, Bangladesh University of Health Sciences. All rights reserved.</div>
     <a class="ftr-badas" href="https://dab-bd.org" target="_blank" rel="noopener"><img src="assets/badas-logo.png" alt="Diabetic Association of Bangladesh (BADAS) logo" width="46" height="46" loading="lazy" onerror="this.style.display='none'"/><span>Established in 2012 by the Diabetic Association of Bangladesh</span></a>
     <!-- LinkedIn: add the real URL to href and delete the hidden attribute on that icon -->
     <div class="ftr-social"><a href="https://www.facebook.com/share/19NrNVjGQQ/" target="_blank" rel="noopener" aria-label="DOEH on Facebook"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M22 12a10 10 0 1 0-11.6 9.9v-7H7.9V12h2.5V9.8c0-2.5 1.5-3.9 3.8-3.9 1.1 0 2.2.2 2.2.2v2.5h-1.3c-1.2 0-1.6.8-1.6 1.6V12h2.8l-.4 2.9h-2.3v7A10 10 0 0 0 22 12z"/></svg></a><a href="https://www.youtube.com/@doeh_buhs" target="_blank" rel="noopener" aria-label="DOEH on YouTube"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M21.6 7.2a2.5 2.5 0 0 0-1.8-1.8C18.2 5 12 5 12 5s-6.2 0-7.8.4A2.5 2.5 0 0 0 2.4 7.2C2 8.8 2 12 2 12s0 3.2.4 4.8a2.5 2.5 0 0 0 1.8 1.8C5.8 19 12 19 12 19s6.2 0 7.8-.4a2.5 2.5 0 0 0 1.8-1.8c.4-1.6.4-4.8.4-4.8s0-3.2-.4-4.8zM10 15V9l5.2 3L10 15z"/></svg></a><a href="mailto:oeh@buhs.ac.bd" aria-label="Email DOEH at oeh@buhs.ac.bd"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M3 6.5A2.5 2.5 0 0 1 5.5 4h13A2.5 2.5 0 0 1 21 6.5v11a2.5 2.5 0 0 1-2.5 2.5h-13A2.5 2.5 0 0 1 3 17.5v-11zm2.4-.3L12 11.3l6.6-5.1a.5.5 0 0 0-.1-.2h-13a.5.5 0 0 0-.1.2zM19 8.5l-6.4 4.9a1 1 0 0 1-1.2 0L5 8.5v9c0 .3.2.5.5.5h13c.3 0 .5-.2.5-.5v-9z"/></svg></a><a href="https://wa.me/8801911383522?text=Hello%20DOEH%2C%20I%20would%20like%20to%20know%20more%20about%20the%20programs." target="_blank" rel="noopener" aria-label="Message DOEH on WhatsApp"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg></a><a href="" hidden target="_blank" rel="noopener" aria-label="DOEH on LinkedIn"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4.98 3.5a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5zM3 9.75h4V21H3V9.75zm6.5 0h3.8v1.54h.05c.53-1 1.82-2.04 3.75-2.04 4 0 4.75 2.63 4.75 6.05V21h-4v-5.1c0-1.22-.02-2.78-1.7-2.78-1.7 0-1.96 1.33-1.96 2.7V21h-4V9.75z"/></svg></a></div>
   </div>
 </footer>
-<!-- HEADER MENU SCRIPT -->
-<script>
-(function(){
-  var h=document.querySelector('.site-header'),t=document.getElementById('navToggle');
-  if(!h||!t)return;
-  var mq=window.matchMedia('(max-width:1240px)');
-  function setOpen(o){h.classList.toggle('open',o);t.setAttribute('aria-expanded',o?'true':'false');t.setAttribute('aria-label',o?'Close menu':'Open menu');}
-  function closeSubs(){h.querySelectorAll('.nav-item.open').forEach(function(i){i.classList.remove('open');});}
-  t.addEventListener('click',function(){setOpen(!h.classList.contains('open'));});
-  h.querySelectorAll('.nav-item').forEach(function(item){
-    var a=item.children[0];
-    if(!item.querySelector('.dropdown'))return;
-    a.addEventListener('click',function(e){
-      if(!mq.matches||item.classList.contains('open'))return;
-      e.preventDefault();closeSubs();item.classList.add('open');
-    });
-  });
-  h.addEventListener('click',function(e){
-    var a=e.target.closest&&e.target.closest('a');
-    if(a&&mq.matches&&!e.defaultPrevented){setOpen(false);closeSubs();}
-  });
-  document.addEventListener('keydown',function(e){if(e.key==='Escape'){setOpen(false);closeSubs();}});
-  var onChange=function(){if(!mq.matches){setOpen(false);closeSubs();}};
-  if(mq.addEventListener)mq.addEventListener('change',onChange);
-})();
-</script>
-<!-- SITE SEARCH SCRIPT -->
-<script>
-(function(){
-  var IDX=[
-   ['Home','index.html','DOEH at BUHS: programs, news and how to apply','home department occupational environmental health buhs'],
-   ['About DOEH','about.html','Who we are, our mission and how the department began','about mission vision department'],
-   ['Why Study at DOEH','about.html#our-strengths-title','What sets the department apart','strengths why study choose'],
-   ['IOSH Accreditation','about.html#iosh-accreditation','Internationally recognized standards in occupational safety and health','iosh accreditation certificate standards'],
-   ['Department Leadership','about.html#leadership','Messages from the people who lead DOEH','leadership vice chancellor head message'],
-   ['Our Journey and History','about.html#history','How the department has grown','history journey timeline'],
-   ['Campus and Location','about.html#location','Address, phone and map','location address map mirpur campus'],
-   ['Academics','academics.html','Programs, curriculum and intakes','academics programs courses'],
-   ['BPH in Occupational & Environmental Health and Safety','academics.html#bph-body',"Bachelor's program",'bph bachelor undergraduate public health'],
-   ['MPH in Occupational Health and Safety','academics.html#mph-ohs-body',"Master's program",'mph masters ohs occupational'],
-   ['MPH in Environmental Health and Safety','academics.html#mph-ehs-body',"Master's program",'mph masters ehs environmental'],
-   ['Faculty and Academic Staff','academics.html#faculty','Professors and adjunct faculty','faculty teachers professors staff'],
-   ['Academic Calendar','academics.html#calendar','Spring and Fall intakes','calendar intake spring fall april october admission'],
-   ['Research','research.html','Research themes, faculty expertise and publications','research publications themes faculty arsenic lead occupational garment safety'],
-   ['News & Events','news.html','Updates, notices and events','news events notices seminars'],
-   ['Gallery','gallery.html','Photos and videos from the department','gallery photos videos fieldwork'],
-   ['Alumni','alumni.html','Alumni directory and success stories','alumni graduates directory'],
-   ['Contact','contact.html','Reach the department','contact email phone whatsapp'],
-   ['Apply Now','https://onlineapplication.buhs.ac.bd/admission/','Apply through the BUHS online portal','apply admission application']
-  ];
-  var box=document.getElementById('siteSearch'),inp=document.getElementById('ssrInput'),list=document.getElementById('ssrList'),emp=document.getElementById('ssrEmpty'),btn=document.getElementById('siteSearchBtn');
-  if(!box||!inp||!btn)return;
-  var sel=-1,last=null;
-  function esc(s){return s.replace(/&/g,'&amp;').replace(/</g,'&lt;')}
-  function render(q){
-    var t=q.toLowerCase().split(/\s+/).filter(Boolean),out=[];
-    IDX.forEach(function(e){
-      var T=e[0].toLowerCase(),R=(e[2]+' '+e[3]).toLowerCase(),s=0,ok=true;
-      t.forEach(function(w){if(T.indexOf(w)>-1)s+=3;else if(R.indexOf(w)>-1)s+=1;else ok=false;});
-      if(ok&&(t.length||true))out.push([s,e]);
-    });
-    out.sort(function(a,b){return b[0]-a[0]});
-    if(!t.length)out=IDX.slice(0,6).map(function(e){return[0,e]});
-    out=out.slice(0,8);sel=-1;
-    list.innerHTML=out.map(function(o){var e=o[1];return '<li><a href="'+e[1]+'"'+(e[1].indexOf('http')===0?' target="_blank" rel="noopener"':'')+'><b>'+esc(e[0])+'</b><small>'+esc(e[2])+'</small></a></li>'}).join('');
-    emp.hidden=out.length>0;
-  }
-  function open(){last=document.activeElement;box.classList.add('open');box.setAttribute('aria-hidden','false');document.body.style.overflow='hidden';inp.value='';render('');setTimeout(function(){inp.focus()},30)}
-  function close(){box.classList.remove('open');box.setAttribute('aria-hidden','true');document.body.style.overflow='';if(last&&last.focus)last.focus()}
-  function move(d){var a=list.querySelectorAll('a');if(!a.length)return;if(sel>-1)a[sel].classList.remove('sel');sel=(sel+d+a.length)%a.length;a[sel].classList.add('sel');a[sel].scrollIntoView({block:'nearest'})}
-  btn.addEventListener('click',open);var btnM=document.getElementById('siteSearchBtnM');if(btnM)btnM.addEventListener('click',open);
-  document.getElementById('ssrClose').addEventListener('click',close);
-  box.addEventListener('click',function(e){if(e.target===box)close()});
-  inp.addEventListener('input',function(){render(inp.value)});
-  document.addEventListener('keydown',function(e){
-    if(!box.classList.contains('open'))return;
-    if(e.key==='Escape'){close()}
-    else if(e.key==='ArrowDown'){e.preventDefault();move(1)}
-    else if(e.key==='ArrowUp'){e.preventDefault();move(-1)}
-    else if(e.key==='Enter'){var a=list.querySelectorAll('a');var t=a[sel>-1?sel:0];if(t){e.preventDefault();t.click()}}
-  });
-  list.addEventListener('click',function(e){var a=e.target.closest&&e.target.closest('a');if(a&&a.getAttribute('href').indexOf('#')>-1&&a.getAttribute('href').split('#')[0]===location.pathname.split('/').pop())close()});
-})();
-</script>
+
+
 
 <script src="js/main.js"></script>
 <script>
@@ -1131,6 +1029,6 @@ const observer = new IntersectionObserver((entries) => {
 }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
 document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
 </script>
-<script src="js/polish.js" defer></script>
+
 </body>
 </html>
