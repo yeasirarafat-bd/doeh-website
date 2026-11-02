@@ -480,7 +480,7 @@ img[width][height]{height:auto}
 .media-cap{position:absolute;left:.9rem;bottom:.9rem;right:.9rem;display:inline-block;width:fit-content;max-width:calc(100% - 1.8rem);padding:.45rem .8rem;border-radius:10px;background:rgba(8,28,18,.62);-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px);color:#fff;font-size:.85rem;font-weight:600;line-height:1.4}
 .cover-stack{display:grid;gap:1rem}
 
-/* Photo rotator (crossfade, pauses on hover, still for reduced motion) */
+/* Photo rotator, ready for the About cover when more photos arrive (crossfade, pauses on hover, still for reduced motion) */
 .rot{position:relative;aspect-ratio:3/2;border-radius:18px;overflow:hidden;border:1px solid rgba(255,255,255,.28);box-shadow:0 14px 34px rgba(0,0,0,.22);background:var(--green3)}
 .rot-slide{position:absolute;inset:0;margin:0;opacity:0;transition:opacity .9s ease}
 .rot-slide.is-active{opacity:1}
@@ -502,11 +502,26 @@ img[width][height]{height:auto}
 .yt-poster:focus-visible{outline:3px solid #ffd84d;outline-offset:-3px}
 .yt iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
 
-/* Video section used on Academics, Alumni and News */
-.vid-sec{background:linear-gradient(180deg,#fff 0%,#eef7f1 100%)}
-.vid-grid{display:grid;grid-template-columns:minmax(0,1.2fr) minmax(0,.8fr);gap:3rem;align-items:center}
-.vid-grid .yt{border-color:var(--border);box-shadow:0 14px 34px rgba(14,69,38,.14)}
-.vid-link{display:inline-flex;align-items:center;gap:.4rem;margin-top:.4rem;min-height:46px;padding:.6rem 1.2rem;border-radius:10px;background:var(--green);color:#fff;font-weight:600;text-decoration:none;transition:background .2s ease,transform .2s ease}
-.vid-link:hover{background:var(--green2);transform:translateY(-1px)}
-@media(max-width:900px){.vid-grid{grid-template-columns:minmax(0,1fr);gap:1.5rem}}
-@media(prefers-reduced-motion:reduce){.yt-play,.vid-link{transition:none}}
+/* Poster card in a cover (keeps the poster at its real size, never upscaled) */
+.cg-poster{display:flex;flex-direction:column;align-items:center;gap:.8rem;width:fit-content;margin-left:auto}
+.cg-poster img{display:block;width:206px;max-width:100%;height:auto;border-radius:12px;box-shadow:0 8px 22px rgba(0,0,0,.28)}
+.cg-poster .cg-label{margin:0}
+@media(max-width:900px){.cg-poster{margin-left:0}}
+
+/* Home welcome: soft petals once for first-time visitors, plus a drawn sprout. No words. */
+.welcome{position:absolute;inset:0;overflow:hidden;pointer-events:none;z-index:2}
+.petal{position:absolute;top:-30px;left:var(--x);width:var(--s);height:var(--s);opacity:0;animation:petalFall var(--d) cubic-bezier(.35,.1,.5,1) var(--delay) forwards}
+.petal svg{display:block;width:100%;height:100%;fill:var(--c)}
+@keyframes petalFall{0%{opacity:0;transform:translate3d(0,0,0) rotate(0)}12%{opacity:.9}75%{opacity:.8}100%{opacity:0;transform:translate3d(var(--dx),var(--fall,420px),0) rotate(var(--r))}}
+.cover-sprout{display:none}
+@media(min-width:1100px){
+  .cover-sprout{display:block;position:absolute;left:54%;bottom:-1.2rem;width:104px;height:auto;opacity:.6;pointer-events:none}
+  .cover-sprout path{fill:none;stroke:#d0f4db;stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:1;stroke-dashoffset:1;animation:sproutDraw 2.4s ease-out forwards}
+  .cover-sprout path:nth-child(2){animation-delay:.9s}
+  .cover-sprout path:nth-child(3){animation-delay:1.3s}
+  .cover-sprout path:nth-child(4){animation-delay:1.7s}
+}
+@keyframes sproutDraw{to{stroke-dashoffset:0}}
+@media(prefers-reduced-motion:reduce){.petal{display:none}.cover-sprout path{animation:none;stroke-dashoffset:0}}
+a.news-card{display:block;text-decoration:none;color:inherit}
+.news-sum{margin:.5rem 0 0;font-size:.9rem;line-height:1.6;color:#43564b}
