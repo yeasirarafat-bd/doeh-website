@@ -3,51 +3,26 @@
 <head>
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<style>:root{--green:#1e7a3e;--green2:#156030;--green3:#0e4526;--gd1:#1e7a3e;--gd2:#156030;--gd3:#0e4526;--gdl:#27a352;--white:#fff;--offwhite:#f7faf8;--cream:#f0f7f2;--green-pale:#e8f5ed;--green-dim:#d1ead9;--gray:#5b6e63;--gray2:#6e8576;--border:#d4e6da;--border2:#c2dbc9;--navy:#0d2318;--ink2:#374151;--radius:14px;--ease:cubic-bezier(.22,.61,.36,1);--spring:cubic-bezier(.34,1.56,.64,1)}</style>
+<style>:root{--green:#1e7a3e;--green2:#156030;--green3:#0e4526;--gd1:#1e7a3e;--gd2:#156030;--gd3:#0e4526;--gdl:#27a352;--white:#fff;--offwhite:#f7faf8;--cream:#f0f7f2;--green-pale:#e8f5ed;--green-dim:#d1ead9;--gray:#5b6e63;--gray2:#6e8576;--border:#d4e6da;--border2:#c2dbc9;--navy:#0d2318;--ink2:#374151;--radius:14px;--ease:cubic-bezier(.22,.61,.36,1);--spring:cubic-bezier(.34,1.56,.64,1)}#loading-state{min-height:320px}#cards-grid{min-height:320px}
+</style>
 <title>Alumni Directory | DOEH, BUHS</title>
 <meta name="description" content="Meet DOEH graduates at Bangladesh University of Health Sciences. Discover where they work, what they do, and how to connect with them."/>
+<link rel="canonical" href="https://doeh-buhs.ac/alumni.html"/>
+<meta property="og:type" content="website"/>
+<meta property="og:site_name" content="DOEH, BUHS"/>
+<meta property="og:title" content="Alumni Directory | DOEH, BUHS"/>
+<meta property="og:description" content="Meet DOEH graduates at Bangladesh University of Health Sciences. Discover where they work, what they do, and how to connect with them."/>
+<meta property="og:url" content="https://doeh-buhs.ac/alumni.html"/>
+<meta property="og:image" content="https://doeh-buhs.ac/assets/logo.png"/>
+<meta name="twitter:card" content="summary"/>
 <link rel="preconnect" href="https://fonts.googleapis.com"/>
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
 <link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@400;700;900&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet"/>
-<link rel="stylesheet" href="css/style.css"/>
+<link rel="stylesheet" href="css/style.css?v=20261101"/>
 <link rel="icon" type="image/png" sizes="64x64" href="assets/favicon-64.png"/>
 <link rel="apple-touch-icon" href="assets/apple-touch-icon.png"/>
 <meta name="theme-color" content="#156030"/>
 <style>
-/* ── ALUMNI PAGE SPECIFIC ── */
-.hero-alumni{
- background:linear-gradient(160deg,var(--gd3) 0%,var(--gd2) 55%,var(--gd1) 100%);
- padding:5rem 2rem 4rem;
- text-align:center;
- position:relative;
- overflow:hidden;
-}
-.hero-alumni::before{
- content:'';position:absolute;inset:0;pointer-events:none;
- background:url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%23ffffff' fill-opacity='0.03'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/svg%3E")
-}
-.hero-alumni-eyebrow{
- font-size:.75rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;
- color:rgba(255,255,255,.72);margin-bottom:1.25rem;
-}
-.hero-alumni h1{
- font-family:'Merriweather',serif;
- font-size:clamp(2rem,5vw,3.2rem);
- font-weight:900;color:#fff;
- line-height:1.15;margin-bottom:.85rem;
-}
-.hero-alumni h1 em{color:#d0f4db;font-style:normal}
-.hero-alumni p{
- font-size:.98rem;color:rgba(255,255,255,.7);
- max-width:520px;margin:0 auto 2rem;line-height:1.8;
-}
-.iosh-badge{
- display:inline-flex;align-items:center;gap:.65rem;
- background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.2);
- border-radius:100px;padding:.45rem 1.1rem;
- font-size:.75rem;font-weight:600;color:rgba(255,255,255,.8);
-}
-.iosh-dot{width:8px;height:8px;border-radius:50%;background:#d0f4db;flex-shrink:0}
 
 /* ── STATS ── */
 .stats-strip{
@@ -62,7 +37,7 @@
 
 /* ── SPOTLIGHT ── */
 .spotlight-sec{background:var(--cream);padding:3.5rem 2rem;border-bottom:1px solid var(--border)}
-.spotlight-inner{max-width:1100px;margin:0 auto}
+.spotlight-inner{max-width:var(--wrap,82.5rem);margin:0 auto}
 .spotlight-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:1.25rem;margin-top:1.75rem}
 .spotlight-card{
  background:var(--white);border-radius:14px;padding:1.75rem;
@@ -85,7 +60,7 @@
 
 /* ── DIRECTORY ── */
 .dir-sec{padding:3.5rem 2rem}
-.dir-inner{max-width:1100px;margin:0 auto}
+.dir-inner{max-width:var(--wrap,82.5rem);margin:0 auto}
 .sec-eyebrow{font-size:.75rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--green);margin-bottom:.5rem}
 .sec-heading{font-family:'Merriweather',serif;font-size:1.5rem;font-weight:900;color:var(--green3);margin-bottom:.4rem}
 .sec-bar{width:36px;height:3px;background:var(--gd1);border-radius:2px;margin-bottom:1.5rem}
@@ -376,7 +351,6 @@ textarea.fc{resize:vertical;min-height:130px;line-height:1.6}
 @media(max-width:768px){
  .footer-bottom{flex-direction:column;text-align:center}
  .stats-strip .st{padding:0 1.25rem}
- .hero-alumni{padding:3.5rem 1.25rem 3rem}
  .dir-sec,.spotlight-sec{padding:2.5rem 1.25rem}
  .modal-identity{flex-direction:column;align-items:flex-start;gap:.75rem}
  .modal-name{font-size:1.15rem}
@@ -385,6 +359,13 @@ textarea.fc{resize:vertical;min-height:130px;line-height:1.6}
  .fgrid{grid-template-columns:1fr}
  .form-body{padding:1.5rem}
  .join-bar{flex-direction:column}
+}
+
+/* Stats strip on phones: clean two-by-two grid with no stray dividers */
+@media(max-width:768px){
+ .stats-strip{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:1.25rem 0;padding:1.5rem 1rem}
+ .stats-strip .st{padding:0 .5rem;border-right:0}
+ .stats-strip .st:nth-child(odd){border-right:1px solid rgba(255,255,255,.14)}
 }
 </style>
 <style>
@@ -594,7 +575,7 @@ body{padding-top:0!important}
 /* ===== END SITE HEADER AND FOOTER ===== */
 </style>
 <script>document.documentElement.classList.add('pl')</script>
-<link rel="stylesheet" href="css/polish.css"/>
+
 </head>
 <body>
 <a class="skip" href="#main">Skip to content</a>
@@ -666,15 +647,18 @@ body{padding-top:0!important}
 
 <main id="main">
 <!-- HERO -->
-<div class="hero-alumni">
- <div class="hero-alumni-eyebrow">Department of Occupational &amp; Environmental Health · BUHS</div>
- <h1 id="protecting-people-transforming">Protecting People.<br><em>Transforming Workplaces.</em></h1>
- <p>Discover how DOEH graduates at BUHS are shaping occupational and environmental health across Bangladesh and beyond.</p>
- <div class="iosh-badge">
- <span class="iosh-dot"></span>IOSH Accredited Programs: BPH &amp; MPH
- </div>
-</div>
-
+<section class="cover" aria-labelledby="protecting-people-transforming">
+  <div class="cover-inner">
+    <div class="cover-text">
+      <p class="cover-eyebrow">Department of Occupational &amp; Environmental Health &middot; BUHS</p>
+      <h1 id="protecting-people-transforming">Protecting People. <em>Transforming Workplaces.</em></h1>
+      <p class="cover-lead">Discover how DOEH graduates at BUHS are shaping occupational and environmental health across Bangladesh and beyond.</p>
+    </div>
+    <div class="cover-media">
+      <div class="media-frame" style="aspect-ratio:960/727"><img src="assets/photos/convocation-2024.webp" alt="Graduates and faculty in convocation gowns at the BUHS 1st Convocation 2024" width="960" height="727"/><p class="media-cap">BUHS 1st Convocation 2024</p></div>
+    </div>
+  </div>
+</section>
 <!-- STATS -->
 <div class="stats-strip">
  <div class="st"><div class="st-n" id="stat-total">0</div><div class="st-l">Alumni listed</div></div>
@@ -993,7 +977,7 @@ body{padding-top:0!important}
     <p class="ftr-id-tag">Bangladesh's first health sciences university, established in 2012 by the Diabetic Association of Bangladesh (BADAS).</p>
   </div>
   <div class="ftr-bottom">
-    <img class="ftr-logo" src="assets/logo.png" alt="DOEH, BUHS logo" onerror="this.style.display='none'" loading="lazy" decoding="async"/>
+    <img width="1024" height="1314" class="ftr-logo" src="assets/logo.png" alt="DOEH, BUHS logo" onerror="this.style.display='none'" loading="lazy" decoding="async"/>
     <div class="ftr-copy">&copy; 2026 Department of Occupational &amp; Environmental Health, Bangladesh University of Health Sciences. All rights reserved.</div>
     <a class="ftr-badas" href="https://dab-bd.org" target="_blank" rel="noopener"><img src="assets/badas-logo.png" alt="Diabetic Association of Bangladesh (BADAS) logo" width="46" height="46" loading="lazy" onerror="this.style.display='none'"/><span>Established in 2012 by the Diabetic Association of Bangladesh</span></a>
     <!-- LinkedIn: add the real URL to href and delete the hidden attribute on that icon -->
@@ -1397,90 +1381,9 @@ async function submitForm(){
 
 loadData();
 </script>
-<!-- HEADER MENU SCRIPT -->
-<script>
-(function(){
-  var h=document.querySelector('.site-header'),t=document.getElementById('navToggle');
-  if(!h||!t)return;
-  var mq=window.matchMedia('(max-width:1240px)');
-  function setOpen(o){h.classList.toggle('open',o);t.setAttribute('aria-expanded',o?'true':'false');t.setAttribute('aria-label',o?'Close menu':'Open menu');}
-  function closeSubs(){h.querySelectorAll('.nav-item.open').forEach(function(i){i.classList.remove('open');});}
-  t.addEventListener('click',function(){setOpen(!h.classList.contains('open'));});
-  h.querySelectorAll('.nav-item').forEach(function(item){
-    var a=item.children[0];
-    if(!item.querySelector('.dropdown'))return;
-    a.addEventListener('click',function(e){
-      if(!mq.matches||item.classList.contains('open'))return;
-      e.preventDefault();closeSubs();item.classList.add('open');
-    });
-  });
-  h.addEventListener('click',function(e){
-    var a=e.target.closest&&e.target.closest('a');
-    if(a&&mq.matches&&!e.defaultPrevented){setOpen(false);closeSubs();}
-  });
-  document.addEventListener('keydown',function(e){if(e.key==='Escape'){setOpen(false);closeSubs();}});
-  var onChange=function(){if(!mq.matches){setOpen(false);closeSubs();}};
-  if(mq.addEventListener)mq.addEventListener('change',onChange);
-})();
-</script>
-<!-- SITE SEARCH SCRIPT -->
-<script>
-(function(){
-  var IDX=[
-   ['Home','index.html','DOEH at BUHS: programs, news and how to apply','home department occupational environmental health buhs'],
-   ['About DOEH','about.html','Who we are, our mission and how the department began','about mission vision department'],
-   ['Why Study at DOEH','about.html#our-strengths-title','What sets the department apart','strengths why study choose'],
-   ['IOSH Accreditation','about.html#iosh-accreditation','Internationally recognized standards in occupational safety and health','iosh accreditation certificate standards'],
-   ['Department Leadership','about.html#leadership','Messages from the people who lead DOEH','leadership vice chancellor head message'],
-   ['Our Journey and History','about.html#history','How the department has grown','history journey timeline'],
-   ['Campus and Location','about.html#location','Address, phone and map','location address map mirpur campus'],
-   ['Academics','academics.html','Programs, curriculum and intakes','academics programs courses'],
-   ['BPH in Occupational & Environmental Health and Safety','academics.html#bph-body',"Bachelor's program",'bph bachelor undergraduate public health'],
-   ['MPH in Occupational Health and Safety','academics.html#mph-ohs-body',"Master's program",'mph masters ohs occupational'],
-   ['MPH in Environmental Health and Safety','academics.html#mph-ehs-body',"Master's program",'mph masters ehs environmental'],
-   ['Faculty and Academic Staff','academics.html#faculty','Professors and adjunct faculty','faculty teachers professors staff'],
-   ['Academic Calendar','academics.html#calendar','Spring and Fall intakes','calendar intake spring fall april october admission'],
-   ['Research','research.html','Research themes, faculty expertise and publications','research publications themes faculty arsenic lead occupational garment safety'],
-   ['News & Events','news.html','Updates, notices and events','news events notices seminars'],
-   ['Gallery','gallery.html','Photos and videos from the department','gallery photos videos fieldwork'],
-   ['Alumni','alumni.html','Alumni directory and success stories','alumni graduates directory'],
-   ['Contact','contact.html','Reach the department','contact email phone whatsapp'],
-   ['Apply Now','https://onlineapplication.buhs.ac.bd/admission/','Apply through the BUHS online portal','apply admission application']
-  ];
-  var box=document.getElementById('siteSearch'),inp=document.getElementById('ssrInput'),list=document.getElementById('ssrList'),emp=document.getElementById('ssrEmpty'),btn=document.getElementById('siteSearchBtn');
-  if(!box||!inp||!btn)return;
-  var sel=-1,last=null;
-  function esc(s){return s.replace(/&/g,'&amp;').replace(/</g,'&lt;')}
-  function render(q){
-    var t=q.toLowerCase().split(/\s+/).filter(Boolean),out=[];
-    IDX.forEach(function(e){
-      var T=e[0].toLowerCase(),R=(e[2]+' '+e[3]).toLowerCase(),s=0,ok=true;
-      t.forEach(function(w){if(T.indexOf(w)>-1)s+=3;else if(R.indexOf(w)>-1)s+=1;else ok=false;});
-      if(ok&&(t.length||true))out.push([s,e]);
-    });
-    out.sort(function(a,b){return b[0]-a[0]});
-    if(!t.length)out=IDX.slice(0,6).map(function(e){return[0,e]});
-    out=out.slice(0,8);sel=-1;
-    list.innerHTML=out.map(function(o){var e=o[1];return '<li><a href="'+e[1]+'"'+(e[1].indexOf('http')===0?' target="_blank" rel="noopener"':'')+'><b>'+esc(e[0])+'</b><small>'+esc(e[2])+'</small></a></li>'}).join('');
-    emp.hidden=out.length>0;
-  }
-  function open(){last=document.activeElement;box.classList.add('open');box.setAttribute('aria-hidden','false');document.body.style.overflow='hidden';inp.value='';render('');setTimeout(function(){inp.focus()},30)}
-  function close(){box.classList.remove('open');box.setAttribute('aria-hidden','true');document.body.style.overflow='';if(last&&last.focus)last.focus()}
-  function move(d){var a=list.querySelectorAll('a');if(!a.length)return;if(sel>-1)a[sel].classList.remove('sel');sel=(sel+d+a.length)%a.length;a[sel].classList.add('sel');a[sel].scrollIntoView({block:'nearest'})}
-  btn.addEventListener('click',open);var btnM=document.getElementById('siteSearchBtnM');if(btnM)btnM.addEventListener('click',open);
-  document.getElementById('ssrClose').addEventListener('click',close);
-  box.addEventListener('click',function(e){if(e.target===box)close()});
-  inp.addEventListener('input',function(){render(inp.value)});
-  document.addEventListener('keydown',function(e){
-    if(!box.classList.contains('open'))return;
-    if(e.key==='Escape'){close()}
-    else if(e.key==='ArrowDown'){e.preventDefault();move(1)}
-    else if(e.key==='ArrowUp'){e.preventDefault();move(-1)}
-    else if(e.key==='Enter'){var a=list.querySelectorAll('a');var t=a[sel>-1?sel:0];if(t){e.preventDefault();t.click()}}
-  });
-  list.addEventListener('click',function(e){var a=e.target.closest&&e.target.closest('a');if(a&&a.getAttribute('href').indexOf('#')>-1&&a.getAttribute('href').split('#')[0]===location.pathname.split('/').pop())close()});
-})();
-</script>
-<script src="js/polish.js" defer></script>
+
+
+
+<script src="js/main.js?v=20261101"></script>
 </body>
 </html>
