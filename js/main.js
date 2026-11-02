@@ -150,3 +150,91 @@ document.addEventListener('error', function(e){
     go(0);restart();
   });
 })();
+
+/* Home welcome: petals fall softly for about five seconds, once per visitor.
+   Add ?welcome to the address to replay it. Skipped when reduced motion is on. */
+(function(){
+  var w=document.getElementById('welcome');if(!w)return;
+  if(window.matchMedia&&window.matchMedia('(prefers-reduced-motion:reduce)').matches)return;
+  var replay=/[?&]welcome\b/.test(location.search);
+  try{if(!replay&&localStorage.getItem('doeh_welcomed'))return;}catch(e){}
+  var shapes=['<svg viewBox="0 0 24 24"><path d="M12 2C16 8 18 13 12 22C6 13 8 8 12 2Z"/></svg>','<svg viewBox="0 0 24 24"><path d="M3 21C3 11 10 4 21 3C20 14 13 21 3 21Z"/></svg>'];
+  var colors=['#ffffff','#e9fbef','#bff0cf','#8fdca9','#ffffff'];
+  var h=(w.parentNode.offsetHeight||360)+60,n=16;
+  w.style.setProperty('--fall',h+'px');
+  for(var i=0;i<n;i++){
+    var p=document.createElement('span');p.className='petal';
+    p.style.setProperty('--x',(Math.random()*96+2)+'%');
+    p.style.setProperty('--s',(14+Math.random()*16)+'px');
+    p.style.setProperty('--c',colors[i%colors.length]);
+    p.style.setProperty('--d',(3.6+Math.random()*1.8)+'s');
+    p.style.setProperty('--delay',(Math.random()*1.4)+'s');
+    p.style.setProperty('--dx',(Math.random()*120-60)+'px');
+    p.style.setProperty('--r',(Math.random()*260-130)+'deg');
+    p.innerHTML=shapes[i%2];
+    w.appendChild(p);
+  }
+  setTimeout(function(){w.textContent='';},7200);
+  try{localStorage.setItem('doeh_welcomed','1');}catch(e){}
+})();
+
+/* Home news: shows the three newest items from js/news-data.js. */
+(function(){
+  var root=document.querySelector('[data-home-news]');if(!root)return;
+  var items=[];
+  (window.DOEH_NEWS||[]).forEach(function(n){items.push({type:'news',tag:n.category||'News',title:n.title,date:n.date,sum:n.summary});});
+  (window.DOEH_EVENTS||[]).forEach(function(e){items.push({type:'event',tag:'Event',title:e.title,date:e.date,sum:e.summary});});
+  items.sort(function(a,b){return String(b.date).localeCompare(String(a.date));});
+  items=items.slice(0,3);
+  var fmt=new Intl.DateTimeFormat('en-GB',{day:'numeric',month:'short',year:'numeric'});
+  if(!items.length){
+    var p=document.createElement('p');p.className='sec-sub';p.textContent='Updates will be posted here soon.';root.appendChild(p);return;
+  }
+  items.forEach(function(it){
+    var a=document.createElement('a');a.className='news-card';a.href='news.html';
+    var top=document.createElement('div');top.style.cssText='display:flex;align-items:center;justify-content:space-between;margin-bottom:.5rem;gap:.5rem';
+    var tag=document.createElement('span');tag.className='news-tag';tag.textContent=it.tag;
+    tag.style.cssText=it.type==='event'?'background:#e6f1fb;color:#185FA5':'background:var(--green-pale);color:var(--green2)';
+    var d=document.createElement('span');d.className='news-date';var p=String(it.date).split('-');d.textContent=fmt.format(new Date(+p[0],(+p[1]||1)-1,+p[2]||1));
+    top.appendChild(tag);top.appendChild(d);a.appendChild(top);
+    var ti=document.createElement('div');ti.className='news-title';ti.textContent=it.title;a.appendChild(ti);
+    if(it.sum){var s=document.createElement('p');s.className='news-sum';s.textContent=it.sum;a.appendChild(s);}
+    root.appendChild(a);
+  });
+})();
+
+/* Where graduates work: built only from verified alumni registrations (approved rows from the alumni Apps Script).
+   The section stays hidden when there is no data, so nothing unconfirmed is ever shown. */
+(function(){
+  var sec=document.querySelector('[data-sectors]');if(!sec)return;
+  var grid=sec.querySelector('[data-sectors-grid]');
+  var URL='https://script.google.com/macros/s/AKfycbynlMTkFjWenAzP68HP4KTkO_4kMRqQJQnSsi8NTSk9mXTetpJpEaoaJKElCrFxk4xtTg/exec';
+  function show(rows){
+    var map={};
+    rows.forEach(function(r){
+      var s=String(r['Sector / Industry']||'').trim();if(!s)return;
+      var k=s.toLowerCase();(map[k]=map[k]||{name:s,n:0,orgs:{}}).n++;
+      var o=String(r['Current Organization']||'').trim();if(o){var ok=o.toLowerCase();(map[k].orgs[ok]=map[k].orgs[ok]||{name:o,n:0}).n++;}
+    });
+    var list=Object.keys(map).map(function(k){return map[k];}).sort(function(a,b){return b.n-a.n;}).slice(0,6);
+    if(!list.length)return;
+    list.forEach(function(s){
+      var c=document.createElement('div');c.className='sector-card';
+      var l=document.createElement('div');l.className='sector-label';l.textContent=s.name;
+      var d=document.createElement('div');d.className='sector-desc';
+      var orgs=Object.keys(s.orgs).map(function(k){return s.orgs[k];}).sort(function(a,b){return b.n-a.n;}).slice(0,3).map(function(o){return o.name;});
+      d.textContent=s.n+(s.n===1?' alumnus':' alumni')+(orgs.length?' · '+orgs.join(', '):'');
+      c.appendChild(l);c.appendChild(d);grid.appendChild(c);
+    });
+    sec.hidden=false;
+  }
+  try{var c=sessionStorage.getItem('doeh_sectors');if(c){var o=JSON.parse(c);if(Date.now()-o.t<900000){show(o.d);return;}}}catch(e){}
+  var ctl=window.AbortController?new AbortController():null;
+  var to=setTimeout(function(){if(ctl)ctl.abort();},7000);
+  fetch(URL,ctl?{signal:ctl.signal}:{}).then(function(r){return r.json();}).then(function(j){
+    clearTimeout(to);
+    if(!j||j.result!=='success'||!Array.isArray(j.data))return;
+    try{sessionStorage.setItem('doeh_sectors',JSON.stringify({t:Date.now(),d:j.data.map(function(r){return {'Sector / Industry':r['Sector / Industry'],'Current Organization':r['Current Organization']};})}));}catch(e){}
+    show(j.data);
+  }).catch(function(){});
+})();
