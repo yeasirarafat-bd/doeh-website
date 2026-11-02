@@ -16,6 +16,8 @@
 <meta property="og:image" content="assets/buhs-logo.png"/>
 <meta name="twitter:card" content="summary"/>
 
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
 <link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@400;700;900&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet"/>
 <link rel="stylesheet" href="css/style.css?v=20261101"/>
 <link rel="icon" type="image/png" sizes="64x64" href="assets/favicon-64.png"/>
@@ -198,7 +200,9 @@
 <main id="main" tabindex="-1">
 <!-- HERO -->
 <section class="cover" aria-label="Welcome to DOEH">
+  <div class="welcome" id="welcome" aria-hidden="true"></div>
   <div class="cover-inner">
+    <svg class="cover-sprout" viewBox="0 0 120 160" aria-hidden="true" focusable="false"><path pathLength="1" d="M60 156C60 122 58 98 62 70"/><path pathLength="1" d="M62 100C40 98 26 84 24 64C44 64 60 76 62 100"/><path pathLength="1" d="M61 80C82 78 96 64 98 44C78 44 63 56 61 80"/><path pathLength="1" d="M62 72C60 58 62 46 70 36C76 48 72 62 62 72"/></svg>
     <div class="cover-text">
       <p class="cover-eyebrow">Dhaka, Bangladesh</p>
       <h1>Occupational and <em>Environmental Health</em></h1>
@@ -218,13 +222,12 @@
   </div>
 </section>
 
-<!-- STATS (placeholder figures, confirm before launch) -->
-<!-- TODO(Yeasir): verify batches graduated, alumni count, and partner count with department before this goes live -->
+<!-- STATS (confirmed facts only) -->
 <div class="stats-strip">
- <div class="st"><div class="st-n">3</div><div class="st-l">Programs offered</div></div>
- <div class="st"><div class="st-n">6+</div><div class="st-l">Batches graduated</div></div>
- <div class="st"><div class="st-n">80+</div><div class="st-l">Alumni worldwide</div></div>
- <div class="st"><div class="st-n">12+</div><div class="st-l">Partner organizations</div></div>
+  <div class="st"><div class="st-n">3</div><div class="st-l">Programs offered</div></div>
+  <div class="st"><div class="st-n">2012</div><div class="st-l">Established</div></div>
+  <div class="st"><div class="st-n">2</div><div class="st-l">Intakes each year</div></div>
+  <div class="st"><div class="st-n">IOSH</div><div class="st-l">Accredited programs</div></div>
 </div>
 
 <!-- ABOUT PREVIEW -->
@@ -289,24 +292,17 @@
 </section>
 
 <!-- CAREER OUTCOMES -->
-<section class="sec" style="background:var(--white)">
- <div class="sec-inner">
- <div class="sec-title">Where DOEH graduates work</div>
- <div class="sec-divider"></div>
- <p class="sec-sub">Our graduates enter a wide range of sectors, bringing occupational and environmental health expertise to organizations across Bangladesh and internationally.</p>
- <div class="grid">
- <div class="sector-card"><div class="sector-label">Government &amp; Public Health</div><div class="sector-desc">DGHS, Ministry of Health, BCS</div></div>
- <div class="sector-card"><div class="sector-label">International Organizations</div><div class="sector-desc">WHO, UNICEF, UN agencies</div></div>
- <div class="sector-card"><div class="sector-label">Research &amp; Academia</div><div class="sector-desc">IEDCR, icddr,b, universities</div></div>
- <div class="sector-card"><div class="sector-label">Industry &amp; Construction</div><div class="sector-desc">RMG, oil &amp; gas, engineering</div></div>
- <div class="sector-card"><div class="sector-label">NGO &amp; Development</div><div class="sector-desc">BRAC, Save the Children, CARE</div></div>
- <div class="sector-card"><div class="sector-label">Consultancy</div><div class="sector-desc">EIA, HSE, occupational health firms</div></div>
- </div>
- </div>
+<!-- WHERE GRADUATES WORK: built from verified alumni registrations (shown only when real data exists) -->
+<section class="sec" id="where-work" data-sectors hidden style="background:var(--white)">
+  <div class="sec-inner">
+    <div class="sec-title">Where DOEH graduates work</div>
+    <div class="sec-divider"></div>
+    <p class="sec-sub">Based on verified alumni registrations.</p>
+    <div class="grid" data-sectors-grid></div>
+  </div>
 </section>
 
-<!-- LATEST NEWS (placeholder items, replace once news.html content is finalized) -->
-<!-- TODO(Yeasir): swap these three cards for real news/events before launch -->
+<!-- LATEST NEWS (reads js/news-data.js) -->
 <section class="sec" style="background:var(--offwhite)">
  <div class="sec-inner">
  <div style="display:flex;align-items:flex-end;justify-content:space-between;margin-bottom:1.5rem;flex-wrap:wrap;gap:1rem">
@@ -316,58 +312,23 @@
  </div>
  <a class="btn btn-ghost" href="news.html">View all news →</a>
  </div>
- <div class="grid">
- <div class="news-card">
- <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:.5rem">
- <span class="news-tag" style="background:var(--green-pale);color:var(--green2)">Announcement</span>
- <span class="news-date">TBD</span>
- </div>
- <div class="news-title">Admission circular. Placeholder, update with real notice.</div>
- </div>
- <div class="news-card">
- <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:.5rem">
- <span class="news-tag" style="background:#e6f1fb;color:#185FA5">Event</span>
- <span class="news-date">TBD</span>
- </div>
- <div class="news-title">Department event. Placeholder, update with real notice.</div>
- </div>
- <div class="news-card">
- <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:.5rem">
- <span class="news-tag" style="background:#faeeda;color:#854F0B">Research</span>
- <span class="news-date">TBD</span>
- </div>
- <div class="news-title">Faculty research update. Placeholder, update with real notice.</div>
- </div>
- </div>
- </div>
+ <div class="grid" data-home-news></div>
+  </div>
 </section>
 
-<!-- ADMISSIONS (placeholder dates, confirm real intake schedule) -->
-<!-- TODO(Yeasir): confirm real intake batches/dates with department before launch -->
+<!-- ADMISSIONS (Spring and Fall intakes confirmed, dates to be added) -->
 <section class="admissions-band">
- <div class="admissions-inner">
- <div class="sec-title" style="color:#fff;margin-bottom:.4rem">Upcoming intakes</div>
- <div class="sec-divider" style="background:rgba(255,255,255,.4)"></div>
- <div class="intake-grid">
- <div class="intake-card">
- <div><div class="intake-prog">MPH in Occupational Health &amp; Safety</div><div class="intake-batch">Batch info TBD</div><div class="intake-date">Application dates TBD</div></div>
- <span class="intake-status" style="background:#d0f4db;color:var(--green3)">Open</span>
- </div>
- <div class="intake-card">
- <div><div class="intake-prog">MPH in Environmental Health &amp; Safety</div><div class="intake-batch">Batch info TBD</div><div class="intake-date">Application dates TBD</div></div>
- <span class="intake-status" style="background:#d0f4db;color:var(--green3)">Open</span>
- </div>
- <div class="intake-card">
- <div><div class="intake-prog">BPH in OEH &amp; Safety</div><div class="intake-batch">Batch info TBD</div><div class="intake-date">Application dates TBD</div></div>
- <span class="intake-status" style="background:rgba(255,255,255,.15);color:rgba(255,255,255,.7)">Soon</span>
- </div>
- </div>
- <div style="margin-top:2rem"><a class="btn btn-white" href="contact.html">Apply now →</a></div>
- </div>
+  <div class="admissions-inner">
+    <div class="sec-title" style="color:#fff;margin-bottom:.4rem">Admissions</div>
+    <div class="sec-divider" style="background:rgba(255,255,255,.4)"></div>
+    <div class="intake-grid">
+      <div class="intake-card"><div><div class="intake-prog">Spring intake</div><div class="intake-batch">Apply through the BUHS online portal</div></div><a class="cta-btn cta-btn-primary" href="https://onlineapplication.buhs.ac.bd/admission/" target="_blank" rel="noopener">Apply now</a></div>
+      <div class="intake-card"><div><div class="intake-prog">Fall intake</div><div class="intake-batch">Apply through the BUHS online portal</div></div><a class="cta-btn cta-btn-primary" href="https://onlineapplication.buhs.ac.bd/admission/" target="_blank" rel="noopener">Apply now</a></div>
+    </div>
+  </div>
 </section>
 
-<!-- PARTNERS (placeholder list, confirm formalized partnerships before launch) -->
-<!-- TODO(Yeasir): confirm every partner name here is a real, approved affiliation -->
+<!-- PARTNERS: hidden until the department confirms every name. Move this block out of the comment to publish.
 <section class="partners-sec">
  <div class="sec-inner">
  <div class="sec-title">Partners &amp; collaborators</div>
@@ -386,6 +347,7 @@
  </div>
  </div>
 </section>
+-->
 
 <!-- FEATURED ALUMNI -->
 <section class="sec" style="background:var(--cream)">
@@ -508,6 +470,7 @@
 
 
 
+<script src="js/news-data.js?v=20261101"></script>
 <script src="js/main.js?v=20261101"></script>
 
 </body>
