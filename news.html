@@ -23,56 +23,205 @@
 
 
 <style>
+/* ===== NEWS AND EVENTS PAGE =====
+   The cover and the section backgrounds are the site's existing ones. This block only refines
+   typography, alignment (same --wrap width as the header and cover) and proportions. */
+.nw-sr{position:absolute;width:1px;height:1px;margin:-1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;border:0;padding:0}
+html.nw-lock{overflow:hidden}
+.nw-wrap{max-width:var(--wrap);margin:0 auto}
+.nw-sec,.nw-events-sec,.nw-help{padding:clamp(3rem,5vw,4.5rem) 2rem}
 .nw-sec{background:var(--white)}
-.nw-controls{display:flex;flex-wrap:wrap;gap:1rem;align-items:center;justify-content:space-between;margin-bottom:.9rem}
+.nw-events-sec{background:var(--cream)}
+.nw-help{background:var(--white)}
+.nw-tools[hidden],.nw-find[hidden],.nw-chips[hidden],.nw-empty[hidden],.nw-eempty[hidden],.nw-btn[hidden],.nw-seg[hidden]{display:none}
+
+/* headings: one scale for every section */
+.nw-h2{font-family:'Merriweather',serif;font-weight:700;font-size:clamp(1.5rem,3vw,2rem);line-height:1.25;color:var(--green3);margin:0 0 .45rem;text-wrap:balance}
+.nw-subline{margin:0;font-size:1.02rem;line-height:1.7;color:var(--navy);max-width:46rem}
+.nw-shead{margin-bottom:1.75rem}
+
+/* filters and search (shown only when they can do something) */
+.nw-tools{display:flex;flex-wrap:wrap;align-items:flex-end;justify-content:space-between;gap:1rem 1.5rem;margin-bottom:1.5rem}
 .nw-chips{display:flex;flex-wrap:wrap;gap:.5rem}
-.nw-chip{min-height:44px;padding:.5rem 1.1rem;border:1.5px solid var(--border2);border-radius:999px;background:#fff;color:var(--green3);font:600 .92rem 'Outfit',sans-serif;cursor:pointer;transition:background .2s ease,border-color .2s ease,color .2s ease}
+.nw-chip{min-height:44px;padding:.5rem 1.1rem;border:1.5px solid var(--border2);border-radius:999px;background:#fff;color:var(--green3);font:600 .95rem 'Outfit',sans-serif;cursor:pointer;transition:background .2s ease,border-color .2s ease,color .2s ease}
 .nw-chip:hover{border-color:var(--green)}
-.nw-chip[aria-pressed="true"]{background:var(--green3);border-color:var(--green3);color:#fff}
-.nw-search{min-height:46px;width:min(100%,320px);padding:.6rem 1rem;border:1.5px solid var(--border2);border-radius:10px;font:1rem 'Outfit',sans-serif;color:var(--navy);background:#fff}
-.nw-search:focus{outline:none;border-color:var(--green);box-shadow:0 0 0 4px rgba(30,122,62,.14)}
-.nw-tools{display:flex;align-items:center;gap:1rem;min-height:2rem;margin-bottom:1.5rem;color:var(--gray);font-size:.95rem}
-.nw-reset{border:0;background:none;color:var(--green2);font:600 .95rem 'Outfit',sans-serif;cursor:pointer;text-decoration:underline;text-underline-offset:3px;min-height:44px}
-.nw-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,300px),1fr));gap:1.25rem}
-.nw-card{min-width:0;display:flex;flex-direction:column;background:#fff;border:1px solid var(--border);border-radius:16px;overflow:hidden;transition:border-color .2s ease,transform .2s ease}
-.nw-card:hover{border-color:var(--green-dim);transform:translateY(-3px)}
-.nw-featured{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,1fr);margin-bottom:1.25rem}
-.nw-featured .nw-title{font-size:1.5rem}
-.nw-img{aspect-ratio:16/9;background:var(--green-pale);overflow:hidden}
-.nw-img img{display:block;width:100%;height:100%;object-fit:cover}
-.nw-body{padding:1.4rem;display:flex;flex-direction:column;gap:.6rem;flex:1}
-.nw-meta{display:flex;gap:.75rem;align-items:center;font-size:.85rem;color:var(--gray)}
-.nw-cat{background:var(--green-pale);color:var(--green2);font-weight:700;border-radius:999px;padding:.2rem .7rem}
-.nw-title{font-family:'Merriweather',serif;font-size:1.15rem;line-height:1.35;color:var(--green3);margin:0}
-.nw-sum{color:var(--navy);line-height:1.65;margin:0;font-size:.98rem}
-.nw-more{align-self:flex-start;margin-top:auto;min-height:44px;display:inline-flex;align-items:center;border:0;background:none;padding:0;color:var(--green2);font:700 .95rem 'Outfit',sans-serif;cursor:pointer;text-decoration:none}
-.nw-more:hover{text-decoration:underline;text-underline-offset:3px}
-.nw-empty{border:1.5px dashed var(--border2);border-radius:16px;padding:3rem 1.5rem;text-align:center;color:var(--gray);background:var(--offwhite)}
-.nw-empty p{margin:0 0 1rem;font-size:1.05rem}
-.nw-ev{background:var(--offwhite)}
-.nw-ev-head{display:flex;flex-wrap:wrap;gap:1rem;align-items:flex-end;justify-content:space-between;margin-bottom:1.5rem}
-.nw-past{min-height:44px;padding:.5rem 1.2rem;border:1.5px solid var(--border2);border-radius:10px;background:#fff;color:var(--green3);font:600 .95rem 'Outfit',sans-serif;cursor:pointer}
-.nw-past:hover{border-color:var(--green)}
-.nw-events{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,380px),1fr));gap:1.25rem}
-.nw-event{display:flex;flex-direction:column;gap:0;background:#fff;border:1px solid var(--border);border-radius:16px;overflow:hidden;padding:0}
-.nw-eimg{aspect-ratio:2/1;background:var(--green-pale);overflow:hidden}
-.nw-eimg img{display:block;width:100%;height:100%;object-fit:cover}
-.nw-erow{display:flex;gap:1.1rem;padding:1.3rem}
-.nw-date{flex:none;width:64px;height:72px;border-radius:12px;background:var(--green3);color:#fff;display:grid;place-content:center;text-align:center;line-height:1.1}
-.nw-date strong{font-family:'Merriweather',serif;font-size:1.5rem}
-.nw-date span{font-size:.8rem;text-transform:uppercase;letter-spacing:.08em}
-.nw-ebody{display:flex;flex-direction:column;gap:.4rem;min-width:0}
-.nw-emeta{margin:0;color:var(--gray);font-size:.92rem}
-#nw-dialog{border:0;border-radius:18px;padding:0;width:min(92vw,720px);max-height:88vh;color:var(--navy)}
-#nw-dialog::backdrop{background:rgba(8,28,18,.5)}
-.nw-d-in{padding:2rem;position:relative}
-.nw-d-in p{line-height:1.75;margin:0 0 1rem}
-.nw-d-close{position:absolute;top:.8rem;right:.8rem;width:44px;height:44px;border:0;border-radius:50%;background:var(--green-pale);color:var(--green3);font-size:1.3rem;cursor:pointer}
-@media(max-width:820px){.nw-featured{grid-template-columns:minmax(0,1fr)}}
-@media(prefers-reduced-motion:reduce){.nw-card,.nw-chip{transition:none}.nw-card:hover{transform:none}}
+.nw-chip[aria-pressed="true"]{background:var(--green2);border-color:var(--green2);color:#fff}
+.nw-find{display:flex;flex-direction:column;gap:.35rem;flex:0 1 20rem;min-width:min(100%,16rem)}
+.nw-find label{font-size:.95rem;font-weight:600;color:var(--green3)}
+.nw-find input{display:block;width:100%;min-height:48px;padding:.75rem .95rem;border:1.5px solid #bdbdbd;border-radius:10px;font:400 1rem 'Outfit',sans-serif;color:var(--green3);background:#fff;transition:border-color .2s ease,box-shadow .2s ease}
+.nw-find input::placeholder{color:#707070}
+.nw-find input:focus{outline:none;border-color:var(--green);box-shadow:0 0 0 4px rgba(30,122,62,.16)}
+.nw-status{margin:0 0 1rem;font-size:.95rem;color:#3f5348}
+.nw-status:empty{display:none}
+
+/* story parts */
+.nw-meta{display:flex;flex-wrap:wrap;align-items:center;gap:.4rem .85rem;margin:0;font-size:.92rem;color:#3f5348}
+.nw-cat{background:var(--green-pale);color:var(--green3);font-weight:600;padding:.15rem .7rem;border-radius:999px}
+.nw-title{font-family:'Merriweather',serif;font-weight:700;font-size:1.18rem;line-height:1.35;color:var(--green3);margin:0;text-wrap:balance}
+.nw-sum{margin:0;font-size:1.02rem;line-height:1.75;color:var(--navy);max-width:62ch;text-wrap:pretty}
+.nw-more{align-self:flex-start;min-height:44px;display:inline-flex;align-items:center;padding:0;background:none;border:0;color:var(--green2);font:600 1rem 'Outfit',sans-serif;text-decoration:underline;text-decoration-thickness:1.5px;text-underline-offset:4px;cursor:pointer}
+.nw-more:hover{color:var(--green3);text-decoration-thickness:2.5px}
+.nw-body{display:flex;flex-direction:column;gap:.7rem;padding:1.4rem 1.5rem 1.5rem}
+.nw-body .nw-more{margin-top:auto}
+.nw-img,.nw-eimg{background:var(--green-dim)}
+.nw-img img,.nw-eimg img{display:block;width:100%;height:100%;object-fit:cover}
+.nw-img img{aspect-ratio:16/9}
+.nw-eimg img{aspect-ratio:2/1}
+
+/* featured story */
+.nw-featured{display:grid;grid-template-columns:minmax(0,1.08fr) minmax(0,1fr);overflow:hidden;margin-bottom:1.5rem;background:#fff;border:1px solid var(--border2);border-radius:16px;box-shadow:var(--shadow)}
+.nw-featured.nw-noimg{grid-template-columns:minmax(0,1fr)}
+.nw-featured .nw-body{justify-content:center;padding:2.2rem 2.4rem}
+.nw-featured .nw-title{font-size:clamp(1.5rem,3vw,2rem);line-height:1.25}
+.nw-featured .nw-sum{font-size:1.08rem}
+.nw-featured .nw-img,.nw-event .nw-eimg{position:relative;min-height:240px}
+.nw-featured .nw-img img,.nw-event .nw-eimg img{position:absolute;inset:0;width:100%;height:100%;aspect-ratio:auto}
+
+/* other stories */
+.nw-grid{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,300px),1fr));gap:1.25rem}
+.nw-grid>li{display:flex;min-width:0}
+.nw-card{display:flex;flex-direction:column;width:100%;overflow:hidden;background:#fff;border:1px solid var(--border2);border-radius:14px;box-shadow:var(--shadow)}
+.nw-card .nw-body{flex:1}
+
+.nw-empty{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:1rem 1.5rem;padding:1.5rem 1.8rem;border:1px dashed var(--border2);border-radius:14px;background:var(--offwhite)}
+.nw-empty p{margin:0;font-size:1.05rem;line-height:1.7;color:var(--navy)}
+
+/* events */
+.nw-ehead{display:flex;flex-wrap:wrap;align-items:flex-end;justify-content:space-between;gap:1rem 2rem;margin-bottom:1.75rem}
+.nw-seg{display:inline-flex;gap:4px;padding:4px;border:1.5px solid var(--border2);border-radius:999px;background:#fff}
+.nw-seg button{display:inline-flex;align-items:center;gap:.5rem;min-height:44px;padding:.45rem 1.15rem;border:0;border-radius:999px;background:transparent;color:var(--green3);font:600 .95rem 'Outfit',sans-serif;cursor:pointer;transition:background .2s ease,color .2s ease}
+.nw-seg button:hover{background:var(--green-pale)}
+.nw-seg button[aria-pressed="true"]{background:var(--green2);color:#fff}
+.nw-seg b{font-weight:600;opacity:.85}
+.nw-events{list-style:none;margin:0;padding:0;display:grid;gap:1.25rem}
+.nw-event{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);overflow:hidden;border:1px solid var(--border2);border-radius:14px;background:#fff;box-shadow:var(--shadow)}
+.nw-event.nw-noimg{grid-template-columns:minmax(0,1fr)}
+.nw-ebody{display:flex;align-items:flex-start;gap:1.25rem;padding:1.7rem 1.9rem}
+.nw-date{flex:none;display:flex;flex-direction:column;align-items:center;width:74px;padding:.65rem .3rem .6rem;border-radius:12px;background:var(--green2);color:#fff;line-height:1.15;text-align:center}
+.nw-date strong{font-family:'Merriweather',serif;font-size:1.9rem;font-weight:900}
+.nw-date span{font-size:.92rem;font-weight:600}
+.nw-date small{font-size:.8rem;opacity:.9}
+.nw-etext{display:flex;flex-direction:column;gap:.6rem;min-width:0}
+.nw-emeta{display:flex;flex-wrap:wrap;gap:.2rem 1.2rem;margin:0;font-size:.95rem;color:#3f5348}
+.nw-eempty{margin:0;padding:1.4rem 1.6rem;border:1px dashed var(--border2);border-radius:14px;background:#fff;font-size:1.02rem;line-height:1.7;color:var(--navy)}
+
+/* prospective students */
+.nw-help-grid{display:grid;grid-template-columns:minmax(0,.8fr) minmax(0,1.2fr);gap:2rem 4rem;align-items:start}
+.nw-help-list{list-style:none;margin:0;padding:0}
+.nw-help-list>li{display:grid;grid-template-columns:minmax(0,1fr) auto;align-items:center;gap:.75rem 1.5rem;padding:1.2rem 0;border-top:1px solid var(--border2)}
+.nw-help-list>li:last-child{border-bottom:1px solid var(--border2)}
+.nw-help-list h3{font-family:'Merriweather',serif;font-weight:700;font-size:1.08rem;line-height:1.35;color:var(--green3);margin:0 0 .3rem}
+.nw-help-list p{margin:0;max-width:46ch;font-size:1rem;line-height:1.65;color:var(--navy)}
+.nw-help-act{display:flex;flex-wrap:wrap;gap:.5rem}
+.nw-btn{display:inline-flex;align-items:center;gap:.6rem;min-height:46px;padding:.55rem 1.15rem;border:1.5px solid var(--border2);border-radius:12px;background:#fff;color:var(--green3);font:600 .97rem 'Outfit',sans-serif;text-decoration:none;cursor:pointer;transition:border-color .2s ease,background .2s ease}
+.nw-btn:hover{border-color:var(--green)}
+.nw-btn svg{width:22px;height:22px;fill:currentColor;flex:none}
+.nw-btn-solid{background:var(--green2);border-color:var(--green2);color:#fff}
+.nw-btn-solid:hover{background:var(--green3);border-color:var(--green3)}
+.nw-wa svg{color:#25D366}.nw-fb svg{color:#1877F2}.nw-yt svg{color:#FF0000}.nw-em svg{color:var(--green2)}
+.nw-wa:hover{border-color:#25D366}.nw-fb:hover{border-color:#1877F2}.nw-yt:hover{border-color:#FF0000}
+
+/* story pop-up */
+.nw-dialog{width:100%;max-width:min(42rem,calc(100% - 2rem));max-height:calc(100dvh - 2rem);padding:0;border:0;border-radius:18px;background:#fff;color:var(--navy);box-shadow:0 30px 80px rgba(13,35,24,.35)}
+.nw-dialog::backdrop{background:rgba(13,35,24,.55);-webkit-backdrop-filter:blur(3px);backdrop-filter:blur(3px)}
+.nw-d-in{position:relative;display:flex;flex-direction:column;gap:.85rem;max-height:calc(100dvh - 2rem);padding:2.3rem 2.3rem 2.1rem;overflow:auto}
+.nw-d-title{font-size:clamp(1.4rem,3.4vw,1.8rem);line-height:1.3;padding-right:2.5rem}
+.nw-d-body p{margin:0 0 1rem;max-width:62ch;font-size:1.05rem;line-height:1.8}
+.nw-d-body p:last-child{margin-bottom:0}
+.nw-d-close{position:absolute;top:.7rem;right:.7rem;width:44px;height:44px;border:0;border-radius:50%;background:var(--green-pale);color:var(--green3);font-size:1.7rem;line-height:1;cursor:pointer}
+.nw-d-close:hover{background:var(--green-dim)}
+
+/* keyboard focus: deep green ring */
+.nw-chip:focus-visible,.nw-more:focus-visible,.nw-seg button:focus-visible,.nw-btn:focus-visible,.nw-d-close:focus-visible{outline:3px solid var(--green3);outline-offset:3px}
+@media(prefers-reduced-motion:reduce){.nw-chip,.nw-btn,.nw-seg button,.nw-find input{transition:none}}
+
+@media(max-width:900px){
+ .nw-featured{grid-template-columns:minmax(0,1fr)}
+ .nw-featured .nw-body{padding:1.6rem 1.5rem 1.7rem}
+ .nw-featured .nw-img{min-height:0}
+ .nw-featured .nw-img img{position:static;height:auto;aspect-ratio:16/9}
+ .nw-help-grid{grid-template-columns:minmax(0,1fr)}
+}
+@media(max-width:760px){
+ .nw-event{grid-template-columns:minmax(0,1fr)}
+ .nw-event .nw-eimg{min-height:0}
+ .nw-event .nw-eimg img{position:static;height:auto;aspect-ratio:2/1}
+ .nw-help-list>li{grid-template-columns:minmax(0,1fr)}
+ .nw-ebody{padding:1.4rem 1.3rem}
+}
+@media(max-width:768px){
+ .nw-sec,.nw-events-sec,.nw-help{padding:2.75rem 1rem}
+ .nw-d-in{padding:2rem 1.4rem 1.6rem}
+}
+@media(max-width:420px){.nw-seg{width:100%}.nw-seg button{flex:1;justify-content:center}.nw-btn{flex:1;justify-content:center}}
 </style>
 
 <script>document.documentElement.classList.add('pl')</script>
+
+<script>
+/* ==============================================================
+   EDIT HERE TO UPDATE THE NEWS AND EVENTS PAGE
+   Nothing else in this file needs to change.
+
+   HOW TO ADD A STORY (about two minutes, works from a phone)
+   1. Upload the photo to the assets/news folder on GitHub
+      (Add file, then Upload files). Use a small .webp or .jpg.
+   2. Open news.html on GitHub and tap the pencil icon (Edit).
+   3. Find the line  window.DOEH_NEWS=[  below. Copy one whole
+      { ... } block, paste it directly under that line, and put
+      a comma after its closing brace.
+   4. Change the words inside the quotes. Keep the quotes,
+      the colons and the commas.
+   5. Commit the change. The site updates after it redeploys.
+   If you are not sure, paste your edited block to Claude and
+   ask for a check before you commit.
+
+   If a comma goes wrong, the page stays intact and News simply
+   shows "The first update will be posted here soon." Fix the
+   block and the stories come back.
+   A story with no title, or with a date that is not YYYY-MM-DD, is
+   skipped instead of breaking the page.
+
+   FIELDS FOR A STORY
+     date      required, written YYYY-MM-DD
+     category  required, one of: Department, Research, Notices, Students, Alumni
+     title     required
+     summary   one or two sentences
+     image     optional, for example 'assets/news/my-photo.webp'
+     imageAlt  optional, a short description of the image for screen readers
+     link      optional, opens in a new tab
+     linkText  optional, the link label (default: Read more)
+     body      optional, the full story shown in a pop-up;
+               separate paragraphs with \n\n
+
+   EVENTS work the same way inside DOEH_EVENTS, with
+     date, title, time, venue, summary, image, imageAlt, link.
+   Events dated today or later show under Upcoming events.
+   Older events move to Recent events on their own.
+   ============================================================== */
+window.DOEH_NEWS=[
+  {
+    date:'2026-09-12',
+    category:'Department',
+    title:'Programs at DOEH, BUHS: overview video',
+    summary:'Watch an overview of the three programs offered by the department on the DOEH YouTube channel.',
+    image:'https://i.ytimg.com/vi/1h3EhLBKmSY/hqdefault.jpg',
+    link:'https://www.youtube.com/watch?v=1h3EhLBKmSY',
+    linkText:'Watch on YouTube'
+  }
+];
+window.DOEH_EVENTS=[
+  {
+    date:'2026-04-28',
+    title:'World Day for Safety and Health at Work rally',
+    /* PLACEHOLDER: add time and venue here once the department confirms them. */
+    summary:'A rally to mark World Day for Safety and Health at Work, held on 28 April 2026.',
+    image:'assets/events/world-day-2026-rally.webp',
+    imageAlt:'Banner for the World Day for Safety and Health at Work rally, 28 April 2026'
+  }
+];
+</script>
+
 
 
 </head>
@@ -163,40 +312,76 @@
   </div>
 </section>
 
-<section class="sec nw-sec" aria-labelledby="nw-stories">
-  <div class="sec-inner">
-    <h2 class="sec-title" id="nw-stories">Latest stories</h2>
-    <div class="sec-divider"></div>
-    <div class="nw-controls">
-      <div class="nw-chips" role="group" aria-label="Filter stories by category">
-        <button class="nw-chip" type="button" data-cat="all" aria-pressed="true">All stories</button>
-        <button class="nw-chip" type="button" data-cat="Department" aria-pressed="false">Department</button>
-        <button class="nw-chip" type="button" data-cat="Research" aria-pressed="false">Research</button>
-        <button class="nw-chip" type="button" data-cat="Notices" aria-pressed="false">Notices</button>
-        <button class="nw-chip" type="button" data-cat="Students" aria-pressed="false">Students</button>
-        <button class="nw-chip" type="button" data-cat="Alumni" aria-pressed="false">Alumni</button>
-      </div>
-      <input class="nw-search" id="nw-search" type="search" placeholder="Search stories" aria-label="Search stories" autocomplete="off"/>
+<section class="nw-sec" id="stories" aria-labelledby="nw-stories-h">
+  <div class="nw-wrap">
+    <div class="nw-shead">
+      <h2 class="nw-h2" id="nw-stories-h">Latest stories</h2>
+      <p class="nw-subline">Announcements and updates from the department.</p>
     </div>
-    <div class="nw-tools"><span id="nw-status" aria-live="polite"></span><button class="nw-reset" id="nw-reset" type="button" hidden>Reset view</button></div>
+    <div class="nw-tools" id="nw-tools" hidden>
+      <div class="nw-chips" id="nw-chips" role="group" aria-label="Filter stories by category"></div>
+      <div class="nw-find" id="nw-find" hidden>
+        <label for="nw-search">Search stories</label>
+        <input id="nw-search" type="search" autocomplete="off" spellcheck="false" placeholder="Search by title or keyword"/>
+      </div>
+    </div>
+    <p class="nw-status" id="nw-status" role="status" aria-live="polite"></p>
     <div id="nw-featured"></div>
-    <div id="nw-feed" class="nw-grid"></div>
-    <div id="nw-empty" class="nw-empty" hidden>
-      <p id="nw-empty-text">The first update will be posted here soon.</p>
-      <a class="btn btn-green" href="https://wa.me/8801911383522?text=Hello%20DOEH%2C%20I%20would%20like%20to%20receive%20department%20notices." target="_blank" rel="noopener">Get notices on WhatsApp</a>
+    <ul class="nw-grid" id="nw-feed" role="list"></ul>
+    <div class="nw-empty" id="nw-empty" hidden>
+      <p id="nw-empty-text"></p>
+      <button class="nw-btn" id="nw-reset" type="button" hidden>Show all stories</button>
     </div>
   </div>
 </section>
 
-<section class="sec nw-ev" aria-labelledby="nw-events-h">
-  <div class="sec-inner">
-    <div class="nw-ev-head">
-      <div><h2 class="sec-title" id="nw-events-h">Upcoming events</h2><div class="sec-divider"></div>
-      <p class="sec-sub" id="nw-events-sub" style="margin:0">Seminars, field sessions and conversations you can join.</p></div>
-      <button class="nw-past" id="nw-past" type="button" aria-pressed="false">View past events</button>
+<section class="nw-events-sec" id="events" aria-labelledby="nw-events-h">
+  <div class="nw-wrap">
+    <div class="nw-ehead">
+      <div>
+        <h2 class="nw-h2" id="nw-events-h">Events</h2>
+        <p class="nw-subline" id="nw-events-sub"></p>
+      </div>
+      <div class="nw-seg" id="nw-seg" role="group" aria-label="Show events" hidden>
+        <button type="button" id="nw-b-up" aria-pressed="true">Upcoming <b id="nw-n-up">0</b></button>
+        <button type="button" id="nw-b-past" aria-pressed="false">Past <b id="nw-n-past">0</b></button>
+      </div>
     </div>
-    <div id="nw-events" class="nw-events"></div>
-    <div id="nw-ev-empty" class="nw-empty" hidden><p id="nw-ev-empty-text">No upcoming events right now. Check back soon.</p></div>
+    <ul class="nw-events" id="nw-events" role="list"></ul>
+    <p class="nw-eempty" id="nw-ev-empty" hidden></p>
+  </div>
+</section>
+
+<section class="nw-help" aria-labelledby="nw-help-h">
+  <div class="nw-wrap nw-help-grid">
+    <div>
+      <h2 class="nw-h2" id="nw-help-h">For prospective students</h2>
+      <p class="nw-subline">Where to find the essentials before you apply.</p>
+    </div>
+    <ul class="nw-help-list" role="list">
+      <li>
+        <div><h3>Admissions</h3><p>The department admits students in two intakes, Spring and Fall. Apply through the BUHS online portal.</p></div>
+        <div class="nw-help-act"><a class="nw-btn nw-btn-solid" href="https://onlineapplication.buhs.ac.bd/admission/" target="_blank" rel="noopener">Apply now<span class="nw-sr"> (opens in a new tab)</span></a></div>
+      </li>
+      <li>
+        <div><h3>Academic calendar</h3><p>See the Spring and Fall calendars and the yearly planner.</p></div>
+        <div class="nw-help-act"><a class="nw-btn" href="academics.html#calendar">View the calendar</a></div>
+      </li>
+      <li>
+        <div><h3>Watch and follow</h3><p>Department videos and updates are shared on YouTube and Facebook.</p></div>
+        <div class="nw-help-act">
+          <a class="nw-btn nw-yt" href="https://www.youtube.com/@doeh_buhs" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M21.6 7.2a2.5 2.5 0 0 0-1.8-1.8C18.2 5 12 5 12 5s-6.2 0-7.8.4A2.5 2.5 0 0 0 2.4 7.2C2 8.8 2 12 2 12s0 3.2.4 4.8a2.5 2.5 0 0 0 1.8 1.8C5.8 19 12 19 12 19s6.2 0 7.8-.4a2.5 2.5 0 0 0 1.8-1.8c.4-1.6.4-4.8.4-4.8s0-3.2-.4-4.8zM10 15V9l5.2 3L10 15z"/></svg><span>YouTube</span><span class="nw-sr"> (opens in a new tab)</span></a>
+          <a class="nw-btn nw-fb" href="https://www.facebook.com/share/19NrNVjGQQ/" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M22 12a10 10 0 1 0-11.6 9.9v-7H7.9V12h2.5V9.8c0-2.5 1.5-3.9 3.8-3.9 1.1 0 2.2.2 2.2.2v2.5h-1.3c-1.2 0-1.6.8-1.6 1.6V12h2.8l-.4 2.9h-2.3v7A10 10 0 0 0 22 12z"/></svg><span>Facebook</span><span class="nw-sr"> (opens in a new tab)</span></a>
+        </div>
+      </li>
+      <li>
+        <div><h3>Ask the department</h3><p>Questions about programs or notices? Message us on WhatsApp or write to oeh@buhs.ac.bd.</p></div>
+        <div class="nw-help-act">
+          <a class="nw-btn nw-wa" href="https://wa.me/8801911383522?text=Hello%20DOEH%2C%20I%20would%20like%20to%20know%20more%20about%20the%20programs." target="_blank" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg><span>WhatsApp</span><span class="nw-sr"> (opens in a new tab)</span></a>
+          <a class="nw-btn nw-em" href="mailto:oeh@buhs.ac.bd"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M3 6.5A2.5 2.5 0 0 1 5.5 4h13A2.5 2.5 0 0 1 21 6.5v11a2.5 2.5 0 0 1-2.5 2.5h-13A2.5 2.5 0 0 1 3 17.5v-11zm2.4-.3L12 11.3l6.6-5.1a.5.5 0 0 0-.1-.2h-13a.5.5 0 0 0-.1.2zM19 8.5l-6.4 4.9a1 1 0 0 1-1.2 0L5 8.5v9c0 .3.2.5.5.5h13c.3 0 .5-.2.5-.5v-9z"/></svg><span>Email</span></a>
+        </div>
+      </li>
+    </ul>
   </div>
 </section>
 
@@ -213,12 +398,12 @@
 </section>
 </main>
 
-<dialog id="nw-dialog" aria-labelledby="nw-d-title">
+<dialog class="nw-dialog" id="nw-dialog" aria-labelledby="nw-d-title">
   <div class="nw-d-in">
-    <button class="nw-d-close" id="nw-d-close" type="button" aria-label="Close">&times;</button>
-    <p class="nw-meta" id="nw-d-cat"></p>
-    <h2 class="nw-title" id="nw-d-title" style="font-size:1.6rem;margin-bottom:1rem"></h2>
-    <div id="nw-d-body"></div>
+    <button class="nw-d-close" id="nw-d-close" type="button" aria-label="Close story">&times;</button>
+    <div class="nw-meta" id="nw-d-meta"></div>
+    <h2 class="nw-title nw-d-title" id="nw-d-title"></h2>
+    <div class="nw-d-body" id="nw-d-body"></div>
   </div>
 </dialog>
 <aside aria-label="Chat on WhatsApp"><a class="wa-float" href="https://wa.me/8801911383522?text=Hello%20DOEH%2C%20I%20would%20like%20to%20know%20more%20about%20the%20programs." target="_blank" rel="noopener" aria-label="Chat with DOEH on WhatsApp"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg></a></aside>
@@ -283,8 +468,166 @@
 
 
 <script src="js/main.js?v=20261101"></script>
-<script src="js/news-data.js?v=20261101"></script>
-<script src="js/news.js?v=20261101"></script>
+<script>
+/* DOEH News and Events renderer. Reads window.DOEH_NEWS and window.DOEH_EVENTS from the data block at the top of this file. */
+(function(){
+  'use strict';
+  var $=function(s,r){return (r||document).querySelector(s);};
+  var fmt=new Intl.DateTimeFormat('en-GB',{day:'numeric',month:'short',year:'numeric'});
+  var ORDER=['Department','Research','Notices','Students','Alumni'];
+
+  function parse(d){var p=String(d||'').split('-');return new Date(+p[0],(+p[1]||1)-1,+p[2]||1);}
+  function okDate(d){return /^\d{4}-\d{2}-\d{2}$/.test(String(d||''))&&!isNaN(parse(d).getTime());}
+  function el(tag,cls,text){var e=document.createElement(tag);if(cls)e.className=cls;if(text!=null)e.textContent=text;return e;}
+  function safeUrl(u){return /^https?:\/\//i.test(u||'')?u:'';}
+  function when(d){var t=el('time','',fmt.format(parse(d)));t.setAttribute('datetime',d);return t;}
+
+  var news=(Array.isArray(window.DOEH_NEWS)?window.DOEH_NEWS:[]).filter(function(n){return n&&n.title&&okDate(n.date);});
+  var events=(Array.isArray(window.DOEH_EVENTS)?window.DOEH_EVENTS:[]).filter(function(e){return e&&e.title&&okDate(e.date);});
+  var today=new Date();today.setHours(0,0,0,0);
+  var upcoming=events.filter(function(e){return parse(e.date)>=today;}).sort(function(a,b){return parse(a.date)-parse(b.date);});
+  var past=events.filter(function(e){return parse(e.date)<today;}).sort(function(a,b){return parse(b.date)-parse(a.date);});
+  var state={cat:'all',q:'',past:!upcoming.length&&past.length>0,first:true};
+  var lastFocus=null;
+
+  /* image that removes itself when the file is missing */
+  function pic(src,alt,w,h,box){
+    var i=document.createElement('img');i.src=src;i.alt=alt||'';i.width=w;i.height=h;i.loading='lazy';i.decoding='async';
+    i.addEventListener('error',function(){
+      var card=box.closest('article');if(card)card.classList.add('nw-noimg');
+      if(box.parentNode)box.parentNode.removeChild(box);
+    });
+    return i;
+  }
+
+  function action(n,cls){
+    if(n.body){var b=el('button',cls,n.linkText||'Read the story');b.type='button';b.addEventListener('click',function(){openStory(n,b);});return b;}
+    if(safeUrl(n.link)){
+      var a=el('a',cls,n.linkText||'Read more');a.href=n.link;a.target='_blank';a.rel='noopener';
+      a.appendChild(el('span','nw-sr',' (opens in a new tab)'));return a;
+    }
+    return null;
+  }
+
+  function newsCard(n,featured){
+    var a=el('article',featured?'nw-featured':'nw-card');
+    if(n.image){var f=el('div','nw-img');f.appendChild(pic(n.image,n.imageAlt,1600,900,f));a.appendChild(f);}
+    else if(featured){a.classList.add('nw-noimg');}
+    var b=el('div','nw-body');
+    var m=el('p','nw-meta');m.appendChild(el('span','nw-cat',n.category||'News'));m.appendChild(when(n.date));
+    b.appendChild(m);
+    b.appendChild(el(featured?'h2':'h3','nw-title',n.title));
+    if(n.summary)b.appendChild(el('p','nw-sum',n.summary));
+    var act=action(n,'nw-more');if(act)b.appendChild(act);
+    a.appendChild(b);return a;
+  }
+
+  /* ----- filters: built from the categories that actually have stories ----- */
+  var cats=ORDER.filter(function(c){return news.some(function(n){return n.category===c;});});
+  news.forEach(function(n){if(n.category&&cats.indexOf(n.category)<0)cats.push(n.category);});
+  function buildTools(){
+    var showChips=cats.length>1,showFind=news.length>=4;
+    $('#nw-tools').hidden=!(showChips||showFind);
+    $('#nw-find').hidden=!showFind;
+    var wrap=$('#nw-chips');wrap.textContent='';wrap.hidden=!showChips;
+    if(!showChips)return;
+    ['all'].concat(cats).forEach(function(c){
+      var b=el('button','nw-chip',c==='all'?'All stories':c);b.type='button';b.setAttribute('data-cat',c);
+      b.setAttribute('aria-pressed',c==='all'?'true':'false');
+      b.addEventListener('click',function(){
+        state.cat=c;
+        Array.prototype.forEach.call(wrap.children,function(x){x.setAttribute('aria-pressed',x===b?'true':'false');});
+        renderNews();
+      });
+      wrap.appendChild(b);
+    });
+  }
+
+  function renderNews(){
+    var q=state.q.toLowerCase();
+    var items=news.filter(function(n){
+      return (state.cat==='all'||n.category===state.cat)&&(!q||((n.title||'')+' '+(n.summary||'')).toLowerCase().indexOf(q)>-1);
+    }).sort(function(a,b){return parse(b.date)-parse(a.date);});
+    var feat=$('#nw-featured'),feed=$('#nw-feed');
+    feat.textContent='';feed.textContent='';
+    if(items.length){
+      var f=newsCard(items[0],true);
+      feat.appendChild(f);
+      items.slice(1).forEach(function(n){var li=el('li');li.appendChild(newsCard(n,false));feed.appendChild(li);});
+    }
+    var filtered=state.cat!=='all'||q;
+    $('#nw-empty').hidden=items.length>0;
+    $('#nw-empty-text').textContent=filtered?'No stories match this view.':'No stories yet. New updates from the department will appear here.';
+    $('#nw-reset').hidden=!filtered;
+    $('#nw-status').textContent=filtered&&items.length?('Showing '+items.length+(items.length===1?' story':' stories')):'';
+    state.first=false;
+  }
+
+  /* ----- events ----- */
+  function renderEvents(){
+    var items=state.past?past:upcoming;
+    var list=$('#nw-events');list.textContent='';
+    items.forEach(function(e){
+      var d=parse(e.date),li=el('li'),a=el('article','nw-event'+(e.image?'':' nw-noimg'));
+      if(e.image){var im=el('div','nw-eimg');im.appendChild(pic(e.image,e.imageAlt,1583,791,im));a.appendChild(im);}
+      var row=el('div','nw-ebody');
+      var t=el('time','nw-date');t.setAttribute('datetime',e.date);
+      t.appendChild(el('strong','',String(d.getDate())));
+      t.appendChild(el('span','',d.toLocaleString('en-GB',{month:'short'})));
+      t.appendChild(el('small','',String(d.getFullYear())));
+      var tx=el('div','nw-etext');tx.appendChild(el('h3','nw-title',e.title));
+      var meta=[e.time,e.venue].filter(Boolean);
+      if(meta.length){var mp=el('p','nw-emeta');meta.forEach(function(x){mp.appendChild(el('span','',x));});tx.appendChild(mp);}
+      if(e.summary)tx.appendChild(el('p','nw-sum',e.summary));
+      if(safeUrl(e.link)){
+        var l=el('a','nw-more',e.linkText||'Register or learn more');l.href=e.link;l.target='_blank';l.rel='noopener';
+        l.appendChild(el('span','nw-sr',' (opens in a new tab)'));tx.appendChild(l);
+      }
+      row.appendChild(t);row.appendChild(tx);a.appendChild(row);li.appendChild(a);list.appendChild(li);
+    });
+    var none=$('#nw-ev-empty');none.hidden=items.length>0;
+    none.textContent=!events.length?'No events are listed right now. Check back soon.':(state.past?'No past events yet.':'No upcoming events right now.');
+    $('#nw-events-sub').textContent=state.past?'Recent department events.':'Upcoming department events you can join.';
+    $('#nw-n-up').textContent=upcoming.length;$('#nw-n-past').textContent=past.length;
+    $('#nw-b-up').setAttribute('aria-pressed',state.past?'false':'true');
+    $('#nw-b-past').setAttribute('aria-pressed',state.past?'true':'false');
+    $('#nw-seg').hidden=!events.length;
+  }
+
+  /* ----- story pop-up: focus goes in, and returns to the button on close ----- */
+  function openStory(n,trigger){
+    var dlg=$('#nw-dialog');lastFocus=trigger||document.activeElement;
+    var meta=$('#nw-d-meta');meta.textContent='';
+    meta.appendChild(el('span','nw-cat',n.category||'News'));meta.appendChild(when(n.date));
+    $('#nw-d-title').textContent=n.title;
+    var body=$('#nw-d-body');body.textContent='';
+    String(n.body||'').split(/\n\s*\n/).forEach(function(p){if(p.trim())body.appendChild(el('p','',p.trim()));});
+    document.documentElement.classList.add('nw-lock');
+    if(typeof dlg.showModal==='function')dlg.showModal();else dlg.setAttribute('open','');
+  }
+  function closed(){
+    document.documentElement.classList.remove('nw-lock');
+    if(lastFocus&&lastFocus.focus)lastFocus.focus();
+  }
+
+  buildTools();
+  renderNews();
+  renderEvents();
+
+  $('#nw-search').addEventListener('input',function(e){state.q=e.target.value.trim();renderNews();});
+  $('#nw-reset').addEventListener('click',function(){
+    state.cat='all';state.q='';$('#nw-search').value='';
+    Array.prototype.forEach.call($('#nw-chips').children,function(x){x.setAttribute('aria-pressed',x.getAttribute('data-cat')==='all'?'true':'false');});
+    renderNews();
+  });
+  $('#nw-b-up').addEventListener('click',function(){state.past=false;renderEvents();});
+  $('#nw-b-past').addEventListener('click',function(){state.past=true;renderEvents();});
+  var dlg=$('#nw-dialog');
+  $('#nw-d-close').addEventListener('click',function(){dlg.close();});
+  dlg.addEventListener('click',function(e){if(e.target===dlg)dlg.close();});
+  dlg.addEventListener('close',closed);
+})();
+</script>
 
 </body>
 </html>
