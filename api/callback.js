@@ -42,7 +42,8 @@ module.exports = async (req, res) => {
     });
     const data = await r.json();
     if (!data.access_token) {
-      return send(401, page(origin, 'error', { message: 'GitHub did not accept the login.' }));
+      const why = String(data.error_description || data.error || 'no reason given').replace(/[<>&"]/g, '').slice(0, 160);
+      return send(401, page(origin, 'error', { message: 'GitHub did not accept the login. Reason: ' + why + ' (' + String(data.error || 'none').replace(/[^a-z_]/g, '') + ')' }));
     }
     return send(200, page(origin, 'success', { token: data.access_token, provider: 'github' }));
   } catch (e) {
