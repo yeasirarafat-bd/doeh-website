@@ -159,46 +159,9 @@ html.nw-lock{overflow:hidden}
 <script>document.documentElement.classList.add('pl')</script>
 
 <script>
-/* ==============================================================
-   EDIT HERE TO UPDATE THE NEWS AND EVENTS PAGE
-   Nothing else in this file needs to change.
-
-   HOW TO ADD A STORY (about two minutes, works from a phone)
-   1. Upload the photo to the assets/news folder on GitHub
-      (Add file, then Upload files). Use a small .webp or .jpg.
-   2. Open news.html on GitHub and tap the pencil icon (Edit).
-   3. Find the line  window.DOEH_NEWS=[  below. Copy one whole
-      { ... } block, paste it directly under that line, and put
-      a comma after its closing brace.
-   4. Change the words inside the quotes. Keep the quotes,
-      the colons and the commas.
-   5. Commit the change. The site updates after it redeploys.
-   If you are not sure, paste your edited block to Claude and
-   ask for a check before you commit.
-
-   If a comma goes wrong, the page stays intact and News simply
-   shows "The first update will be posted here soon." Fix the
-   block and the stories come back.
-   A story with no title, or with a date that is not YYYY-MM-DD, is
-   skipped instead of breaking the page.
-
-   FIELDS FOR A STORY
-     date      required, written YYYY-MM-DD
-     category  required, one of: Department, Research, Notices, Students, Alumni
-     title     required
-     summary   one or two sentences
-     image     optional, for example 'assets/news/my-photo.webp'
-     imageAlt  optional, a short description of the image for screen readers
-     link      optional, opens in a new tab
-     linkText  optional, the link label (default: Read more)
-     body      optional, the full story shown in a pop-up;
-               separate paragraphs with \n\n
-
-   EVENTS work the same way inside DOEH_EVENTS, with
-     date, title, time, venue, summary, image, imageAlt, link.
-   Events dated today or later show under Upcoming events.
-   Older events move to Recent events on their own.
-   ============================================================== */
+/* Fallback copy only. News and Events now live in content/news.json and
+   content/events.json and are managed from /admin. This copy is used only if
+   those files cannot be loaded. */
 window.DOEH_NEWS=[
   {
     date:'2026-09-12',
@@ -214,10 +177,7 @@ window.DOEH_EVENTS=[
   {
     date:'2026-04-28',
     title:'World Day for Safety and Health at Work rally',
-    /* PLACEHOLDER: add time and venue here once the department confirms them. */
-    summary:'A rally to mark World Day for Safety and Health at Work, held on 28 April 2026.',
-    image:'assets/events/world-day-2026-rally.webp',
-    imageAlt:'Banner for the World Day for Safety and Health at Work rally, 28 April 2026'
+    summary:'A rally to mark World Day for Safety and Health at Work, held on 28 April 2026.'
   }
 ];
 </script>
@@ -470,11 +430,11 @@ window.DOEH_EVENTS=[
 <script src="js/main.js?v=20261101"></script>
 <script>
 /* DOEH News and Events renderer. Reads window.DOEH_NEWS and window.DOEH_EVENTS from the data block at the top of this file. */
-(function(){
+window.doehRenderNews=function(){
   'use strict';
   var $=function(s,r){return (r||document).querySelector(s);};
   var fmt=new Intl.DateTimeFormat('en-GB',{day:'numeric',month:'short',year:'numeric'});
-  var ORDER=['Department','Research','Notices','Students','Alumni'];
+  var ORDER=['Announcements','Achievements','Press Releases','Department'];
 
   function parse(d){var p=String(d||'').split('-');return new Date(+p[0],(+p[1]||1)-1,+p[2]||1);}
   function okDate(d){return /^\d{4}-\d{2}-\d{2}$/.test(String(d||''))&&!isNaN(parse(d).getTime());}
@@ -626,6 +586,17 @@ window.DOEH_EVENTS=[
   $('#nw-d-close').addEventListener('click',function(){dlg.close();});
   dlg.addEventListener('click',function(e){if(e.target===dlg)dlg.close();});
   dlg.addEventListener('close',closed);
+};
+/* Loads content/news.json and content/events.json, shows only items that are not draft or archived, then draws the page. */
+(function(){
+  function get(u){return fetch(u,{cache:'no-cache'}).then(function(r){return r.ok?r.json():null;}).catch(function(){return null;});}
+  function live(d){return (d&&Array.isArray(d.items))?d.items.filter(function(x){return x&&x.status!=='draft'&&x.status!=='archived';}):null;}
+  Promise.all([get('content/news.json'),get('content/events.json')]).then(function(r){
+    var n=live(r[0]),e=live(r[1]);
+    if(n)window.DOEH_NEWS=n;
+    if(e)window.DOEH_EVENTS=e;
+    window.doehRenderNews();
+  });
 })();
 </script>
 
