@@ -1,0 +1,99 @@
+backend:
+  name: github
+  repo: yeasirarafat-bd/doeh-website
+  branch: staging/doeh-pages
+  base_url: https://doeh-website-git-staging-doeh-pages-yeasir-arafat1.vercel.app
+  auth_endpoint: api/auth
+  auth_scope: public_repo
+
+site_url: https://doeh-website-git-staging-doeh-pages-yeasir-arafat1.vercel.app
+display_url: https://doeh-website-git-staging-doeh-pages-yeasir-arafat1.vercel.app
+
+media_folder: assets/uploads
+public_folder: /assets/uploads
+publish_mode: simple
+locale: en
+
+collections:
+  - name: news
+    label: News
+    editor:
+      preview: false
+    description: Stories shown on the News and Events page. Tap Add Story to write a new one.
+    files:
+      - name: stories
+        label: News stories
+        file: content/news.json
+        media_folder: /assets/news
+        public_folder: /assets/news
+        fields:
+          - label: Stories
+            label_singular: Story
+            name: items
+            widget: list
+            add_to_top: true
+            summary: "{{fields.title}}"
+            fields:
+              - label: Status
+                name: status
+                widget: select
+                options: [{label: Published, value: published}, {label: Draft (hidden), value: draft}, {label: Archived (hidden), value: archived}]
+                default: published
+              - label: Date
+                name: date
+                widget: datetime
+                default: "{{now}}"
+                date_format: "YYYY-MM-DD"
+                time_format: false
+                format: "YYYY-MM-DD"
+              - label: Category
+                name: category
+                widget: select
+                options: [Announcements, Achievements, Press Releases, Department]
+              - {label: Title, name: title, widget: string}
+              - {label: Summary, name: summary, widget: text, required: false, hint: "One or two sentences shown on the card."}
+              - {label: Full story, name: body, widget: text, required: false, hint: "Optional. Leave a blank line between paragraphs."}
+              - {label: Photo, name: image, widget: image, required: false}
+              - {label: Photo description, name: imageAlt, widget: string, required: false, hint: "Short description of the photo for screen readers. Fill this in when you add a photo."}
+              - {label: Link, name: link, widget: string, required: false, hint: "Optional. Must start with https://"}
+              - {label: Link label, name: linkText, widget: string, required: false, hint: "For example: Read more"}
+
+  - name: events
+    label: Events
+    editor:
+      preview: false
+    description: Events shown on the News and Events page. Past events move to Recent events on their own.
+    files:
+      - name: events
+        label: Events
+        file: content/events.json
+        media_folder: /assets/events
+        public_folder: /assets/events
+        fields:
+          - label: Events
+            label_singular: Event
+            name: items
+            widget: list
+            add_to_top: true
+            summary: "{{fields.title}}"
+            fields:
+              - label: Status
+                name: status
+                widget: select
+                options: [{label: Published, value: published}, {label: Draft (hidden), value: draft}, {label: Archived (hidden), value: archived}]
+                default: published
+              - label: Date
+                name: date
+                widget: datetime
+                default: "{{now}}"
+                date_format: "YYYY-MM-DD"
+                time_format: false
+                format: "YYYY-MM-DD"
+              - {label: Title, name: title, widget: string}
+              - {label: Time, name: time, widget: string, required: false, hint: "For example: 10:00 AM"}
+              - {label: Venue, name: venue, widget: string, required: false}
+              - {label: Summary, name: summary, widget: text, required: false}
+              - {label: Photo, name: image, widget: image, required: false}
+              - {label: Photo description, name: imageAlt, widget: string, required: false, hint: "Short description of the photo for screen readers."}
+              - {label: Link, name: link, widget: string, required: false, hint: "Registration or details page. Must start with https://"}
+              - {label: Link label, name: linkText, widget: string, required: false}
