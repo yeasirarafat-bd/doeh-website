@@ -122,6 +122,20 @@
 @media(max-width:768px){
  .about-preview-inner{grid-template-columns:1fr;gap:2rem}
 }
+
+/* Home hero: looping story video or photo slides under a gradient */
+.hm-media{position:absolute;inset:0;z-index:0;overflow:hidden;background:linear-gradient(135deg,#0b3a20 0%,#14663a 55%,#1D9E75 100%)}
+.hm-media video,.hm-slide{position:absolute;inset:0;width:100%;height:100%;opacity:0;transition:opacity 1.4s ease}
+.hm-media video{object-fit:cover}
+.hm-slide{background-size:cover;background-position:center 72%}
+.hm-media video.on,.hm-slide.on{opacity:1}
+.hm-media::after{content:'';position:absolute;inset:0;background:linear-gradient(100deg,rgba(9,52,29,.90) 0%,rgba(14,69,38,.62) 50%,rgba(29,158,117,.18) 100%)}
+.cover::before{z-index:1}
+.cover-inner{z-index:2}
+.welcome{z-index:3}
+.hm-hero .cover-inner{min-height:clamp(380px,38vw,520px)}
+@media(min-width:900px){.sec .grid{grid-template-columns:repeat(3,minmax(0,1fr))}}
+@media(prefers-reduced-motion:reduce){.hm-media video,.hm-slide{transition:none}}
 </style>
 
 <script>document.documentElement.classList.add('pl')</script>
@@ -199,10 +213,10 @@
 <div class="legacy-nav-stub" aria-hidden="true"><button class="hamburger" id="hamburger" onclick="toggleMenu()" tabindex="-1"></button><div class="mobile-menu" id="mobile-menu"></div></div>
 <main id="main" tabindex="-1">
 <!-- HERO -->
-<section class="cover" aria-label="Welcome to DOEH">
+<section class="cover hm-hero" aria-label="Welcome to DOEH">
+  <div class="hm-media" id="hm-media" aria-hidden="true"></div>
   <div class="welcome" id="welcome" aria-hidden="true"></div>
   <div class="cover-inner">
-    <svg class="cover-sprout" viewBox="0 0 120 160" aria-hidden="true" focusable="false"><path pathLength="1" d="M60 156C60 122 58 98 62 70"/><path pathLength="1" d="M62 100C40 98 26 84 24 64C44 64 60 76 62 100"/><path pathLength="1" d="M61 80C82 78 96 64 98 44C78 44 63 56 61 80"/><path pathLength="1" d="M62 72C60 58 62 46 70 36C76 48 72 62 62 72"/></svg>
     <div class="cover-text">
       <p class="cover-eyebrow">Dhaka, Bangladesh</p>
       <h1>Occupational and <em>Environmental Health</em></h1>
@@ -210,12 +224,11 @@
       <p class="cover-lead">We prepare professionals to protect people and the environment where the risk is highest: factory floors, construction sites, and industries across Bangladesh.</p>
       <div class="cover-actions">
         <a class="btn btn-white" href="academics.html">Explore programs</a>
-        <a class="btn btn-outline-w" href="alumni.html">Meet our alumni &rarr;</a>
+        <a class="btn btn-outline-w" href="alumni.html">Meet our alumni</a>
       </div>
     </div>
     <div class="cover-media">
       <div class="cover-stack">
-        <div class="yt" data-yt="1h3EhLBKmSY" data-mode="loop" data-title="Programs at DOEH, BUHS"><button class="yt-poster" type="button" aria-label="Play video: Programs at DOEH, BUHS"><img src="https://i.ytimg.com/vi/1h3EhLBKmSY/hqdefault.jpg" alt="" width="480" height="360" loading="lazy" decoding="async"/><span class="yt-play" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></span></button></div>
         <div class="cover-glass"><div class="cg-row"><img src="assets/iosh-logo.png" alt="IOSH logo" width="704" height="385"/><div><p class="cg-label">IOSH accredited</p><p class="cg-desc">BPH &amp; MPH programs</p></div></div></div>
       </div>
     </div>
@@ -236,7 +249,7 @@
  <div>
  <div class="sec-title" style="margin-bottom:.4rem">Who we are</div>
  <div class="sec-divider"></div>
- <p style="font-size:.92rem;color:var(--gray);line-height:1.8;margin-bottom:1.5rem">The Department of Occupational and Environmental Health, established under the Faculty of Public Health at Bangladesh University of Health Sciences, prepares graduates to identify, evaluate, and control workplace and environmental health hazards through rigorous academic training and field research.
+ <p style="font-size:1.05rem;color:var(--gray);line-height:1.8;margin-bottom:1.5rem">The Department of Occupational and Environmental Health, established under the Faculty of Public Health at Bangladesh University of Health Sciences, prepares graduates to identify, evaluate, and control workplace and environmental health hazards through rigorous academic training and field research.
  </p>
  <a class="btn btn-green" href="about.html">Learn more about DOEH</a>
  </div>
@@ -266,7 +279,7 @@
  <h2>Bachelor of Public Health</h2>
  <p class="prog-spec">Occupational &amp; Environmental Health &amp; Safety</p>
  <p class="prog-duration">4 years · 8 semesters · 160 credits</p>
- <a class="btn btn-ghost" href="academics.html">View program →</a>
+ <a class="btn btn-ghost" href="academics.html">View program</a>
  </div>
  <div class="prog-card">
  <div class="prog-badges">
@@ -276,7 +289,7 @@
  <h2>Master of Public Health</h2>
  <p class="prog-spec">Occupational Health &amp; Safety</p>
  <p class="prog-duration">1.5 years · 3 semesters · 70 credits</p>
- <a class="btn btn-ghost" href="academics.html">View program →</a>
+ <a class="btn btn-ghost" href="academics.html">View program</a>
  </div>
  <div class="prog-card">
  <div class="prog-badges">
@@ -285,7 +298,7 @@
  <h2>Master of Public Health</h2>
  <p class="prog-spec">Environmental Health &amp; Safety</p>
  <p class="prog-duration">2 years · 4 semesters · 80 credits</p>
- <a class="btn btn-ghost" href="academics.html">View program →</a>
+ <a class="btn btn-ghost" href="academics.html">View program</a>
  </div>
  </div>
  </div>
@@ -297,20 +310,19 @@
   <div class="sec-inner">
     <div class="sec-title">Where DOEH graduates work</div>
     <div class="sec-divider"></div>
-    <p class="sec-sub">Based on verified alumni registrations.</p>
     <div class="grid" data-sectors-grid></div>
   </div>
 </section>
 
 <!-- LATEST NEWS (reads js/news-data.js) -->
-<section class="sec" style="background:var(--offwhite)">
+<section class="sec" hidden style="background:var(--offwhite)">
  <div class="sec-inner">
  <div style="display:flex;align-items:flex-end;justify-content:space-between;margin-bottom:1.5rem;flex-wrap:wrap;gap:1rem">
  <div>
  <div class="sec-title" style="margin-bottom:.4rem">News &amp; Events</div>
  <div class="sec-divider" style="margin-bottom:0"></div>
  </div>
- <a class="btn btn-ghost" href="news.html">View all news →</a>
+ <a class="btn btn-ghost" href="news.html">View all news</a>
  </div>
  <div class="grid" data-home-news></div>
   </div>
@@ -329,51 +341,9 @@
 </section>
 
 <!-- PARTNERS: hidden until the department confirms every name. Move this block out of the comment to publish.
-<section class="partners-sec">
- <div class="sec-inner">
- <div class="sec-title">Partners &amp; collaborators</div>
- <div class="sec-divider"></div>
- <p class="sec-sub">We work with leading national and international organizations in public health, research, and occupational safety. <em>(List pending department confirmation.)</em></p>
- <div class="partner-pills">
- <div class="partner-pill">WHO Bangladesh</div>
- <div class="partner-pill">IEDCR</div>
- <div class="partner-pill">DGHS</div>
- <div class="partner-pill">UNICEF</div>
- <div class="partner-pill">BRAC</div>
- <div class="partner-pill">icddr,b</div>
- <div class="partner-pill">Ministry of Health</div>
- <div class="partner-pill">BUHS</div>
- <div class="partner-pill">Diabetic Association of Bangladesh</div>
- </div>
- </div>
-</section>
 -->
 
 <!-- FEATURED ALUMNI -->
-<section class="sec" style="background:var(--cream)">
- <div class="sec-inner">
- <div style="display:flex;align-items:flex-end;justify-content:space-between;margin-bottom:1.5rem;flex-wrap:wrap;gap:1rem">
- <div>
- <div class="sec-title" style="margin-bottom:.4rem">Real journeys. Real impact.</div>
- <div class="sec-divider" style="margin-bottom:0"></div>
- </div>
- <a class="btn btn-ghost" href="alumni.html">View all alumni →</a>
- </div>
- <div class="grid">
- <div class="story-card">
- <div class="story-quote">"</div>
- <p class="story-text">DOEH gave me the foundation to work in occupational health at an international level. The field training and research exposure was unlike anything else available in Bangladesh.</p>
- <div class="story-author">
- <div class="story-av">YA</div>
- <div>
- <div class="story-name">Yeasir Arafat</div>
- <div class="story-role">HSE Officer · Hudson Manpower, Saudi Arabia</div>
- </div>
- </div>
- </div>
- </div>
- </div>
-</section>
 
 <!-- CTA BANNER -->
 <section class="cta-banner-sec">
@@ -383,7 +353,7 @@
  <p>Reach out to the department to learn more about our programs and how to apply.</p>
  <div class="cta-btn-row">
  <a class="btn btn-white" href="academics.html">Explore programs</a>
- <a class="btn btn-outline-w" href="contact.html">Contact us →</a>
+ <a class="btn btn-outline-w" href="contact.html">Contact us</a>
  </div>
  </div>
 </section>
@@ -473,5 +443,68 @@
 <script src="js/news-data.js?v=20261101"></script>
 <script src="js/main.js?v=20261101"></script>
 
+<script>
+/* Home hero: a muted loop video at assets/video/home-hero.webm and home-hero.mp4. On phones, with data saver, or if the video is missing, photo slides hero-1.webp to hero-8.webp from assets/hero/ play instead. */
+(function(){
+  var box=document.getElementById('hm-media');if(!box)return;
+  var reduce=window.matchMedia&&matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var conn=navigator.connection||{};
+  var lite=conn.saveData||/2g/.test(conn.effectiveType||'');
+  var small=window.matchMedia&&matchMedia('(max-width:768px)').matches;
+  var started=false,videoOn=false;
+  function slides(){
+    if(started)return;started=true;
+    var HERO=[1,2,3,4,5,6,7,8].map(function(n){return 'assets/hero/hero-'+n+'.webp';});
+    var ok={},left=HERO.length;
+    function done(){left--;if(left)return;go(HERO.filter(function(s){return ok[s];}));}
+    function go(list){
+      if(!list.length)return;
+      list.forEach(function(src){var d=document.createElement('div');d.className='hm-slide';d.style.backgroundImage='url("'+src+'")';box.insertBefore(d,box.firstChild);});
+      var sl=box.querySelectorAll('.hm-slide'),n=0;sl[0].classList.add('on');
+      if(list.length<2||reduce)return;
+      setInterval(function(){if(document.hidden)return;sl[n].classList.remove('on');n=(n+1)%sl.length;sl[n].classList.add('on');},6000);
+    }
+    HERO.forEach(function(src){var im=new Image();im.onload=function(){ok[src]=1;done();};im.onerror=done;im.src=src;});
+  }
+  if(reduce||lite||small){slides();return;}
+  var v=document.createElement('video');
+  v.muted=true;v.loop=true;v.playsInline=true;v.setAttribute('playsinline','');v.preload='auto';
+  [['webm','video/webm'],['mp4','video/mp4']].forEach(function(t){var s=document.createElement('source');s.src='assets/video/home-hero.'+t[0];s.type=t[1];v.appendChild(s);});
+  v.addEventListener('playing',function(){if(started)return;videoOn=true;v.classList.add('on');});
+  v.addEventListener('error',function(){if(!videoOn)slides();},true);
+  box.insertBefore(v,box.firstChild);
+  var p=v.play();if(p&&p.catch)p.catch(function(){slides();});
+  setTimeout(function(){if(!videoOn)slides();},6000);
+})();
+
+/* Home news: newest three published items from content/news.json and content/events.json. The block stays hidden when there are none. */
+(function(){
+  var root=document.querySelector('[data-home-news]');if(!root)return;
+  var sec=root.closest('section');
+  function get(u){return fetch(u,{cache:'no-cache'}).then(function(r){return r.ok?r.json():null;}).catch(function(){return null;});}
+  function live(d){return(d&&Array.isArray(d.items))?d.items.filter(function(x){return x&&x.title&&x.date&&x.status!=='draft'&&x.status!=='archived';}):[];}
+  Promise.all([get('content/news.json'),get('content/events.json')]).then(function(r){
+    var items=[];
+    live(r[0]).forEach(function(n){items.push({type:'news',tag:n.category||'News',title:n.title,date:n.date,sum:n.summary});});
+    live(r[1]).forEach(function(e){items.push({type:'event',tag:'Event',title:e.title,date:e.date,sum:e.summary});});
+    items.sort(function(a,b){return String(b.date).localeCompare(String(a.date));});
+    items=items.slice(0,3);root.textContent='';
+    if(!items.length){sec.hidden=true;return;}
+    var fmt=new Intl.DateTimeFormat('en-GB',{day:'numeric',month:'short',year:'numeric'});
+    items.forEach(function(it){
+      var a=document.createElement('a');a.className='news-card';a.href='news.html';
+      var top=document.createElement('div');top.style.cssText='display:flex;align-items:center;justify-content:space-between;margin-bottom:.5rem;gap:.5rem';
+      var tag=document.createElement('span');tag.className='news-tag';tag.textContent=it.tag;
+      tag.style.cssText=it.type==='event'?'background:#e6f1fb;color:#185FA5':'background:var(--green-pale);color:var(--green2)';
+      var d=document.createElement('span');d.className='news-date';var p=String(it.date).split('-');d.textContent=fmt.format(new Date(+p[0],(+p[1]||1)-1,+p[2]||1));
+      top.appendChild(tag);top.appendChild(d);a.appendChild(top);
+      var ti=document.createElement('div');ti.className='news-title';ti.textContent=it.title;a.appendChild(ti);
+      if(it.sum){var sm=document.createElement('p');sm.className='news-sum';sm.textContent=it.sum;a.appendChild(sm);}
+      root.appendChild(a);
+    });
+    sec.hidden=false;
+  });
+})();
+</script>
 </body>
 </html>
