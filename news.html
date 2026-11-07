@@ -154,6 +154,32 @@ html.nw-lock{overflow:hidden}
  .nw-d-in{padding:2rem 1.4rem 1.6rem}
 }
 @media(max-width:420px){.nw-seg{width:100%}.nw-seg button{flex:1;justify-content:center}.nw-btn{flex:1;justify-content:center}}
+
+/* v2 look: gradient hero with photo slides, tidy cards */
+.cover{background:linear-gradient(135deg,#0b3a20 0%,#14663a 55%,#1D9E75 100%)}
+.nw-slides{position:absolute;inset:0;z-index:0;overflow:hidden}
+.nw-slide{position:absolute;inset:-3%;background-size:cover;background-position:center 72%;opacity:0;transition:opacity 1.4s ease}
+.nw-slide.on{opacity:1;animation:nwzoom 9s ease-out forwards}
+@keyframes nwzoom{from{transform:scale(1)}to{transform:scale(1.06)}}
+.nw-slides::after{content:'';position:absolute;inset:0;background:linear-gradient(100deg,rgba(9,52,29,.90) 0%,rgba(14,69,38,.60) 48%,rgba(29,158,117,.16) 100%)}
+.cover::before{z-index:1}
+.cover-inner{z-index:2}
+.nw-sec{background:linear-gradient(180deg,#fff 0%,#f3f9f5 100%)}
+.nw-h2::after{content:'';display:block;width:56px;height:4px;border-radius:4px;margin-top:.65rem;background:linear-gradient(90deg,var(--green),#1D9E75)}
+.nw-subline{font-size:1.1rem}
+.nw-grid{grid-template-columns:repeat(auto-fill,minmax(min(100%,340px),1fr));gap:1.5rem}
+.nw-card{border-radius:16px;transition:transform .2s ease,box-shadow .2s ease}
+.nw-card::before{content:'';display:block;height:5px;background:linear-gradient(90deg,var(--green3),var(--green) 60%,#1D9E75)}
+.nw-card:hover,.nw-event:hover{transform:translateY(-3px);box-shadow:0 14px 30px rgba(14,69,38,.14)}
+.nw-body{padding:1.6rem 1.7rem 1.7rem}
+.nw-title{font-size:1.3rem}
+.nw-sum{font-size:1.06rem}
+.nw-events{grid-template-columns:repeat(auto-fill,minmax(min(100%,440px),1fr));gap:1.5rem}
+.nw-event{display:flex;flex-direction:column;border-radius:16px;transition:transform .2s ease,box-shadow .2s ease}
+.nw-event .nw-eimg{order:-1;position:static;min-height:0}
+.nw-event .nw-eimg img{position:static;height:auto;aspect-ratio:16/9}
+.nw-ebody{padding:1.6rem 1.7rem}
+@media(prefers-reduced-motion:reduce){.nw-slide.on{animation:none}.nw-slide,.nw-card,.nw-event{transition:none}}
 </style>
 
 <script>document.documentElement.classList.add('pl')</script>
@@ -256,6 +282,7 @@ window.DOEH_EVENTS=[
 <div class="legacy-nav-stub" aria-hidden="true"><button class="hamburger" id="hamburger" onclick="toggleMenu()" tabindex="-1"></button><div class="mobile-menu" id="mobile-menu"></div></div>
 <main id="main" tabindex="-1">
 <section class="cover" aria-labelledby="nw-h1">
+  <div class="nw-slides" id="nw-slides" aria-hidden="true"></div>
   <div class="cover-inner">
     <div class="cover-text">
       <p class="cover-eyebrow">DOEH news and events</p>
@@ -511,9 +538,9 @@ window.doehRenderNews=function(){
     var feat=$('#nw-featured'),feed=$('#nw-feed');
     feat.textContent='';feed.textContent='';
     if(items.length){
-      var f=newsCard(items[0],true);
-      feat.appendChild(f);
-      items.slice(1).forEach(function(n){var li=el('li');li.appendChild(newsCard(n,false));feed.appendChild(li);});
+      var useFeat=items.length>=3&&!!items[0].image;
+      if(useFeat)feat.appendChild(newsCard(items[0],true));
+      (useFeat?items.slice(1):items).forEach(function(n){var li=el('li');li.appendChild(newsCard(n,false));feed.appendChild(li);});
     }
     var filtered=state.cat!=='all'||q;
     $('#nw-empty').hidden=items.length>0;
@@ -597,6 +624,22 @@ window.doehRenderNews=function(){
     if(e)window.DOEH_EVENTS=e;
     window.doehRenderNews();
   });
+})();
+
+/* Hero photo slides: put hero-1.webp ... hero-8.webp in assets/hero/. Missing files are skipped. */
+(function(){
+  var HERO=[1,2,3,4,5,6,7,8].map(function(n){return 'assets/hero/hero-'+n+'.webp';});
+  var box=document.getElementById('nw-slides');if(!box)return;
+  var ok={},left=HERO.length;
+  function done(){left--;if(left)return;start(HERO.filter(function(s){return ok[s];}));}
+  function start(list){
+    if(!list.length)return;
+    list.forEach(function(src){var d=document.createElement('div');d.className='nw-slide';d.style.backgroundImage='url("'+src+'")';box.appendChild(d);});
+    var sl=box.children,n=0;sl[0].classList.add('on');
+    if(list.length<2||(window.matchMedia&&matchMedia('(prefers-reduced-motion: reduce)').matches))return;
+    setInterval(function(){if(document.hidden)return;sl[n].classList.remove('on');n=(n+1)%sl.length;sl[n].classList.add('on');},6000);
+  }
+  HERO.forEach(function(src){var im=new Image();im.onload=function(){ok[src]=1;done();};im.onerror=done;im.src=src;});
 })();
 </script>
 
