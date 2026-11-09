@@ -5,6 +5,8 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 <title>Academics | DOEH, BUHS</title>
 <meta name="description" content="Explore the BPH and MPH programs in Occupational and Environmental Health at BUHS, admission requirements, curriculum, faculty, and academic calendar."/>
+<link rel="icon" type="image/png" sizes="64x64" href="assets/favicon-64.png"/>
+<link rel="apple-touch-icon" href="assets/apple-touch-icon.png"/>
 <link rel="canonical" href="https://doeh-buhs.ac/academics.html"/>
 
 <meta property="og:type" content="website"/>
@@ -257,7 +259,7 @@ body{padding-top:0!important}
 .wa-float{position:fixed;right:1.25rem;bottom:1.25rem;z-index:70;width:58px;height:58px;border-radius:50%;background:#25D366;color:#fff;display:grid;place-items:center;box-shadow:0 10px 24px rgba(0,0,0,.25);transition:transform .2s ease}
 .wa-float:hover{transform:translateY(-3px)}
 .wa-float svg{width:32px;height:32px;fill:currentColor}
-.cta-btn:focus-visible,.wa-float:focus-visible{outline:3px solid #ffd84d;outline-offset:3px}
+.cta-btn:focus-visible,.wa-float:focus-visible{outline:3px solid #fff;box-shadow:0 0 0 6px #0e4526;outline-offset:3px}
 @media(max-width:600px){.cta-band{padding:2.5rem 1rem}.wa-float{right:.9rem;bottom:.9rem}}
 
 /* Mobile and tablet: bar (logo, name, search, divider, hamburger) and the sliding menu */
@@ -372,6 +374,114 @@ body{padding-top:0!important}
 @media(prefers-reduced-motion:reduce){.utility-nav .btn-apply,.cta-btn,.nav-item>a{transition:none}.utility-nav .btn-apply:hover,.cta-btn:hover{transform:none}}
 /* ===== END SITE HEADER AND FOOTER ===== */
 section[id]{scroll-margin-top:110px}
+
+/* Academics v2: photo hero, programs with depth, field practice, calendar */
+.ac-eyebrow{font:700 .78rem 'Outfit',sans-serif;letter-spacing:.14em;text-transform:uppercase;color:var(--green2);margin-bottom:.55rem}
+.sec-title{letter-spacing:-.01em}
+.ac-cover{position:relative;overflow:hidden;background:#0b3a20;padding:0 2rem}
+.ac-cover::before{z-index:2}
+.ac-cover-bg{position:absolute;inset:0;background:url(assets/hero/hero-3.webp) 50% 62%/cover no-repeat;z-index:0;animation:acZoom 18s ease-out forwards}
+.ac-cover-shade{position:absolute;inset:0;z-index:1;background:linear-gradient(100deg,rgba(9,52,29,.93) 0%,rgba(14,69,38,.74) 46%,rgba(29,158,117,.20) 100%)}
+.ac-cover .cover-inner{position:relative;z-index:3;display:flex;align-items:center;min-height:clamp(380px,34vw,480px);padding:clamp(3rem,6vw,4.5rem) 0}
+.ac-cover .cover-text{max-width:44rem}
+.ac-cover .cover-lead{font-size:1.15rem}
+.ac-chips{list-style:none;margin:1.6rem 0 0;padding:0;display:flex;flex-wrap:wrap;gap:.6rem}
+.ac-chips li{padding:.45rem .95rem;border-radius:100px;font:600 .88rem 'Outfit',sans-serif;color:#fff;background:rgba(255,255,255,.14);border:1px solid rgba(255,255,255,.28);backdrop-filter:blur(6px)}
+@keyframes acZoom{from{transform:scale(1)}to{transform:scale(1.07)}}
+/* programs at a glance */
+.ac-glance{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:1.1rem;margin:0 0 2rem}
+.ac-g-item{background:#fff;border:1px solid var(--border);border-radius:16px;padding:1.2rem 1.3rem;box-shadow:0 8px 22px rgba(14,69,38,.07)}
+.ac-g-top{display:flex;align-items:center;justify-content:space-between;gap:.5rem;margin-bottom:.9rem}
+.ac-g-cr{font-size:.92rem;color:var(--gray)}
+.ac-g-cr strong{font:700 1.35rem 'Merriweather',serif;color:var(--green3);margin-right:.15rem}
+.ac-g-bar{height:10px;border-radius:10px;background:var(--green-pale);overflow:hidden}
+.ac-g-bar i{display:block;height:100%;width:0;border-radius:10px;background:linear-gradient(90deg,var(--green2),#1D9E75);transition:width 1.2s cubic-bezier(.2,.7,.2,1) .15s}
+.ac-reveal.in .ac-g-bar i,.ac-glance.in .ac-g-bar i{width:var(--w)}
+.ac-g-yr{margin-top:.55rem;font:600 .95rem 'Outfit',sans-serif;color:var(--green3)}
+/* program cards */
+.prog-full{border-radius:20px;box-shadow:0 1px 2px rgba(14,69,38,.05),0 12px 30px rgba(14,69,38,.08);transition:transform .25s ease,box-shadow .25s ease}
+.prog-full:hover{transform:translateY(-3px);box-shadow:0 2px 4px rgba(14,69,38,.06),0 18px 40px rgba(14,69,38,.13)}
+.prog-full-head{position:relative;border-top:0;border-left:6px solid var(--green);background:linear-gradient(135deg,#fff 0%,#f1f8f3 100%);padding:2.1rem 4.5rem 2rem 2.2rem;gap:1.2rem}
+.prog-full-head:focus-visible{outline:3px solid #fff;box-shadow:0 0 0 6px #0e4526}
+.prog-full-head::after{content:'+';position:absolute;top:1.6rem;right:1.6rem;width:2.4rem;height:2.4rem;display:grid;place-items:center;border-radius:50%;background:linear-gradient(145deg,var(--green2),var(--green));color:#fff;font:400 1.5rem/1 'Outfit',sans-serif;box-shadow:0 6px 14px rgba(14,69,38,.25);transition:transform .25s ease}
+.prog-full-head[aria-expanded="true"]::after{content:'\2212';transform:rotate(180deg)}
+.prog-full-head h2{font-size:clamp(1.25rem,2.2vw,1.65rem);line-height:1.3;margin:.7rem 0 .55rem}
+.prog-full-head p{font-size:1.04rem;line-height:1.75;color:#43564b;max-width:48rem}
+.prog-code-badge,.prog-iosh-badge{font-size:.82rem;padding:.3rem .8rem}
+.prog-stats{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:0;width:100%;max-width:36rem;background:#fff;border:1px solid var(--green-dim);border-radius:14px;overflow:hidden;font-size:.85rem;white-space:normal}
+.prog-stats div{padding:.85rem 1rem;border-left:1px solid var(--green-dim)}
+.prog-stats div:first-child{border-left:0}
+.prog-stats strong{font-size:1.45rem;line-height:1.2}
+.prog-full-body{animation:acFade .35s ease}
+@keyframes acFade{from{opacity:0;transform:translateY(-8px)}to{opacity:1;transform:none}}
+.prog-full-body h3{font:700 1.08rem 'Merriweather',serif;color:var(--green3);margin:1.6rem 0 .6rem}
+.prog-full-body p{font-size:1rem!important;line-height:1.8!important}
+.prog-full-body li{font-size:1rem;line-height:1.7}
+/* field practice */
+.ac-learn{background:linear-gradient(180deg,#fff 0%,#f3f9f5 100%)}
+.ac-field{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:1.3rem;margin-top:.5rem}
+.ac-fcard{position:relative;display:block;margin:0;border-radius:20px;overflow:hidden;aspect-ratio:4/3;background:#0b3a20;box-shadow:0 12px 30px rgba(14,69,38,.14);text-decoration:none}
+.ac-fimg{position:absolute;inset:0;background-size:cover;background-position:50% 55%;transition:transform .6s ease}
+.ac-fcard:hover .ac-fimg{transform:scale(1.06)}
+.ac-fcard figcaption{position:absolute;left:0;right:0;bottom:0;padding:2.4rem 1.2rem 1.1rem;color:#fff;font:600 1.05rem 'Outfit',sans-serif;background:linear-gradient(0deg,rgba(9,52,29,.88),rgba(9,52,29,0))}
+.ac-fmore::after{content:'';position:absolute;inset:0;background:linear-gradient(160deg,rgba(9,52,29,.78),rgba(29,158,117,.55))}
+.ac-fmore-t{position:absolute;z-index:1;left:1.3rem;bottom:1.2rem;color:#fff;font:700 1.25rem 'Merriweather',serif}
+.ac-fmore-t small{display:block;margin-top:.3rem;font:500 .92rem 'Outfit',sans-serif;opacity:.9}
+.ac-fmore:focus-visible{outline:3px solid #fff;box-shadow:0 0 0 6px #0e4526}
+/* calendar */
+.ac-cal-grid{display:grid;grid-template-columns:minmax(0,.85fr) minmax(0,1.15fr);gap:2rem;align-items:start}
+.ac-intake{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:1rem}
+.ac-int-card{display:flex;flex-direction:column;gap:.25rem;padding:1.2rem 1.3rem;border-radius:18px;background:#fff;border:1px solid var(--border);box-shadow:0 10px 26px rgba(14,69,38,.09)}
+.ac-int-ic{width:46px;height:46px;border-radius:14px;display:grid;place-items:center;margin-bottom:.6rem;background:linear-gradient(145deg,var(--green2),#1D9E75);box-shadow:0 8px 16px rgba(14,69,38,.28),inset 0 1px 0 rgba(255,255,255,.3)}
+.ac-int-k{font:600 .92rem 'Outfit',sans-serif;color:var(--gray)}
+.ac-int-v{font:900 1.6rem 'Merriweather',serif;color:var(--green3)}
+.ac-cal-note{margin:1rem 0 1.4rem;font-size:1.02rem;line-height:1.7;color:#43564b}
+.ac-poster{margin:0;max-width:300px}
+.ac-poster img{display:block;width:100%;height:auto;border-radius:16px;box-shadow:0 12px 30px rgba(14,69,38,.16)}
+.ac-planner-btn{display:block;position:relative;width:100%;padding:0;border:0;border-radius:20px;overflow:hidden;cursor:zoom-in;background:#fff;box-shadow:0 14px 36px rgba(14,69,38,.15);transition:transform .25s ease,box-shadow .25s ease}
+.ac-planner-btn:hover{transform:translateY(-3px);box-shadow:0 20px 44px rgba(14,69,38,.2)}
+.ac-planner-btn:focus-visible{outline:3px solid #fff;box-shadow:0 0 0 6px #0e4526}
+.ac-planner-btn img{display:block;width:100%;height:auto}
+.ac-planner-cap{position:absolute;left:0;right:0;bottom:0;padding:2rem 1.2rem 1rem;text-align:left;color:#fff;font:700 1.05rem 'Outfit',sans-serif;background:linear-gradient(0deg,rgba(9,52,29,.9),rgba(9,52,29,0))}
+.ac-planner-cap small{display:block;font:500 .88rem 'Outfit',sans-serif;opacity:.9}
+.ac-lb{border:0;padding:0;border-radius:16px;max-width:min(96vw,1400px);width:100%;background:#fff;overflow:hidden}
+.ac-lb::backdrop{background:rgba(9,52,29,.78)}
+.ac-lb-x{position:absolute;top:.8rem;right:.8rem;z-index:2;padding:.55rem 1.1rem;border:0;border-radius:100px;background:#0e4526;color:#fff;font:600 .95rem 'Outfit',sans-serif;cursor:pointer}
+.ac-lb-in{overflow:auto;max-height:90vh}
+.ac-lb-in img{display:block;width:100%;min-width:900px;height:auto}
+/* reveal animation */
+.ac-js .ac-reveal{opacity:0;transform:translateY(16px);transition:opacity .6s ease,transform .6s ease}
+.ac-js .ac-reveal.in{opacity:1;transform:none}
+.ac-js .ac-fcard:nth-child(2){transition-delay:.08s}.ac-js .ac-fcard:nth-child(3){transition-delay:.16s}
+@media(max-width:900px){.ac-glance,.ac-field{grid-template-columns:1fr}.ac-cal-grid{grid-template-columns:1fr}}
+@media(max-width:768px){
+ .ac-cover{padding:0 1.25rem}
+ .ac-cover .cover-inner{min-height:400px;padding:2.5rem 0}
+ .prog-full-head{padding:1.6rem 3.8rem 1.5rem 1.4rem}
+ .prog-full-head::after{top:1.2rem;right:1rem;width:2.1rem;height:2.1rem}
+ .prog-stats{grid-template-columns:repeat(2,minmax(0,1fr))}
+ .prog-stats div:nth-child(3){border-left:0}
+ .prog-stats div:nth-child(n+3){border-top:1px solid var(--green-dim)}
+ .ac-intake{grid-template-columns:1fr 1fr}
+}
+@media(prefers-reduced-motion:reduce){.ac-cover-bg{animation:none}.ac-js .ac-reveal{opacity:1;transform:none;transition:none}.ac-g-bar i{transition:none;width:var(--w)}.ac-fimg,.prog-full,.ac-planner-btn{transition:none}.prog-full-body{animation:none}}
+
+/* Academics stats band */
+.ac-cover .cover-inner{padding-bottom:calc(clamp(3rem,6vw,4.5rem) + 3.4rem)}
+.ac-stats{position:relative;z-index:6;margin-top:-3.6rem;padding:0 2rem}
+.ac-stats-in{max-width:var(--wrap,82.5rem);margin:0 auto;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:1.2rem}
+.ac-stat{position:relative;display:flex;flex-direction:column;align-items:flex-start;gap:.15rem;padding:1.5rem 1.5rem 1.3rem;border-radius:20px;background:#fff;border:1px solid var(--border);box-shadow:0 18px 44px rgba(9,52,29,.16);overflow:hidden;transition:transform .25s ease,box-shadow .25s ease}
+.ac-stat:hover{transform:translateY(-4px);box-shadow:0 24px 54px rgba(9,52,29,.22)}
+.ac-stat::after{content:'';position:absolute;left:0;bottom:0;height:5px;width:0;background:linear-gradient(90deg,var(--green2),#1D9E75);transition:width 1.7s cubic-bezier(.2,.7,.2,1)}
+.ac-stat.on::after{width:100%}
+.ac-stat-ic{width:52px;height:52px;border-radius:16px;display:grid;place-items:center;margin-bottom:.8rem;background:linear-gradient(145deg,var(--green2),#1D9E75);box-shadow:0 10px 20px rgba(14,69,38,.3),inset 0 1px 0 rgba(255,255,255,.3)}
+.ac-stat.on .ac-stat-ic{animation:acPop .7s ease}
+@keyframes acPop{0%{transform:scale(.8)}60%{transform:scale(1.1)}100%{transform:scale(1)}}
+.ac-stat-n{font:900 clamp(2.4rem,4.4vw,3.4rem)/1.05 'Merriweather',serif;font-variant-numeric:tabular-nums;color:var(--green3);background:linear-gradient(135deg,#0e4526 0%,#1D9E75 100%);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
+.ac-stat-l{font:600 1rem 'Outfit',sans-serif;color:#43564b}
+@media(max-width:900px){.ac-stats-in{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:768px){.ac-stats{margin-top:-2.6rem;padding:0 1.25rem}.ac-stat{padding:1.15rem 1.1rem 1rem}.ac-stat-ic{width:44px;height:44px;margin-bottom:.6rem}.ac-cover .cover-inner{padding-bottom:calc(2.5rem + 2.6rem)}}
+@media(prefers-reduced-motion:reduce){.ac-stat,.ac-stat::after{transition:none}.ac-stat.on .ac-stat-ic{animation:none}.ac-stat::after{width:100%}}
 </style>
 <script>document.documentElement.classList.add('pl')</script>
 
@@ -449,29 +559,46 @@ section[id]{scroll-margin-top:110px}
 <main id="main" tabindex="-1">
 
 
-<section class="cover" aria-label="Academic programs">
+<section class="cover ac-cover" aria-label="Academic programs">
+  <div class="ac-cover-bg" aria-hidden="true"></div>
+  <div class="ac-cover-shade" aria-hidden="true"></div>
   <div class="cover-inner">
     <div class="cover-text">
       <h1>Academic Programs in Occupational &amp; Environmental Health</h1>
       <p class="cover-lead">Explore our BPH and MPH programs, admission requirements, faculty, and what each path leads to.</p>
-    </div>
-    <div class="cover-media">
-      <div class="cover-glass cg-poster">
-        <img src="assets/admissions/gateway-international-jobs.webp" alt="Poster: Gateway open now to professional international jobs. IOSH UK accredited programs: BPH in Occupational and Environmental Health and Safety, MPH in Occupational Health and Safety, MPH in Environmental Health and Safety. Department of Occupational and Environmental Health, BUHS." width="206" height="206"/>
-        <p class="cg-label">Admissions</p>
-      </div>
+      <ul class="ac-chips" aria-label="Highlights">
+        <li>UGC Approved</li>
+        <li>IOSH Accredited</li>
+        <li>Spring and Fall intakes</li>
+      </ul>
     </div>
   </div>
+</section>
+
+<!-- STATS -->
+<section class="ac-stats" aria-label="Academics at a glance">
+ <div class="ac-stats-in">
+  <div class="ac-stat"><span class="ac-stat-ic"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg></span><span class="ac-stat-n" data-to="3">3</span><span class="ac-stat-l">Programs offered</span></div>
+  <div class="ac-stat"><span class="ac-stat-ic"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="9" cy="8" r="3.2"/><path d="M3 20c0-3.3 2.7-6 6-6s6 2.7 6 6"/><circle cx="17.5" cy="9" r="2.4"/><path d="M16.5 14.2c2.6.3 4.5 2.4 4.5 5.1"/></svg></span><span class="ac-stat-n" data-to="12">12</span><span class="ac-stat-l">Faculty and advisors</span></div>
+  <div class="ac-stat"><span class="ac-stat-ic"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="16" rx="3"/><path d="M8 3v4M16 3v4M3 10h18"/></svg></span><span class="ac-stat-n" data-to="2">2</span><span class="ac-stat-l">Intakes every year</span></div>
+  <div class="ac-stat"><span class="ac-stat-ic"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 21h18M5 21V10l7-5 7 5v11"/><path d="M10 21v-6h4v6"/></svg></span><span class="ac-stat-n" data-to="2012" data-from="1990">2012</span><span class="ac-stat-l">Year established</span></div>
+ </div>
 </section>
 
 <!-- PROGRAMS -->
 <section class="sec">
   <div class="sec-inner">
-    <div class="sec-title">Programs offered</div>
+    <div class="ac-eyebrow">Programs</div>
+ <div class="sec-title">Programs offered</div>
     <div class="sec-divider"></div>
     <p class="sec-sub">Click a program to see its full curriculum, admission requirements, and career outcomes.</p>
+ <div class="ac-glance ac-reveal" aria-label="Programs at a glance">
+  <div class="ac-g-item" style="--w:100%"><div class="ac-g-top"><span class="prog-code-badge">BPH</span><span class="ac-g-cr"><strong>160</strong> credits</span></div><div class="ac-g-bar" role="img" aria-label="4 years"><i></i></div><div class="ac-g-yr">4 years</div></div>
+  <div class="ac-g-item" style="--w:37.5%"><div class="ac-g-top"><span class="prog-code-badge">MPH-OHS</span><span class="ac-g-cr"><strong>70</strong> credits</span></div><div class="ac-g-bar" role="img" aria-label="1.5 years"><i></i></div><div class="ac-g-yr">1.5 years</div></div>
+  <div class="ac-g-item" style="--w:50%"><div class="ac-g-top"><span class="prog-code-badge">MPH-EHS</span><span class="ac-g-cr"><strong>80</strong> credits</span></div><div class="ac-g-bar" role="img" aria-label="2 years"><i></i></div><div class="ac-g-yr">2 years</div></div>
+ </div>
 
-    <div class="prog-full">
+    <div class="prog-full ac-reveal">
       <div class="prog-full-head" role="button" tabindex="0" aria-expanded="false" aria-controls="bph-body">
         <div>
           <div class="prog-full-badges"><span class="prog-code-badge">BPH</span><span class="prog-iosh-badge">IOSH Accredited</span></div>
@@ -600,7 +727,7 @@ section[id]{scroll-margin-top:110px}
       </div>
     </div>
 
-    <div class="prog-full">
+    <div class="prog-full ac-reveal">
       <div class="prog-full-head" role="button" tabindex="0" aria-expanded="false" aria-controls="mph-ohs-body">
         <div>
           <div class="prog-full-badges"><span class="prog-code-badge">MPH-OHS</span><span class="prog-iosh-badge">IOSH Accredited</span></div>
@@ -677,7 +804,7 @@ section[id]{scroll-margin-top:110px}
       </div>
     </div>
 
-    <div class="prog-full">
+    <div class="prog-full ac-reveal">
       <div class="prog-full-head" role="button" tabindex="0" aria-expanded="false" aria-controls="mph-ehs-body">
         <div>
           <div class="prog-full-badges"><span class="prog-code-badge">MPH-EHS</span></div>
@@ -760,50 +887,50 @@ section[id]{scroll-margin-top:110px}
 
 
 <!-- CREDIBILITY STRIP -->
-<section class="sec" style="background:var(--green3);padding:3rem 2rem">
+<section class="sec ac-cred" style="background:var(--green3);padding:3.2rem 2rem">
   <div class="sec-inner">
     <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:1.5rem;max-width:900px;margin:0 auto">
       <div style="text-align:center">
-        <div style="width:44px;height:44px;background:rgba(255,255,255,.1);border-radius:12px;display:flex;align-items:center;justify-content:center;margin:0 auto .75rem">
+        <div style="width:52px;height:52px;background:linear-gradient(145deg,rgba(255,255,255,.22),rgba(255,255,255,.06));box-shadow:0 8px 18px rgba(0,0,0,.25),inset 0 1px 0 rgba(255,255,255,.25);border-radius:15px;display:flex;align-items:center;justify-content:center;margin:0 auto .75rem">
           <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#d0f4db" stroke-width="1.8" stroke-linecap="round"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg>
         </div>
-        <div style="font-family:'Merriweather',serif;font-size:.88rem;font-weight:700;color:#fff;margin-bottom:.2rem">UGC Approved</div>
-        <div style="font-size:.75rem;color:rgba(255,255,255,.72)">Recognized programs</div>
+        <div style="font-family:'Merriweather',serif;font-size:1.02rem;font-weight:700;color:#fff;margin-bottom:.2rem">UGC Approved</div>
+        <div style="font-size:.9rem;color:rgba(255,255,255,.72)">Recognized programs</div>
       </div>
       <div style="text-align:center">
-        <div style="width:44px;height:44px;background:rgba(255,255,255,.1);border-radius:12px;display:flex;align-items:center;justify-content:center;margin:0 auto .75rem">
+        <div style="width:52px;height:52px;background:linear-gradient(145deg,rgba(255,255,255,.22),rgba(255,255,255,.06));box-shadow:0 8px 18px rgba(0,0,0,.25),inset 0 1px 0 rgba(255,255,255,.25);border-radius:15px;display:flex;align-items:center;justify-content:center;margin:0 auto .75rem">
           <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#d0f4db" stroke-width="1.8" stroke-linecap="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
         </div>
-        <div style="font-family:'Merriweather',serif;font-size:.88rem;font-weight:700;color:#fff;margin-bottom:.2rem">IOSH Accredited</div>
-        <div style="font-size:.75rem;color:rgba(255,255,255,.72)">International standard</div>
+        <div style="font-family:'Merriweather',serif;font-size:1.02rem;font-weight:700;color:#fff;margin-bottom:.2rem">IOSH Accredited</div>
+        <div style="font-size:.9rem;color:rgba(255,255,255,.72)">International standard</div>
       </div>
       <div style="text-align:center">
-        <div style="width:44px;height:44px;background:rgba(255,255,255,.1);border-radius:12px;display:flex;align-items:center;justify-content:center;margin:0 auto .75rem">
+        <div style="width:52px;height:52px;background:linear-gradient(145deg,rgba(255,255,255,.22),rgba(255,255,255,.06));box-shadow:0 8px 18px rgba(0,0,0,.25),inset 0 1px 0 rgba(255,255,255,.25);border-radius:15px;display:flex;align-items:center;justify-content:center;margin:0 auto .75rem">
           <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#d0f4db" stroke-width="1.8" stroke-linecap="round"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87"/><path d="M16 3.13a4 4 0 010 7.75"/></svg>
         </div>
-        <div style="font-family:'Merriweather',serif;font-size:.88rem;font-weight:700;color:#fff;margin-bottom:.2rem">Strong Faculty</div>
-        <div style="font-size:.75rem;color:rgba(255,255,255,.72)">Experienced professors</div>
+        <div style="font-family:'Merriweather',serif;font-size:1.02rem;font-weight:700;color:#fff;margin-bottom:.2rem">Strong Faculty</div>
+        <div style="font-size:.9rem;color:rgba(255,255,255,.72)">Experienced professors</div>
       </div>
       <div style="text-align:center">
-        <div style="width:44px;height:44px;background:rgba(255,255,255,.1);border-radius:12px;display:flex;align-items:center;justify-content:center;margin:0 auto .75rem">
+        <div style="width:52px;height:52px;background:linear-gradient(145deg,rgba(255,255,255,.22),rgba(255,255,255,.06));box-shadow:0 8px 18px rgba(0,0,0,.25),inset 0 1px 0 rgba(255,255,255,.25);border-radius:15px;display:flex;align-items:center;justify-content:center;margin:0 auto .75rem">
           <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#d0f4db" stroke-width="1.8" stroke-linecap="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
         </div>
-        <div style="font-family:'Merriweather',serif;font-size:.88rem;font-weight:700;color:#fff;margin-bottom:.2rem">Research Driven</div>
-        <div style="font-size:.75rem;color:rgba(255,255,255,.72)">Active research culture</div>
+        <div style="font-family:'Merriweather',serif;font-size:1.02rem;font-weight:700;color:#fff;margin-bottom:.2rem">Research Driven</div>
+        <div style="font-size:.9rem;color:rgba(255,255,255,.72)">Active research culture</div>
       </div>
       <div style="text-align:center">
-        <div style="width:44px;height:44px;background:rgba(255,255,255,.1);border-radius:12px;display:flex;align-items:center;justify-content:center;margin:0 auto .75rem">
+        <div style="width:52px;height:52px;background:linear-gradient(145deg,rgba(255,255,255,.22),rgba(255,255,255,.06));box-shadow:0 8px 18px rgba(0,0,0,.25),inset 0 1px 0 rgba(255,255,255,.25);border-radius:15px;display:flex;align-items:center;justify-content:center;margin:0 auto .75rem">
           <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#d0f4db" stroke-width="1.8" stroke-linecap="round"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
         </div>
-        <div style="font-family:'Merriweather',serif;font-size:.88rem;font-weight:700;color:#fff;margin-bottom:.2rem">Fixed Calendar</div>
-        <div style="font-size:.75rem;color:rgba(255,255,255,.72)">Spring &amp; Fall intake</div>
+        <div style="font-family:'Merriweather',serif;font-size:1.02rem;font-weight:700;color:#fff;margin-bottom:.2rem">Fixed Calendar</div>
+        <div style="font-size:.9rem;color:rgba(255,255,255,.72)">Spring &amp; Fall intake</div>
       </div>
       <div style="text-align:center">
-        <div style="width:44px;height:44px;background:rgba(255,255,255,.1);border-radius:12px;display:flex;align-items:center;justify-content:center;margin:0 auto .75rem">
+        <div style="width:52px;height:52px;background:linear-gradient(145deg,rgba(255,255,255,.22),rgba(255,255,255,.06));box-shadow:0 8px 18px rgba(0,0,0,.25),inset 0 1px 0 rgba(255,255,255,.25);border-radius:15px;display:flex;align-items:center;justify-content:center;margin:0 auto .75rem">
           <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#d0f4db" stroke-width="1.8" stroke-linecap="round"><polygon points="3 11 22 2 13 21 11 13 3 11"/></svg>
         </div>
-        <div style="font-family:'Merriweather',serif;font-size:.88rem;font-weight:700;color:#fff;margin-bottom:.2rem">Field Practice</div>
-        <div style="font-size:.75rem;color:rgba(255,255,255,.72)">Real-world training</div>
+        <div style="font-family:'Merriweather',serif;font-size:1.02rem;font-weight:700;color:#fff;margin-bottom:.2rem">Field Practice</div>
+        <div style="font-size:.9rem;color:rgba(255,255,255,.72)">Real-world training</div>
       </div>
     </div>
   </div>
@@ -812,7 +939,8 @@ section[id]{scroll-margin-top:110px}
 <!-- FACULTY -->
 <section class="sec" id="faculty" style="background:var(--offwhite)">
   <div class="sec-inner">
-    <div class="sec-title">Faculty</div>
+    <div class="ac-eyebrow">People</div>
+  <div class="sec-title">Faculty</div>
     <div class="sec-divider"></div>
     <div class="fac-grid" role="group" aria-label="Faculty">
 
@@ -820,84 +948,84 @@ section[id]{scroll-margin-top:110px}
         <img width="1024" height="1024" class="fac-photo" src="assets/faculty/photos/sk-akhtar-ahmad.jpg" alt="Prof. Dr. Sk Akhtar Ahmad" onerror="this.outerHTML='&lt;div class=&quot;fac-photo-fallback&quot;&gt;AA&lt;/div&gt;'" loading="lazy" decoding="async"/>
         <div class="fac-name">Prof. Dr. Sk Akhtar Ahmad</div>
         <div class="fac-title">Professor &amp; Advisor</div>
-        <span class="fac-view">View profile <span aria-hidden="true">→</span></span>
+        <span class="fac-view">View profile</span>
       </div>
 
       <div class="fac-card" tabindex="0" role="button" aria-haspopup="dialog" data-id="faruquee">
         <img width="1231" height="1280" class="fac-photo" src="assets/faculty/photos/mh-faruquee.jpg" alt="Prof. Dr. M H Faruquee" onerror="this.outerHTML='&lt;div class=&quot;fac-photo-fallback&quot;&gt;MF&lt;/div&gt;'" loading="lazy" decoding="async"/>
         <div class="fac-name">Prof. Dr. M H Faruquee</div>
         <div class="fac-title">Professor &amp; Head of Department</div>
-        <span class="fac-view">View profile <span aria-hidden="true">→</span></span>
+        <span class="fac-view">View profile</span>
       </div>
 
       <div class="fac-card" tabindex="0" role="button" aria-haspopup="dialog" data-id="nizam">
         <img width="480" height="480" class="fac-photo" src="assets/faculty/photos/saika-nizam.jpg" alt="Dr Saika Nizam" onerror="this.outerHTML='&lt;div class=&quot;fac-photo-fallback&quot;&gt;SN&lt;/div&gt;'" loading="lazy" decoding="async"/>
         <div class="fac-name">Dr Saika Nizam</div>
         <div class="fac-title">Associate Professor</div>
-        <span class="fac-view">View profile <span aria-hidden="true">→</span></span>
+        <span class="fac-view">View profile</span>
       </div>
 
       <div class="fac-card" tabindex="0" role="button" aria-haspopup="dialog" data-id="sarwar">
         <img width="1024" height="1029" class="fac-photo" src="assets/faculty/photos/afm-sarwar.jpg" alt="Prof. A F M Sarwar" onerror="this.outerHTML='&lt;div class=&quot;fac-photo-fallback&quot;&gt;AS&lt;/div&gt;'" loading="lazy" decoding="async"/>
         <div class="fac-name">Prof. A F M Sarwar</div>
         <div class="fac-title">Honorary Professor</div>
-        <span class="fac-view">View profile <span aria-hidden="true">→</span></span>
+        <span class="fac-view">View profile</span>
       </div>
 
       <div class="fac-card" tabindex="0" role="button" aria-haspopup="dialog" data-id="shahidullah">
         <img width="1264" height="841" class="fac-photo" src="assets/faculty/photos/abu-nayeem-shahidullah.jpg" alt="Mr. Abu Nayeem Md Shahidullah" onerror="this.outerHTML='&lt;div class=&quot;fac-photo-fallback&quot;&gt;AN&lt;/div&gt;'" loading="lazy" decoding="async"/>
         <div class="fac-name">Mr. Abu Nayeem Md Shahidullah</div>
         <div class="fac-title">Ex Director General, Fire Service &amp; Civil Defence</div>
-        <span class="fac-view">View profile <span aria-hidden="true">→</span></span>
+        <span class="fac-view">View profile</span>
       </div>
 
       <div class="fac-card" tabindex="0" role="button" aria-haspopup="dialog" data-id="shafiur">
         <img width="1024" height="1024" class="fac-photo" src="assets/faculty/photos/shafiur-rahman.jpg" alt="Dr. Md. Shafiur Rahman" onerror="this.outerHTML='&lt;div class=&quot;fac-photo-fallback&quot;&gt;SR&lt;/div&gt;'" loading="lazy" decoding="async"/>
         <div class="fac-name">Dr. Md. Shafiur Rahman</div>
         <div class="fac-title">Associate Professor</div>
-        <span class="fac-view">View profile <span aria-hidden="true">→</span></span>
+        <span class="fac-view">View profile</span>
       </div>
 
       <div class="fac-card" tabindex="0" role="button" aria-haspopup="dialog" data-id="ehsan">
         <img width="472" height="591" class="fac-photo" src="assets/faculty/photos/abul-ehsan.jpg" alt="Dr. Md. Abul Ehsan" onerror="this.outerHTML='&lt;div class=&quot;fac-photo-fallback&quot;&gt;AE&lt;/div&gt;'" loading="lazy" decoding="async"/>
         <div class="fac-name">Dr. Md. Abul Ehsan</div>
         <div class="fac-title">Associate Professor</div>
-        <span class="fac-view">View profile <span aria-hidden="true">→</span></span>
+        <span class="fac-view">View profile</span>
       </div>
 
       <div class="fac-card" tabindex="0" role="button" aria-haspopup="dialog" data-id="masum">
         <img width="1024" height="1024" class="fac-photo" src="assets/faculty/photos/masum-ul-alam.jpg" alt="Mr. A K M Masum Ul Alam" onerror="this.outerHTML='&lt;div class=&quot;fac-photo-fallback&quot;&gt;MA&lt;/div&gt;'" loading="lazy" decoding="async"/>
         <div class="fac-name">Mr. A K M Masum Ul Alam</div>
         <div class="fac-title">Adjunct Faculty</div>
-        <span class="fac-view">View profile <span aria-hidden="true">→</span></span>
+        <span class="fac-view">View profile</span>
       </div>
 
       <div class="fac-card" tabindex="0" role="button" aria-haspopup="dialog" data-id="wali">
         <img width="1024" height="1024" class="fac-photo" src="assets/faculty/photos/afm-wali-islam.jpg" alt="Dr. AFM Wali Islam" onerror="this.outerHTML='&lt;div class=&quot;fac-photo-fallback&quot;&gt;WI&lt;/div&gt;'" loading="lazy" decoding="async"/>
         <div class="fac-name">Dr. AFM Wali Islam</div>
         <div class="fac-title">Professor</div>
-        <span class="fac-view">View profile <span aria-hidden="true">→</span></span>
+        <span class="fac-view">View profile</span>
       </div>
 
       <div class="fac-card" tabindex="0" role="button" aria-haspopup="dialog" data-id="tanzir">
         <img width="1058" height="992" class="fac-photo" src="assets/faculty/photos/tanzir-nawaz-khan.jpg" alt="Tanzir Nawaz Khan" onerror="this.outerHTML='&lt;div class=&quot;fac-photo-fallback&quot;&gt;TN&lt;/div&gt;'" loading="lazy" decoding="async"/>
         <div class="fac-name">Tanzir Nawaz Khan</div>
         <div class="fac-title">Adjunct Faculty</div>
-        <span class="fac-view">View profile <span aria-hidden="true">→</span></span>
+        <span class="fac-view">View profile</span>
       </div>
 
       <div class="fac-card" tabindex="0" role="button" aria-haspopup="dialog" data-id="rafiqul">
         <img class="fac-photo" src="assets/faculty/photos/abm-rafiqul-islam.jpg" alt="Dr. ABM Rafiqul Islam" onerror="this.outerHTML='&lt;div class=&quot;fac-photo-fallback&quot;&gt;RI&lt;/div&gt;'" loading="lazy" decoding="async"/>
         <div class="fac-name">Dr. ABM Rafiqul Islam</div>
         <div class="fac-title">Adjunct Faculty</div>
-        <span class="fac-view">View profile <span aria-hidden="true">→</span></span>
+        <span class="fac-view">View profile</span>
       </div>
 
       <div class="fac-card" tabindex="0" role="button" aria-haspopup="dialog" data-id="maliha">
         <img width="1024" height="1024" class="fac-photo" src="assets/faculty/photos/maliha-farzana.jpg" alt="Dr. Maliha Farzana" onerror="this.outerHTML='&lt;div class=&quot;fac-photo-fallback&quot;&gt;MF&lt;/div&gt;'" loading="lazy" decoding="async"/>
         <div class="fac-name">Dr. Maliha Farzana</div>
         <div class="fac-title">Adjunct Faculty</div>
-        <span class="fac-view">View profile <span aria-hidden="true">→</span></span>
+        <span class="fac-view">View profile</span>
       </div>
 
     </div>
@@ -1076,19 +1204,48 @@ document.addEventListener('keydown',e=>{if(e.key!=='Tab'||!facOverlay.classList.
 </script>
 
 <!-- ACADEMIC CALENDAR -->
-<section class="sec" id="calendar">
-  <div class="sec-inner">
-    <div class="sec-title">Academic calendar</div>
-    <div class="sec-divider"></div>
-    <div class="two-col">
-      <div class="calendar-card">
-        <div class="calendar-label">Intake</div>
-        <div class="calendar-desc">Programs commence in Spring (April) and Fall (October) each year.</div>
-      </div>
-    </div>
-    <!-- Add Exams and Breaks cards here once official dates are confirmed -->
+<!-- LEARNING BEYOND THE CLASSROOM -->
+<section class="sec ac-learn" id="field">
+ <div class="sec-inner">
+  <div class="ac-eyebrow">Field practice</div>
+  <div class="sec-title">Learning beyond the classroom</div>
+  <div class="sec-divider"></div>
+  <p class="sec-sub">Field visits take students from the lecture room into real workplaces.</p>
+  <div class="ac-field">
+   <figure class="ac-fcard ac-reveal"><div class="ac-fimg" style="background-image:url(assets/hero/hero-2.webp)" role="img" aria-label="Students and faculty in safety vests at the Padma Bridge Museum"></div><figcaption>Padma Bridge Museum</figcaption></figure>
+   <figure class="ac-fcard ac-reveal"><div class="ac-fimg" style="background-image:url(assets/hero/hero-4.webp)" role="img" aria-label="Students and faculty at the Into My Lungs exhibition"></div><figcaption>Into My Lungs exhibition</figcaption></figure>
+   <a class="ac-fcard ac-fmore ac-reveal" href="gallery.html"><div class="ac-fimg" style="background-image:url(assets/hero/hero-1.webp)" aria-hidden="true"></div><span class="ac-fmore-t">More from the field<small>Open the gallery</small></span></a>
   </div>
+ </div>
 </section>
+
+<section class="sec ac-cal" id="calendar">
+ <div class="sec-inner">
+  <div class="ac-eyebrow">Calendar</div>
+  <div class="sec-title">Academic calendar</div>
+  <div class="sec-divider"></div>
+  <div class="ac-cal-grid">
+   <div class="ac-cal-left">
+    <div class="ac-intake ac-reveal">
+     <div class="ac-int-card"><span class="ac-int-ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="16" rx="3"/><path d="M8 3v4M16 3v4M3 10h18"/></svg></span><span class="ac-int-k">Spring intake</span><span class="ac-int-v">April</span></div>
+     <div class="ac-int-card"><span class="ac-int-ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="16" rx="3"/><path d="M8 3v4M16 3v4M3 10h18"/></svg></span><span class="ac-int-k">Fall intake</span><span class="ac-int-v">October</span></div>
+    </div>
+    <p class="ac-cal-note">Programs commence in Spring (April) and Fall (October) each year.</p>
+    <figure class="ac-poster ac-reveal"><img src="assets/gateway-international-jobs.webp" alt="Poster: Gateway open now to professional international jobs. IOSH UK accredited programs: BPH in Occupational and Environmental Health and Safety, MPH in Occupational Health and Safety, MPH in Environmental Health and Safety. Department of Occupational and Environmental Health, BUHS." loading="lazy" onerror="this.closest('figure').style.display='none'"/></figure>
+   </div>
+   <div class="ac-planner ac-reveal">
+    <button type="button" class="ac-planner-btn" aria-label="Open the 2026 yearly planner full size">
+     <img src="assets/academic-planner-2026.webp" alt="2026 yearly academic planner of the Department of Occupational and Environmental Health, BUHS, showing January to December." loading="lazy" onerror="this.closest('.ac-planner').style.display='none'"/>
+     <span class="ac-planner-cap">2026 yearly planner<small>Tap to view full size</small></span>
+    </button>
+   </div>
+  </div>
+ </div>
+</section>
+<dialog class="ac-lb" id="acLb" aria-label="2026 yearly planner">
+ <button type="button" class="ac-lb-x">Close</button>
+ <div class="ac-lb-in"><img src="assets/academic-planner-2026.webp" alt="2026 yearly academic planner, full size." loading="lazy"/></div>
+</dialog>
 
 <!-- Learning resources section removed until real content is available -->
 
@@ -1168,5 +1325,51 @@ document.addEventListener('keydown',e=>{if(e.key!=='Tab'||!facOverlay.classList.
 </footer>
 <script src="js/main.js?v=20261101"></script>
 
+<script>
+/* Academics: scroll reveal and the planner pop-up */
+(function(){
+  /* Program cards: tap or press Enter or Space to open and close the curriculum. */
+  [].slice.call(document.querySelectorAll('.prog-full-head')).forEach(function(h){
+    function toggle(){
+      var b=document.getElementById(h.getAttribute('aria-controls'));if(!b)return;
+      var open=h.getAttribute('aria-expanded')==='true';
+      h.setAttribute('aria-expanded',open?'false':'true');b.style.display=open?'none':'block';
+    }
+    h.addEventListener('click',toggle);
+    h.addEventListener('keydown',function(e){if(e.key==='Enter'||e.key===' '){e.preventDefault();toggle();}});
+  });
+})();
+(function(){
+  var root=document.documentElement;
+  var els=[].slice.call(document.querySelectorAll('.ac-reveal'));
+  if(!('IntersectionObserver' in window)||!els.length){return;}
+  root.classList.add('ac-js');
+  var io=new IntersectionObserver(function(en){en.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}});},{threshold:.12,rootMargin:'0px 0px -6% 0px'});
+  els.forEach(function(el){io.observe(el);});
+  var dlg=document.getElementById('acLb'),btn=document.querySelector('.ac-planner-btn');
+  if(dlg&&btn&&dlg.showModal){
+    btn.addEventListener('click',function(){dlg.showModal();});
+    dlg.querySelector('.ac-lb-x').addEventListener('click',function(){dlg.close();});
+    dlg.addEventListener('click',function(e){if(e.target===dlg)dlg.close();});
+  }
+})();
+</script>
+<script>
+/* Academics stats: numbers count up to their final value when they scroll into view. */
+(function(){
+  var cards=[].slice.call(document.querySelectorAll('.ac-stat'));if(!cards.length)return;
+  var reduce=window.matchMedia&&matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if(reduce||!('IntersectionObserver' in window)){cards.forEach(function(c){c.classList.add('on');});return;}
+  cards.forEach(function(c){var n=c.querySelector('.ac-stat-n');n.textContent=n.getAttribute('data-from')||'0';});
+  function run(c){
+    var n=c.querySelector('.ac-stat-n'),to=+n.getAttribute('data-to'),from=+(n.getAttribute('data-from')||0),dur=1700,t0=null;
+    c.classList.add('on');
+    function step(t){if(t0===null)t0=t;var p=Math.min((t-t0)/dur,1),e=1-Math.pow(1-p,3);n.textContent=Math.round(from+(to-from)*e);if(p<1)requestAnimationFrame(step);else n.textContent=to;}
+    requestAnimationFrame(step);
+  }
+  var io=new IntersectionObserver(function(en){en.forEach(function(e){if(e.isIntersecting){var i=cards.indexOf(e.target);setTimeout(function(){run(e.target);},i*130);io.unobserve(e.target);}});},{threshold:.4});
+  cards.forEach(function(c){io.observe(c);});
+})();
+</script>
 </body>
 </html>
